@@ -26,7 +26,7 @@ default = {}
 default["model"] = config["OpenAI"].get("MODEL", "gpt-4o")
 default["max_tokens"] = int(config["OpenAI"].get("MAX_TOKENS", "1024"))
 default["temperature"] = float(config["OpenAI"].get("TEMPERATURE", "1.0"))
-default["top_p"] = int(config["OpenAI"].get("TOP_P", "0"))
+default["top_p"] = float(config["OpenAI"].get("TOP_P", "1.0"))
 default["frequency_penalty"] = float(config["OpenAI"].get("FREQ_PENALTY", "0.0"))
 default["presence_penalty"] = float(
     config["OpenAI"].get("PRESENCE_PENALTY", "0.0"))
@@ -345,7 +345,10 @@ class OpenAIClient:
         """
         Sets up the OpenAI API configurations for this client.
         """
-        self.client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+        self.client = OpenAI(
+            api_key=os.getenv("OPENAI_API_KEY"),
+            base_url=os.getenv("OPENAI_BASE_URL")
+        )
 
     def send_message(self,
                     current_messages,
@@ -491,15 +494,32 @@ class OpenAIClient:
         Calls the OpenAI API with the given parameters. Subclasses should
         override this method to implement their own API calls.
         """   
+        # Remove parameters that are not supported by the Google Gemini OpenAI adapter
+        # if they are at their default values (0.0).
+        if chat_api_params.get("frequency_penalty") == 0.0:
+            del chat_api_params["frequency_penalty"]
+        if chat_api_params.get("presence_penalty") == 0.0:
+            del chat_api_params["presence_penalty"]
+        if chat_api_params.get("stop") == []:
+            del chat_api_params["stop"]
 
         if "response_format" in chat_api_params:
             # to enforce the response format via pydantic, we need to use a different method
+            if "stream" in chat_api_params:
+                del chat_api_params["stream"]
 
-            del chat_api_params["stream"]
-
-            return self.client.beta.chat.completions.parse(
-                    **chat_api_params
-                )
+            try:
+                return self.client.beta.chat.completions.parse(
+                        **chat_api_params
+                    )
+            except Exception as e:
+                logger.warning(f"Error while calling parse(), falling back to create(). Error: {e}")
+                # if parse fails, we can try to call create instead
+                # we need to remove the response_format, since it's not supported by create() in the same way
+                del chat_api_params["response_format"]
+                return self.client.chat.completions.create(
+                            **chat_api_params
+                        )
         
         else:
             return self.client.chat.completions.create(
@@ -549,9 +569,8 @@ class OpenAIClient:
                 logger.debug("Token count: gpt-4 may update over time. Returning num tokens assuming gpt-4-0613.")
                 return self._count_tokens(messages, model="gpt-4-0613")
             else:
-                raise NotImplementedError(
-                    f"""num_tokens_from_messages() is not implemented for model {model}. See https://github.com/openai/openai-python/blob/main/chatml.md for information on how messages are converted to tokens."""
-                )
+                logger.debug(f"Token count not implemented for model {model}. Defaulting to gpt-3.5-turbo-0613.")
+                return self._count_tokens(messages, model="gpt-3.5-turbo-0613")
             num_tokens = 0
             for message in messages:
                 num_tokens += tokens_per_message

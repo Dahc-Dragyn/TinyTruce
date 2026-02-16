@@ -35,8 +35,7 @@ class Proposition:
     def __call__(self, additional_context=None):
         return self.check(additional_context=additional_context)
 
-    def check(self, additional_context="No additional context available."):
-
+    def check(self, additional_context="No additional context available.", **model_params):
         context = ""
 
         for target in self.targets:
@@ -84,7 +83,8 @@ class Proposition:
                                     {additional_context}   
                                     """,
 
-                                    output_type=bool)
+                                    output_type=bool,
+                                    **model_params)
         
 
         self.value = llm_request()

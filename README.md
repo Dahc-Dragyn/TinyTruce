@@ -101,6 +101,23 @@ After running a simulation, we can extract the results in a machine-readable man
 
 You can find other examples in the [examples/](./examples/) folder.
 
+### 🧪 **TINYTURUCE CONFLICT LAB** (from [tinytruce_sim.py](./tinytruce_sim.py))
+The TinyTruce Conflict Lab explores modular persona architecture for resolving complex deadlocks. By utilizing **Persona Fragments**, we can create archetypical "Disruptors" and "Diplomats" across various domains:
+
+- **Domestic**: Home maintenance vs. Relaxation.
+- **Infrastructure**: 5G expansion vs. Community concerns.
+- **Wilderness**: Minimalist hiker vs. Family glamper.
+- **Industrial**: Union representation vs. HR optimization.
+- **Tech/Dev**: Velocity addicts vs. Burn-rate guardians.
+- **Gaming**: Strategy purists vs. Casual socializers.
+
+The lab utilizes a **Phased Simulation** approach where the `TinyWorld` environment provides dynamic **Truce Interventions** (e.g., unexpected storms, power outages, or outside leaks) to bridge the gap between conflicting ideologies.
+
+Run a scenario:
+```bash
+python tinytruce_sim.py --scenario industrial
+```
+
 
 ## Pre-requisites
 

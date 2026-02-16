@@ -282,7 +282,7 @@ class TinyPerson(JsonSerializableRegistry):
             additional_definitions (dict): The additional definitions to import.
         """
 
-        self._persona = utils.merge_dicts(self._persona, additional_definitions)
+        self._persona = utils.merge_dicts(self._persona, additional_definitions, overwrite=True)
 
         # must reset prompt after adding to configuration
         self.reset_prompt()

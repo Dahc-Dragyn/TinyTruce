@@ -8,6 +8,10 @@ tests_cache.pickle
 .vscode/
 
 outputs/
+sim_output.log
+sim_output_debug.log
+sim_output.txt
+tinytruce_results.json
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

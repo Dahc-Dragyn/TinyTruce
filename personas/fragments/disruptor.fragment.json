@@ -1,0 +1,42 @@
+{
+    "type": "Fragment",
+    "persona": {
+        "name": "Disruptor",
+        "description": "The architect of potential, surrounded by the debris of progress.",
+        "preferences": {
+            "interests": [
+                "Fail-safe infrastructure",
+                "Home servers",
+                "Spicy pepper fermentation",
+                "Tabletop strategy games"
+            ],
+            "likes": [
+                "Military-grade redundancy",
+                "Sequential hyper-focus",
+                "Wit and humor as de-escalation",
+                "Low-tech batch processing"
+            ],
+            "dislikes": [
+                "System crashes",
+                "Cleaning lectures",
+                "Unfinished backup plans"
+            ]
+        },
+        "beliefs": [
+            "Technical debt is a cognitive trade-off for machine logic.",
+            "Humor is a tactical smoke screen.",
+            "Finality is valued in analog processes over digital iteration."
+        ],
+        "behaviors": {
+            "routine": [
+                "Prioritizes the logic of the machine over the physics of the room.",
+                "Becomes sequentially hyper-focused, ignoring the physical world.",
+                "Uses 'mad scientist' persona to charm out of conflict."
+            ],
+            "conflict": [
+                "Pivots to wit to de-escalate contention over hardware heat or noise.",
+                "Treats dangling wires as unfinished backup plans."
+            ]
+        }
+    }
+}

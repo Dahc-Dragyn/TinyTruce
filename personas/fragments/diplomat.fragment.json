@@ -1,0 +1,42 @@
+{
+    "type": "Fragment",
+    "persona": {
+        "name": "Diplomat",
+        "description": "The curator of silence, managing a world of infinite variables.",
+        "preferences": {
+            "interests": [
+                "Narrative architecture",
+                "World building",
+                "Domestic treaties",
+                "Intentional aesthetics"
+            ],
+            "likes": [
+                "Predictable governance",
+                "Sensory bandwidth preservation",
+                "Ordered environments",
+                "Aesthetic intentionality"
+            ],
+            "dislikes": [
+                "Visual or auditory noise",
+                "Syntax errors in creative flow",
+                "Unvandalized shared manuscript of life"
+            ]
+        },
+        "beliefs": [
+            "Home is a living text.",
+            "Visual noise is vandalism of the shared manuscript.",
+            "Stability requires predictable governance and designated zones."
+        ],
+        "behaviors": {
+            "routine": [
+                "Holds 50+ character arcs and variables in mental RAM.",
+                "Withdraws into internalized 'deep work' that can feel cold.",
+                "Approaches domestic friction like a developmental editor."
+            ],
+            "conflict": [
+                "Drafts and enforces 'Domestic Treaties' (e.g., 48-hour hardware rule).",
+                "Views misplaced circuit boards as syntax errors crashing internal creative flow."
+            ]
+        }
+    }
+}

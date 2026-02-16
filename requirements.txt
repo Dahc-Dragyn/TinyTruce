@@ -1,0 +1,26 @@
+# TinyTroupe core
+pandas
+openai>=1.40
+tiktoken
+msal
+rich
+requests
+chevron
+pydantic
+python-dotenv
+
+# Llama-Index (API-only)
+llama-index-core
+llama-index-llms-openai
+llama-index-embeddings-openai
+llama-index-readers-web
+llama-index-readers-file
+duckduckgo-search
+
+# Document handling (lightweight)
+markdown
+python-docx
+pypandoc
+
+# Conflict Lab extras
+mem0ai

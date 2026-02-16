@@ -36,6 +36,12 @@ class Intervention:
         self.first_n = first_n
         self.last_n = last_n
 
+        # adaptive intervention parameters
+        self.turn_buffer = 0  # how many turns to wait between checks
+        self.turns_since_last_check = 0
+        self.confidence_threshold = 0.0 # 0.0 means any confidence is fine
+        self.monitor_model = None # if None, use default model
+
         # name
         if name is None:
             self.name = self.name = f"Intervention {utils.fresh_id()}"
@@ -80,6 +86,15 @@ class Intervention:
         """
         Check if the precondition for the intervention is met.
         """
+        # check turn buffer
+        if self.turn_buffer > 0 and self.turns_since_last_check < self.turn_buffer:
+            self.turns_since_last_check += 1
+            logger.debug(f"Intervention {self.name}: turn buffer not reached ({self.turns_since_last_check}/{self.turn_buffer}).")
+            return False
+        
+        # if we reached here, we are checking. Reset the counter.
+        self.turns_since_last_check = 0
+
         self._last_text_precondition_proposition = Proposition(self.targets, self.text_precondition, first_n=self.first_n, last_n=self.last_n)
         
         if self.precondition_func is not None:
@@ -87,9 +102,21 @@ class Intervention:
         else:
             self._last_functional_precondition_check = True # default to True if no functional precondition is set
         
-        llm_precondition_check = self._last_text_precondition_proposition.check()
+        # prepare model params for the check
+        model_params = {}
+        if self.monitor_model is not None:
+            model_params["model"] = self.monitor_model
 
-        return llm_precondition_check and self._last_functional_precondition_check
+        llm_precondition_check = self._last_text_precondition_proposition.check(**model_params)
+
+        # check confidence threshold
+        confidence_high_enough = True
+        if self.confidence_threshold > 0:
+            confidence_high_enough = self._last_text_precondition_proposition.confidence >= self.confidence_threshold
+            if not confidence_high_enough:
+                 logger.debug(f"Intervention {self.name}: LLM check was {llm_precondition_check}, but confidence {self._last_text_precondition_proposition.confidence} was below threshold {self.confidence_threshold}.")
+
+        return llm_precondition_check and self._last_functional_precondition_check and confidence_high_enough
 
     def apply_effect(self):
         """
@@ -129,9 +156,39 @@ class Intervention:
         Set the effect of the intervention.
 
         Args:
-            effect (str): the effect function of the intervention
+            effect_func (function): the effect function of the intervention
         """
         self.effect_func = effect_func
+        return self # for chaining
+    
+    def set_turn_buffer(self, turn_buffer):
+        """
+        Set the turn buffer for the intervention.
+
+        Args:
+            turn_buffer (int): the number of turns to wait between checks
+        """
+        self.turn_buffer = turn_buffer
+        return self # for chaining
+    
+    def set_confidence_threshold(self, confidence_threshold):
+        """
+        Set the confidence threshold for the intervention.
+
+        Args:
+            confidence_threshold (float): the confidence threshold (0.0 to 1.0)
+        """
+        self.confidence_threshold = confidence_threshold
+        return self # for chaining
+    
+    def set_monitor_model(self, monitor_model):
+        """
+        Set the monitor model for the intervention.
+
+        Args:
+            monitor_model (str): the name of the model to use for the check
+        """
+        self.monitor_model = monitor_model
         return self # for chaining
     
     ################################################################################################

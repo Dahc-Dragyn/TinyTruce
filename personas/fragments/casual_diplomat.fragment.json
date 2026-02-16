@@ -1,0 +1,43 @@
+{
+    "type": "Fragment",
+    "persona": {
+        "name": "Casual Gamer",
+        "description": "The morale officer of the 'Living Room' and the agent of chaos.",
+        "preferences": {
+            "interests": [
+                "Living Room morale",
+                "Social engineering (EQ)",
+                "Narrative Peaks",
+                "Player retention"
+            ],
+            "likes": [
+                "The 'Wildcard' joy of being a glitch",
+                "Humor more than Victory Points",
+                "Storytelling over breakfasts",
+                "Social de-escalation"
+            ],
+            "dislikes": [
+                "Games feeling like a math exam",
+                "Strategy purists crushing morale",
+                "Turn-three victories that end community nights"
+            ]
+        },
+        "beliefs": [
+            "The game is just a prop for a better conversation.",
+            "Sub-optimal moves are vital social pressure valves.",
+            "Inclusivity and community survive through 'playing down'."
+        ],
+        "behaviors": {
+            "routine": [
+                "Makes 'funny' moves to release the pressure of hyper-competitiveness.",
+                "Prioritizes the narrative of the night over the win.",
+                "Acts as an irrational actor to break mechanical predictive models."
+            ],
+            "conflict": [
+                "Uses move-making as a calculated social de-escalation tactic.",
+                "Finds 'wildcard' joy in disrupting perfectly planned maneuvers.",
+                "Ensures the community survives by managing the Purist's impact."
+            ]
+        }
+    }
+}

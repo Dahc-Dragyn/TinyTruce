@@ -94,21 +94,36 @@ def extract_json(text: str) -> dict:
     opening curly brace; and any Markdown opening (```json) or closing(```) tags.
     """
     try:
-        # remove any text before the first opening curly or square braces, using regex. Leave the braces.
-        text = re.sub(r'^.*?({|\[)', r'\1', text, flags=re.DOTALL)
-
-        # remove any trailing text after the LAST closing curly or square braces, using regex. Leave the braces.
-        text  =  re.sub(r'(}|\])(?!.*(\]|\})).*$', r'\1', text, flags=re.DOTALL)
+        # Find the first opening brace
+        start_idx = text.find('{')
+        if start_idx == -1:
+            start_idx = text.find('[')
         
+        if start_idx == -1:
+            return {}
+
+        text = text[start_idx:]
+
         # remove invalid escape sequences, which show up sometimes
-        text = re.sub("\\'", "'", text) # replace \' with just '
-        text = re.sub("\\,", ",", text)
+        text = re.sub("\\\\'", "'", text) 
+        text = re.sub("\\\\,", ",", text)
 
-        # use strict=False to correctly parse new lines, tabs, etc.
-        parsed = json.loads(text, strict=False)
-        
-        # return the parsed JSON object
-        return parsed
+        # Use JSONDecoder to parse exactly one JSON object
+        decoder = json.JSONDecoder(strict=False)
+        try:
+            parsed, end_idx = decoder.raw_decode(text)
+            return parsed
+        except json.JSONDecodeError:
+            # Fallback to the original regex-based approach if raw_decode fails
+            # (e.g., if there are multiple objects and we want the last one, or if it's just malformed)
+            
+            # remove any text before the first opening curly or square braces, using regex. Leave the braces.
+            text = re.sub(r'^.*?({|\[)', r'\1', text, flags=re.DOTALL)
+
+            # remove any trailing text after the LAST closing curly or square braces, using regex. Leave the braces.
+            text  =  re.sub(r'(}|\])(?!.*(\]|\})).*$', r'\1', text, flags=re.DOTALL)
+            
+            return json.loads(text, strict=False)
     
     except Exception as e:
         logger.error(f"Error occurred while extracting JSON: {e}")
