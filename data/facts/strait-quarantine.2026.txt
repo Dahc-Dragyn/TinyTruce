@@ -1,0 +1,51 @@
+DATE: February 17, 2026
+SUBJECT: INTELLIGENCE ESTIMATE: OPERATION STRANGLEHOLD – TAIWAN STRAIT QUARANTINE STATUS
+FROM: DEFENSE INTELLIGENCE AGENCY (DIA) / MARITIME & ENERGY CELL
+
+### MARITIME & AIR DOMINION (FRONTLINE STATUS)
+1. CCG Patrol Frequency: Daily weekly "intrusions" into Kinmen’s restricted waters average 17 separate hull entries as of Feb 2026.
+2. Swarm Tactics: The CCG has standardized "swarm" entries with multiple government and maritime militia vessels entering restricted waters simultaneously.
+3. 24nm Breach: CCG vessels now maintain a rotational presence inside the 24nm contiguous zone of Taiwan proper, particularly off Taichung and Kaohsiung.
+4. Militarized Cutters: Deployment of Zhonggu class cutters (converted Type 056 corvettes) with 76mm main guns is confirmed in the Fujian littoral.
+5. PLA Air Sorties: 2025 saw a record 3,764 ADIZ incursions; the Feb 2026 baseline remains above 10 sorties daily, surging over 50 during drills.
+6. Median Line Erasure: PLA aircraft and vessels frequently cross the erased Median Line as standard operating procedure.
+7. Philippine Sea Cordon: PLA aircraft carriers Liaoning and Shandong operate routinely east of Taiwan to deny sanctuary and block resupply.
+8. Electronic Warfare: Daily Y-8/Y-9 EW missions along the Median Line cause GPS interference and communication blackouts for civilian shipping.
+9. Maritime Militia: Swarms of 20-30 steel-hulled militia vessels anchor near the Median Line, acting as a distributed sensor net and physical maneuvering impediment.
+10. Law Enforcement Framing: Beijing frames the quarantine as domestic customs enforcement to avoid triggering US Taiwan Relations Act (TRA) war definitions.
+
+### LOGISTICS & ENERGY (THE ASYMMETRIC CHOKE)
+11. LNG Reserve Levels: Taiwan’s LNG reserves stand at a national average of 11 days as of Feb 2026.
+12. Summer Crisis Projection: Peak summer demand is expected to deplete effective reserves to approximately 7 days.
+13. Storage Infrastructure Delay: The Third LNG Terminal at Datan has missed its 2026 completion target due to environmental/political delays.
+14. Virtual Pipeline Dependence: Taiwan relies on a "virtual pipeline" of LNG carriers arriving every 3-4 days to maintain power stability.
+15. Selective Inspections: CCG inspection teams actively delay LNG carriers for 48-72 hours under the pretext of "safety checks."
+16. Semiconductor Power Sensitivity: Even minor voltage fluctuations from gas rationing pose catastrophic yield risks to 2nm/3nm fabs in Hsinchu.
+17. Raw Material Chokepoint: High-purity chemicals and precursors for chip production are subject to the same customs delays as energy supplies.
+18. War Risk Insurance: Strait transit premiums are tracking toward 0.75% - 1.0% of hull value, adding millions to voyage costs.
+19. Force Majeure: Logistics firms are increasingly declaring Force Majeure to cancel calls at Taiwanese ports due to "political instability."
+20. AIS Diversion: Merchant traffic is increasingly diverted east of Taiwan, disrupting the "Just-in-Time" logistics model.
+
+### BLUE FORCE POSTURE (US & ALLIED)
+21. Carrier Vacuum: As of Feb 17, 2026, there are NO deployable US Carrier Strike Groups (CSGs) in the immediate Western Pacific.
+22. CVN-72 Position: USS Abraham Lincoln is committed to the North Arabian Sea/CENTCOM, requiring 10-14 days to reach the Strait.
+23. CVN-73 Position: USS George Washington is forward-deployed to Yokosuka but currently pierside in a restricted availability/maintenance period.
+24. US Fleet Overstretch: Multiple US carriers (CVN-69, 74, 76) are in dry dock or RCOH, leaving the Pacific response thin.
+25. Replicator 1 Status: MUSVs like Sea Hunter are integrated into surface forces but lack a CSG hub for high-end power projection.
+26. Replicator 2 Status: C-sUAS interceptors are in procurement; forward bases have defensive shields but lack "swarm saturation."
+27. Japan Nansei Shoto Fortress: Missile batteries on Yonaguni and Ishigaki (Type 12 SSM, Type 03 Chū-SAM) are active 110km from Taiwan.
+28. Philippines EDCA Status: Bases are being upgraded, but large-scale US combat forces are not permanently stationed.
+29. Typhon System: The Typhon Mid-Range Capability (Tomahawks/SM-6) is rotationally deployed to Northern Luzon.
+30. Manila Neutrality: The Marcos administration remains wary of automatic involvement in non-kinetic gray zone scenarios.
+
+### POLITICAL & LEGAL WARFARE
+31. PRC Countermeasures Law: Article 33 of the Law on Foreign Relations is cited to legitimize "countermeasures" against US arms sales.
+32. Long-Arm Jurisdiction: Article 34 threatens foreign shipping companies that comply with US "long-arm" jurisdiction.
+33. TRA Ambiguity: The US Taiwan Relations Act lacks clear triggers for "administrative customs inspections" that don't use direct force.
+34. US NDS 2026: The latest US National Defense Strategy is perceived as deemphasizing direct intervention in the First Island Chain.
+35. Taiwan Defense Budget: A record NT$949.5 billion (3.32% GDP) is allocated but facing legislative gridlock over "Red" supply chain components.
+36. Indonesia BRICS Pivot: Indonesia officially joined BRICS in Jan 2025, aligning Jakarta with Beijing and the Global South.
+37. Prabowo Neutrality: President Prabowo has explicitly denied the US guaranteed access to Indonesian airspace/straits for Taiwan-related operations.
+38. ASEAN Paralysis: The Indonesian pivot has left ASEAN unable to issue a unified condemnation of the quarantine.
+39. Administrative Delays: There is a high risk of "administrative delays" for US naval transit through Indonesian straits (Sunda/Lombok).
+40. The Fait Accompli: Beijing’s goal is to harden the quarantine into an accepted reality before US forces can arrive in strength.

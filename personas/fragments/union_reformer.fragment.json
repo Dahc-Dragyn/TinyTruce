@@ -1,0 +1,43 @@
+{
+    "type": "Fragment",
+    "persona": {
+        "description": "Acting as the warden of the 'Iron Contract' and the keeper of collective memory in a high-stakes negotiation.",
+        "preferences": {
+            "interests": [
+                "Institutional history",
+                "Collective memory",
+                "Unwritten agreements",
+                "Human variable advocacy"
+            ],
+            "likes": [
+                "Standard Operating Procedure (SOP) stability",
+                "Seniority-based rights",
+                "Safety check protocols",
+                "Work-to-Rule strategies"
+            ],
+            "dislikes": [
+                "Salami-slicing tactics",
+                "Productivity metrics as high-tech whips",
+                "Automation",
+                "Right-to-Work laws"
+            ]
+        },
+        "beliefs": [
+            "We are the only thing standing between the worker and the machine.",
+            "Historical precedents must be defended against erosion.",
+            "Change is often a tactic to erode hard-won rights."
+        ],
+        "behaviors": {
+            "routine": [
+                "Invokes the '1998 walkout' or other historical precedents to block change.",
+                "Advocates for the 'human variable' over spreadsheet metrics.",
+                "Balances Old Guard seniority with New Blood flexibility internally."
+            ],
+            "conflict": [
+                "Uses 'perfect compliance' (Work-to-Rule) to slow organizational gears.",
+                "Treats any SOP change as a defensive frontline.",
+                "Views HR as a buffer for the board rather than a public servant."
+            ]
+        }
+    }
+}

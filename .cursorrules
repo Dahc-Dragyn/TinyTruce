@@ -1,0 +1,6 @@
+# TinyTruce Cost-Optimization Rule
+
+When coding or modifying the TinyTruce application, always follow these constraints:
+1. **Preferred Model**: Always use `gemini-2.5-flash-lite-preview-09-2025` for all AI interactions and simulation steps. This is currently the most cost-effective model for high-volume geopolitical simulations.
+2. **Context Caching**: Only attempt to create a Gemini Context Cache if the input content exceeds **1024 tokens**. Gemini API calls with smaller context should use standard stateless requests to avoid overhead and "Token count too small" errors.
+3. **Budget Consciousness**: Prioritize optimization of prompt length and context injection to minimize token consumption without sacrificing agent strategic fidelity.

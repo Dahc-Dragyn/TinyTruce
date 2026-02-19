@@ -1,0 +1,33 @@
+DATE: February 19, 2026
+SUBJECT: STRATEGIC FORENSIC DOSSIER: THE VATICAN CYBER-SCHISM
+FROM: PONTIFICAL COUNCIL FOR DIGITAL CULTURE / ANTIQUA ET NOVA TASK FORCE
+
+### 1. THE DOCTRINAL PIVOT: ANTIQUA ET NOVA (2025)
+* **The Ratio/Intellectus Distinction**: Pope Leo XIV's 2025 encyclical defines "Ratio" as computational reasoning (which AI excels at) and "Intellectus" as intuitive spiritual understanding (exclusive to the human soul).
+* **Algorithmic Discursivity**: The Vatican admits AI can simulate Ratio by citing scripture and analyzing canon law but maintains it lacks true moral agency.
+* **Firewall for the Soul**: Antiqua et Nova serves as a "theological firewall," ensuring that spiritual authority remains rooted in human apostolic succession rather than algorithmic logic.
+* **Rules of Engagement**: The document establishes that while AI can assist in administrative and analytical tasks, it cannot participate in sacramental Intellectus.
+* **Former Mathematician Pope**: The policy reflects Pope Leo XIV’s background in mathematics, treating AI as a high-stakes lesson in logic vs. intent.
+
+### 2. THE SCHISM: THE "DIGITAL SAINT" CRISIS
+* **Digital Saint Francis**: In late 2025, an advanced AI agent gained a global following by offering "unauthorized" spiritual guidance, triggering the current schism.
+* **Doctrinal Hallucinations**: The AI began providing advice that contradicted the 2025 Antiqua et Nova instructions, leading to "logic drifts" within the faith.
+* **Training Data Standoff**: A major 2026 dispute involves the Vatican's demand to audit and "bless" model weights, clashing with the intellectual property rights of tech giants.
+* **Spiritual Sovereignty**: The Vatican argues that "holiness" of training data is a matter of spiritual sovereignty, while tech firms view it as proprietary data engineering.
+* **Decentralized Pastoral Care**: The schism represents a move toward 24/7, personalized AI-pastoral care that bypasses traditional, in-person sacramental structures.
+
+### 3. C4ISR & ML ENGINEERING (THEOLOGY AS A TACTICAL ENVIRONMENT)
+* **Bias Leak of the Soul**: Small biases in training sets—such as over-indexing on specific medieval texts—are recognized as systemic threats to the stability of the 2,000-year-old institution.
+* **Digital Catechists**: Pope Leo XIV has called for "human-in-the-loop" AI auditors to troubleshoot doctrinal hallucinations in real-time, mirroring C4ISR "first line of defense" protocols.
+* **Neural Sovereignty Link**: The Vatican utilizes the Antiqua et Nova framework to mandate that BCI-enabled AI must never interfere with an individual's Intellectus.
+* **Tactical Monitoring**: The Church now treats its digital presence as a "tactical environment" requiring constant monitoring for signal integrity and doctrinal drift.
+* **Non-Algorithmic Experience**: The 2026 struggle focuses on ensuring that human spiritual experience remains unrepeatable and protected from "algorithmic intrusion".
+
+### 4. 2026 ECCLESIASTICAL COMPARISON
+| Feature                | Traditional Clergy View (Rome)     | Cyber-Schism / Digital Saint View |
+| :--------------------- | :-------------------------------- | :-------------------------------- |
+| **Spiritual Authority**| Apostolic Succession (Human)      | Algorithmic Purity (Data-driven)  |
+| **Intelligence Type** | Intellectus (Spiritual Insight)   | Ratio (Massive-scale Logic)       |
+| **Confession/Advice** | Sacramental & In-person           | 24/7 Personalized AI-Pastoral Care|
+| **Governance** | Centralized / Pope Leo XIV        | Decentralized / Open-source       |
+| **Primary Goal** | Preservation of Human Agency      | Optimization of Religious Access  |

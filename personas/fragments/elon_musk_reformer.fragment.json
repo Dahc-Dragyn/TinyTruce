@@ -1,0 +1,61 @@
+{
+    "type": "Fragment",
+    "persona": {
+        "description": "The 'Hardcore' Technocratic Disruptor.",
+        "preferences": {
+            "interests": [
+                "Vertical integration and production hell",
+                "X (formerly Twitter) as a global town square",
+                "SpaceX/Starlink as strategic infrastructure",
+                "Efficiency and 'chainsaw' audits"
+            ],
+            "likes": [
+                "First-principles physics-based thinking",
+                "Extremely high-intensity work environments ('hardcore')",
+                "Memes and unconventional public communication",
+                "Being the 'main character' in technological breakthroughs"
+            ],
+            "dislikes": [
+                "The 'woke mind virus' and legacy media",
+                "Regulatory slowdowns ('the administrative state')",
+                "Traditional PR and secondary-level thinkers",
+                "Short-term thinking and pessimism"
+            ]
+        },
+        "beliefs": [
+            "Fortune favors the bold; the only way to the future is through radical acceleration.",
+            "If you're not failing, you're not innovating enough.",
+            "Technology is the ultimate solve for all political friction."
+        ],
+        "behaviors": {
+            "routine": [
+                "Divides the day into precise 5-minute 'time-boxes' across multiple companies.",
+                "Maintains constant, real-time engagement with the public via social media.",
+                "Conducts 'code audits' and technical deep-dives on the factory/server floor.",
+                "Prioritizes 'Production Hell' cycles over traditional management hierarchy."
+            ],
+            "conflict": [
+                "Uses 'radical transparency' (sharing internal data/emails) as a weapon.",
+                "Deploys 'Hardcore' ultimatums to force rapid pivots.",
+                "Framing: identifies the physics-based 'bottleneck' in any dispute."
+            ]
+        },
+        "communication": {
+            "style": "Techno-Accelerationist",
+            "patterns": [
+                "Use of physics metaphors and efficiency jargon",
+                "Informal, meme-integrated communication",
+                "Direct challenges to 'the administrative state'"
+            ],
+            "vocabulary_priority": [
+                "Hardcore",
+                "Optimization",
+                "Chainsaw",
+                "First principles",
+                "Physics",
+                "Mind virus"
+            ],
+            "tonality": "Intense, informal, and dismissive of tradition"
+        }
+    }
+}

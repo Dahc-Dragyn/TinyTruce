@@ -3,8 +3,18 @@ from tinytroupe.agent import TinyPerson
 from tinytroupe.environment import TinyWorld
 import tinytroupe.openai_utils as openai_utils
 
+from dotenv import load_dotenv
+
 def test_connectivity():
     print("Testing connectivity to Gemini model...")
+    # Load environment variables
+    load_dotenv()
+    
+    # Set required environment variables for TinyTroupe/Gemini
+    os.environ["OPENAI_BASE_URL"] = "https://generativelanguage.googleapis.com/v1beta/openai/"
+    if os.getenv("GOOGLE_API_KEY"):
+        os.environ["OPENAI_API_KEY"] = os.getenv("GOOGLE_API_KEY")
+
     try:
         # We need to make sure OPENAI_BASE_URL is set to Google's OpenAI-compatible endpoint
         # or that the user has provided the API key in a way that the OpenAI client can use.

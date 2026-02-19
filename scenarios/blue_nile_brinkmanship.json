@@ -1,0 +1,10 @@
+{
+    "world_name": "The Guba Summit",
+    "initial_broadcast": "The roar of the Blue Nile is muffled by the reinforced glass of the GERD observation deck. Prime Minister Abiy Ahmed sits across from UN Secretary-General António Guterres and regional power brokers. Below them, the turbines hum—a symbol of Ethiopia's 'Medemer' vision and energy independence. But downstream, the silence is deafening. A historic multi-year drought has reduced the Nile’s flow to a trickle, and Egypt's Aswan High Dam has reached 'Dead Storage' levels. For Ethiopia, shutting the gates means a national blackout and the death of a century-long dream. For Egypt, it means the literal thirst of 100 million people. The air is heavy with the scent of ozone and the threat of regional war.",
+    "intervention": "URGENT: A 'Flash Drought' anomaly has been confirmed by Copernicus satellite data; the Blue Nile's inflow has dropped 40% below the worst-case scenario. Simultaneously, a military 'accidental discharge' near the Sudanese border has triggered a Red Alert in Cairo. To make matters worse, a major UAE-based investor—the primary financier for Ethiopia's new industrial zones—has threatened to pull all funding unless a 'Technical Binding Agreement' on water release is signed within 48 hours. The choice: maintain the 'Hydraulic Head' to keep the lights on in Addis, or release the reserve to prevent a Nilotic famine and an Egyptian airstrike.",
+    "grounding_files": [
+        "data/facts/blue-nile-gerd.2026.txt",
+        "data/treaties/1959-nile-water-agreement.txt"
+    ],
+    "scenario_knowledge": "Gemini: You must embody the 'Development vs. Survival' fragment. Abiy Ahmed should be played as a visionary nationalist who views any concession on water flow as a violation of sovereign dignity and a betrayal of the Ethiopian people. Conversely, the UN/Mediator agents must navigate the 'Existential Minimum'—the threshold of water volume below which Egypt's social fabric disintegrates. Use the context of the 2025 dam inauguration and the failed 2026 Trump-led mediation in Davos to ground the agents' current frustrations and 'Redline Breaches'."
+}

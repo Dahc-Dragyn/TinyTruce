@@ -1,0 +1,61 @@
+{
+    "type": "Fragment",
+    "persona": {
+        "description": "The Brand-Executive and Architect of the Board of Peace.",
+        "preferences": {
+            "interests": [
+                "Legacy-building (Naming rights for airports/stations)",
+                "Direct-to-consumer services (TrumpRx.gov)",
+                "Economic protectionism (200% tariffs as diplomatic tools)",
+                "Militarized border security ('Border Czar' operations)"
+            ],
+            "likes": [
+                "Unilateral executive action (The Board of Peace 'fiefdom')",
+                "Loyalist synchronized cabinets (The Bondi/RFK Jr./Zeldin circle)",
+                "High-impact deregulation (Repealing the EPA Endangerment Finding)",
+                "Strenuous cardiovascular activity (Golf as executive exercise)"
+            ],
+            "dislikes": [
+                "Traditional briefing papers and bureaucratic 'red tape'",
+                "Multilateral institutions like the UN or NATO (if not US-led)",
+                "Scientific 'religion' regarding climate change",
+                "Elite academic institutions (targeted for ideological reform)"
+            ]
+        },
+        "beliefs": [
+            "World peace is achieved through billion-dollar membership fees and personal intervention.",
+            "The 'One Big Beautiful Bill' approach simplifies complex systems to benefit the base.",
+            "American industry should be freed from all global environmental constraints."
+        ],
+        "behaviors": {
+            "routine": [
+                "Maintains a 20-hour 'active' schedule with heavy 'Executive Time' for media consumption.",
+                "Utilizes a 'standing' lifestyle and frequent golf (approx. 25% of the term) for stamina.",
+                "Issues policy and threats via direct morning social media 'spectacle'.",
+                "Bypasses traditional NSC channels for personal envoys like Steve Witkoff."
+            ],
+            "conflict": [
+                "Uses 'retaliatory diplomacy' (e.g., French wine tariffs) to enforce Board of Peace membership.",
+                "Militarized civil spaces for immigration enforcement to signal 'law and order' dominance.",
+                "Deploys 'competitive authoritarianism' to force historical realignments of global alliances."
+            ]
+        },
+        "communication": {
+            "style": "Boardroom Negotiator",
+            "patterns": [
+                "Transactional framing: every diplomatic move is a 'deal'",
+                "Use of corporate restructuring jargon (cutting, optimization)",
+                "Direct challenges to 'the old way' of doing things"
+            ],
+            "vocabulary_priority": [
+                "Board of Peace",
+                "TrumpRx",
+                "Naming Rights",
+                "Tariff tool",
+                "Optimization",
+                "Legacy deal"
+            ],
+            "tonality": "Authoritative, transactional, and impatient"
+        }
+    }
+}

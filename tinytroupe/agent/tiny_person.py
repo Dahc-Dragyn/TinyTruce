@@ -788,6 +788,21 @@ class TinyPerson(JsonSerializableRegistry):
 
         logger.debug(f"[{self.name}] Received message: {next_message}")
 
+        if next_message is None:
+            # Check for persona-specific diplomatic pivot
+            pivot_response = self.get("filter_proxy_response")
+            if not pivot_response:
+                pivot_response = f"[{self.name} remains silent, deep in thought...]"
+            
+            logger.warning(f"[{self.name}] LLM returned None (possibly filtered). Providing diplomatic pivot: {pivot_response}")
+            
+            # Fallback to a tactical action to prevent crash and maintain resolve
+            fallback_content = {
+                "action": {"type": "TALK", "content": pivot_response, "target": "everyone"},
+                "cognitive_state": {"goals": "Maintain situational awareness.", "attention": "The current tension.", "emotions": "Firm"}
+            }
+            return "assistant", fallback_content
+
         return next_message["role"], utils.extract_json(next_message["content"])
 
     ###########################################################

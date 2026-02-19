@@ -1,0 +1,31 @@
+DATE: February 19, 2026
+SUBJECT: STRATEGIC FORENSIC DOSSIER: IMF WORLD OUTLOOK & SOVEREIGN AI DEBT
+FROM: INTERNATIONAL MONETARY FUND (IMF) / MACRO-FISCAL RISK DIVISION
+
+### 1. THE "SILICON INTEREST RATE" (MACRO-FISCAL RISK)
+* **Computational Balance of Trade**: The January 2026 report defines a new metric for nations relying on foreign-hosted AI models, categorizing them as "Sovereign Debtors".
+* **The API Tax**: Debtors pay a systemic "tax" across all sectors—healthcare, defense, and infrastructure—via API fees, cloud egress costs, and data licensing.
+* **GDP Impact**: The IMF estimates this "Silicon Interest Rate" is shaving 0.5% to 0.8% off the annual GDP growth of AI-importing nations.
+* **Unfunded Liability**: Nations failing to achieve "Algorithmic Independence" are accumulating a hidden form of unfunded liability that threatens long-term fiscal stability.
+* **Economic Stagnation**: Sovereign Debtors face stagnant growth driven by rising "API-Lease" costs and a lack of indigenous intelligence generation.
+
+### 2. AI SOVEREIGNTY & CREDIT RATINGS
+* **Sovereignty Score**: For the first time, the IMF suggests that "AI Sovereignty" should be a direct factor in a country's sovereign credit rating.
+* **The "Black Box" Liability**: Running critical infrastructure on proprietary foreign models that can be "deprioritized" is now classified as a high sovereign risk.
+* **Refactoring Crisis**: Several EU member states face "emergency fiscal pressure" to fund the migration of public services away from foreign "Legacy AI".
+* **Compliance Deadline**: Fiscal stress is peaking as nations rush to meet the August 2026 EU AI Act mandates for jurisdictional independence.
+* **Geopolitical Vulnerability**: The report warns that a lack of full-stack oversight makes national economies vulnerable to external "kill-switch" events.
+
+### 3. C4ISR & ML ENGINEERING (THE "DEBT-FREE" STACK)
+* **Refactor or Rot**: In 2026, technical roadmaps must prioritize long-term compliance over initial token price to avoid accumulating technical debt.
+* **Sovereign-Compliant Clouds**: Utilizing models like Gemini 2.5 Flash-Lite on localized GCP instances is a primary strategy for building "Debt-Free" infrastructure.
+* **Full-Stack Independence**: National security now requires full-stack oversight, including the ability to troubleshoot bias leaks and localized hardware issues.
+* **First Line of Defense**: Field Engineers are tasked with maintaining the "Algorithmic Independence" that prevents the perpetuation of Sovereign AI Debt.
+* **Infrastructure as Asset**: AI dependency is treated as the new "National Debt"; true economic ownership requires owning both the weights and the compute.
+
+### 4. 2026 STRATEGIC "DEBT" PROFILES
+| Category            | Economic Profile                                  | 2026 Outlook Status              |
+| :------------------ | :------------------------------------------------ | :------------------------------- |
+| **Sovereign Creditors** | US, China (Holders of Compute Reserves).         | High growth; export intelligence.|
+| **Active Decouplers** | India, UAE, France (Investing in local LLMs).     | High capex; long-term resilience.|
+| **Sovereign Debtors** | Much of the Global South & parts of the EU.      | Stagnant growth; rising API costs.|

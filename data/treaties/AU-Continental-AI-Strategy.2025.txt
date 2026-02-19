@@ -1,0 +1,31 @@
+DATE: February 19, 2026
+SUBJECT: STRATEGIC FORENSIC DOSSIER: THE REFUGEE ALGORITHM & AU DATA SOVEREIGNTY
+FROM: AFRICAN AI AGENCY (AAA) / ETHICAL OVERSIGHT COMMITTEE
+
+### THE AU CONTINENTAL AI STRATEGY (2025 FRAMEWORK)
+1. Digital Borders Mandate: Adopted in Accra (July 2024), the strategy establishes that African citizens' data is a "Sovereign Resource" that cannot be processed by foreign AI without local jurisdictional oversight.
+2. The "Local First" Principle: Demands that foundational infrastructure (data centers/compute) for processing African data must reside within the continent to reduce "latency of justice."
+3. Linguistic Sovereignty: Includes a 2026 mandate for high-fidelity LLMs in major indigenous languages (Swahili, Amharic, Wolof) to prevent "Digital Colonization" in legal vetting.
+4. The Africa AI Council: Established in 2025, this body acts as the "Grand Jury" for any foreign algorithm found to have "demographic bias-leaks."
+5. $60B Africa AI Fund: Launched to build indigenous "Clean-Data" sets, designed to replace the biased, Western-trained models currently used in border security.
+
+### THE "REFUGEE ALGORITHM" INCIDENT (2026)
+6. EuroGuard-V Bias-Leak: Forensic audits revealed the AI vetting system used "Linguistic Micro-markers" from 2010-era datasets, causing a 40% false-positive "High Risk" rate for Sahelian migrants.
+7. Biometric Extraterritoriality: The AU argues that the EU’s use of facial recognition on African nationals without AAA-certified audit trails violates the 2025 "Digital Borders" agreement.
+8. The "Sahel Loophole": Whistleblowers revealed that a third-party contractor "poisoned" the vetting training set to increase deportation speed, specifically targeting "low-resource" linguistic groups.
+9. UN Intervention: Secretary-General Guterres has sided with the AU, calling the incident "Algorithmic Apartheid" and demanding a global moratorium on AI-only asylum decisions.
+10. The "Human-in-the-Loop" Trigger: Per the 2025 Strategy, the AU has formally demanded the "Kill Switch" for any autonomous vetting system that lacks a local African adjudicator.
+
+### LEADERSHIP & REGULATORY FRICTION
+11. The "Malabo Enforcement": The AU is using the Malabo Convention (Cybersecurity) as the legal "stick" to fine European tech firms operating without AU data-sovereignty certificates.
+12. The "Brussels-Addis" Standoff: Ursula von der Leyen (EU) claims the EU AI Act is sufficient; the AU argues that "trustworthy" in Europe does not mean "unbiased" in Africa.
+13. Keir Starmer’s Bridge: The UK is attempting to mediate by offering "Audit-as-a-Service," but is viewed with suspicion due to its own 2026 net-migration targets.
+14. The "Sovereign Data Clause": Specifically allows AU member states to geofence and block IPs of companies found in "Model Non-Compliance."
+15. African AI Agency (AAA): As of Feb 2026, the AAA has issued its first "Red Notice" against a major Silicon Valley border-tech provider, halting their contracts across 22 member states.
+
+### TECHNICAL FORENSICS & INFRASTRUCTURE
+16. "Data-Poisoning" Forensics: AAA investigators are using 2026-era "Trace-Back" tools to identify where European datasets were intentionally skewed.
+17. The "Green-Compute" Leverage: African nations are threatening to cut power to "Compute-for-Cash" data centers (see Scenario #7) unless vetting algorithms are re-trained.
+18. Multi-Modal Bias Detection: The AAA is deploying its own "Shadow Models" to monitor EU vetting in real-time and alert the African Union to "Risk Spikes."
+19. Indigenous LLMs: The 2026 launch of "Ubuntu-GPT" (a multi-lingual African model) has been proposed as the mandatory "Reality Anchor" for all regional vetting.
+20. The 2026 Global AI Governance Dialogue: Scheduled for July in Geneva; the AU has stated that "Digital Reparations" for algorithmic bias must be on the table.

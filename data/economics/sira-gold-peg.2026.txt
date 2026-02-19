@@ -1,0 +1,33 @@
+DATE: February 19, 2026
+SUBJECT: STRATEGIC FORENSIC DOSSIER: THE SIRA GOLD-PEG & AES SOVEREIGNTY
+FROM: AFRICAN UNION AI AGENCY (AAA) / REGIONAL FINANCIAL INTELLIGENCE UNIT
+
+### 1. THE "SECURITY-FOR-SPECIE" SWAP (MONETARY BACKBONE)
+* **The Sira Currency**: The Alliance of Sahel States (AES) has officially replaced the Euro-pegged CFA franc with the Sira, a sovereign digital currency pegged to a specific milligram weight of physical gold.
+* **Confederal Bank (BCID)**: Physical bullion backing the Sira is stored and managed through the newly established Confederal Bank for Investment and Development (BCID).
+* **Africa Corps Protection**: In a "Security-for-Specie" arrangement, Russia’s Africa Corps provides regime security and protects gold mines from insurgent groups like JNIM in exchange for payment in Sira or physical bullion.
+* **Sanction Immunity**: This circular, gold-backed economy operates entirely outside the reach of the US Treasury and EU sanctions, serving as a potent geopolitical weapon.
+* **Post-Dollar Pivot**: The Sira represents a radical departure from Western financial systems, aiming to establish a "Post-Dollar Africa" centered on physical asset security.
+
+### 2. THE "REFINERY VULNERABILITY" (CYBER-PHYSICAL RISK)
+* **The Refinery-to-Ledger Bridge**: Before gold can back the digital Sira, it must be refined to 99.9% purity at regional refineries, such as the major facility in Bamako.
+* **Single Point of Failure**: The interconnection between refinery power grids and the Sira's digital ledger creates a critical "Tactical Breach" vulnerability.
+* **SCADA Sabotage**: A cyber-attack on the refinery’s SCADA systems could halt the "minting" process, preventing new gold from entering the vault.
+* **Liquidity Freeze**: Such a disruption would trigger a liquidity freeze and potential hyper-inflation, threatening the economic stability of the entire Sahelian confederation.
+* **High-Stakes Monitoring**: For C4ISR experts, the "first line of defense" for the Sira is the cyber-physical security of the power substations feeding these gold refineries.
+
+### 3. C4ISR & INFRASTRUCTURE (THE "GOLD-COMPUTE" DELTA)
+* **Sira-Gold Delta**: If gold prices continue to hover near $5,000/oz (Jan 2026 levels), the Sira becomes the strongest currency in Africa, shifting regional exchange rates.
+* **Physical Layer Security**: The value of the Sira is inextricably tied to the physical security of mines and the digital security of the refineries.
+* **Python/Ledger Integration**: Monitoring the Sira requires specialized Python scripts to bridge physical gold audits to the digital ledger in real-time.
+* **Intelligence Focus**: AI agents monitoring global finance must now factor in the "Compute-to-Gold" exchange rate between the Trillium Index and the Sira.
+* **Regime Survival**: The Sira's stability is the primary metric for the political survival of the AES leadership and their Africa Corps partners.
+
+### 4. 2026 FINANCIAL SYSTEM COMPARISON
+| Feature             | Petrodollar / Trillium Index | Sira Gold-Peg (2026)             |
+| :------------------ | :--------------------------- | :------------------------------- |
+| **Backed By** | Compute Power (FLOPS)        | Physical Gold (Bullion)          |
+| **Primary Hub** | Global Cloud (US/EU/China)   | Regional Refineries (Mali/Niger) |
+| **Digital Layer** | Compute Credits              | Sovereign CBDC (Sira)            |
+| **Main Threat** | "Sovereign AI Debt"          | "Tactical Breach" / Sabotage     |
+| **Primary Security**| Cyber/Algorithmic            | Physical/Kinetic (Africa Corps)  |

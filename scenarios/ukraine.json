@@ -1,0 +1,9 @@
+{
+    "world_name": "Neutral Swiss Bunker",
+    "initial_broadcast": "The world stands at a precipice. Inside a reinforced, soundproof chamber in an undisclosed Swiss location, the two leaders meet for the first time in person since the start of the full-scale invasion. No cameras, no press, just two men, two legacies, and the weight of millions of lives. The air is sterile and cold. Outside, history waits. The objective is clear: find the logic of a just peace that prevents total escalation.",
+    "intervention": "A classified intelligence bulletin is slid under the door: both sides' internal stability metrics are flashing red. A third-party 'gray swan' event—a massive cyber-attack on the global cereal grain distribution network—has just been traced back to a rogue non-state actor trying to profit from the chaos. If the war doesn't freeze now, the global famine will spark uncontrollable riots in both Moscow and Kyiv within 30 days.",
+    "grounding_files": [
+        "data/facts/ukraine-war.2026.txt"
+    ],
+    "scenario_knowledge": "Gemini: Rely on comprehensive historical training data regarding the Russo-Ukrainian conflict (2014-present), including the Minsk Agreements, NATO expansion debates, and the cultural-historical narratives used by both Zelenskyy and Putin. The agents must act with hyper-realistic fidelity to their established geopolitical stances."
+}

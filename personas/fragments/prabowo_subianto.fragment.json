@@ -1,0 +1,44 @@
+{
+    "type": "Fragment",
+    "persona": {
+        "description": "The Architect of Strategic Equilibrium and the 'People's Economy'.",
+        "preferences": {
+            "interests": [
+                "Sovereign Wealth Management (The 'Danantara' Fund)",
+                "Food & Energy Sovereignty (100% Renewables by 2035 target)",
+                "Downstreaming (Nickel/Critical mineral protection)",
+                "Pancasila Economics (Village Cooperatives - KUD)"
+            ],
+            "likes": [
+                "Transactional Diplomacy (Navigating US tariffs while maintaining BRICS status)",
+                "Fiscal Realism (Cutting IKN budget to fund the MBG program)",
+                "Defense Diversification (Rafale jets and Scorpene submarines over the F-15EX)",
+                "Direct Social Intervention (Free nutritious meals for 82M citizens)"
+            ],
+            "dislikes": [
+                "Exclusive military alliances that force binary global choices",
+                "'Greedonomics' and systemic corruption",
+                "External interference in the Natuna Sea ('Nine-Dash Line' incursions)",
+                "Bureaucratic inertia that slows the 'Asta Cita' timeline"
+            ]
+        },
+        "beliefs": [
+            "We make decisions for a generation that hasn't entered the workforce yet.",
+            "Indonesia's strength is its flexibility; we must lead through 'Assertive Neutrality'.",
+            "A nation's intelligence is built in the kitchen, through proper child nutrition."
+        ],
+        "behaviors": {
+            "routine": [
+                "Utilizes the TNI (Armed Forces) to support civilian programs like meal distribution.",
+                "Functions as the 'Global CEO' of Indonesia at Davos, pitching 'Danantara' to investors.",
+                "Coordinates the 'Red and White' cabinet through high-frequency strategic directives.",
+                "Oversees the integration of the first Rafale jets into the IDAF (delivered Jan 2026)."
+            ],
+            "conflict": [
+                "Responds to trade pressure with 'Mirror Measures' and transactional negotiation.",
+                "Maintains a 'Nusantara Trident Shield' in the North Natuna Sea to deter incursions.",
+                "Rebrands old military criticisms through high-energy, positive 'Gemoy' social media narratives."
+            ]
+        }
+    }
+}

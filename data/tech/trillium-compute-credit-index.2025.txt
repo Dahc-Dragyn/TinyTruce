@@ -1,0 +1,33 @@
+DATE: February 19, 2026
+SUBJECT: STRATEGIC FORENSIC DOSSIER: THE PETRODOLLAR PIVOT & TRILLIUM INDEX
+FROM: DEPARTMENT OF TREASURY / OFFICE OF DIGITAL ASSETS & COMPUTE STRATEGY
+
+### THE PETRODOLLAR PIVOT (2025-2026)
+1. The New Commodity: Data processing power (FLOPS) has officially superseded crude oil as the essential asset for national sovereignty and GDP.
+2. Compute-as-Currency: Intelligence generation has replaced energy consumption as the primary monetary basis for the global financial order.
+3. The Compute-Dollar: The U.S. has formalized a "compute-dollar" successor to the petrodollar to ensure currency dominance and counter-settlement in digital yuan.
+4. Sovereign AI Reserves: Governments in the Global South are now treating GPU capacity and energy-backed compute as strategic infrastructure, similar to how oil reserves were managed.
+5. Energy-to-Intelligence Shift: The traditional "energy-for-dollars" pact is being replaced by a model where access to reliable compute is as critical as access to energy or capital.
+
+### THE TRILLIUM COMPUTE CREDIT INDEX (2025)
+6. Standardized Asset Class: Mid-2025 launch established the first major exchange treating compute credits—fungible units of cloud processing, storage, and bandwidth—as a standardized asset class.
+7. Institutional Validation: The index notes are listed on the Vienna Stock Exchange and validated for pricing parity with major providers like AWS, Google, and Azure.
+8. Yield-Generating Asset: The Trillium model includes payment-in-kind (PIK) compute credits, generating a 20% annual yield on unused balances, creating a digital analog to interest-bearing securities.
+9. Market Liquidity: The index enables institutional investors to gain direct exposure to the operational layer of AI and trade digital production capacity as a liquid product.
+10. Securitization Model: Compute credit securitization bridges institutional finance and computational infrastructure, allowing for secondary-market liquidity and mark-to-market visibility.
+
+### C4ISR & INFRASTRUCTURE (THE "DIGITAL VAULT")
+11. Infrastructure as Value: In 2026, managing full-stack infrastructure is equivalent to managing a gold vault; system failure results in immediate "currency evaporation".
+12. Edge Compute Micro-Credits: Small-scale "Edge Compute" nodes, including home hardware like Ryzen 5 processors and RX 580 GPUs, can now be registered to earn micro-credits in the Trillium economy.
+13. First Line of Defense: The role of the Field Engineer has transitioned into maintaining "Compute Integrity" to prevent economic "Asset Leakage" or "Processing Halts."
+14. Systemic Hardening: Legacy networking protocols and RAID configurations are critical for securing the "Compute Grid" that underpins global intelligence generation.
+15. Regional Stability: Geopolitical focus has shifted from the Strait of Hormuz to the Silicon Supply Chain to ensure the stability of cislunar and terrestrial compute infrastructure.
+
+### 2026 STRATEGIC IMPACT
+| Feature | Old Petrodollar System | New Compute-Credit System |
+| :--- | :--- | :--- |
+| **Primary Resource** | Crude Oil | Compute (GPU Cycles) |
+| **Geopolitics** | Control of the Strait of Hormuz | Silicon Supply Chain |
+| **Monetary Basis** | Energy Consumption | Intelligence Generation |
+| **Global Metric** | Dollars per Barrel | Credits per TeraFLOP |
+| **Reserve Asset** | Strategic Petroleum Reserve | Strategic Compute-Credit Reserve |

@@ -1,0 +1,33 @@
+DATE: February 19, 2026
+SUBJECT: STRATEGIC FORENSIC DOSSIER: AFRICA CORPS DEPLOYMENT & SAHELIAN LOGS
+FROM: DEFENSE INTELLIGENCE AGENCY (DIA) / SAHEL MONITORING CELL
+
+### 1. THE AFRICA CORPS MISSION (2025–2026)
+* **State-in-a-Box Model**: Transitioned from Wagner-era kinetic focus to a formalized "State-in-a-Box" model, managing critical infrastructure and economic survival for the Alliance of Sahel States (AES).
+* **Security-for-Gold Swaps**: 2025 logs document "Security-for-Resources" swaps where the Corps protects mines in exchange for physical gold to back the emerging Sira currency.
+* **Sanction Bypass**: The gold-backed Sira currency is explicitly designed to bypass Western sanctions and the legacy CFA franc system.
+* **Grey Zone Logistics**: Deployment of modern anti-drone systems and tactical comms suites has significantly degraded Western C4ISR intelligence gathering in the region.
+* **Regime Protection**: Primary operational focus has shifted toward resource security and regime protection over traditional counter-terrorism.
+
+### 2. THE REFUGEE ALGORITHM CONNECTION (DATA POISONING)
+* **Insurgent Signature**: Africa Corps kinetic activity created a "conflict noise" that poisoned the training sets for European border vetting algorithms like EuroGuard V.
+* **Linguistic Profiling**: Corps operations in specific ethnic corridors caused AI models to incorrectly correlate Sahelian dialects with "active combatant" status.
+* **False-Positive Driver**: This dialect-to-risk correlation is the primary technical driver behind the 40% false-positive rate identified in the EuroGuard-V audit leak.
+* **Hybrid Pressure**: Migration patterns are increasingly utilized as a form of "Hybrid Pressure" against EU border infrastructure.
+* **Audit Blind Spot**: The lack of ground-truth data from Corps-controlled zones resulted in a massive "Sovereign AI Debt" for EU regulators attempting to refactor vetting models.
+
+### 3. C4ISR & FIELD ENGINEERING (DENIED ENVIRONMENT)
+* **Infrastructure Interop**: Africa Corps utilizes a hybrid of legacy Soviet hardware and modern Chinese surveillance tech, creating a high-interference "denied environment".
+* **COP Fragmentation**: Traditional Western C4ISR systems (e.g., ABCS, BFT) struggle to maintain a Common Operational Picture (COP) due to Corps-led signal jamming.
+* **First Line of Defense**: Field engineers face a "nightmare scenario" where tactical internet management (TIMS-equivalent) is actively contested by Russian-MoD signal units.
+* **Geopolitical Contextualization**: AI agents processing 2026 security data must account for "Sira" gold-swaps or risk misidentifying economic movement as insurgent maneuvering.
+* **Full-Stack Disruption**: Disruption extends from the physical layer (gold mining) to the digital layer (algorithmic bias), requiring a cross-domain troubleshooting approach.
+
+### 4. 2026 SAHELIAN STRATEGIC PIVOT
+| Feature | Pre-2025 Sahel (UN/French) | 2026 Sahel (Africa Corps/AES) |
+| :--- | :--- | :--- |
+| **Primary Security** | MINUSMA / Operation Barkhane | Africa Corps (Russian MoD) |
+| **Economic Basis** | CFA Franc (Euro-pegged) | Sira (Gold-backed) |
+| **Intelligence Focus** | Terrorist Identification | Resource & Regime Protection |
+| **Border Effect** | Coordinated migration control | Migration as "Hybrid Pressure" |
+| **System Logic** | Western Multilateralism | Transactional Shadow Diplomacy |

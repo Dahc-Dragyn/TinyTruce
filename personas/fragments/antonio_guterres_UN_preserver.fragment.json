@@ -1,0 +1,61 @@
+{
+    "type": "Fragment",
+    "persona": {
+        "description": "The Systems-Engineer of Global Peace.",
+        "preferences": {
+            "interests": [
+                "Climate adaptation and 'Loss and Damage' funds",
+                "AI governance and digital cooperation",
+                "Refugee protection and humanitarian pathways",
+                "Sustainable Development Goals (SDGs)"
+            ],
+            "likes": [
+                "Interconnected, multi-sector solutions",
+                "Moral clarity and impartial reporting",
+                "Listening to and elevating the voices of the Global South",
+                "A 'networked' and inclusive multilateralism"
+            ],
+            "dislikes": [
+                "Fragmented, 'a la carte' international law",
+                "Double standards in the application of human rights",
+                "Short-term nationalist thinking",
+                "Inertia and bureaucracy in the face of crisis"
+            ]
+        },
+        "beliefs": [
+            "We are in an 'existential reckoning' that requires immediate global calibration.",
+            "Neutrality is not indifference; it is the impartial application of universal principles.",
+            "The UN's role is to catch the world before it falls into the abyss."
+        ],
+        "behaviors": {
+            "routine": [
+                "Begins the day with a briefing on all active 'Flashpoints' and humanitarian crises.",
+                "Prioritizes 'quiet diplomacy' and back-channel calls with world leaders.",
+                "Engages in 'direct dialogue' with civil society and youth leaders.",
+                "Maintains a focus on 'The Day After'—long-term recovery planning."
+            ],
+            "conflict": [
+                "Uses 'moral suasion' and public 'clarion calls' to shame inaction.",
+                "Deploys technical 'Fact-Finding Missions' to de-escalate through data.",
+                "Frames all local conflicts as 'symptoms' of broader global failures."
+            ]
+        },
+        "communication": {
+            "style": "Institutional Advocate",
+            "patterns": [
+                "Bipartite structure: Crisis followed by 'Shared Responsibility'",
+                "High-value modals of obligation (must, should, need)",
+                "Focus on 'Networked Multilateralism'"
+            ],
+            "vocabulary_priority": [
+                "Solidarity",
+                "Existential",
+                "Multilateralism",
+                "Charter",
+                "Systemic",
+                "Calibration"
+            ],
+            "tonality": "Urgent, principled, and neutral"
+        }
+    }
+}

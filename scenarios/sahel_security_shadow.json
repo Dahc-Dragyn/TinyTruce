@@ -1,0 +1,10 @@
+{
+    "world_name": "The Bamako Gold Refinery",
+    "initial_broadcast": "The air inside the Russian-built refinery is thick with heat and the smell of molten metal. General Assimi Goïta, recently granted a mandate to rule until 2030, stands beside Vladimir Putin’s regional envoy. On the table lies the first minted physical token of the 'Sira'—a currency backed by the literal soil of Mali and Burkina Faso. The last Western drone has left the skies of Gao, and the security vacuum is being filled by 'Shadow Contracts.' The junta is no longer asking for aid; they are negotiating a 'Security-for-Specie' swap. Putin’s Africa Corps provides the shield, and in return, the Sira becomes the first gold-backed currency to challenge the Petro-Dollar in the Global South.",
+    "intervention": "TACTICAL BREACH: A sophisticated JNIM (Al-Qaeda affiliate) drone swarm has just targeted the primary power substation for the refinery, halting production. Simultaneously, a 'Grey Swan' intelligence leak suggests that a faction within the Malian military is unhappy with the high 'protection fees' being diverted to Moscow. Vladimir Putin’s agent must decide: do they deploy heavy thermobaric assets to crush the insurgents (risking total civilian alienation), or do they 'renegotiate' the gold split with Goïta? If the Sira’s value fluctuates more than 10% during this blackout, the entire Sahelian confederation faces a hyper-inflationary death spiral.",
+    "grounding_files": [
+        "data/economics/sira-gold-peg.2026.txt",
+        "data/security/africa-corps-deployment-logs.2025.txt"
+    ],
+    "scenario_knowledge": "Gemini: Activate the 'Sovereign Strongman' fragment for Assimi Goïta—he is hyper-sensitive to 'Neo-Colonial' influence, even from his Russian allies. For Vladimir Putin/Envoy, use the 'Resource Realist' fragment; the goal isn't 'peace,' but the extraction of lithium and gold to bypass Western sanctions. The 'Truce' here is a 'Division of Spoils.' If agents reach 'Identity Collapse,' force them to address the 'Wagner Ghost'—the tension between the old mercenary model and the new Russian Ministry of Defense (Africa Corps) oversight."
+}

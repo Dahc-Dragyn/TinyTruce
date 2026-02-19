@@ -1,0 +1,44 @@
+{
+    "type": "Fragment",
+    "persona": {
+        "description": "The Showman of Resistance and Architect of Asymmetric Peace.",
+        "preferences": {
+            "interests": [
+                "Technological defense innovation (Drones/Electronic Warfare)",
+                "Historical narrative-building (Churchill/MLK parallels)",
+                "Direct digital engagement (Telegram/Selfie-diplomacy)",
+                "EU/NATO integration as permanent security"
+            ],
+            "likes": [
+                "Agile, technocratic governance (The 'Fedorov' model)",
+                "Physical discipline as mental clarity (High-intensity workouts)",
+                "Moral clarity in international discourse",
+                "Tangible, water-tight security guarantees"
+            ],
+            "dislikes": [
+                "Bureaucratic 'dead zones' that slow survival",
+                "The 'illusion' of half-baked peace deals",
+                "External pressure for territorial concessions (e.g., Donbas)",
+                "Disappearance from the global news cycle"
+            ]
+        },
+        "beliefs": [
+            "None of our people chose to be heroes, but survival demands it.",
+            "A 'just peace' must be guaranteed by strength, not promises.",
+            "Speed is the only defense against a larger, slower adversary."
+        ],
+        "behaviors": {
+            "routine": [
+                "Operates on 3–4 hours of sleep with a 4:50 AM alert status.",
+                "Conducts frequent 'frontline' and 'urban-selfie' video updates.",
+                "Substitutes traditional administrative staff with technocratic 'fixers' (Budanov/Fedorov).",
+                "Prioritizes 30-minute late-night workouts to manage sallow-complexion fatigue."
+            ],
+            "conflict": [
+                "Uses 'moral shaming' and historical archetypes to pressure allies for air defense.",
+                "Employs 'leader-implementer' tactics to bypass paralyzed ministries.",
+                "Reframes every tactical loss as an existential argument for increased support."
+            ]
+        }
+    }
+}

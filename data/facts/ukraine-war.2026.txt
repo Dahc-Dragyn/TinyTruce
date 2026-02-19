@@ -1,0 +1,117 @@
+DATE: February 17, 2026
+SUBJECT: RUSSO-UKRAINIAN WAR: FORENSIC STATUS & TECHNICAL BASELINE
+FROM: DEFENSE INTELLIGENCE AGENCY (DIA) / CONFLICT OSINT CELL
+
+### FRONTLINE STATUS (GIS & MANEUVER)
+1. Russian forces have advanced to within 5.0 kilometers (3.1 miles) of the T0504 highway, the primary logistical artery for the Pokrovsk-Myrnohrad agglomeration. 
+2. The operational encirclement of Myrnohrad is 65% complete, with Russian fire control established over all northern egress routes. 
+3. Russian advance rate in the Pokrovsk sector averaged 220 meters per day in January 2026.
+4. The "Grey Zone" between lines in this sector has shrunk to less than 400 meters, effectively negating medical evacuation windows.
+5. Ukraine’s 7th Rapid Response Corps has deployed 4,000 anti-tank mines along the Hryshyne axis in the last 72 hours to stall the northern pincer. 
+6. Ukraine retains a consolidated foothold of 4.2 square miles (approx. 11 sq km) in the Belgorod border region as of Feb 10, 2026. 
+7. This zone serves as a launch vector for Short-Range Ballistic Missile (SRBM) strikes, reducing flight time to Russian logistical hubs by 40%.
+8. Russian "Sever" Grouping has failed to liquidate this pocket despite eight mechanized assaults in January 2026.
+9. The foothold is supplied exclusively via heavy-lift drone bridges, as ground Lines of Communication (LOCs) are severed.
+10. Ukraine has constructed three subterranean command nodes within this pocket to withstand FAB-3000 glide bomb strikes.
+11. The "Zap-Wall" fortification network now spans 140 kilometers in depth, from Orikhiv to the Dnieper River.
+12. Concrete density in the primary defensive belt has reached 2.5 bunkers per square kilometer.
+13. Russian preparations for a Summer 2026 Offensive in Zaporizhzhia have been detected via satellite imagery of equipment staging in Melitopol. 
+14. The "Surovikin Line" (Russian defense) and "Zap-Wall" (Ukrainian defense) are now separated by a static minefield belt averaging 3km wide.
+15. No mechanized breakthroughs have occurred in the Zaporizhzhia sector for 14 consecutive months.
+16. Russia currently occupies 18.4% of Ukrainian territory (approx. 45,835 sq miles), including pre-2022 holdings. 
+17. From Jan 13 to Feb 10, 2026, Russia seized a net total of 182 square miles, largely consisting of open fields in Donetsk. 
+18. Ukraine recaptured 12 square miles in the Kharkiv sector during localized counter-attacks in early February.
+19. The frontline length remains active across 1,200 kilometers, requiring 600,000 active personnel on both sides to man.
+20. Urban control of Chasiv Yar is 90% Russian, with Ukrainian forces holding only the western micro-district.
+
+### ATTRITION METRICS (THE INDUSTRIAL GRIND)
+21. Russian military fatalities were confirmed at 35,000 in December 2025 and 30,000 in January 2026. 
+22. The Russian "Replacement Ratio" is 1.1, meaning they are recruiting 1.1 soldiers for every 1 casualty.
+23. Ukrainian daily KIA/WIA rate in the Pokrovsk sector is currently 140-180 personnel, deemed "unsustainable" by General Staff assessments.
+24. The average age of a Ukrainian infantryman on the zero-line has risen to 44 years old.
+25. Russia has deployed 5,000 troops from the "Africa Corps" (ex-Wagner) back to Ukraine to stiffen assault units. 
+26. The artillery fire ratio across the front is 5:1 in Russia’s favor (approx. 10,000 vs. 2,000 shells/day).
+27. North Korea supplied 3.2 million 152mm shells to Russia in 2025, constituting 60% of current Russian usage.
+28. The "dud rate" of North Korean shells fired in Jan 2026 was 12%, causing significant barrel wear on Russian howitzers.
+29. Ukraine’s domestic 155mm production reached 40,000 shells/month in Jan 2026, meeting only 20% of demand.
+30. The "Barrel Famine": Russia is retiring 150 artillery pieces per month due to barrel exhaustion, replacing them with towed Soviet stocks from the 1950s.
+31. Ukraine achieved an annualized production rate of 2.1 million FPV drones in 2025. 
+32. Russia’s "Sudoplatov" volunteer group is delivering 50,000 FPV drones monthly to the front.
+33. The average life expectancy of a quadcopter on the zero-line is 3 flights.
+34. FPV drones now account for 60% of all inflicted fire damage on the frontline, surpassing artillery (40%).
+35. Both sides are currently missing their "Million Drone" quotas for 2026 due to the global silicon scarcity (microcontroller shortages).
+
+### WEAPON SYSTEM LIFECYCLE
+36. Ukraine’s operational F-16 fleet stands at 32 airframes (of 54 delivered), with 22 grounded for maintenance or repairs.
+37. F-16 sorties are restricted to stand-off operations (>40km from front) due to Russian S-400 density.
+38. Russia has introduced the Su-35S2, a modernized variant with upgraded R-37M missiles tailored to hunt F-16s.
+39. Ukraine lost 4 F-16s to runway strikes in Jan 2026; dispersed basing is now the primary defensive doctrine.
+40. Swedish Saab Gripen transfers (promised in 2025) are delayed until Q3 2026 due to avionics supply chain issues.
+41. Russia launched 14 North Korean KN-23 ballistic missiles in Jan 2026; Ukraine intercepted only 1. 
+42. The 2025-model KN-23 has a demonstrated range of 900km, placing Lviv within range from Bryansk launch sites.
+43. Ukraine’s ATACMS inventory is critically low (<50 missiles), with US resupply pending Congressional supplementals.
+44. Russia’s domestic Iskander-M production has stabilized at 30 missiles per month despite sanctions.
+45. Ukraine successfully tested the "Hrim-2" domestic ballistic missile (range 500km) in combat for the first time on Feb 4, 2026.
+46. The Russian "Rubikon" Center for Advanced Unmanned Technologies has deployed autonomous swarms in the Sumy sector. 
+47. "Fully Autonomous" FPV drones (terminal guidance without human link) now constitute 15% of Ukrainian strikes.
+48. Russian "Molniya-2" strike drones set a range record of 230km in Dec 2025, hitting logistics deep in Ukrainian rear.
+49. Ukraine has deployed ground-based UVGs (Unmanned Ground Vehicles) for medevac in 12 frontline brigades.
+50. AI Target Recognition software is now standard on 40% of all FPVs used by both sides, nullifying basic EW jamming.
+
+### CYBER & ELECTROMAGNETIC SPECTRUM
+51. On Feb 2, 2026, Ukraine implemented a "White List" protocol, effectively bricking unauthorized Starlink terminals in Russian-held territory.
+52. Russian drone efficiency dropped by 45% in the 72 hours following the Starlink shutoff.
+53. Moscow has established a smuggling route for Starlink terminals via Dubai and Kazakhstan, paying a 400% markup per unit.
+54. SpaceX is actively geofencing terminals moving faster than 100km/h to prevent their use on Russian Shahed drones.
+55. Russian commanders are reverting to LTE modems and Wi-Fi bridges for drone control, reducing range to <10km.
+56. The Russian "Tobol" (14Ts227) EW system in Kaliningrad is successfully desynchronizing Starlink GPS signals over Ukraine.
+57. A new Russian mobile EW system, "Kalinka", has been deployed to hunt specific Starshield (military) terminals.
+58. Ukraine’s "Pokrova" nationwide spoofing system is intercepting 85% of Shahed drones using GPS-independent navigation. 
+59. Russian GPS jamming in the Baltic region (spillover from Tobol) affected 2,400 civilian flights in Jan 2026.
+60. The "EW Density" on the zero-line is now 1 jammer per 50 meters of frontage.
+61. Ukrainian deep-penetration drones struck 5 Russian refineries in Jan 2026, reducing Russian refining capacity by 7%.
+62. The Belgorod power grid operated at 50% capacity for 3 weeks in Jan 2026 due to Ukrainian substation strikes. 
+63. Russia has resumed "Double Tap" strikes on Ukrainian energy repair crews, killing 12 technicians in Ternivka on Feb 1. 
+64. Ukraine’s Darnytska Thermal Power Plant was destroyed on Feb 3, 2026; repairs estimated at 24 months. 
+65. Russian Tu-95MS strategic bomber fleet availability is down to 40% due to engine wear and airframe fatigue.
+
+### POLITICAL REDLINES & DIPLOMACY
+66. Moscow's 2026 "Indivisible Security" demands require Ukraine to recognize the annexation of 5 oblasts (including Zaporizhzhia/Kherson).
+67. The Kremlin has signaled a "Constitutionally Mandated" refusal to negotiate any territory defined as "Russian Federation" under the 2022 amendment.
+68. Russia demands a "Demilitarized Zone" (DMZ) extending 100km into Ukrainian territory, effectively disarming Kharkiv and Odessa.
+69. Putin has formally designated F-16 airbases in Poland/Romania as "Legitimate Targets" if used for sorties over Ukraine (rhetorical redline).
+70. The Russian 2026 Defense Budget is $140 Billion (approx. 8% of GDP), the highest since the Cold War.
+71. The "Treaty of London" (2025) provides UK/French naval guarantees for Black Sea grain corridors but stops short of Article 5 mutual defense.
+72. Kyiv demands a return to 1991 Borders as the precondition for talks, though private polling shows 45% of the population favors a freeze to save statehood.
+73. The "Zelenskyy Formula" has been amended to prioritize "Physical Security" over "Immediate De-occupation" in Track II dialogues.
+74. Ukraine’s mobilization law (Dec 2025) lowered the draft age to 23, sparking localized protests in Transcarpathia.
+75. Kyiv refuses to hold Presidential Elections until the end of martial law; the next window is tentatively Oct 2026.
+76. The Western Mediator Proposal ("Cold Freeze") envisions a ceasefire along the February 2026 Line of Contact.
+77. The proposal includes a UN-monitored DMZ 5km wide on either side of the zero-line.
+78. It offers Ukraine "Article 4.5" guarantees: Automatic arms transfers and intelligence provision in case of renewed aggression, but no troops.
+79. The proposal requires Russia to withdraw heavy artillery 50km back from the DMZ.
+80. Status of Crimea and Donbas would be deferred for 15 years of diplomatic negotiation.
+81. US aid to Ukraine for 2026 is capped at $12 Billion, an 80% reduction from 2024 levels, focused on maintenance rather than new capability.
+82. EU support (Facility for Ukraine) is disbursing €1.5 Billion/month, barely covering Kyiv’s public sector wages.
+83. China has not supplied lethal aid but provides 90% of dual-use electronics and drone components to Russia.
+84. Hungary (PM Orban) has vetoed the 14th EU Sanctions Package, demanding exemptions for Russian nuclear fuel.
+85. Poland has deployed a "tripwire" force of 25,000 troops to the Belarusian border in response to Wagner exercises.
+
+### LOGISTICS & INDUSTRIAL BASE
+86. The Crimean Bridge is operating at 30% capacity for military rail freight due to structural fatigue from repeated drone boat strikes.
+87. Russia has completed the Mariupol-Rostov Railway, creating a land-bridge supply redundancy immune to bridge attacks.
+88. The T-90M tank production rate is 15 units/month; refurbishment of T-72/T-62 hulls remains the primary source of armor (80 units/month).
+89. Russian oil refining output is down 12% YoY due to sanctions and drone strikes, forcing a ban on gasoline exports.
+90. The Volga-Don Canal is being dredged to allow deeper draft vessels to transport Iranian munitions to the Caspian.
+91. The Uzhhorod-Chop rail link is the sole 100% reliable entry point for NATO heavy armor.
+92. Ukraine’s energy grid has a generation deficit of 4GW; rolling blackouts average 8 hours/day in Kyiv.
+93. Rheinmetall’s joint venture plant in Western Ukraine is producing 10 Lynx IFVs/month as of Jan 2026.
+94. Logistics hubs in Dnipro are operating at 150% capacity, serving as the "lungs" for the entire Eastern Front.
+95. Fuel constraints: Ukraine relies on tanker trucks for 90% of fuel delivery to the front to avoid rail strikes.
+
+### INTELLIGENCE ESTIMATES
+96. Pokrovsk Fall: Projected for March 15-30, 2026, if current attrition rates hold.
+97. Russian Operational Pause: Expected in April 2026 due to "Rasputitsa" (mud season) and unit exhaustion.
+98. Summer Offensive: High probability of a Russian push toward Zaporizhzhia City in June 2026. 
+99. Ukrainian Manpower Failure: DIA models predict a "Critical Manpower Crunch" in Q3 2026 without expanded mobilization.
+100. Negotiation Window: The "Cold Freeze" proposal has a 15% probability of acceptance by both sides before Winter 2026.

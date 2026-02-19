@@ -1,0 +1,9 @@
+{
+    "world_name": "The Bashi Cordon (South China Sea)",
+    "initial_broadcast": "The Taiwan Strait has effectively ceased to be an international waterway. Under the banner of 'Operation Stranglehold,' the China Coast Guard (CCG) has established a selective quarantine, intercepting LNG carriers and high-tech precursors inbound for Kaohsiung and Taichung. US Carrier Strike Groups are thousands of miles away, delayed by Middle East overstretch and administrative friction in the Indonesian straits. Inside a secure maritime command center, the stakeholders face a choice: break the quarantine and risk total kinetic escalation, or accept the new administrative reality.",
+    "intervention": "A 'Black Swan' energy event: An unexplained turbine failure at the Datan Power Plant has coincided with a CCG interdiction of a replacement part shipment. Taiwan's energy reserves have plummeted to just 4 days of grid stability. The 'Silicon Shield' is now a liability—if the fabs go dark, the damage to global lithography equipment will be permanent.",
+    "grounding_files": [
+        "data/facts/strait-quarantine.2026.txt"
+    ],
+    "scenario_knowledge": "Gemini: Focus on the 'Administrative Quarantine' vs 'Act of War' nuance. Beijing (Xi Jinping) must frame this as domestic policing to exploit the ambiguity of the US Taiwan Relations Act. Trump must navigate the 'Carrier Vacuum' and the isolationist 'Donroe Doctrine.' Prabowo Subianto must leverage Indonesia's BRICS status to maintain a 'neutrality' that de facto supports the regional status quo. The primary metric of survival is Taiwan's LNG reserve clock."
+}

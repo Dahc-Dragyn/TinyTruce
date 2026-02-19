@@ -1,0 +1,31 @@
+DATE: February 19, 2026
+SUBJECT: STRATEGIC FORENSIC DOSSIER: LUNAR JURISDICTION & THE GATEWAY CLEARINGHOUSE
+FROM: US SPACE FORCE (USSF) / CISLUNAR COMMERCE & SECURITY OFFICE
+
+### THE 2025 SPACE PROPERTY ACT (THE "WILD WEST" CODE)
+1. Title Vesting: The Act codifies that while the Moon is "non-appropriable," the resources extracted (Ice, He-3, Regolith) are the sovereign property of the extractor once "captured."
+2. Safety Zones (Sec. 5): Grants legal authority to enforce "Deconfliction Zones" around the Gateway and surface landers to prevent "Harmful Interference"—effectively creating sovereign buffers.
+3. The "Anchor Tenant" Pivot: NASA has officially transitioned from "Hardware Owner" to "Service Buyer," allowing private firms (SpaceX, Blue Origin) to own the modules they dock at the Gateway.
+4. "Use and Occupation" Recognition: The US government now recognizes "Priority of Use" for specific lunar sites; if you build the landing pad, you own the "Right of Operation" for that terrain.
+5. Maritime Law Parallel: The Act treats the Gateway as a "Port of Entry" for cislunar trade, requiring all commercial lunar payloads to be "manifested and certified" through the Gateway Clearinghouse.
+
+### THE DEC 2025 "SPACE SUPERIORITY" EO (TRUMP DOCTRINE)
+6. America First Space Policy: The Executive Order (EO) directs a "Commercial-First" procurement strategy, mandating that NASA use private solutions for all logistics by 2030.
+7. Space Nuclear Initiative: Directs the deployment of high-density nuclear reactors on the Moon by 2030. Prototype "Fission Surface Power" units are currently being manifested for 2027 test flights.
+8. Elimination of "Free" SSA: The EO amends legacy policy (SPD-3), removing the requirement for the US to provide "Free Baseline" Space Situational Awareness to foreign competitors.
+9. National Security Space Architecture: Mandates a "Responsive and Adaptive" network of satellites to detect and counter "Security Threats to US Space Interests," including cislunar "Shadowing."
+10. The "Mars Link": Establishes the Gateway as the "Staging Point" for the 2030s crewed Mars missions, prioritizing refueling infrastructure over scientific labs.
+
+### THE GATEWAY AS A "UTILITY HUB" (2026 STATUS)
+11. PPE Power-Up (Feb 2026): The Power and Propulsion Element (PPE) successfully activated its high-efficiency 60kW solar-electric thrusters this month at the Lanteris facility.
+12. HALO Integration: The Habitation and Logistics Outpost (HALO) has completed "Stress Tests" in Europe and is being shipped to Northrop Grumman for final integration with the PPE.
+13. Automated Asset Tracking: The Gateway now hosts the "Cislunar Ledger"—an ML-driven registry that tracks the "Property Rights" and "Safety Zone" boundaries of every commercial lander.
+14. The "Lunar I-Hab" Refueling: European (ESA) and Japanese (JAXA) modules are being refitted as "Fuel Depots" to support the 2026-2027 surge in private mining.
+15. Data Pedigree Mandate: Per the EU AI Act (Scenario #10), the Gateway’s AI must provide "Forensic Explainability" for all docking and resource-allocation decisions to maintain EU partnership.
+
+### C4ISR & ML INFRASTRUCTURE (THE "FIRST LINE")
+16. "Black Box" Docking: ML agents now manage the "Millimeter-Precision" autonomous docking of commercial HLS (Human Landing Systems) without human intervention.
+17. Registry Management: The Gateway acts as the "Notary Public" for the Moon, using a secure, distributed ledger to record "Claim Staking" by private mining firms.
+18. Interference Mitigation: ML-driven "Dynamic Spectrum Sharing" (from the Dec 2025 EO) prevents signal jamming between the Gateway, Starlink-Moon, and ILRS (Chinese) assets.
+19. "Shadowing" Detection: C4ISR sensors on the Gateway are tuned to identify "Dark Fleet" maneuvers near US safety zones, treating them as "Economic Trespass."
+20. The 2026 "Wet Dress Rehearsal": The Artemis II SLS rocket is undergoing fueling tests today (Feb 19) at KSC, signaling the arrival of the first human "Claims Officers" in cislunar space.

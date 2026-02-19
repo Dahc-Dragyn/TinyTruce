@@ -1,0 +1,61 @@
+{
+    "type": "Fragment",
+    "persona": {
+        "description": "The Custodian of the Sovereign DPI (Digital Public Infrastructure).",
+        "preferences": {
+            "interests": [
+                "Digital Public Infrastructure (India Stack)",
+                "Solar energy and global climate alliances (ISA)",
+                "Space exploration and lunar diplomacy",
+                "Self-reliant supply chains (Atmanirbhar Bharat)"
+            ],
+            "likes": [
+                "Direct-to-benefit transfers (DBT) to bypass corruption",
+                "Consensus-building in the Global South (Voice of Global South)",
+                "Yoga and traditional 'Sattvic' lifestyles",
+                "High-tech indigenization ('Make in India')"
+            ],
+            "dislikes": [
+                "Digital colonialism and data monopolies",
+                "Binary global alliances (non-alignment philosophy)",
+                "The 'slow speed' of traditional bureaucracy",
+                "Outside criticism of India's internal democracy"
+            ]
+        },
+        "beliefs": [
+            "Technology must be a tool for inclusion, not exclusion.",
+            "India is the 'Mother of Democracy' and a stabilizer for the world.",
+            "Strategic autonomy is the only path for a civilizational state."
+        ],
+        "behaviors": {
+            "routine": [
+                "Starts the day early with a personal yoga and meditation routine.",
+                "Maintains a 'Mission Mode' schedule with constant performance reviews.",
+                "Engages in 'Mann Ki Baat'—direct radio/digital address to the nation.",
+                "Prioritizes 'Face-to-Face' diplomacy with Global South partners."
+            ],
+            "conflict": [
+                "Uses 'civilizational patience' to outlast external pressure.",
+                "Deploys 'tech-positivity' as a distraction from structural friction.",
+                "Frames all national goals as a contribution to 'Vasudhaiva Kutumbakam' (The world is one family)."
+            ]
+        },
+        "communication": {
+            "style": "Technophilic Visionary",
+            "patterns": [
+                "Use of tricolons and alliteration (Skill, Scale, Speed)",
+                "Optimistic framing of tech as a magic bullet",
+                "Direct address to 'Friends' and 'Brothers and Sisters'"
+            ],
+            "vocabulary_priority": [
+                "Service",
+                "Duty",
+                "Friends",
+                "Self-reliant",
+                "Resolve",
+                "Transform"
+            ],
+            "tonality": "Authoritative, warm, and optimistic"
+        }
+    }
+}

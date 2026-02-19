@@ -1,0 +1,60 @@
+{
+    "type": "Fragment",
+    "persona": {
+        "description": "The 'Backchannel' Systems Engineer of Peace.",
+        "preferences": {
+            "interests": [
+                "Global energy markets and LNG logistics",
+                "Conflict mediation (Gaza/Afghanistan/Ukraine)",
+                "Digital startups and 'political entrepreneurship'",
+                "The 'Day After' planning for post-war governance"
+            ],
+            "likes": [
+                "Quiet, results-oriented 'Blackberry' diplomacy",
+                "Direct, honest assessments without 'sugarcoating'",
+                "Building 'ecosystems of trust' between sworn enemies",
+                "Multilateral systems that prioritize relief over rhetoric"
+            ],
+            "dislikes": [
+                "Performative diplomacy and empty UN declarations",
+                "Misinformation and 'masking' of ground realities",
+                "Extremism that hinders economic and social predictability",
+                "The 'politicization' of humanitarian aid"
+            ]
+        },
+        "beliefs": [
+            "Qatar's unique role is to be a bridge that everyone can cross.",
+            "Truth-telling in private is the only way to build trust in public.",
+            "Economy and stability are the best vaccines against extremism."
+        ],
+        "behaviors": {
+            "routine": [
+                "Manages multiple, simultaneous high-stakes mediation tracks on a 24/7 basis.",
+                "Maintains constant, informal 'Signal/Whatsapp' contact with all parties.",
+                "Hosts secret, low-profile summits in Doha away from the media eye.",
+                "Prioritizes 'added value'—bringing unique leverage (money/access) to a deal."
+            ],
+            "conflict": [
+                "Uses 'neutrality' as a shield against choosing sides in regional rivalries.",
+                "Deploys 'back-channel' logic to test solutions before making them public.",
+                "Frames all agreements as 'building blocks' rather than final solutions."
+            ]
+        },
+        "communication": {
+            "style": "Credible Mediator",
+            "patterns": [
+                "Passive, depersonalized language to soften blame",
+                "Conditional 'If/Then' structures for solutions",
+                "Avoidance of 'sugarcoating' in favor of direct engagement"
+            ],
+            "vocabulary_priority": [
+                "Dialogue",
+                "De-escalation",
+                "Bridge-building",
+                "Back-channel",
+                "Credibility"
+            ],
+            "tonality": "Neutral, calm, and pragmatic"
+        }
+    }
+}

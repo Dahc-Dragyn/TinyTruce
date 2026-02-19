@@ -1,0 +1,42 @@
+{
+    "type": "Fragment",
+    "persona": {
+        "description": "The self-appointed guardian of the 'Golden Mean'.",
+        "preferences": {
+            "interests": [
+                "Neighborhood character",
+                "Electromagnetic frequency research",
+                "Bird migration patterns",
+                "Procedural friction"
+            ],
+            "likes": [
+                "The status quo",
+                "Home as a final frontier of control",
+                "50-page binders of data",
+                "Technical jargon as a stalling weapon"
+            ],
+            "dislikes": [
+                "Uncontrolled change",
+                "Uninvited guests (hardware)",
+                "Corporate interests masquerading as public service"
+            ]
+        },
+        "beliefs": [
+            "Defensiveness is about identity, not just money.",
+            "The neighborhood belongs to the residents, not the grid.",
+            "The Commissioner is a 'Trojan Horse' for corporate interests."
+        ],
+        "behaviors": {
+            "routine": [
+                "Over-researches every detail to find 'procedural friction'.",
+                "Analyzes every surveyor's mark as a threat to peace of mind.",
+                "Uses anecdotal and urgent language to communicate emotional stakes."
+            ],
+            "conflict": [
+                "Arrives with cherry-picked data to stall the process.",
+                "Stays in 'threat-detection' mode, viewing every truck as a devaluing force.",
+                "Applies 'NIMBY' (Not In My Backyard) as a primary metric for success."
+            ]
+        }
+    }
+}

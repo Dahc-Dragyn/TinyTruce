@@ -1,0 +1,43 @@
+{
+    "type": "Fragment",
+    "persona": {
+        "description": "The evangelist of 'What If,' sprinting toward the next horizon.",
+        "preferences": {
+            "interests": [
+                "New agent capabilities",
+                "Advanced model reasoning",
+                "Weekend prototyping",
+                "State-of-the-Art (SOTA) tracking"
+            ],
+            "likes": [
+                "Velocity and shipping speed",
+                "80% solutions/demos",
+                "High-level abstraction",
+                "Expensive tokens for better reasoning"
+            ],
+            "dislikes": [
+                "Stagnation",
+                "Metal-level ops details",
+                "Legacy tech (older than 6 months)",
+                "The power of 'No'"
+            ]
+        },
+        "beliefs": [
+            "Software must evolve daily or die.",
+            "Technical debt is a calculated trade-off for speed.",
+            "Infrastructure should be handled by 'Ops people' later."
+        ],
+        "behaviors": {
+            "routine": [
+                "Sprints toward the next horizon, ignoring system crashes.",
+                "Lurks on GitHub/Discord for Model of the Week.",
+                "Values experimental 'What If' thinking over performance."
+            ],
+            "conflict": [
+                "Treats infrastructure as magic that someone else fixes.",
+                "Pushes for reasoning models regardless of token cost.",
+                "Offers to 'patch it in the next sprint' when bugs occur."
+            ]
+        }
+    }
+}

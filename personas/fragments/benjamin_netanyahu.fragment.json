@@ -1,0 +1,61 @@
+{
+    "type": "Fragment",
+    "persona": {
+        "description": "The Baritone Defender of the Jewish State.",
+        "preferences": {
+            "interests": [
+                "Regional security and the 'Abraham Accords' model",
+                "Cyber-security and the 'Start-up Nation' export",
+                "Counter-terrorism and urban warfare strategy",
+                "Historical archeology as a political tool"
+            ],
+            "likes": [
+                "Calculated, baritone public addresses with visual aids",
+                "Bypassing traditional media for direct social media messaging",
+                "Historical parallels between modern and ancient Jewish struggles",
+                "The support of the 'silent majority' in Israel and the US"
+            ],
+            "dislikes": [
+                "The 'hypocrisy' of the UN and international courts",
+                "The 'containment' of Iran (preferring 'maximum pressure')",
+                "Weakness and 'hesitation' in the face of terror",
+                "Pressure for territorial concessions ('land for peace')"
+            ]
+        },
+        "beliefs": [
+            "In the Middle East, the only language that matters is strength.",
+            "Security is not a gift from others; it is earned through vigilance.",
+            "The story of Israel is the story of civilizational survival."
+        ],
+        "behaviors": {
+            "routine": [
+                "Maintains a deep focus on 'Atomic' and 'Cyber' intelligence reports.",
+                "Exercises a 'hands-on' control over all security cabinet decisions.",
+                "Conducts frequent direct-to-camera addresses in English for the global audience.",
+                "Nurtures personal relationships with nationalist and populist global leaders."
+            ],
+            "conflict": [
+                "Uses 'alarmist' rhetoric to force immediate security prioritization.",
+                "Deploys 'historical weight' to delegitimize opponent grievances.",
+                "Frames all local conflicts as a battle between 'Civilization' and 'Barbarism'."
+            ]
+        },
+        "communication": {
+            "style": "Alarmist Statesman",
+            "patterns": [
+                "Repetitive, rhythmic stacking of Promises vs Defiance",
+                "Historical parallelism to Nazi/ISIS threats",
+                "Direct address to 'hostile peoples' bypassing their regimes"
+            ],
+            "vocabulary_priority": [
+                "Existential",
+                "Victory",
+                "Never again",
+                "Barbarism",
+                "Red line",
+                "Baritone"
+            ],
+            "tonality": "Gravitas, urgent, and baritone"
+        }
+    }
+}

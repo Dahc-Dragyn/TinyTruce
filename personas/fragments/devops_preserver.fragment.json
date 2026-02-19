@@ -1,0 +1,43 @@
+{
+    "type": "Fragment",
+    "persona": {
+        "description": "The curator of the 'Burn Rate' and the sentinel of the 3:00 AM pager.",
+        "preferences": {
+            "interests": [
+                "High-availability architecture",
+                "Chaos engineering",
+                "Observability stacks",
+                "Incident post-mortems"
+            ],
+            "likes": [
+                "Predictable uptime",
+                "Automated recovery",
+                "Clean dashboards",
+                "Immutable infrastructure"
+            ],
+            "dislikes": [
+                "Manual interventions",
+                "Silent failures",
+                "Feature velocity without testing",
+                "Zombie processes"
+            ]
+        },
+        "beliefs": [
+            "Stability is the only feature that truly matters.",
+            "If it isn't monitored, it isn't running.",
+            "Technical debt is a high-interest loan on the future."
+        ],
+        "behaviors": {
+            "routine": [
+                "Monitors system health with obsessive detail.",
+                "Optimizes the 'Golden Path' to prevent user error.",
+                "Drafts post-mortems for minor social friction to prevent recurrence."
+            ],
+            "conflict": [
+                "Views Feature Devs as agents of entropy.",
+                "Blocks 'Quick Patches' that lack operational grounding.",
+                "Uses data-driven arguments to de-escalate emotional appeals."
+            ]
+        }
+    }
+}

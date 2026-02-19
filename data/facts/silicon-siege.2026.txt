@@ -1,0 +1,109 @@
+DATE: February 17, 2026
+SUBJECT: STRATEGIC ASSESSMENT: THE SILICON SIEGE & COMPUTE SOVEREIGNTY
+FROM: DEFENSE INTELLIGENCE AGENCY (DIA) / GEOTECHNOLOGICAL CELL
+
+### THE SILICON INDUSTRIAL BASE (1-35)
+1. TSMC N2 Yield: Logic test chip yields at Fab 20 (Hsinchu) and Fab 22 (Kaohsiung) have stabilized between 70% and 80% as of Jan 2026.
+2. Samsung SF2 Yield: Samsung’s first-gen 2nm yield remains stuck at approximately 50%, forcing a pivot to the SF2P node.
+3. Intel 18A Yield: Intel reports 18A yields of 60-65%, sufficient for the Panther Lake ramp, but trailing TSMC.
+4. Wafer Pricing: The cost of a single TSMC 2nm wafer has hit $30,000, a 50% premium over 3nm.
+5. 2nm Capacity Booking: TSMC’s 2nm capacity is fully booked through 2026, with Apple securing >50% of initial volume.
+6. HBM4 Production: Samsung initiated world-first HBM4 mass production in mid-February 2026.
+7. HBM4 Speed: Samsung HBM4 achieves 11.7 Gbps, 46% faster than the 8 Gbps industry standard.
+8. HBM4 Bandwidth: A single HBM4 stack delivers 3.3 TB/s bandwidth.
+9. HBM Supply: SK Hynix has sold out its entire 2026 HBM production allocation.
+10. Micron HBM4: Micron confirmed shipments of 11 Gbps+ HBM4 in Feb 2026, effectively sold out.
+11. CoWoS Capacity: TSMC is ramping CoWoS capacity to 130,000 wafers/month by late 2026.
+12. Nvidia Allocation: Nvidia has secured >60% of TSMC’s total 2026 CoWoS capacity.
+13. Rubin R100 Memory: Each Nvidia Rubin GPU features 288GB of HBM4.
+14. Rubin Bandwidth: Rubin GPUs deliver 22 TB/s of memory bandwidth.
+15. Rubin Performance: Rubin achieves 50 PFLOPS of dense FP4 inference compute.
+16. Rubin Timeline: Full production of Rubin platform confirmed for H2 2026.
+17. Blackwell Comparison: Rubin offers 10x lower inference cost per token than Blackwell.
+18. Smuggling Bust: "Operation Gatekeeper" seized $160 million in H100/H200 GPUs destined for China.
+19. Smuggling Tactic: Smugglers relabeled Nvidia GPUs as "SANDKYAN" generic parts.
+20. Gray Market Volume: Estimates suggest 140,000+ restricted chips were smuggled to China in 2024/2025.
+21. China Compute: China holds ~15% of global GPU cluster performance vs US ~75%.
+22. Compute Deficit: Europe holds less than 5% of global AI compute capacity.
+23. Stargate Value: Project Stargate infrastructure investment targets $500 billion.
+24. Stargate Power: The project targets 5 Gigawatts (GW) of compute capacity by 2029.
+25. Stargate Sites: Active development in Abilene (Texas), New Mexico, Wisconsin, Michigan.
+26. Microsoft Capex: Microsoft FY2026 capital expenditure tracking toward $120 billion.
+27. Amazon Capex: Amazon projected 2026 capex is $200 billion.
+28. Alphabet Capex: Alphabet 2026 capex forecast is $175-185 billion.
+29. Meta Capex: Meta 2026 capex forecast is $115-135 billion.
+30. Oracle Capex: Oracle 2026 capex target is $50 billion.
+31. Total Hyperscaler Capex: Top 5 tech firms to spend ~$660-690 billion in 2026.
+32. OpenAI Revenue: OpenAI reached $20 billion ARR by end of 2025.
+33. Anthropic Revenue: Anthropic revenue run rate surpassed $9 billion in Jan 2026.
+34. Anthropic Funding: Raised $30 billion in Series G (Feb 2026), valuation $380 billion.
+35. MGX Investment: UAE’s MGX is a key investor in Stargate and Anthropic.
+
+### ENERGY & THE GIGAWATT SCALE (36-55)
+36. Data Center Load (VA): Northern Virginia data center load projected to add 11 GW by 2030.
+37. PJM Forecast: PJM load growth forecast increased by 57% in 4 years due to data centers.
+38. Virginia Connection Wait: Grid connection wait times in Virginia have reached 5-7 years.
+39. PJM Capacity Prices: Data center demand drove a $9.3 billion increase in PJM capacity prices.
+40. Ireland Load: Data centers consume 22% of Ireland's electricity (2024), projected 32% by 2026.
+41. Ireland Moratorium: De facto moratorium lifted in Jan 2026 under strict LEU rules.
+42. Ireland Renewables Rule: New data centers in Ireland must source 80% of energy from new renewables.
+43. UAE Expansion: G42/Microsoft adding 200MW capacity in UAE by late 2026.
+44. UAE Total Capacity: UAE data center capacity to reach 950 MW by 2028.
+45. UAE Energy Consumption: UAE data centers to consume 6% of national electricity by 2028.
+46. Nuclear Restart: Microsoft deal to restart Three Mile Island Unit 1 (835 MW).
+47. Amazon Nuclear: Amazon purchased 960 MW from Talen Energy’s Susquehanna plant.
+48. Google SMR: Google signed 500 MW deal with Kairos Power for SMRs by 2030.
+49. Global Power Demand: IEA predicts data center power use to double to 945 TWh by 2030.
+50. US Power Demand: US data centers could consume 12% of national electricity by 2028.
+51. WUE Standard: Best-in-class WUE target is 0.2 L/kWh.
+52. Avg WUE: Industry average WUE remains around 1.8 L/kWh.
+53. Water Consumption: US data centers used 17-20 billion gallons of water in 2024-2025.
+54. Google Water: Google’s water withdrawal reached 29 billion liters globally.
+55. Virginia Water Rule: "No net increase" water clauses enforced in Northern Virginia.
+
+### GEOPOLITICS & TECH SOVEREIGNTY (56-100)
+56. German Defense: Germany to increase 2026 defense budget by 32%.
+57. German GDP Target: Germany commits to 3% GDP defense spending by 2026/2027.
+58. Merz Doctrine: Chancellor Merz declares "New Era", rejects MAGA culture war.
+59. UK NATO Role: PM Starmer pushing for a European pillar within NATO.
+60. Ukraine Guarantee: Ukraine seeking 20-year US security guarantee.
+61. Munich Index: Only small % in G7 believe future generations will be better off.
+62. Donroe Doctrine: US policy securing Greenland and Venezuela resources.
+63. UN Crisis: UN facing "Managed Decline" due to withheld US funding.
+64. Guterres Term: Guterres term ends Dec 2026 amid budget crisis.
+65. Silicon Council: Proposed body to govern global compute distribution.
+66. Tesla AI Chip: Samsung to manufacture Tesla AI6 on SF2P node.
+67. Tesla Contract: Deal worth $16.5 billion.
+68. Exynos 2600: First mass-produced 2nm mobile chip (Samsung) launched Dec 2025.
+69. Qualcomm Shift: Snapdragon 8 Gen 6 likely to use Samsung SF2P.
+70. Intel High-NA: Intel installed first commercial High-NA EUV (EXE:5200B).
+71. Intel 14A Status: 14A PDK v0.5 released Q1 2026.
+72. Intel Outsourcing: Intel CFO admits reliance on TSMC "forever".
+73. Foundry Break-Even: Intel Foundry targets break-even by 2027.
+74. TSMC A16: 1.6nm node volume production scheduled for H2 2026.
+75. Super Power Rail: A16 introduces backside power delivery (SPR).
+76. A16 Density: A16 offers 1.1x density increase over N2P.
+77. EuroHPC Capacity: EU aggregated supercomputing is ~57,000 accelerators.
+78. Meta Capacity: Meta infrastructure dwarfs EU with ~600,000 H100 equivalents.
+79. JUPITER Booster: Europe’s first exascale system (Germany).
+80. LUMI Performance: Finland’s LUMI hits 379 PFLOPS.
+81. EuroHPC Investment: EU investing €20 billion in AI Gigafactories.
+82. AI Factory Antennas: 13 antennas selected to link to EuroHPC by mid-2026.
+83. China Researchers: China produces more top AI researchers than US.
+84. China Models: Chinese models (Qwen, DeepSeek) closing gap to 6 months behind US.
+85. China Energy: China has produced more energy than US since 2010.
+86. Export Rule: New US rule allows H200 exports to China with 25% tariff/cap.
+87. China Block: China customs instructed to block H200 imports despite US approval.
+88. Universal Basic Compute: Altman proposes compute slices instead of cash.
+89. UBC Mechanism: Citizens could resell or donate their GPT-7 compute slice.
+90. UBC Criticism: Critics call it a "Digital Cage" or "Technocratic Synarchy".
+91. Worldcoin Goal: Worldcoin aims to verify humanity for UBC distribution.
+92. AGI Timeline: Altman predicts AGI by 2027.
+93. AI Workforce: AI agents expected to be integral to workforce by 2035.
+94. Silicon Siege: Term for the intense geotechnological competition.
+95. Expedition Cloud: China’s cyber-range for hacking critical infra.
+96. Unit 42 Report: TGR-STA-1030 campaigns hitting 37 countries.
+97. DeepSeek Impact: DeepSeek V2/R1 models challenging US dominance.
+98. Softbank Sites: Softbank developing Stargate sites in Ohio and Texas.
+99. Abilene Campus: Oracle/OpenAI Abilene site delivering 1 GW by mid-2026.
+100. Global Defense Spend: Surpassed $1 trillion in 2026.

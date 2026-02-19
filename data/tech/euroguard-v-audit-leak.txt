@@ -1,0 +1,33 @@
+DATE: February 19, 2026
+SUBJECT: STRATEGIC FORENSIC DOSSIER: THE EUROGUARD-V BIAS LEAK
+FROM: EU JOINT RESEARCH CENTRE (JRC) / AFRICAN UNION AI AGENCY (AAA) JOINT TASK FORCE
+
+### THE SAHELIAN BIAS LEAK (TECHNICAL FORENSICS)
+1. The Linguistic Proxy: Forensic analysis confirms EuroGuard V utilized "Linguistic Micro-markers"—phonetic stress and dialect syntax—as a primary biometric proxy for security risk.
+2. The 40% False-Positive Spike: The leaked audit reveals a systemic failure resulting in a 40% false-positive "High Risk" flag for migrants originating from the Sahelian regions (Mali, Niger, Burkina Faso).
+3. Poisoned Training Data: The training set was "optimized" by a third-party contractor to increase deportation throughput. It incorrectly correlated specific accents with insurgent activity, automating "guilt by geography."
+4. Detection Latency: The bias remained undetected for 14 months due to a "Black Box" architecture that lacked real-time demographic parity monitoring.
+5. Algorithmic Apartheid: The African Union (AU) has formally designated the system as "Algorithmic Apartheid," citing a total lack of transparency in the model's decision-making weights.
+
+### DIPLOMATIC FALLOUT (ALGORITHMIC APARTHEID)
+6. The AU Ultimatum: Invoking the 2025 AU Continental AI Strategy, member states have threatened a total suspension of security and energy cooperation with the EU.
+7. Energy-for-Ethics Leverage: The AU has placed a moratorium on new Green Hydrogen projects unless the EU provides the full EuroGuard V source code for a sovereign African forensic audit.
+8. The "Sovereign Debt" Pivot: EU nations are now facing massive refactoring costs to de-couple their border infrastructure from the compromised EuroGuard V logic.
+9. UN Moratorium: Secretary-General Guterres has called for an immediate global pause on all AI-only asylum vetting until "Explainable-by-Design" standards are met.
+10. The Brussels Rift: Internal EU friction has spiked, with Germany's "KI-MIG" enforcement agency threatening to de-certify the entire Entry/Exit System (EES) stack.
+
+### C4ISR & ML INFRASTRUCTURE (SYSTEM INTEGRITY)
+11. First Line of Defense Failure: This represents a "Logic Leak" in the middle of the C4ISR stack. The hardware and network remain secure, but the decision-making integrity is compromised.
+12. Full-Stack Auditability: Future "Field Engineers" are now required to audit model weights and training lineages as frequently as they check RAID configurations.
+13. Explainable-by-Design: The 2026 push for "Explainable Borders" requires that every vetting decision be supported by a human-readable "Logic Trace."
+14. Eurodac 2.0 Integration: Because EuroGuard V is deep-linked into the Eurodac 2.0 "Digital Thread," the bias leak has contaminated millions of historical identity records.
+15. Infrastructure Resilience: The shift toward "Sovereign Stack" AI ensures that all training and inference for critical infrastructure occurs on-premise, preventing third-party poisoning.
+
+### 2026 SYSTEM INTEGRITY METRICS
+| Metric                 | Target Specification      | Forensic Reality (Post-Leak) |
+| :--------------------- | :------------------------ | :--------------------------- |
+| False Positive Rate    | < 2.0% (Sahelian)         | 40.0% (Systemic)             |
+| Data Pedigree          | Verified / Transparent    | Bypassed / Falsified         |
+| Refactoring Cost       | N/A (Projected)           | €2.4B (Emergency Debt)       |
+| System Trust           | High (Joint Security)     | Near-Zero (AU Standoff)      |
+| Vetting Status         | "Certified Compliant"     | Market-Removal Ordered       |

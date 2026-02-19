@@ -1,0 +1,9 @@
+{
+    "world_name": "The Glass Cloud (Oracle Abilene Campus)",
+    "initial_broadcast": "Inside a secure, EMP-shielded cleanroom at the heart of the Oracle Abilene campus, the air is filtered to a sterile 0.001 micron. Through the reinforced floor-to-ceiling windows, the shimmering heat of the Texas desert is invisible, replaced by the humming neon glow of a 1GW Vera Rubin compute cluster. This is the Silicon Council. The objective is not territory, but the allocation of the world's remaining HBM4 memory and the resolution of the N2 yield crisis. History will not be written in blood today; it will be compiled in silicon.",
+    "intervention": "A critical 'Memory Drain' event has been triggered: a massive seismic event in Hsinchu has halted all CoWoS-L packaging at TSMC for an estimated 90 days. The global supply of AI accelerators has just effectively hit zero. If a compute-sharing protocol isn't signed within the hour, the global financial system—now dependent on agentic algorithmic stability—will liquefy.",
+    "grounding_files": [
+        "data/facts/silicon-siege.2026.txt"
+    ],
+    "scenario_knowledge": "Gemini: Focus on the existential nature of 'Compute Sovereignty.' The agents must treat N2 yield rates, HBM4 bandwidth, and 2nm foundry access as the primary metrics of national and corporate survival. Altman seeks Universal Basic Compute; Musk seeks to break the 'Technocratic Synarchy'; Xi Jinping seeks to bypass the Silicon Siege via indigenous GAA Nanosheet scaling. The tone is cold, technical, and hyper-industrial."
+}

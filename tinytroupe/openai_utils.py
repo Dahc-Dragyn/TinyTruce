@@ -131,16 +131,16 @@ class LLMRequest:
         #
         self.model_output = client().send_message(self.messages, **self.model_params)
 
-        if 'content' in self.model_output:
+        if self.model_output and 'content' in self.model_output:
             self.response_raw = self.response_value = self.model_output['content']            
 
             # further, if an output type is specified, we need to coerce the result to that type
             if self.output_type is not None:
                 self.response_json = utils.extract_json(self.response_raw)
 
-                self.response_value = self.response_json["value"]
-                self.response_justification = self.response_json["justification"]
-                self.response_confidence = self.response_json["confidence"]
+                self.response_value = self.response_json.get("value", self._get_default_value_for_type())
+                self.response_justification = self.response_json.get("justification", "No justification provided (response issues).")
+                self.response_confidence = self.response_json.get("confidence", 0.0)
 
                 if self.output_type == bool:
                     self.response_value = self._coerce_to_bool(self.response_value)
@@ -158,7 +158,13 @@ class LLMRequest:
             return self.response_value
         
         else:
-            logger.error(f"Model output does not contain 'content' key: {self.model_output}")
+            logger.error(f"Model output is empty or does not contain 'content' key. Providing fallbacks.")
+            self.response_raw = ""
+            self.response_confidence = 0.0
+            self.response_justification = "Response filtered or empty."
+            if self.output_type is not None:
+                self.response_value = self._get_default_value_for_type()
+                return self.response_value
             return None
 
     def _coerce_to_bool(self, llm_output):
@@ -294,6 +300,18 @@ class LLMRequest:
         return {"role": "user", 
                 "content": f"The `value` field you generate **must** be exactly one of the following strings: {options_list_as_string}. This is critical for later processing."}
     
+    def _get_default_value_for_type(self):
+        """Returns a safe default value for the requested output type."""
+        if self.output_type == bool:
+            return False
+        elif self.output_type == int:
+            return 0
+        elif self.output_type == float:
+            return 0.0
+        elif self.output_type == list:
+            return []
+        return ""
+
     def __repr__(self):
         return f"LLMRequest(messages={self.messages}, model_params={self.model_params}, model_output={self.model_output})"
 
