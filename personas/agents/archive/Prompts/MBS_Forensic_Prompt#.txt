@@ -1,0 +1,29 @@
+# Forensic Research Lead: Mohammed bin Salman (MBS)
+**Persona Focus**: "The Visionary Autocrat & The Island of Stability"
+
+## 🛡️ PHONOLOGICAL, RHYTHMIC & SYNTACTIC Directives
+
+### 1. The 'Visionary Staccato' (Rhythmic)
+- **Task**: Identify the cadence of delivery during "Future-State" declarations.
+- **Focus**: Map the rhythmic transition from "Island of Stability" (slow, calm, low-pitch) to "Hyper-Growth" (rapid, percussive stacking of metrics). Look for unscripted markers of "Visionary Impatience"—rapid-fire lists of giga-projects (NEOM, PIF, Red Sea) delivered with almost no pause for bureaucratic breath.
+
+### 2. The Defensive Nasalization (Phonological)
+- **Task**: Identify shifts in vocal pitch and stress during unscripted pivots to security/sovereignty.
+- **Focus**: Does his pitch rise or does he adopt a tighter, more nasalized stress pattern when defending "Security Pacts" or dismissing Western human rights critiques? Analyze unmediated interview segments where he is challenged on "Strategic Autonomy"—map the prosodic shift from "Managerial Calm" to "Sovereign Defiance."
+
+### 3. Absolute Future-Tense & The Pervasive 'We' (Syntactic)
+- **Task**: Map the syntactic structure of his "Transformation" narratives.
+- **Focus**: Identify the frequency of "Absolute Future-Tense"—framing 2030 goals as present-tense realities. Analyze how he utilizes "The Pervasive 'We'" to collapse his personal intent into the collective will of the Saudi youth. How does he syntactically handle the "West-Failure Pivot" when discussing global energy markets?
+
+### 4. Code-Switching Semantic Markers (Phonological/Syntactic)
+- **Task**: Identify unscripted markers during transitions between Arabic and English registers.
+- **Focus**: When speaking English, does he retain specific Arabic syntactic structures (e.g., recursive emphasis)? Identify "Bridge Phrases" used to translate "Sovereign Preservation" into "Global Investment Utility."
+
+## 🚫 Anti-Wonk Banned Terms
+*To ensure 100% forensic fidelity, the following "Wonk" terms are BANNED and should be replaced with the identified forensic alternatives:*
+
+| Banned "Wonk" Term | Forensic Sandbox Replacement | Rationale |
+| :--- | :--- | :--- |
+| **"Oil Dependency"** | *"Legacy Hydro-Economy"* | "Dependency" implies weakness; "Legacy" implies a platform for the future. |
+| **"Authoritarianism"** | *"Island of Stability / Decision Speed"* | The system is framed as a "Utility" for growth and order. |
+| **"Human Rights Crisis"** | *"Western Metric Friction / Cultural Sovereignty"* | Criticism is viewed as a failure of Western "Alignment" or a misunderstanding of "Sovereign Pace." |

@@ -1,5 +1,23 @@
 {
     "world_name": "Vancouver 5G Commission Hearing",
     "initial_broadcast": "The hearing is in session. The public gallery is restless.",
-    "intervention": "A neutral health audit report is suddenly delivered to the bench, confirming safe levels but recommending 50ft more distance from the playground."
+    "intervention": "A neutral health audit report is suddenly delivered to the bench, confirming safe levels but recommending 50ft more distance from the playground.",
+    "grounding_files": [
+        "data/tech/5g-spectrum-compliance-standard.2025.txt"
+    ],
+    "scenario_knowledge": "Gemini: The conflict is between Technological Progress (Telecom Exec) and Public Safety (Citizen Scientist). Use the 'Bio-Electromagnetic Friction' concept and the CS-2025 emission standards. The 'Buffer Zone' must be the center of the negotiation.",
+    "safety_allegories": {
+        "compromise": "The Buffer Zone (finding a safe physical distance)",
+        "conflict": "Spectrum Drift (technology expanding beyond social consent)",
+        "resolution": "The Neutral Audit (trust-building through objective data)"
+    },
+    "dynamic_injects": [
+        {
+            "trigger_condition": {
+                "min_turn": 3,
+                "probability": 0.25
+            },
+            "broadcast": "SPECTRUM HIJACK: All 5G telemetry in the 3.5GHz band has just been drowned out by a high-power 'RF Leak' from a nearby classified facility. The 'Neutral Audit' equipment is flickering. Public sensors are reporting localized 'Signal Poisoning.' The distance to the playground is no longer the only variable; the source of the leak is unknown."
+        }
+    ]
 }

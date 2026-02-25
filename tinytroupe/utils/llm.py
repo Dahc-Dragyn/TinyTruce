@@ -90,40 +90,46 @@ def llm(**model_overrides):
 ################################################################################
 def extract_json(text: str) -> dict:
     """
-    Extracts a JSON object from a string, ignoring: any text before the first 
-    opening curly brace; and any Markdown opening (```json) or closing(```) tags.
+    Extracts a JSON object from a string, ignoring any preamble or trailing junk.
+    Uses aggressive regex fallbacks for malformed LLM outputs.
     """
     try:
-        # Find the first opening brace
-        start_idx = text.find('{')
+        # 1. Primary Attempt: Standard JSONDecoder (strict=False)
+        text_clean = text.strip()
+        # Find first { or [
+        start_idx = text_clean.find('{')
         if start_idx == -1:
-            start_idx = text.find('[')
+            start_idx = text_clean.find('[')
         
-        if start_idx == -1:
-            return {}
+        if start_idx != -1:
+            text_json_start = text_clean[start_idx:]
+            decoder = json.JSONDecoder(strict=False)
+            try:
+                parsed, _ = decoder.raw_decode(text_json_start)
+                return parsed
+            except:
+                pass
 
-        text = text[start_idx:]
+        # 2. Secondary Attempt: Regex Slicing
+        # Find everything between the first { and the LAST }
+        match = re.search(r'(\{.*\})', text, re.DOTALL)
+        if match:
+            json_str = match.group(1)
+            # Remove common illegal characters/escapes
+            json_str = re.sub(r'\\(?![/u"\\bfnrt])', r'', json_str) 
+            try:
+                return json.loads(json_str, strict=False)
+            except:
+                pass
 
-        # remove invalid escape sequences, which show up sometimes
-        text = re.sub("\\\\'", "'", text) 
-        text = re.sub("\\\\,", ",", text)
+        # 3. Tertiary Attempt: Field Extraction (for common Agent actions)
+        # If it's a TALK action, try to pull the content field directly
+        content_match = re.search(r'"content"\s*:\s*"([^"\\]*(?:\\.[^"\\]*)*)"', text, re.DOTALL)
+        if content_match:
+            content = content_match.group(1).replace('\\"', '"').replace('\\n', '\n')
+            return {"action": {"type": "TALK", "content": content}}
 
-        # Use JSONDecoder to parse exactly one JSON object
-        decoder = json.JSONDecoder(strict=False)
-        try:
-            parsed, end_idx = decoder.raw_decode(text)
-            return parsed
-        except json.JSONDecodeError:
-            # Fallback to the original regex-based approach if raw_decode fails
-            # (e.g., if there are multiple objects and we want the last one, or if it's just malformed)
-            
-            # remove any text before the first opening curly or square braces, using regex. Leave the braces.
-            text = re.sub(r'^.*?({|\[)', r'\1', text, flags=re.DOTALL)
-
-            # remove any trailing text after the LAST closing curly or square braces, using regex. Leave the braces.
-            text  =  re.sub(r'(}|\])(?!.*(\]|\})).*$', r'\1', text, flags=re.DOTALL)
-            
-            return json.loads(text, strict=False)
+        return {}
     
     except Exception as e:
         logger.error(f"Error occurred while extracting JSON: {e}")

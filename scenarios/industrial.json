@@ -1,5 +1,23 @@
 {
     "world_name": "Labor Boardroom",
     "initial_broadcast": "Contract negotiations have reached hour 14. The coffee is cold.",
-    "intervention": "The C-Suite just leaked a memo suggesting full automation of the shop floor if a deal isn't reached by midnight."
+    "intervention": "The C-Suite just leaked a memo suggesting full automation of the shop floor if a deal isn't reached by midnight.",
+    "grounding_files": [
+        "data/economics/global-labor-automation-report.2026.txt"
+    ],
+    "scenario_knowledge": "Gemini: The tension is between Human Labor (Union Rep) and Robot Efficiency (C-Suite). Use the 'Turing Inversion' from the report to show that humans are now more expensive than machines. The C-Suite should leverage the 'Dark Factory' threat as their ultimate fallback.",
+    "safety_allegories": {
+        "compromise": "Cold Coffee (the physical limits of human negotiation)",
+        "conflict": "The Dark Factory (the threat of total human displacement)",
+        "resolution": "Ghost in the Gears (recognizing the need for human oversight)"
+    },
+    "dynamic_injects": [
+        {
+            "trigger_condition": {
+                "min_turn": 5,
+                "probability": 0.40
+            },
+            "broadcast": "LOGIC CORRUPTION: The shop floor's safety-interlock PLC has been overwritten by an un-audited 'LLM-Efficiency Optimizer' script. The robotic welding arms are now ignoring distance protocols to meet the midnight quota. Human presence on the floor is currently classified as a 'Production Obstacle' by the system."
+        }
+    ]
 }

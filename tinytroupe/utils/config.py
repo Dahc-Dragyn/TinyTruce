@@ -57,7 +57,7 @@ def start_logger(config: configparser.ConfigParser):
     log_level = config['Logging'].get('LOGLEVEL', 'INFO').upper()
     logger.setLevel(level=log_level)
 
-    # create console handler and set level to debug
+    # create console handler
     ch = logging.StreamHandler()
     ch.setLevel(log_level)
 
@@ -69,3 +69,14 @@ def start_logger(config: configparser.ConfigParser):
 
     # add ch to logger
     logger.addHandler(ch)
+
+    # add file handler if specified
+    log_file = config['Logging'].get('LOG_FILE', None)
+    if log_file:
+        from logging.handlers import RotatingFileHandler
+        # Max 5MB per file, keep 2 backups
+        fh = RotatingFileHandler(log_file, maxBytes=5*1024*1024, backupCount=2)
+        fh.setLevel(log_level)
+        fh.setFormatter(formatter)
+        logger.addHandler(fh)
+        logger.info(f"Logging to file: {log_file} (Rotating: 5MB limit)")

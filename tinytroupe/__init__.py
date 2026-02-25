@@ -35,32 +35,9 @@ if config["OpenAI"].get("API_TYPE") == "azure":
     default["azure_embedding_model_api_version"] = config["OpenAI"].get("AZURE_EMBEDDING_MODEL_API_VERSION", "2023-05-15")
 
 
-## LLaMa-Index configs ########################################################
-#from llama_index.embeddings.huggingface import HuggingFaceEmbedding
+# LlamaIndex dependencies removed for TinyTruce (Gemini-native implementation)
+# We rely on large context windows rather than vector search.
 
-if config["OpenAI"].get("API_TYPE") == "azure":
-    from llama_index.embeddings.azure_openai import AzureOpenAIEmbedding
-else:
-    from llama_index.embeddings.openai import OpenAIEmbedding
-
-from llama_index.core import Settings, Document, VectorStoreIndex, SimpleDirectoryReader
-from llama_index.readers.web import SimpleWebPageReader
-
-
-# this will be cached locally by llama-index, in a OS-dependend location
-
-##Settings.embed_model = HuggingFaceEmbedding(
-##    model_name="BAAI/bge-small-en-v1.5"
-##)
-
-if config["OpenAI"].get("API_TYPE") == "azure":
-    llamaindex_openai_embed_model = AzureOpenAIEmbedding(model=default["embedding_model"],
-                                                        deployment_name=default["embedding_model"],
-                                                        api_version=default["azure_embedding_model_api_version"],
-                                                        embed_batch_size=10)
-else:
-    llamaindex_openai_embed_model = OpenAIEmbedding(model=default["embedding_model"], embed_batch_size=10)
-Settings.embed_model = llamaindex_openai_embed_model
 
 
 ###########################################################################

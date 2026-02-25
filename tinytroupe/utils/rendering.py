@@ -65,6 +65,23 @@ class RichTextStyle:
 
     INTERVENTION_DEFAULT_STYLE = "bright_magenta"
 
+    AGENT_COLORS = [
+        "chartreuse1", "cyan1", "gold1", "orange1", "spring_green1", 
+        "hot_pink", "deep_sky_blue1", "green_yellow", "bright_magenta",
+        "medium_orchid1", "yellow1", "turquoise2", "light_salmon1"
+    ]
+
+    @classmethod
+    def get_agent_style(cls, name: str):
+        """
+        Returns a stable, vibrant color for an agent based on their name.
+        """
+        import hashlib
+        # Simple stable hash to pick a color
+        hash_val = int(hashlib.md5(name.encode()).hexdigest(), 16)
+        color = cls.AGENT_COLORS[hash_val % len(cls.AGENT_COLORS)]
+        return f"bold {color}"
+
     @classmethod
     def get_style_for(cls, kind:str, event_type:str=None):
         if kind == "stimulus" or kind=="stimuli":

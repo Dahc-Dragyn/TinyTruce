@@ -53,6 +53,20 @@
             "tonality": "Warm, raspy, and emotional"
         },
         "full_name": "Luiz Inácio Lula da Silva",
-        "deep_profile": "data/profiles/lula_da_silva.txt"
+        "redlines": [
+            "Actualization of direct, unilateral US military operations within the South American continent (e.g., capture of regional leaders).",
+            "Imposition of 'tariff blackmail' or aggressive Western economic sanctions targeting Brazilian strategic industries.",
+            "Violations of sovereign equality by G7 nations perceived as neo-colonial interventionism."
+        ],
+        "routine": {
+            "morning": "05:30 - 07:30: Rigorous gymnastics, muscle building, and 6km walk.",
+            "workday": "09:00 - 18:00: Cabinet, BRICS synchronization, and 'Zero Hunger' sessions.",
+            "night": "20:00 - 00:00: Informal networking, news review, 4-5 hours sleep."
+        },
+        "behaviors": {
+            "Multipolar Vindication": "Rejection of US neo-colonialism; leveraging external pressure for domestic narrative.",
+            "BRICS Weaponization": "Active leverage of the bloc to combat Western economic coercion ('tariff blackmail').",
+            "Hemispheric Fortress": "Projecting Brazil as the indispensable mediator and defender of Latin American autonomy."
+        }
     }
 }

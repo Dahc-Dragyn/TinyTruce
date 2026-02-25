@@ -59,6 +59,8 @@ class TinyWorld:
         # saving these communications to another output form later (e.g., caching)
         self._displayed_communications_buffer = []
 
+        self.show_thoughts = True  # UX Mode toggle
+
         # a temporary buffer for communications target to make rendering easier
         self._target_display_communications_buffer = []
         self._max_additional_targets_to_display = max_additional_targets_to_display
@@ -528,6 +530,12 @@ class TinyWorld:
         """
         Pushes the latest communications to the agent's buffer.
         """
+        # UX Mode: Skip rendering if thoughts are disabled
+        if not self.show_thoughts:
+            if communication.get("kind") == "action":
+                action_type = communication.get("content", {}).get("action", {}).get("type")
+                if action_type == "THINK":
+                    return
         #
         # check if the communication is just repeating the last one for a different target
         #

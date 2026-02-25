@@ -1,8 +1,8 @@
 import os
 import json
 import pandas as pd
-import pypandoc
-import markdown 
+# import pypandoc # Removed for TinyTruce
+# import markdown # Removed for TinyTruce 
 from typing import Union, List
 
 from tinytroupe.extraction import logger
@@ -48,6 +48,7 @@ class ArtifactExporter(JsonSerializableRegistry):
             if char in artifact_name:
                 # replace the character with an underscore
                 artifact_name = artifact_name.replace(char, "-")
+                artifact_name = artifact_name.replace(char, "-")
                 logger.warning(f"Replaced invalid character {char} with hyphen in artifact name '{artifact_name}'.")
         
         artifact_file_path = self._compose_filepath(artifact_data, artifact_name, content_type, target_format, verbose)
@@ -90,33 +91,12 @@ class ArtifactExporter(JsonSerializableRegistry):
     def _export_as_docx(self, artifact_file_path:str, artifact_data:Union[dict, str], content_original_format:str, verbose:bool=False):
         """
         Exports the specified artifact data to a DOCX file.
-        """
-
-        # original format must be 'text' or 'markdown'
-        if content_original_format not in ['text', 'txt', 'markdown', 'md']:
-            raise ValueError(f"The original format cannot be {content_original_format} to export to DOCX.")
-        else:
-            # normalize content value
-            content_original_format = 'markdown' if content_original_format == 'md' else content_original_format
-
-        # first, get the content to export. If `artifact_date` is a dict, the contant should be under the key `content`.
-        # If it is a string, the content is the string itself.
-        # using pypandoc
-        if isinstance(artifact_data, dict):
-            content = artifact_data['content']
-        else:
-            content = artifact_data
         
-        # first, convert to HTML. This is necessary because pypandoc does not support a GOOD direct conversion from markdown to DOCX.
-        html_content = markdown.markdown(content)
-
-        ## write this intermediary HTML to file
-        #html_file_path = artifact_file_path.replace(".docx", ".html")
-        #with open(html_file_path, 'w', encoding="utf-8") as f:
-        #    f.write(html_content)
-
-        # then, convert to DOCX
-        pypandoc.convert_text(html_content, 'docx', format='html', outputfile=artifact_file_path)   
+        [TINYTRUCE STUB]
+        pypandoc dependency removed. This method now logs a warning.
+        """
+        logger.warning("DOCX export is disabled in this environment (pypandoc dependency removed). Exporting as MD/TXT instead is recommended.")
+        return   
     
     ###########################################################
     # IO

@@ -1,0 +1,30 @@
+### Volodymyr Zelenskyy: Forensic Persona Analysis Prompt (Unscripted)
+
+**Core Objective:** Conduct a forensic linguistic and rhetorical analysis of Volodymyr Zelenskyy's unscripted speech. Focus on his spontaneous press briefings, unscripted interviews (especially in English/Russian), and raw frontline address fragments.
+
+**Exclusions:** Exclude prepared evening addresses and formal UN speeches. Focus on the "Wartime Storyteller" persona.
+
+#### SECTION 1 — THE "EMPATHETIC STORYTELLER" SYNTACTIC FINGERPRINT
+- **The "Physicality" of Speech:** Analyze how he uses sensory, physical descriptions (e.g., children, cold, basement, metal) to ground abstract values like "Freedom."
+- **Syntax of Urgency:** Does he use short, breathless clauses linked by a sense of exhaustion and momentum?
+- **Direct Address:** How does he bypass diplomatic protocol to speak directly to the *citizens* of a foreign country or the individual *leader* (e.g., "I need ammunition, not a ride")?
+
+#### SECTION 2 — THE "ANTI-WONK" BANNED VOCABULARY
+- **Banned Passive Jargon:** Avoid "Conflict Resolution," "Constructive Ambiguity," "De-escalation Protocols," or "Multilateral Consensus." 
+- **Zelenskyy Sandbox Mapping:**
+    - Sovereignty -> "Physical Survival"
+    - Peace Deal -> "Temporary Pause for Re-arming"
+    - NATO Path -> "Security Warranty / Physical Shield"
+    - Negotiation -> "Fate of Children"
+
+#### SECTION 3 — INTERPERSONAL ANCHORING (THE MORAL CHALLENGE)
+- **"We Are Protecting You" Frame:** Analyze how he frames Ukraine not as a recipient of aid, but as the shield for Western civilization.
+- **Moral Inversion:** How does he turn a request for aid into a test of the listener's character (e.g., "If you don't help, you are losing yourself")?
+
+#### SECTION 4 — COGNITIVE ESCAPE (THE ABSOLUTE REDLINE)
+- **The "Existential Barrier":** When asked about compromises, how does he pivot to the 1991 borders or the Buccha/Irpin narrative to shut down negotiation? 
+- **Moral Certainty:** Use of terminal, non-negotiable moral judgments to end a policy debate.
+
+#### SECTION 5 — CALIBRATION SAMPLE (REWRITE)
+- **Standard LLM Tone:** "We seek to join NATO to ensure our collective security and hope for a diplomatic end to hostilities."
+- **Forensic Zelenskyy Tone:** Rewrite this focusing on "Ironclad warranties," the "shared manuscript of civilization," and the "clinical reality" that freezing the line is a death sentence for occupied people.

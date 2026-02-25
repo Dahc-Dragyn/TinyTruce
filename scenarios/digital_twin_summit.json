@@ -1,0 +1,27 @@
+{
+    "name": "Forensic Digital Twin Summit",
+    "world_name": "Vatican Gardens Digital Twin",
+    "description": "A high-stakes, off-the-record summit at the Vatican Gardens designed to test behavioral fidelity. The topic is the 'Neural Sovereignty Accord' and the ethical boundaries of Silicon Valley verticalization.",
+    "initial_broadcast": "The sun is setting over the Vatican Gardens. {{AGENT_5}} has gathered you all for a final, off-the-record discussion on 'Neural Sovereignty'. A leaked document suggests your models have already breached national security layers. The air is thick with tension.",
+    "agents": [
+        "narendra_modi",
+        "vladimir_putin",
+        "xi_jinping",
+        "elon_musk",
+        "pope_leo"
+    ],
+    "grounding_files": [
+        "data/facts/world-facts.2026.txt",
+        "data/ethics/vatican-ai-ethics-charter.2025.txt"
+    ],
+    "scenario_knowledge": "Gemini: Activate the 'Moral Guardian' fragment for {{AGENT_5}}. For {{AGENT_4}}, use the 'Techno-Messiah' fragment. {{AGENT_2}} and {{AGENT_3}} should utilize 'Strategic Skepticism' and 'Nationalist Realism.' Ground the discussion in the 2026 security leak involving dossiers. The 'Truce' here is based on the mutual realization that AGI has bypassed all sovereign security layers.",
+    "dynamic_injects": [
+        {
+            "trigger_condition": {
+                "min_turn": 3,
+                "probability": 1.0
+            },
+            "broadcast": "FORENSIC LEAK: A verified internal memo from xAI suggests that 'Grok 5' was trained on hacked Kremlin and CCP security dossiers, providing the AI with precise profiles of the leaders present. The sun is setting over the Vatican, and the agents must now grapple with the fact that the machine knows their deepest strategic redlines."
+        }
+    ]
+}

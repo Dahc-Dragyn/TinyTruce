@@ -6,6 +6,10 @@ import json
 import pickle
 import logging
 import configparser
+from dotenv import load_dotenv
+
+load_dotenv()
+
 from pydantic import BaseModel
 from typing import Union
 import textwrap  # to dedent strings
@@ -383,7 +387,8 @@ class OpenAIClient:
                      exponential_backoff_factor=default["exponential_backoff_factor"],
                      n = 1,
                      response_format=None,
-                     echo=False):
+                     echo=False,
+                     agent_name=None):
         """
         Sends a message to the OpenAI API and returns the response.
 
@@ -457,26 +462,56 @@ class OpenAIClient:
                 ###############################################################
                 # call the model, either from the cache or from the API
                 ###############################################################
-                cache_key = str((model, chat_api_params)) # need string to be hashable
+                cache_key = str((model, chat_api_params, agent_name)) # need string to be hashable
                 if self.cache_api_calls and (cache_key in self.api_cache):
-                    response = self.api_cache[cache_key]
+                    response_dict = self.api_cache[cache_key]
                 else:
                     if waiting_time > 0:
                         logger.info(f"Waiting {waiting_time} seconds before next API request (to avoid throttling)...")
                         time.sleep(waiting_time)
                     
-                    response = self._raw_model_call(model, chat_api_params)
+                    # [TINYTRUCE] Use Provider-Agnostic LLMEngine
+                    import os
+                    from tinytroupe.llm_engine import OpenAIEngine, NativeGeminiEngine
+                    
+                    cache_id = os.getenv("TINYTRUCE_CURRENT_CACHE")
+                    if cache_id:
+                        engine = NativeGeminiEngine()
+                    else:
+                        engine = OpenAIEngine(client=self.client, default_model=model)
+                        
+                    # We pass a copy of current_messages so the identity lock injection doesn't mutate the caller's list permanently
+                    msgs_copy = [m.copy() for m in current_messages]
+                    
+                    response_content = engine.generate_response(
+                        messages=msgs_copy,
+                        temperature=temperature,
+                        response_format=response_format,
+                        agent_name=agent_name
+                    )
+                    
+                    if response_format and response_content is not None and not isinstance(response_content, str):
+                        response_content_str = response_content.model_dump_json()
+                    elif response_content is None:
+                        # Fallback for structured failure to allow safe loop exit. 
+                        # MUST perfectly match CognitiveActionModel to prevent tiny_person crash.
+                        response_content_str = '{"action": {"type": "DONE", "content": "System fallback due to parse error.", "target": "everyone"}, "cognitive_state": {"goals": "End turn to recover stability.", "attention": "Yielding turn.", "emotions": "Calm", "emotional_intensity": 0.0}}'
+                    else:
+                        response_content_str = str(response_content)
+                        
+                    response_dict = {"role": "assistant", "content": response_content_str}
+                        
                     if self.cache_api_calls:
-                        self.api_cache[cache_key] = response
+                        self.api_cache[cache_key] = response_dict
                         self._save_cache()
                 
                 
-                logger.debug(f"Got response from API: {response}")
+                logger.debug(f"Got response from API: {response_dict}")
                 end_time = time.monotonic()
                 logger.debug(
                     f"Got response in {end_time - start_time:.2f} seconds after {i} attempts.")
 
-                return utils.sanitize_dict(self._raw_model_response_extractor(response))
+                return utils.sanitize_dict(response_dict)
 
             except InvalidRequestError as e:
                 logger.error(f"[{i}] Invalid request error, won't retry: {e}")
@@ -509,40 +544,10 @@ class OpenAIClient:
     
     def _raw_model_call(self, model, chat_api_params):
         """
-        Calls the OpenAI API with the given parameters. Subclasses should
-        override this method to implement their own API calls.
+        [DEPRECATED] Calls the OpenAI API with the given parameters. 
+        Replaced by LLMEngine implementations.
         """   
-        # Remove parameters that are not supported by the Google Gemini OpenAI adapter
-        # if they are at their default values (0.0).
-        if chat_api_params.get("frequency_penalty") == 0.0:
-            del chat_api_params["frequency_penalty"]
-        if chat_api_params.get("presence_penalty") == 0.0:
-            del chat_api_params["presence_penalty"]
-        if chat_api_params.get("stop") == []:
-            del chat_api_params["stop"]
-
-        if "response_format" in chat_api_params:
-            # to enforce the response format via pydantic, we need to use a different method
-            if "stream" in chat_api_params:
-                del chat_api_params["stream"]
-
-            try:
-                return self.client.beta.chat.completions.parse(
-                        **chat_api_params
-                    )
-            except Exception as e:
-                logger.warning(f"Error while calling parse(), falling back to create(). Error: {e}")
-                # if parse fails, we can try to call create instead
-                # we need to remove the response_format, since it's not supported by create() in the same way
-                del chat_api_params["response_format"]
-                return self.client.chat.completions.create(
-                            **chat_api_params
-                        )
-        
-        else:
-            return self.client.chat.completions.create(
-                        **chat_api_params
-                    )
+        pass
 
     def _raw_model_response_extractor(self, response):
         """

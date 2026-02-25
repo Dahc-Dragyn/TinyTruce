@@ -52,6 +52,20 @@
             "tonality": "Calm, serious, and forensic"
         },
         "full_name": "Keir Rodney Starmer",
-        "deep_profile": "data/profiles/keir_starmer.txt"
+        "redlines": [
+            "Russian hybrid warfare threats colliding with Brexit constraints → Pursuit of ambitious new UK-EU security pact.",
+            "A direct demand from the Trump administration to utilize UK military assets for unilateral strikes on Iran.",
+            "Domestic economic stagnation threatening stability → Regulatory alignment with EU as a security imperative."
+        ],
+        "routine": {
+            "morning": "06:30 - 08:00: Exercise and school run ('Dad box' mode). Simple breakfast.",
+            "workday": "08:30 - 18:00: 'Forensic Mission Control'. Data-heavy government briefings and policy audits.",
+            "night": "18:30 - 22:00: Protected family time (Friday pizza). Reading legal files before bed."
+        },
+        "behaviors": {
+            "Forensic Institutionalism": "Defaulting to institutional management and state intervention to resolve crises.",
+            "Chosen European Alignment": "Moving the UK from 'overdependence to interdependence' on the US.",
+            "Sovereign Interdependence": "Stealth 'voluntary dynamic alignment' with EU regulations to reduce trade friction."
+        }
     }
 }

@@ -24,7 +24,7 @@ from tinytroupe import default
 ###########################################################################
 # Types and constants
 ###########################################################################
-from typing import TypeVar, Union
+from typing import TypeVar, Union, Optional
 Self = TypeVar("Self", bound="TinyPerson")
 AgentOrWorld = Union[Self, "TinyWorld"]
 
@@ -38,13 +38,14 @@ class Action(BaseModel):
     target: str
 
 class CognitiveState(BaseModel):
-    goals: str
-    attention: str
-    emotions: str
+    goals: Optional[str] = "Maintain consistency."
+    attention: Optional[str] = "Projecting identity."
+    emotions: Optional[str] = "Neutral"
+    emotional_intensity: Optional[Union[float, str]] = 0.5
 
 class CognitiveActionModel(BaseModel):
     action: Action
-    cognitive_state: CognitiveState
+    cognitive_state: Optional[CognitiveState] = None
 
 
 ###########################################################################

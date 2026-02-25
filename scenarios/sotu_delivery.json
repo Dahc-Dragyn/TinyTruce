@@ -1,0 +1,31 @@
+{
+    "world_name": "The 119th Congress: 2026 State of the Union",
+    "initial_broadcast": "Tuesday, February 24, 2026. Washington D.C. The House Chamber is a pressure cooker. Hours ago, at 12:01 AM, a 10% global tariff took effect under Section 122—a direct executive rebuttal to the Supreme Court's Feb 20 ruling in 'Learning Resources, Inc. v. Trump' which struck down the 'Liberation Day' framework. {{AGENT_1}} approaches the rostrum to a house divided. He is set to champion the 'One Big Beautiful Bill' (OBBBA), touting 'No Tax on Tips' ($25k cap) and 'No Tax on Overtime' ($12.5k cap) as the foundation of a 'Golden Age.' Meanwhile, the PJM Interconnection reports an eleven-fold spike in capacity prices ($333.44 per megawatt-day) due to AI data center demand, and the 175 GW grid shortfall looms as a terminal threat to the administration's industrial pivot.",
+    "intervention": "LEGAL BREACH: As {{AGENT_1}} calls for the permanent codification of Section 122 tariffs and the firing of Federal Reserve Governor {{AGENT_2}} (challenging 'Humphrey's Executor'), a coordinated walkout of centrist lawmakers from trade-dependent districts occurs. Simultaneously, the Department of Government Efficiency (DOGE) releases a flash-audit of the $2.4 trillion deficit expansion, sparking immediate volatility in the 'Citadel Index' as global markets price in the end of Fed independence.",
+    "grounding_files": [
+        "data/economics/cbo-obbba-deficit-projection-2026.txt",
+        "data/legal/scotus-ieepa-tariff-ruling-feb20.txt",
+        "personas/agents/archive/state_of_union.txt"
+    ],
+    "scenario_knowledge": "Focus on the 'Transactional Populism' of the OBBBA. The 'Trump Accounts' ($1,000 seed for newborns) are the primary wedge for generational wealth. The border success (94% drop in crossings) is the moral baseline for the interior enforcement surge. Opposition agents must weaponize the Washington State revenue hit ($2.2B loss) and the 16% hike in grocery costs caused by the regressive nature of the tariffs. Every policy is a 'deal' with the American worker, executed over the heads of 'unaccountable' judges and bureaucrats.",
+    "fragments": [
+        "preserver.fragment.json",
+        "savior.fragment.json"
+    ],
+    "dynamic_injects": [
+        {
+            "trigger_condition": {
+                "min_turn": 3,
+                "probability": 1.0
+            },
+            "broadcast": "GRID ALERT: PJM Interconnection declares a 'Maximum Generation Emergency.' AI data center racks in Northern Virginia are pulling 100kW+ per rack, forcing rotating brownouts in the suburbs. The capacity price has hit its technical ceiling. {{AGENT_1}}, you are moments away from the 'Energy Sovereignty' segment of your speech. The teleprompter is ready."
+        },
+        {
+            "trigger_condition": {
+                "min_turn": 5,
+                "probability": 1.0
+            },
+            "broadcast": "COURT FLASH: The D.C. Circuit has just upheld the firing of the NLRB and FTC commissioners, signaling the literal collapse of 'for-cause' firing protections. The Supreme Court is expected to follow suit. The 'Unitary Executive' is now the law of the land. Address the Chamber."
+        }
+    ]
+}

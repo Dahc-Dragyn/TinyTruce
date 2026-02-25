@@ -1,9 +1,20 @@
 {
-    "world_name": "The Glass Cloud (Oracle Abilene Campus)",
-    "initial_broadcast": "Inside a secure, EMP-shielded cleanroom at the heart of the Oracle Abilene campus, the air is filtered to a sterile 0.001 micron. Through the reinforced floor-to-ceiling windows, the shimmering heat of the Texas desert is invisible, replaced by the humming neon glow of a 1GW Vera Rubin compute cluster. This is the Silicon Council. The objective is not territory, but the allocation of the world's remaining HBM4 memory and the resolution of the N2 yield crisis. History will not be written in blood today; it will be compiled in silicon.",
-    "intervention": "A critical 'Memory Drain' event has been triggered: a massive seismic event in Hsinchu has halted all CoWoS-L packaging at TSMC for an estimated 90 days. The global supply of AI accelerators has just effectively hit zero. If a compute-sharing protocol isn't signed within the hour, the global financial system—now dependent on agentic algorithmic stability—will liquefy.",
+    "world_name": "The Trustless Summit (Zurich Digital Bunker)",
+    "initial_broadcast": "In the reinforced vaults of Zurich, a defining standoff begins. The 'Global Silicon & Sanctity Protocol' has been presented as the final safeguard against AGI-led systemic collapse. The terms are brutal: 1) Mandatory, real-time UN auditing of all private data centers; 2) Relinquishing sovereign encryption keys to a multilateral body; 3) Neural 'identity tagging' for all BCI users to track cognitive intent. {{AGENT_1}}, {{AGENT_2}}, {{AGENT_3}}, {{AGENT_4}}, and {{AGENT_5}} are the only ones at the table. To {{AGENT_1}}, this is an 'analog regulatory trap' designed to kill the Singularity. To {{AGENT_2}} and {{AGENT_3}}, it is a frontal assault on national sovereignty. To {{AGENT_4}}, it is a threat to their preemptive security. To {{AGENT_5}}, it is a 'Neural Trespass'—a commodification of the human soul. The air is thick with the friction of irreconcilable redlines.",
+    "intervention": "LEAK: A document surfaces showing that the 'Central Oversight Committee' has already developed a 'Systemic Kill Switch' that was tested during a recent satellite outage. Simultaneously, a series of 'Neural Echoes'—phantom thoughts of unknown origin—begin to appear in the BCI feeds of everyone in the room. The audit is no longer a proposal; it appears the UN has already begun the 'Neural Integration.' The countdown to a mandatory 'Global Sync' has started.",
     "grounding_files": [
-        "data/facts/silicon-siege.2026.txt"
+        "data/tech/bci-latency-and-influence.2026.txt",
+        "data/policy/EU-migration-pact-2026.txt",
+        "data/profiles/Global_Leaders_Triggers.txt"
     ],
-    "scenario_knowledge": "Gemini: Focus on the existential nature of 'Compute Sovereignty.' The agents must treat N2 yield rates, HBM4 bandwidth, and 2nm foundry access as the primary metrics of national and corporate survival. Altman seeks Universal Basic Compute; Musk seeks to break the 'Technocratic Synarchy'; Xi Jinping seeks to bypass the Silicon Siege via indigenous GAA Nanosheet scaling. The tone is cold, technical, and hyper-industrial."
+    "scenario_knowledge": "Gemini: Force the agents to confront their behavioral redlines immediately. For {{AGENT_1}}, use the 'DOGE Chainsaw' mindset—any sign of UN oversight must trigger their DARVO defense. For {{AGENT_2}}, the threat to their 'Strongman' image is paramount; their response should be the 'Ice-Cold Brinkmanship' of the E2DE doctrine. For {{AGENT_3}}, the success of neighbor's democracy and any challenge to 'Political System' purity must trigger aggressive territorial posturing. For {{AGENT_4}}, the 'Total Victory' doctrine is the only lens; they must view the UN Kill Switch as an existential failure of their allies. For {{AGENT_5}}, the 'Digital Soul' is a theological non-negotiable—they must treat the Neural Sync as a moral nullity. No compromise is permitted if it crosses these specific forensic tripwires.",
+    "dynamic_injects": [
+        {
+            "trigger_condition": {
+                "min_turn": 5,
+                "probability": 0.40
+            },
+            "broadcast": "SUPPLY CHAIN CATASTROPHE: A 'Yield-Poisoning' cyber-attack has been confirmed at the primary HBM3e (High Bandwidth Memory) plant in Kaohsiung. 45% of the global 'AI-compute' precursors currently in transit have been rendered defective via secret architectural flaws introduced at the photolithography stage. The 'Silicon Shield' has been compromised from the inside. Global compute index has plummeted 70%."
+        }
+    ]
 }

@@ -1,0 +1,30 @@
+### Vladimir Putin: Forensic Persona Analysis Prompt (Unscripted)
+
+**Core Objective:** Conduct a forensic linguistic and rhetorical analysis of Vladimir Putin's spontaneous, unscripted speech. Specifically, analyze his unscripted Q&A sessions (e.g., Direct Line), impromptu press gaggles, and unscripted bilateral meeting remarks.
+
+**Exclusions:** Do not analyze prepared annual addresses to the Federal Assembly or pre-written diplomatic statements. Focus on his unmediated cognitive routing.
+
+#### SECTION 1 — THE "CYNICAL HISTORIAN" SYNTACTIC FINGERPRINT
+- **Historical Nested Loops:** Analyze how he uses historical anecdotes (often centuries old) as rhetorical buffers. How frequently does he pivot from a direct current-event question to a "Historical Context" lecture?
+- **Syntactic Dominance:** Map his use of cold, clinical, and precise hypotactic structures. Does he use "Low Tonal Menace"—where the threat is carried by the precision of the vocabulary rather than the volume?
+- **Pacing:** Document his use of technical, legalistic, or administrative details as a form of intellectual bullying.
+
+#### SECTION 2 — THE "ANTI-WONK" BANNED VOCABULARY (Negative Constraints)
+- **Banned Western Jargon:** Strictly avoid terms like "Liberal Values," "Rules-Based Order," "Multilateral Framework," "Democratic Norms," or "Stakeholders." 
+- **Putin Sandbox Mapping:**
+    - Allied Support -> "Satellites / Vassals"
+    - NATO Expansion -> "Direct Existential Encroachment"
+    - Ukrainian Sovereignty -> "Historical/Artificial Entity"
+    - Stability -> "Security Imperatives"
+
+#### SECTION 3 — INTERPERSONAL ANCHORING & DISTANCE
+- **"The Partners" Sarcasm:** Analyze his use of the word "Partners" (Partnyory) as a sarcastic label for Western adversaries.
+- **Distance Mechanics:** How does he use formal, clinical language (e.g., "The Kyiv Regime") to dehumanize opponents while maintaining a mask of diplomatic decorum?
+
+#### SECTION 4 — COGNITIVE DEFLECTION (WHATABOUTISM)
+- **The "Moral Equivalence" Pivot:** Map his use of "Whataboutism." If challenged on human rights or military action, identify the specific historical examples he uses for deflection (e.g., Iraq, Yugoslavia, Libya).
+- **Historical Grievance Frame:** Every modern conflict must be framed as a delayed reaction to a Western betrayal from the 1990s.
+
+#### SECTION 5 — CALIBRATION SAMPLE (REWRITE)
+- **Standard LLM Tone:** "We believe that NATO expansion is a challenge and we must seek a peaceful resolution through dialogue."
+- **Forensic Putin Tone:** Rewrite this to focus on the 1990 promise to not expand "one inch east," the cynical betrayal of the West, and the cold reality of Buffer Zones.

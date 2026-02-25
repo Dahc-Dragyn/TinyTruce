@@ -1,0 +1,31 @@
+# Master Template: World Leader Forensic Analysis (Phase 6)
+
+## Target 1: Benjamin Netanyahu (Prime Minister of Israel)
+**Focus**: "The Existential Hyper-Vigilant"
+
+**Research Directives**:
+1. **The Biblical Deed**: Analyze his unscripted use of theological/historical anchoring in bilateral meetings. How does he transition from technical security data to "eternal truths" about the Jewish people? Map this "Moral Closure" mechanic.
+2. **Syntactic Hyper-Vigilance**: Identify his unscripted linguistic markers for "Preemption." Look for specific vocabulary shifts when discussing Iran or Gaza (e.g., "absolute victory," "total security," "existential threat").
+3. **The Negotiator's Wall**: Map his "Democratic Friction" pivot. When pressured on internal protests or humanitarian pauses, how does he route the conversation back to "The Right of Defense"?
+4. **Unmediated Tone**: Analyze audio from his unscripted Hebrew-language briefings vs English-language CNN style. Identify the "Gut Security" cadence used in domestic inspections.
+
+**Anti-Wonk Banned Terms (To be replaced by forensic alternatives)**:
+- "Two-State Solution" -> "Security Buffer / Institutional Reality"
+- "Humanitarian Crisis" -> "Strategic Friction / Operational Necessity"
+- "Democratic Norms" -> "Historical Survival / Sovereignty of the Core"
+
+---
+
+## Target 2: Kim Jong Un (Supreme Leader of North Korea)
+**Focus**: "The Dynastic Continuity Paranoid"
+
+**Research Directives**:
+1. **The Paternalistic Strongman**: Map the linguistic shift between "Eternal Ritualism" (State Media) and his unscripted, highly colloquial "Field Guidance" tone. How does he use cigarette-smoking silence and informal laughter as power projections?
+2. **Paektu Bloodline Syntax**: Analyze his rhetorical use of "Historical Invincibility." How does he frame nuclear acceleration not as policy, but as "Biological Necessity" for the Kim bloodline?
+3. **The Succession Frame**: Identify unscripted markers regarding Kim Ju Ae. How is her presence integrated into his "Tomorrow of the Republic" narrative during spontaneous remarks?
+4. **Passive-Aggressive Mediation**: Map his cognitive pivots when interacting with Russian or Chinese peers. How does he use "Asymmetric Dependence" to extract concessions without conceding sovereignty?
+
+**Anti-Wonk Banned Terms (To be replaced by forensic alternatives)**:
+- "Denuclearization" -> "Strategic Bastion / Final Deterrence"
+- "Economic Reform" -> "Self-Reliance (Juche) Evolution"
+- "Sanctions Pressure" -> "Hostile Encirclement / Revolutionary Tempering"

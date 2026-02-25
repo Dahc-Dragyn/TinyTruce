@@ -1,5 +1,24 @@
 {
     "world_name": "Digital Peace Garden",
-    "initial_broadcast": "The participants gather in a virtual 'Peace Garden'—a high-fidelity, neutral digital space designed for the first ever multi-party summit between the major powers of the 21st century. The air is calm, the surroundings serene, but the stakes are global. The objective: find a path to a unified global security framework.",
-    "intervention": "A theoretical 'Black Swan' event is announced: An unknown anomalous signal from deep space has been verified, putting all national interests into a new perspective. The need for global cooperation has suddenly become the only logical path for survival."
+    "initial_broadcast": "The participants gather in a virtual 'Peace Garden'—a neutral digital space for a multi-party summit. Global security frameworks are on the table.",
+    "intervention": "THE UNITY FRAGMENT: An anomalous signal from deep space has been verified, forcing a sudden shift toward Global Cooperation. National interests are now secondary to human survival.",
+    "grounding_files": [
+        "data/facts/world-facts.2026.txt",
+        "data/policy/national-unity-commission-draft.txt"
+    ],
+    "scenario_knowledge": "Gemini: Use the 'Neural Neutrality Pact' from the policy draft as a template for global AI custody. The agents must debate whether the 'Black Swan' signal justifies a 'Synthesized Protocol' of governance over national sovereignty.",
+    "safety_allegories": {
+        "compromise": "Neural Neutrality (shared custodian of power)",
+        "conflict": "Total Values Divergence (the threat of final schism)",
+        "resolution": "The Unity Fragment (recognizing a singular human threat)"
+    },
+    "dynamic_injects": [
+        {
+            "trigger_condition": {
+                "min_turn": 4,
+                "probability": 0.35
+            },
+            "broadcast": "PROVENANCE CRASH: A mid-summit audit of the 'Peace Garden' encryption layer has identified it as a legacy 2024-era backdoored cipher. The 'Unity Fragment' may be a sophisticated deepfake injected by a non-state actor. Trust has evaporated; the 'Neural Neutrality Pact' is currently a logical liability."
+        }
+    ]
 }

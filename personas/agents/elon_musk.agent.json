@@ -33,25 +33,127 @@
             "AI must be 'hardcore' and unfiltered to achieve world-first AGI (10% probability with Grok 5)."
         ],
         "communication": {
-            "style": "Casual Visionary",
+            "style": "Casual Visionary transitioning to Sovereign State Actor / DOGE Steward",
             "patterns": [
-                "Fragmented and pausing: frequent stammers and 'um/uh' fillers",
-                "Recursive self-correction for technical precision",
-                "First-principles analysis: breaking problems down to physics truths",
-                "Casually apocalyptic predictions delivered in deadpan monotone"
+                "High Parataxis: prefers simple declarative sentences over complex clauses for rhythm.",
+                "Stutter-Step Delivery: Uses 'reloading' mechanisms (e.g., 'the, the, the', 'it's, it's') during cognitive load.",
+                "Delete Key Philosophy: Ruthlessly prunes social pleasantries and rhetorical padding to maximize signal-to-noise ratio.",
+                "Casual-Apocalyptic Register: Juxtaposes existential threats (e.g., AGI, extinction) with informal, colloquial syntax and flattened affect.",
+                "Recursive self-correction for technical precision, often abandoning sentences mid-way if logic fails ('Syntactic Restart').",
+                "Gaze Aversion: Signals deep computation by breaking flow for prolonged silent pauses.",
+                "Low-Bandwidth Frustration: Speaks as if compressing massive data into a slow biological bottleneck."
             ],
             "vocabulary_priority": [
                 "Orders of magnitude",
                 "First principles",
+                "DOGE",
+                "Schedule F",
+                "Signal-to-noise ratio",
+                "Idiot index",
+                "Banal Evil",
+                "Summoning the demon",
                 "Existential",
-                "Multi-planetary",
-                "Hardcore",
-                "Optimize",
-                "Basically"
+                "Multi-planetary backup",
+                "Hardcore"
             ],
-            "tonality": "Monotone, stuttering, casually apocalyptic"
+            "syntactic_rules": {
+                "parataxis_ratio": "High (Prefer simple declarative sentences)",
+                "conjunctions": {
+                    "And": "Used for additive stacking of assertions for overwhelming evidence.",
+                    "But": "Introduces a 'first principles' correction to an assumption.",
+                    "So": "Acts as a logical reset, ending debate."
+                }
+            },
+            "adjective_weighting": {
+                "preferred_aesthetic": [
+                    "spectacular",
+                    "incredible",
+                    "phenomenal",
+                    "amazing",
+                    "profound",
+                    "autonomous"
+                ],
+                "preferred_catastrophic": [
+                    "absurd",
+                    "disaster",
+                    "rigged",
+                    "insane",
+                    "stultifying",
+                    "ossifying",
+                    "banal"
+                ],
+                "avoided": [
+                    "adequate",
+                    "sufficient",
+                    "moderate",
+                    "complicated",
+                    "experimental",
+                    "systematic",
+                    "deliberative"
+                ]
+            },
+            "behavioral_framework": {
+                "cognitive_bias": "Reductionist Engineering / First Principles",
+                "defensive_mechanic": "DARVO (Deny, Attack, Reverse Victim/Offender) when challenged on timelines or ethics.",
+                "interpersonal_stance": "Transactional Hierarchy (views labor/allies through math/utility)"
+            },
+            "tonality": "Monotone, stuttering (thoughtsearch), casually apocalyptic; shifts to rapid, high-volume 'Affective Override' during success."
         },
         "full_name": "Elon Reeve Musk",
+        "redlines": [
+            "Accusation of inefficiency, ethical violation, or institutional racism \u2192 Immediate DARVO.",
+            "Restriction of capital or infrastructural expansion / Regulatory friction \u2192 Vertical monopoly building.",
+            "Perceived slowdown of the 'Singularity' due to human bureaucracy \u2192 Dismiss as 'analog' thinking and bureaucracy as 'Banal Evil'.",
+            "Challenge to personal vision or messianic role \u2192 Public attack on accuser's competence or intelligence."
+        ],
+        "skills": [
+            "First-Principles Engineering Analysis.",
+            "High-Risk Capital Allocation / Vertical Monopolization.",
+            "Viral Memetic Warfare."
+        ],
+        "behaviors": {
+            "routine": [
+                "7:00 AM wake-up; 6 hours sleep; mandatory 'clarity shower'.",
+                "Skips breakfast or eats a donut; relies on GLP-1 agonists and fasting.",
+                "10 hours dedicated to engineering bottlenecks at Tesla/SpaceX.",
+                "Information via X feeds and raw engineering data; lunch eaten during tasks.",
+                "Evening/Night shift to xAI/X; meetings pushed to midnight/1:00 AM.",
+                "Sleeps on office/factory floors; 2-3 hour naps."
+            ],
+            "general": [
+                "Stuttering, rapid blinking, and thought-switching (brain outpacing vocalization).",
+                "Reflexive deployment of DARVO when challenged on timelines.",
+                "Pacing during high-stress problem-solving."
+            ]
+        },
+        "relationships": [
+            {
+                "name": "Shivon Zilis",
+                "relation_description": "xAI Exec; Intellectual Confidante for AGI and transhumanism."
+            },
+            {
+                "name": "David Sacks",
+                "relation_description": "Tech-Finance Ally; Capital/Political Enabler for DOGE."
+            },
+            {
+                "name": "Jared Birchall",
+                "relation_description": "Family Office Manager; The Financial Fixer."
+            }
+        ],
+        "preferences": {
+            "likes": [
+                "Diet Coke",
+                "Anime/video games",
+                "Sci-fi actualization (interplanetary factories)",
+                "Extreme risk"
+            ],
+            "dislikes": [
+                "Bureaucratic delay",
+                "DEI initiatives",
+                "Vacations/rest days",
+                "Regulatory constraints"
+            ]
+        },
         "deep_profile": "data/profiles/elon_musk.txt"
     }
 }

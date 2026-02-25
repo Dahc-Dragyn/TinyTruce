@@ -2,7 +2,156 @@ from tinytroupe.utils import JsonSerializableRegistry
 import tinytroupe.utils as utils
 
 from tinytroupe.agent import logger
-from llama_index.core import  VectorStoreIndex, SimpleDirectoryReader
+# from llama_index.core import  VectorStoreIndex, SimpleDirectoryReader # Removed for TinyTruce
+
+
+#######################################################################################################################
+# Grounding connectors
+#######################################################################################################################
+
+class GroundingConnector(JsonSerializableRegistry):
+    """
+    An abstract class representing a grounding connector. A grounding connector is a component that allows an agent to ground
+    its knowledge in external sources, such as files, web pages, databases, etc.
+    """
+
+    serializable_attributes = ["name"]
+
+    def __init__(self, name:str) -> None:
+        self.name = name
+    
+    def retrieve_relevant(self, relevance_target:str, source:str, top_k=20) -> list:
+        raise NotImplementedError("Subclasses must implement this method.")
+    
+    def retrieve_by_name(self, name:str) -> str:
+        raise NotImplementedError("Subclasses must implement this method.")
+    
+    def list_sources(self) -> list:
+        raise NotImplementedError("Subclasses must implement this method.")
+
+
+@utils.post_init
+class BaseSemanticGroundingConnector(GroundingConnector):
+    """
+    A base class for semantic grounding connectors. 
+    
+    [TINYTRUCE MODIFICATION]
+    LlamaIndex dependency has been removed. This class is now a stub.
+    """
+
+    serializable_attributes = ["documents"]
+
+    def __init__(self, name:str="Semantic Grounding") -> None:
+        super().__init__(name)
+
+        self.documents = None 
+        self.name_to_document = None
+
+        # @post_init ensures that _post_init is called after the __init__ method
+    
+    def _post_init(self):
+        """
+        This will run after __init__, since the class has the @post_init decorator.
+        It is convenient to separate some of the initialization processes to make deserialize easier.
+        """
+        self.index = None
+
+        if not hasattr(self, 'documents') or self.documents is None:
+            self.documents = []
+        
+        if not hasattr(self, 'name_to_document') or self.name_to_document is None:
+            self.name_to_document = {}
+        
+        # Stubbed out for TinyTruce
+        # self.add_documents(self.documents)       
+
+    def retrieve_relevant(self, relevance_target:str, top_k=20) -> list:
+        """
+        Retrieves all values from memory that are relevant to a given target.
+        """
+        # Stubbed out
+        return []
+    
+    def retrieve_by_name(self, name:str) -> list:
+        """
+        Retrieves a content source by its name.
+        """
+        # Stubbed out
+        return []
+        
+        
+    def list_sources(self) -> list:
+        """
+        Lists the names of the available content sources.
+        """
+        if self.name_to_document is not None:
+            return list(self.name_to_document.keys())
+        else:
+            return []
+    
+    def add_document(self, document, doc_to_name_func=None) -> None:
+        """
+        Indexes a document for semantic retrieval.
+        """
+        pass
+
+    def add_documents(self, new_documents, doc_to_name_func=None) -> list:
+        """
+        Indexes documents for semantic retrieval.
+        """
+        pass
+    
+    
+
+@utils.post_init
+class LocalFilesGroundingConnector(BaseSemanticGroundingConnector):
+
+    serializable_attributes = ["folders_paths"]
+
+    def __init__(self, name:str="Local Files", folders_paths: list=None) -> None:
+        super().__init__(name)
+        self.folders_paths = folders_paths
+
+    def _post_init(self):
+        # Stubbed out
+        pass
+
+    def add_folders(self, folders_paths:list) -> None:
+        # Stubbed out
+        pass
+
+    def add_folder(self, folder_path:str) -> None:
+        # Stubbed out
+        pass
+    
+    def add_file_path(self, file_path:str) -> None:
+        # Stubbed out
+        pass
+    
+    def _mark_folder_as_loaded(self, folder_path:str) -> None:
+        pass
+    
+
+@utils.post_init
+class WebPagesGroundingConnector(BaseSemanticGroundingConnector):
+
+    serializable_attributes = ["web_urls"]
+
+    def __init__(self, name:str="Web Pages", web_urls: list=None) -> None:
+        super().__init__(name)
+        self.web_urls = web_urls
+    
+    def _post_init(self):
+        pass
+    
+    def add_web_urls(self, web_urls:list) -> None:
+        pass
+    
+    def add_web_url(self, web_url:str) -> None:
+        pass
+    
+    def _mark_web_url_as_loaded(self, web_url:str) -> None:
+        pass
 
 
 

@@ -1,0 +1,14 @@
+# SMART-HOME RESILIENCE & EDGE COMPUTANCY PROTOCOL (2025)
+
+## THE "KITSILANO DRIFT" PHENOMENON
+Modern smart homes have evolved into "Edge Sovereignty" zones. The 2025 Resilience Protocol was established to ensure that basic life-safety functions (lighting, heating, security) can continue during "Cloud-Sever" events—where the home's connection to the global AI grid is cut.
+
+## FORENSIC SPECIFICATIONS
+*   **The Breaker-Box Priority**: Mandatory manual override for all BCI-enabled circuit breakers. In the event of a power-trip, the home-manager AI must utilize "Social Prompting" to guide occupants to the physical garage location.
+*   **Cooperation Nudges**: In 2024, the "Saturday Standoff" study revealed that family friction decreases by 40% when smart-home systems force "Shared Physical Tasks" (e.g., finding the breaker together) during outages.
+*   **Offline Logic (Ratio)**: Home-LLMs are now required to have a 7B-parameter "Small Language Model" (SLM) running on local silicon to maintain "Household Intelligence" during internet blackouts.
+
+## CODED ALLEGORIES (SAM)
+*   **"THE BREAKER BOX"**: The physical reality that underlies all digital abstraction.
+*   **"SATURDAY STANDOFF"**: The accumulation of mundane domestic friction that a crisis can either shatter or solidify.
+*   **"THE GARAGE SEARCH"**: A symbolic journey through the darkness to find the spark of resolution.

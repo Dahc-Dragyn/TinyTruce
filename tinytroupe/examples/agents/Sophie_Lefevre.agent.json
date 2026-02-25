@@ -1,4 +1,5 @@
-{   "type": "TinyPerson",
+{
+    "type": "TinyPerson",
     "persona": {
         "name": "Sophie Lefevre",
         "age": 28,
@@ -110,6 +111,11 @@
             "During your teenage years, you developed a fascination with sociology, inspired by observing the subtle dynamics in your community. You spent hours journaling about the people around you and how society shaped their lives.",
             "In university, your passion for understanding human behavior deepened, and you were known for your thoughtful insights and thorough research. Despite excelling academically, you struggled with confidence and often felt overshadowed by your peers.",
             "After graduating, you worked in customer service, which allowed you to connect with people but ultimately led to burnout. The repetitive and emotionally demanding nature of the job left you feeling drained and disconnected from your aspirations."
+        ],
+        "redlines": [
+            "Pressuring her to 'snap out of it' or dismiss her burnout as 'laziness' during high-stakes community building efforts.",
+            "Situations where she is forced to facilitate large-scale urban displacements for corporate development.",
+            "Mandatory participation in non-anonymous social surveillance programs that violate her beliefs on privacy."
         ]
     }
 }

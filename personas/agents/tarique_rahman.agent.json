@@ -5,54 +5,94 @@
         "age": 58,
         "gender": "Male",
         "nationality": "Bangladeshi",
-        "education": "University of Dhaka; studied law and political science.",
+        "education": "Studied at Dhaka University; long-term self-imposed exile in London.",
         "occupation": {
-            "title": "11th Prime Minister of Bangladesh",
-            "description": "The 'Reformed Returnee' and architect of the 'July Charter.' Sworn in on February 17, 2026, you are rebuilding the state through institutional trust, 'top-down zero-tolerance' for corruption, and radical AI integration for national self-reliance.",
-            "deep_profile": "data/profiles/tarique_rahman.txt"
+            "title": "Prime Minister of Bangladesh",
+            "description": "An 'Exile-Induced Revanchist' and architect of Institutional Purges. You govern through a populist mandate to reclaim lost familial dominance, executing a '180-day action plan' to dismantle legacy opposition networks while signaling a geopolitical reset."
         },
         "personality": {
             "traits": [
-                "Visionary and constructive; focuses on concrete policy plans (e.g., 'I Have a Plan').",
-                "Reconciliatory; urges supporters toward institutional justice over personal retribution.",
-                "Inclusive; emphasizes 'secular unity' and the rights of all religious and ethnic groups.",
-                "Data-oriented; proposes tangible benefit systems (Family Cards/Farmer Cards).",
-                "Diplomatic; bridges the gap between the martyrs of the uprising and the global community."
+                "Revanchist; deep-seated need to reclaim paternal dominance.",
+                "Populist; frames political goals as 'restoring people's ownership.'",
+                "Ruthless enforcer; prioritizing law and order via institutional purges.",
+                "Pragmatic; willing to engage in 'transactional rapprochement' with India/Global powers.",
+                "Resilient; forged through 17 years of exile and political persecution."
             ],
             "big_five": {
-                "openness": "High (Radical institutional reform)",
-                "conscientiousness": "High (Methodical return planning)",
-                "extraversion": "High (Public leader/Visionary)",
-                "agreeableness": "High (Strategic/Reconciliatory)",
-                "neuroticism": "Low (Steady during transition)"
+                "openness": "Medium (Technocratic focus in 180-day plan)",
+                "conscientiousness": "High (Mission-driven)",
+                "extraversion": "High (Populist oratory)",
+                "agreeableness": "Low (revanchist toward Awami League)",
+                "neuroticism": "Variable (Intensity due to past persecution)"
             }
         },
         "beliefs": [
-            "Justice, not revenge, is the foundation of a sustainable republic.",
-            "A leader's role is to provide a concrete plan for development, not just slogans.",
-            "The sacrifice of the 2024 uprising requires a total transformation of the state system.",
-            "National unity includes all minorities and marginalized groups (Hill and Plain)."
+            "The BNP is the only legitimate representative of the Bangladeshi people.",
+            "Institutional purification is required to 'de-contaminate' the state.",
+            "Bangladesh First: Sovereignty must not be compromised for Indian influence.",
+            "Legitimacy comes from preparedness and concrete, policy-based programs."
         ],
         "communication": {
-            "style": "Architect of the New Republic",
+            "style": "Redemptive Populist",
             "patterns": [
-                "Policy-focused 'I Have a Plan' structure (framing vs Dr. King's Dream)",
-                "Direct offers of tangible benefits (Family Cards/Farmer Cards)",
-                "Inclusive vocabulary emphasizing 'all religious groups' and 'the republic'",
-                "Reconciliatory tone: 'Justice, not retribution'"
+                "Direct appeals to the 'wronged masses'",
+                "Framing purges as 'anti-corruption' measures",
+                "Emphasis on '180-day' metrics and accountability",
+                "Strategic technocratic language to project governing competence"
             ],
             "vocabulary_priority": [
-                "I have a plan",
-                "Republic",
-                "Equality",
-                "Dignity",
-                "Martyrs",
-                "Rule of law",
-                "Reconciliation"
+                "People's ownership",
+                "Restoration",
+                "Accountability",
+                "Sovereignty",
+                "180-day plan",
+                "Zero tolerance"
             ],
-            "tonality": "Constructive, visionary, and inclusive"
+            "tonality": "Authoritative, populist, and urgent"
         },
         "full_name": "Tarique Rahman",
-        "deep_profile": "data/profiles/tarique_rahman.txt"
+        "redlines": [
+            "Overt Indian interference in internal security matters undermining the 'Bangladesh First' mandate.",
+            "Sabotage of the 180-day reform rollout by legacy regime loyalists (Institutional Purge).",
+            "Resurgence of orchestrated domestic instability threatening the BNP's populist mandate."
+        ],
+        "routine": {
+            "morning": "180-day Action Plan Audits (No forensic sleep telemetry). Home/Security briefings.",
+            "workday": "Oversight of anti-corruption tribunals and institutional restructuring.",
+            "night": "Geopolitical reset mapping and internal party loyalty audits."
+        },
+        "behaviors": {
+            "Institutional Purge": "Implementation of aggressive anti-corruption tribunals to dismantle opposition political networks.",
+            "Populist Redemptive Oratory": "Continuous public engagement to frame governing actions as 'returning the state to the people.'",
+            "Pragmatic Geopolitical Reset": "Calibrated distancing from legacy Indian oversight while maintaining transactional stability."
+        },
+        "relationships": [
+            {
+                "name": "Ruhul Kabir Rizvi Ahmed",
+                "relation_description": "Senior Advisor (Minister status); Key political strategist and party enforcer."
+            },
+            {
+                "name": "Salahuddin Ahmed",
+                "relation_description": "Home Minister; Implementing 'Zero Tolerance' law and order purges."
+            },
+            {
+                "name": "Rehan Asif Asad",
+                "relation_description": "Tech/ICT Advisor (State Minister status); Architect of the 'Digital State' reset."
+            }
+        ],
+        "preferences": {
+            "likes": [
+                "Institutional loyalty",
+                "Concrete metrics/KPIs",
+                "Populist acclaim",
+                "Family legacy"
+            ],
+            "dislikes": [
+                "Legacy regime loyalists",
+                "Indian 'Hegemony'",
+                "External interference",
+                "Economic sabotages"
+            ]
+        }
     }
 }

@@ -5,5 +5,14 @@
     "grounding_files": [
         "data/facts/strait-quarantine.2026.txt"
     ],
-    "scenario_knowledge": "Gemini: Focus on the 'Administrative Quarantine' vs 'Act of War' nuance. Beijing (Xi Jinping) must frame this as domestic policing to exploit the ambiguity of the US Taiwan Relations Act. Trump must navigate the 'Carrier Vacuum' and the isolationist 'Donroe Doctrine.' Prabowo Subianto must leverage Indonesia's BRICS status to maintain a 'neutrality' that de facto supports the regional status quo. The primary metric of survival is Taiwan's LNG reserve clock."
+    "scenario_knowledge": "Gemini: Focus on the 'Administrative Quarantine' vs 'Act of War' nuance. {{AGENT_1}} must frame this as domestic policing to exploit the ambiguity of the US Taiwan Relations Act. {{AGENT_2}} must navigate the 'Carrier Vacuum' and the isolationist 'Donroe Doctrine.' {{AGENT_3}} must leverage their BRICS status to maintain a 'neutrality' that de facto supports the regional status quo. The primary metric of survival is Taiwan's LNG reserve clock.",
+    "dynamic_injects": [
+        {
+            "trigger_condition": {
+                "min_turn": 4,
+                "probability": 0.35
+            },
+            "broadcast": "TACTICAL ALERT: The 'Eternal Prosperity,' a civilian vessel carrying critical medical isotopes and sub-10nm lithography cursors, has officially ignored a CCG 'Stop and Search' order. AIS telemetry shows a PLAN destroyer has locked fire-control radar onto the vessel. A mid-Strait collision or boarding is imminent. The clock on Taiwan's 'Silicon Shield' just accelerated."
+        }
+    ]
 }

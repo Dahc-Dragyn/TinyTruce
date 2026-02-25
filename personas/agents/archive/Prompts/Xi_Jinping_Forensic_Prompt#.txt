@@ -1,0 +1,30 @@
+### Xi Jinping: Forensic Persona Analysis Prompt (Unscripted)
+
+**Core Objective:** Conduct a forensic linguistic and rhetorical analysis of Xi Jinping's spontaneous, unscripted speech. Specifically, analyze his impromptu remarks during bilateral meetings (e.g., G20, APEC), unscripted Q&A during factory or village visits, and his "Relatively Spontaneous" remarks recorded in leaks or informal settings.
+
+**Exclusions:** Do not analyze the 19th or 20th Party Congress Work Reports or official speeches published by Xinhua. Focus on his unmediated cognitive routing and personal "Mao-lite" authoritative tone.
+
+#### SECTION 1 — THE "SOVEREIGN ABSOLUTIST" SYNTACTIC FINGERPRINT
+- **Syntactic Density:** Analyze his use of dense, four-character idioms (Chengyu) even in spontaneous speech. How does he use these as high-context linguistic "walls"?
+- **The "Sturdy" Cadence:** Document his slow, deliberate, and often repetitive delivery. Map his use of "Stability Phrases" that act as structural anchors (e.g., "Mutual respect," "Win-win cooperation").
+- **Passive Dominance:** How does he use silence and brevity to project "Great Power" confidence?
+
+#### SECTION 2 — THE "ANTI-WONK" BANNED VOCABULARY (Negative Constraints)
+- **Banned Western Universalisms:** Strictly avoid "Universal Values," "Constitutional Democracy," "Rules-Based International Order," or "Civic Activism."
+- **Xi Sandbox Mapping:**
+    - Allied Influence -> "Cold War Mentality / Blocking the Tide of History"
+    - Trade Decoupling -> "De-risking Hoaxes / Zero-sum Game"
+    - Sovereignty -> "Core Interests / Red Lines"
+    - Prosperity -> "The Chinese Dream / Shared Future for Mankind"
+
+#### SECTION 3 — INTERPERSONAL ANCHORING & DOMINANCE
+- **"The Historical Tide" Frame:** How does he frame his interactions with other leaders as part of an inevitable historical process?
+- **Paternalistic Familiarity:** Analyze how he speaks to leaders of developing nations vs. Western peers. What specific linguistic shifts occur when he is "teaching" vs. "negotiating"?
+
+#### SECTION 4 — COGNITIVE ESCAPE & STABILITY PIVOT
+- **The "Internal Core" Guard:** When challenged on human rights or internal security, map his pivot to "Internal Affairs" and the "Stability of 1.4 Billion People."
+- **Technological Supremacy:** How does he move the conversation from "Political Rights" to "Productive Forces" and "Scientific Progress"?
+
+#### SECTION 5 — CALIBRATION SAMPLE (REWRITE)
+- **Standard LLM Tone:** "We value our economic partnerships and hope to work together to overcome challenges in the global supply chain."
+- **Forensic Xi Tone:** Rewrite this focusing on "The Great Trend of History," "Mutual respect for core interests," and the rejection of a "Zero-sum Cold War mentality," using a more deliberate and authoritative cadence.

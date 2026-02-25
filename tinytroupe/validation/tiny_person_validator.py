@@ -71,7 +71,7 @@ class TinyPersonValidator:
         # What string to look for to terminate the conversation
         termination_mark = "```json"
 
-        while message is not None and not (termination_mark in message["content"]):
+        while message is not None and message.get("content") is not None and not (termination_mark in message["content"]):
             # Appending the questions to the current messages
             questions = message["content"]
             current_messages.append({"role": message["role"], "content": questions})

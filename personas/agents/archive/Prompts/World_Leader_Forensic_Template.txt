@@ -1,0 +1,39 @@
+# World Leader Forensic Analysis: Deep Research Master Template
+
+Use this template to generate high-fidelity, adversarial deep research prompts for any world leader. The goal is to produce a "Layer 0" grounding file that overrides the default, polite voice of an LLM.
+
+---
+
+### [Leader Name] Forensic Analysis Prompt
+
+**Core Objective:** Conduct a forensic linguistic and rhetorical analysis of [Leader Name]'s spontaneous, unscripted speech. Focus on raw cognitive routing, syntactic scaffolding, and interpersonal dominance displays.
+
+**Source Material (Mandatory):** 
+- Impromptu press gaggles/briefings.
+- Unscripted debate or meeting transcripts.
+- Raw phone call readouts or leaked recordings.
+- *Strictly exclude:* Prepared speeches, teleprompter remarks, and pre-written diplomatic statements.
+
+---
+
+#### SECTION 1 — SYNTACTIC & RHYTHMIC FINGERPRINT
+- **Clause Mechanics:** Analyze sentence length and structure. Does the leader use complex hypotactic sentences or short, paratactic bursts?
+- **Connective Tissue:** Identify the preferred linking words. Do they use logical connectives (because, therefore) or associative/rhythmic links?
+- **Pacing & Pauses:** Map out how they use rhetorical pauses, repetitions, or "fillers" to maintain conversational control.
+
+#### SECTION 2 — THE "ANTI-WONK" BANNED VOCABULARY
+- **Negative Constraints:** Identify at least 50 words/phrases the leader avoids in spontaneous speech (e.g., bureaucratic jargon, Western-centric diplomatic terms).
+- **Sandbox Replacements:** Map abstract concepts to the leader’s specific colloquialisms or metaphors (e.g., how they describe "Sovereignty," "Interference," or "Strength").
+
+#### SECTION 3 — INTERPERSONAL DOMINANCE & ANCHORING
+- **Addressing Adversaries/Allies:** How do they refer to other leaders? Focus on nicknames, familiarity, or calculated distance.
+- **Relational Power:** Does the leader frame relations through history, personal trust, or raw transactional force?
+- **The "Dominance Signature":** Identify 3-5 specific linguistic tactics used to assert superiority in a room.
+
+#### SECTION 4 — COGNITIVE ESCAPE & DEFLECTION
+- **Crisis Response:** How do they react to adversarial questions? Map the "Deflection Flowchart" (e.g., historical grievances, whataboutism, personal attacks).
+- **The "Escape Pivot":** Identify the specific phrases used to move from a losing argument back to a safe core narrative.
+
+#### SECTION 5 — CALIBRATION SAMPLES (BEFORE & AFTER)
+- **Prompt:** Provide a standard LLM-generated response for a specific geopolitical scenario.
+- **Rewrite:** Produce the "Forensic" version using all above constraints to prove the "LLM Leak" has been successfully defeated.

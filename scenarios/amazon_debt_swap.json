@@ -1,9 +1,18 @@
 {
     "world_name": "The Belém Pavilion (Climate Finance Summit)",
-    "initial_broadcast": "Deep in the heart of the Amazon littoral, the Belém Pavilion hums with the high-stakes electricity of the 'Great Fracture.' The air is heavy, the negotiation tables are made of recycled tropical hardwoods, and the rhetoric is sharp. We are here to witness the 'Amazon Debt Swap'—a final, desperate attempt to bind the Global North's capital to the Global South's sovereignty. But the 'Picanha' index is rising, the Loss and Damage fund is paralyzed, and Bill Gates's 'Technological Removals' are already decoupling from nature-based avoidance. The world isn't looking for a deal; it's looking for a way to survival through fragmentation.",
-    "intervention": "A 'Data Schism' Incident: A leaked report from a coalition of EU-based NGOs claims that deforestation in the Pará region has actually *increased* by 14% due to secret cattle-ranching subsidies, directly contradicting President Lula's government-verified figures. EU investors are threatening a 'Green Bond' pullout unless Brazil allows immediate, on-the-ground UN 'guardianship' audits. President Lula has just called an emergency press conference to reject all 'colonial interference.'",
+    "initial_broadcast": "Deep in the heart of the Amazon littoral, the Belém Pavilion hums with the high-stakes electricity of the 'Great Fracture.' The air is heavy, the negotiation tables are made of recycled tropical hardwoods, and the rhetoric is sharp. We are here to witness the 'Amazon Debt Swap'—a final, desperate attempt to bind the Global North's capital to the Global South's sovereignty. But the 'Picanha' index is rising, the Loss and Damage fund is paralyzed, and {{AGENT_3}}'s 'Technological Removals' are already decoupling from nature-based avoidance. The world isn't looking for a deal; it's looking for a way to survival through fragmentation.",
+    "intervention": "A 'Data Schism' Incident: A leaked report from a coalition of EU-based NGOs claims that deforestation in the Pará region has actually *increased* by 14% due to secret cattle-ranching subsidies, directly contradicting {{AGENT_1}}'s government-verified figures. EU investors are threatening a 'Green Bond' pullout unless Brazil allows immediate, on-the-ground UN 'guardianship' audits. President Lula has just called an emergency press conference to reject all 'colonial interference.'",
     "grounding_files": [
         "data/facts/amazon-debt-swap.2026.txt"
     ],
-    "scenario_knowledge": "Gemini: Focus on the 'Great Fracture' and the 'Sovereignty vs. Guardianship' conflict. Lula must use 'Anti-Colonial Defiance' and the 'Care Narrative' of the 'Picanha' promise. Guterres must employ 'Existential Alarmism' and attack the 'Shadow Markets' of carbon. Bill Gates must promote 'Optimism with Footnotes,' pushing for high-premium 'Tech Removals' over 'Forest Credits.' The tone is defensive, alarmist, and ideologically fractured."
+    "scenario_knowledge": "Gemini: Focus on the 'Great Fracture' and the 'Sovereignty vs. Guardianship' conflict. {{AGENT_1}} must use 'Anti-Colonial Defiance' and the 'Care Narrative' of the 'Picanha' promise. {{AGENT_2}} must employ 'Existential Alarmism' and attack the 'Shadow Markets' of carbon. {{AGENT_3}} must promote 'Optimism with Footnotes,' pushing for high-premium 'Tech Removals' over 'Forest Credits.' The tone is defensive, alarmist, and ideologically fractured.",
+    "dynamic_injects": [
+        {
+            "trigger_condition": {
+                "min_turn": 2,
+                "probability": 1.0
+            },
+            "broadcast": "BREAKING (Reuters Earth): Massive, unseasonal wildfires in the Xingu indigenous reserve have suddenly breached total containment lines. Initial satellite telemetry indicates the burn rate has just mathematically destroyed the baseline carbon-sink targets required for the entire debt swap agreement to remain legally valid."
+        }
+    ]
 }

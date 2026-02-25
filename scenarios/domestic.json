@@ -1,5 +1,23 @@
 {
     "world_name": "Kitsilano Modern Home",
-    "initial_broadcast": "A rainy Saturday morning. The living room is a mess of open electronics and scattered camping gear.",
-    "intervention": "Suddenly, the power trips. The house goes dark. Both must cooperate to find the breaker box in the garage."
+    "initial_broadcast": "A rainy Saturday morning. The house suddenly goes dark as a major power trip disconnects all smart-home services.",
+    "intervention": "THE OFFLINE CHALLENGE: Both occupants must find and manually reset the physical breaker box in the garage. All biometric and cloud-based controls are disabled.",
+    "grounding_files": [
+        "data/tech/smart-home-resilience-protocol.2025.txt"
+    ],
+    "scenario_knowledge": "Gemini: The couple must pivot from 'Digital Dependence' to 'Physical Cooperation.' Use the 'Resilience Protocol' to guide their actions. One person may be frustrated (Saturday Standoff), while the other must guide them to the 'Breaker Box' override.",
+    "safety_allegories": {
+        "compromise": "The Breaker Box (returning to physical reality)",
+        "conflict": "Saturday Standoff (mundane domestic friction)",
+        "resolution": "The Garage Search (a shared journey through difficulty)"
+    },
+    "dynamic_injects": [
+        {
+            "trigger_condition": {
+                "min_turn": 3,
+                "probability": 0.40
+            },
+            "broadcast": "BIOMETRIC LOCKOUT: The home's facial recognition system has completed its emergency reboot and misidentified the occupants as 'Unverified Intruders.' The 'Kitsilano Modern' smart-lock has engaged the tactical bolt. You are now locked inside your own home with no digital override."
+        }
+    ]
 }

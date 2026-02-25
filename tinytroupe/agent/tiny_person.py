@@ -4,15 +4,21 @@ import tinytroupe.openai_utils as openai_utils
 from tinytroupe.utils import JsonSerializableRegistry, repeat_on_error, name_or_empty
 import tinytroupe.utils as utils
 from tinytroupe.control import transactional, current_simulation
+from tinytroupe.asset_manager import AssetManager
 
 
 import os
 import json
 import copy
 import textwrap  # to dedent strings
+from rich.markup import escape
 import chevron  # to parse Mustache templates
 from typing import Any
-from rich import print
+from rich import print as rich_print
+from rich.console import Console
+
+# Create a global console for simulation output with auto-highlighting disabled
+console = Console(highlight=False)
 
 
 
@@ -104,6 +110,8 @@ class TinyPerson(JsonSerializableRegistry):
         # saving these communications to another output form later (e.g., caching)
         self._displayed_communications_buffer = []
 
+        self.show_thoughts = True  # UX Mode: toggle for displaying thoughts
+
         if not hasattr(self, 'episodic_memory'):
             # This default value MUST NOT be in the method signature, otherwise it will be shared across all instances.
             self.episodic_memory = EpisodicMemory()
@@ -147,7 +155,9 @@ class TinyPerson(JsonSerializableRegistry):
                 "attention": None,
                 "emotions": "Feeling nothing in particular, just calm.",
                 "memory_context": None,
-                "accessible_agents": []  # [{"agent": agent_1, "relation": "My friend"}, {"agent": agent_2, "relation": "My colleague"}, ...]
+                "accessible_agents": [],  # [{"agent": agent_1, "relation": "My friend"}, {"agent": agent_2, "relation": "My colleague"}, ...]
+                "emotional_intensity": 0.5, # Default starting intensity
+                "emotional_trajectory": []
             }
         
         if not hasattr(self, '_extended_agent_summary'):
@@ -260,14 +270,16 @@ class TinyPerson(JsonSerializableRegistry):
         """
         Imports a fragment of a persona configuration from a JSON file.
         """
-        with open(path, "r") as f:
-            fragment = json.load(f)
+        # [TINYTRUCE] Use AssetManager for fail-fast Pydantic validation
+        validated_asset = AssetManager.load_persona(path)
+        fragment = validated_asset.model_dump(exclude_none=True)
 
         # check the type is "Fragment" and that there's also a "persona" key
         if fragment.get("type", None) == "Fragment" and fragment.get("persona", None) is not None:
             self.include_persona_definitions(fragment["persona"])
         else:
-            raise ValueError("The imported JSON file must be a valid fragment of a persona configuration.")
+            print(f"\n[FATAL ERROR]: {path} is not a valid behavioral fragment (type must be 'Fragment').")
+            raise SystemExit(1)
         
         # must reset prompt after adding to configuration
         self.reset_prompt()
@@ -446,6 +458,29 @@ class TinyPerson(JsonSerializableRegistry):
             role, content = self._produce_message()
 
             cognitive_state = content["cognitive_state"]
+            
+            # Parse emotion and intensity
+            current_emotion = cognitive_state.get("emotions", "Neutral")
+            current_intensity = cognitive_state.get("emotional_intensity", None)
+            print(f"DEBUG {self.name} received cognitive_state: {cognitive_state}")
+            
+            # Default fallback for intensity if not provided or invalid
+            if current_intensity is None:
+                # Decay intensity slightly if not provided
+                current_intensity = max(0.0, self._mental_state.get("emotional_intensity", 0.5) - 0.1)
+            else:
+                 try:
+                    current_intensity = float(current_intensity)
+                 except ValueError:
+                    current_intensity = 0.5 # Reset to neutral on error
+
+            # Update trajectory
+            self._mental_state["emotional_trajectory"].append({
+                "turn": len(self._mental_state["emotional_trajectory"]) + 1,
+                "emotion": current_emotion,
+                "intensity": current_intensity,
+                "timestamp": self.iso_datetime()
+            })
 
 
             action = content['action']
@@ -462,7 +497,8 @@ class TinyPerson(JsonSerializableRegistry):
             self._actions_buffer.append(action)
             self._update_cognitive_state(goals=cognitive_state['goals'],
                                         attention=cognitive_state['attention'],
-                                        emotions=cognitive_state['emotions'])
+                                        emotions=cognitive_state['emotions'],
+                                        emotional_intensity=current_intensity)
             
             contents.append(content)          
             if TinyPerson.communication_display:
@@ -777,14 +813,19 @@ class TinyPerson(JsonSerializableRegistry):
         self.reset_prompt()
 
         messages = [
-            {"role": msg["role"], "content": json.dumps(msg["content"])}
+            {"role": msg["role"], "content": msg["content"] if isinstance(msg["content"], str) else str(msg["content"])}
             for msg in self.current_messages
         ]
 
         logger.debug(f"[{self.name}] Sending messages to OpenAI API")
-        logger.debug(f"[{self.name}] Last interaction: {messages[-1]}")
+        if messages:
+             logger.debug(f"[{self.name}] Last interaction: {messages[-1]}")
 
-        next_message = openai_utils.client().send_message(messages, response_format=CognitiveActionModel)
+        next_message = openai_utils.client().send_message(
+            messages, 
+            response_format=CognitiveActionModel,
+            agent_name=self.name
+        )
 
         logger.debug(f"[{self.name}] Received message: {next_message}")
 
@@ -810,7 +851,7 @@ class TinyPerson(JsonSerializableRegistry):
     ###########################################################
     @transactional
     def _update_cognitive_state(
-        self, goals=None, context=None, attention=None, emotions=None
+        self, goals=None, context=None, attention=None, emotions=None, emotional_intensity=None
     ):
         """
         Update the TinyPerson's cognitive state.
@@ -835,6 +876,10 @@ class TinyPerson(JsonSerializableRegistry):
         # update current emotions
         if emotions is not None:
             self._mental_state["emotions"] = emotions
+        
+        # update emotional intensity
+        if emotional_intensity is not None:
+            self._mental_state["emotional_intensity"] = emotional_intensity
         
         # update relevant memories for the current situation
         current_memory_context = self.retrieve_relevant_memories_for_current_context()
@@ -950,8 +995,16 @@ class TinyPerson(JsonSerializableRegistry):
         """
         Pushes the latest communications to the agent's buffer.
         """
+        # UX Mode: Skip rendering if thoughts are disabled
+        if not self.show_thoughts:
+            # Check action type for THINK
+            if communication.get("kind") == "action":
+                action_type = communication.get("content", {}).get("action", {}).get("type")
+                if action_type == "THINK":
+                    return
+
         self._displayed_communications_buffer.append(communication)
-        print(communication["rendering"])
+        console.print(communication["rendering"])
 
     def pop_and_display_latest_communications(self):
         """
@@ -1142,26 +1195,27 @@ class TinyPerson(JsonSerializableRegistry):
                     msg_simplified_actor = "USER"
 
                 msg_simplified_type = stimus["type"]
-                msg_simplified_content = utils.break_text_at_length(
-                    stimus["content"], max_length=max_content_length
-                )
-
-                indent = " " * len(msg_simplified_actor) + "      > "
-                msg_simplified_content = textwrap.fill(
-                    msg_simplified_content,
-                    width=TinyPerson.PP_TEXT_WIDTH,
-                    initial_indent=indent,
-                    subsequent_indent=indent,
-                )
-
-                #
-                # Using rich for formatting. Let's make things as readable as possible!
-                #
+                msg_simplified_content = stimus["content"]
 
                 rich_style = utils.RichTextStyle.get_style_for("stimulus", msg_simplified_type)
-                lines.append(
-                    f"[{rich_style}][underline]{msg_simplified_actor}[/] --> [{rich_style}][underline]{self.name}[/]: [{msg_simplified_type}] \n{msg_simplified_content}[/]"
+                
+                # Get dynamic agent colors
+                agent_style = utils.RichTextStyle.get_agent_style(msg_simplified_actor)
+                type_style = utils.RichTextStyle.get_style_for("stimulus", msg_simplified_type)
+                
+                # Escape content to prevent unintentional Rich markup or auto-highlighting
+                safe_content = escape(msg_simplified_content)
+                
+                header = f"[{agent_style}]══ {msg_simplified_actor} [/{agent_style}][{type_style}]➔ {self.name} ({msg_simplified_type}) ══[/]"
+                indent = f" [{agent_style}]│[/{agent_style}]  "
+                
+                body = textwrap.fill(
+                    safe_content,
+                    width=TinyPerson.PP_TEXT_WIDTH - 6,
+                    initial_indent=indent,
+                    subsequent_indent=indent
                 )
+                lines.append(f"{header}\n{body}\n")
             else:
                 lines.append(f"{role}: {content}")
 
@@ -1180,23 +1234,44 @@ class TinyPerson(JsonSerializableRegistry):
         if simplified:
             msg_simplified_actor = self.name
             msg_simplified_type = content["action"]["type"]
-            msg_simplified_content = utils.break_text_at_length(
-                content["action"].get("content", ""), max_length=max_content_length
-            )
+            msg_simplified_content = content["action"].get("content", "")
+            
+            if msg_simplified_type == "THINK" and not self.show_thoughts:
+                return ""
+            
+            # UX Mode Header Cleanup: Filter out internal system instructions from display
+            # We don't want the user seeing "### LAYER 0: ..." in the narrative feed.
+            if "###" in msg_simplified_content:
+                # Return empty string if it's a purely technical instruction block
+                # but let's be more surgical and just strip the markers if it has narrative content,
+                # or skip it if it's purely a system directive.
+                if msg_simplified_content.startswith("###"):
+                    return ""
 
-            indent = " " * len(msg_simplified_actor) + "      > "
-            msg_simplified_content = textwrap.fill(
-                msg_simplified_content,
-                width=TinyPerson.PP_TEXT_WIDTH,
-                initial_indent=indent,
-                subsequent_indent=indent,
-            )
-
-            #
-            # Using rich for formatting. Let's make things as readable as possible!
-            #
             rich_style = utils.RichTextStyle.get_style_for("action", msg_simplified_type)
-            return f"[{rich_style}][underline]{msg_simplified_actor}[/] acts: [{msg_simplified_type}] \n{msg_simplified_content}[/]"
+            
+            # Get dynamic agent colors
+            agent_style = utils.RichTextStyle.get_agent_style(msg_simplified_actor)
+            type_style = utils.RichTextStyle.get_style_for("action", msg_simplified_type)
+            
+            # Escape content to prevent unintentional Rich markup or auto-highlighting
+            safe_content = escape(msg_simplified_content)
+            
+            # Use specific formatting for THINK vs TALK
+            prefix = "💭 THINKING" if msg_simplified_type == "THINK" else f"💬 {msg_simplified_type}"
+            if msg_simplified_type == "THINK":
+                safe_content = f"[dim italic]{safe_content}[/]"
+            
+            header = f"[{agent_style}]● {msg_simplified_actor} [/{agent_style}][{type_style}]| {prefix}[/]"
+            indent = f" [{agent_style}]│[/{agent_style}]  "
+            
+            body = textwrap.fill(
+                safe_content,
+                width=TinyPerson.PP_TEXT_WIDTH - 4,
+                initial_indent=indent,
+                subsequent_indent=indent
+            )
+            return f"{header}\n{body}\n"
         
         else:
             return f"{role}: {content}"
@@ -1247,16 +1322,22 @@ class TinyPerson(JsonSerializableRegistry):
                      serialization_type_field_name="type")
 
     
-    @staticmethod
-    def load_specification(path_or_dict, suppress_mental_faculties=False, suppress_memory=False, auto_rename_agent=False, new_agent_name=None):
+    @classmethod
+    def load_specification(cls, path_or_dict, suppress_mental_faculties=False, suppress_memory=False, auto_rename_agent=False, new_agent_name=None):
         """
-        Loads a JSON agent specification.
+        Loads a TinyPerson specification from a JSON file or dictionary.
 
         Args:
             path_or_dict (str or dict): The path to the JSON file or the dictionary itself.
             suppress_mental_faculties (bool, optional): Whether to suppress loading the mental faculties. Defaults to False.
             suppress_memory (bool, optional): Whether to suppress loading the memory. Defaults to False.
         """
+        if isinstance(path_or_dict, str):
+            # [TINYTRUCE] Use AssetManager for fail-fast Pydantic validation
+            validated_asset = AssetManager.load_persona(path_or_dict)
+            json_dict = validated_asset.model_dump(exclude_none=True)
+        else:
+            json_dict = path_or_dict
 
         suppress_attributes = []
 

@@ -2,7 +2,7 @@ from tinytroupe.agent.mental_faculty import TinyMentalFaculty
 from tinytroupe.agent.grounding import BaseSemanticGroundingConnector
 import tinytroupe.utils as utils
 
-from llama_index.core import Document
+# from llama_index.core import Document # Removed for TinyTruce
 from typing import Any
 import copy
 
@@ -247,9 +247,9 @@ class SemanticMemory(TinyMemory):
     # Auxiliary compatibility methods
     #####################################
 
-    def _build_document_from(memory) -> Document:
+    def _build_document_from(memory):
         # TODO: add any metadata as well?
-        return Document(text=str(memory))
+        return str(memory) # Document(text=str(memory))
     
     def _build_documents_from(self, memories: list) -> list:
         return [self._build_document_from(memory) for memory in memories]

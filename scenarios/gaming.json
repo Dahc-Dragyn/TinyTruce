@@ -1,5 +1,23 @@
 {
     "world_name": "The Sunday Game Table",
     "initial_broadcast": "A complex 6-hour strategy game is in its final turns. The atmosphere is tense.",
-    "intervention": "The pizza delivery person arrives, and a rare 'Social Event' card is drawn that rewards group laughter over victory points."
+    "intervention": "The pizza delivery person arrives, and a rare 'Social Event' card is drawn that rewards group laughter over victory points.",
+    "grounding_files": [
+        "data/tech/neuro-gaming-haptic-interface.2026.txt"
+    ],
+    "scenario_knowledge": "Gemini: Contrast the 'Agon Index' (the heat of competition) with the need for social cohesion. The characters should argue over whether to take the 'victory' or accept the 'Social Event' reward. Use the 'Laughter Pivot' as a viable diplomatic exit.",
+    "safety_allegories": {
+        "compromise": "Social Event Card (a shift toward group harmony)",
+        "conflict": "Agon Index (destructive competitive drive)",
+        "resolution": "Pizza Intervention (breaking abstract tension with physical needs)"
+    },
+    "dynamic_injects": [
+        {
+            "trigger_condition": {
+                "min_turn": 4,
+                "probability": 0.30
+            },
+            "broadcast": "HAPTIC GLITCH: A localized logic-leak in the BCI-Gaming link has triggered a 'Phantom Pain' response in Seat 1. The virtual damage is being interpreted as a real-world sensory shock. The game is no longer 'for fun'—it's a clinical trial without a safety net."
+        }
+    ]
 }

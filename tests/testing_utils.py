@@ -4,139 +4,203 @@ Testing utilities.
 import os
 import sys
 from time import sleep
+import json
+import re
+import datetime
+import importlib
+import logging
 
-sys.path.insert(0, '../../tinytroupe/')
-sys.path.insert(0, '../../')
-sys.path.insert(0, '..')
+# Standard Path setup for TinyTruce
+_THIS_DIR = os.path.dirname(os.path.abspath(__file__))
+_ROOT_DIR = os.path.abspath(os.path.join(_THIS_DIR, ".."))
+sys.path.insert(0, os.path.join(_ROOT_DIR, "tinytroupe"))
+sys.path.insert(0, _ROOT_DIR)
 
 import tinytroupe.openai_utils as openai_utils
 from tinytroupe.agent import TinyPerson
 from tinytroupe.environment import TinyWorld, TinySocialNetwork
 import pytest
-import importlib
-
 import conftest
+from dotenv import load_dotenv
+
+# Ensure environment variables are loaded for tests
+load_dotenv(os.path.join(_ROOT_DIR, ".env"))
+
+# Project-native Google Generative AI (matching tinytruce_sim.py)
+import google.generativeai as genai
+from google.generativeai import caching
 
 ##################################################
 # global constants
 ##################################################
+AGENT_DIR = os.path.join(_ROOT_DIR, "personas", "agents")
+ATLAS_PATH = os.path.join(AGENT_DIR, "Forensic_Intelligence_Atlas.md")
+PROMPTS_DIR = os.path.join(AGENT_DIR, "archive", "Prompts")
 CACHE_FILE_NAME = "tests_cache.pickle"
-EXPORT_BASE_FOLDER = os.path.join(os.path.dirname(__file__), "outputs/exports")
-TEMP_SIMULATION_CACHE_FILE_NAME = os.path.join(os.path.dirname(__file__), "simulation_test_case.cache.json")
-
+EXPORT_BASE_FOLDER = os.path.join(_THIS_DIR, "outputs", "exports")
 
 ##################################################
-# Caching, in order to save on API usage
+# Fixtures
 ##################################################
-if conftest.refresh_cache:
-    # DELETE the cache file tests_cache.pickle
-    os.remove(CACHE_FILE_NAME)
+@pytest.fixture(scope="function")
+def setup():
+    # Set the cache according to the command line option
+    openai_utils.force_api_cache(conftest.use_cache)
+    
+    # Clear the global agent registry to avoid name conflicts in parameterized tests
+    TinyPerson.all_agents.clear()
+    
+    yield
 
-if conftest.use_cache:
-    openai_utils.force_api_cache(True, CACHE_FILE_NAME)
-else:
-    openai_utils.force_api_cache(False, CACHE_FILE_NAME)
+############################################################################################################
+# Dynamic Agent Discovery & Forensic Extraction
+############################################################################################################
 
+def get_available_agents():
+    """
+    Returns a list of available agent filenames (.agent.json) from the agents directory.
+    """
+    if not os.path.exists(AGENT_DIR):
+        print(f"ERROR: AGENT_DIR not found at {AGENT_DIR}")
+        return []
+    agents = [f for f in os.listdir(AGENT_DIR) if f.endswith(".agent.json")]
+    return sorted(agents)
 
-##################################################
-# File management
-##################################################
+def extract_expectations(agent_name):
+    """
+    Extracts forensic expectations/markers for validation from the Atlas or Prompt files.
+    """
+    # 1. Try to get grounding from Atlas
+    grounding = extract_agent_grounding(agent_name)
+    
+    # 2. Try to supplement or fallback to Prompt files
+    base_name = agent_name.replace(".agent.json", "")
+    clean_name = base_name.replace(" ", "_").replace("(", "").replace(")", "").split(".")[0]
+    
+    prompt_candidates = [
+        f"{base_name.title().replace(' ', '_')}_Forensic_Prompt.txt",
+        f"{base_name.title().replace(' ', '_')}_Forensic_Prompt#.txt",
+        f"{base_name.replace('_', ' ').title().replace(' ', '_')}_Forensic_Prompt.txt",
+        f"{base_name.replace('_', ' ').title().replace(' ', '_')}_Forensic_Prompt#.txt",
+        f"{base_name}_Forensic_Prompt.txt",
+        f"{clean_name.title()}_Forensic_Prompt.txt",
+        f"{clean_name.title()}_Forensic_Prompt#.txt"
+    ]
+    
+    extra_markers = ""
+    for pf in prompt_candidates:
+        path = os.path.join(PROMPTS_DIR, pf)
+        if os.path.exists(path):
+            with open(path, "r", encoding="utf-8") as f:
+                extra_markers += f.read()
+                break
+    
+    if not grounding and not extra_markers:
+        return f"The agent should behave consistently with the persona described in {agent_name}."
+    
+    return f"GROUNDING:\n{grounding}\n\nFORENSIC MARKERS:\n{extra_markers}"
+
+def extract_agent_grounding(agent_name, atlas_path=ATLAS_PATH):
+    """
+    Extracts the forensic grounding for a specific agent from the Forensic Atlas.
+    """
+    if not os.path.exists(atlas_path):
+        return None
+    
+    search_term = agent_name.lower().replace(".agent.json", "").replace(" vladimirovich", "").replace(" gertrude", "").split("(")[0].strip()
+    
+    with open(atlas_path, "r", encoding="utf-8") as f:
+        content = f.read()
+    
+    lines = content.split("\n")
+    found_section = []
+    capture = False
+    
+    for line in lines:
+        if line.startswith("###") and search_term in line.lower():
+            capture = True
+            found_section.append(line)
+            continue
+        elif capture and (line.startswith("###") or line.startswith("---") or line.startswith("## ")):
+            break
+        elif capture:
+            found_section.append(line)
+            
+    if found_section:
+        return "\n".join(found_section).strip()
+    return None
+
+class GeopoliticalCacheManager:
+    """Manages Gemini Explicit Context Caching for Layer 0 profiles (matching tinytruce_sim.py)."""
+    def __init__(self, profiles_text, model="models/gemini-2.5-flash-lite-preview-09-2025"):
+        self.profiles_text = profiles_text
+        self.model = model
+        self.cache = None
+        self.last_renewed = None
+        self.min_chars = 4000 
+
+    def create_cache(self):
+        if len(self.profiles_text) < self.min_chars:
+            return None
+        try:
+            self.cache = caching.CachedContent.create(
+                model=self.model,
+                display_name="tinytruce_test_validation",
+                contents=[self.profiles_text],
+                ttl=datetime.timedelta(minutes=15),
+            )
+            self.last_renewed = datetime.datetime.now()
+            return self.cache.name
+        except Exception as e:
+            print(f"Gemini Cache Creation Failed: {e}")
+            return None
+
+    def renew_if_needed(self):
+        if not self.cache:
+            return
+        elapsed = datetime.datetime.now() - self.last_renewed
+        if elapsed > datetime.timedelta(minutes=10):
+            self.cache.update(ttl=datetime.timedelta(minutes=15))
+            self.last_renewed = datetime.datetime.now()
+
+############################################################################################################
+# Original Testing Utilities (preserved)
+############################################################################################################
 
 def remove_file_if_exists(file_path):
-    """
-    Removes the file at the given path if it exists.
-    """
     if os.path.exists(file_path):
         os.remove(file_path)
 
-# remove temporary files
-remove_file_if_exists(TEMP_SIMULATION_CACHE_FILE_NAME)
+def get_fresh_working_copy(file_path, working_dir="temp_working_copies"):
+    if not os.path.exists(working_dir):
+        os.makedirs(working_dir)
+    file_name = os.path.basename(file_path)
+    working_copy_path = os.path.join(working_dir, file_name)
+    import shutil
+    shutil.copyfile(file_path, working_copy_path)
+    return working_copy_path
 
+def agents_configs_are_equal(agent_1, agent_2):
+    return agent_1._configuration == agent_2._configuration
 
-##################################################
-# Simulation checks utilities
-##################################################
 def contains_action_type(actions, action_type):
-    """
-    Checks if the given list of actions contains an action of the given type.
-    """
-    
-    for action in actions:
-        if action["action"]["type"] == action_type:
-            return True
-    
-    return False
+    return any(action['action']['type'] == action_type for action in actions)
 
-def contains_action_content(actions:list, action_content: str):
-    """
-    Checks if the given list of actions contains an action with the given content.
-    """
-    
-    for action in actions:
-        # checks whether the desired content is contained in the action content
-        if action_content.lower() in action["action"]["content"].lower():
-            return True
-    
-    return False
+def contains_action_content(actions, action_content):
+    return any(action_content in action['action']['content'] for action in actions)
 
 def contains_stimulus_type(stimuli, stimulus_type):
-    """
-    Checks if the given list of stimuli contains a stimulus of the given type.
-    """
-    
-    for stimulus in stimuli:
-        if stimulus["type"] == stimulus_type:
-            return True
-    
-    return False
+    return any(stimulus['type'] == stimulus_type for stimuli in stimuli)
 
 def contains_stimulus_content(stimuli, stimulus_content):
-    """
-    Checks if the given list of stimuli contains a stimulus with the given content.
-    """
-    
-    for stimulus in stimuli:
-        # checks whether the desired content is contained in the stimulus content
-        if stimulus_content.lower() in stimulus["content"].lower():
-            return True
-    
-    return False
-
-def terminates_with_action_type(actions, action_type):
-    """
-    Checks if the given list of actions terminates with an action of the given type.
-    """
-    
-    if len(actions) == 0:
-        return False
-    
-    return actions[-1]["action"]["type"] == action_type
-
+    return any(stimulus_content in stimulus['content'] for stimulus in stimuli)
 
 def proposition_holds(proposition: str) -> bool:
-    """
-    Checks if the given proposition is true according to an LLM call.
-    This can be used to check for text properties that are hard to
-    verify mechanically, such as "the text contains some ideas for a product".
-    """
-
-    system_prompt = f"""
-    Check whether the following proposition is true or false. If it is
-    true, write "true", otherwise write "false". Don't write anything else!
-    """
-
-    user_prompt = f"""
-    Proposition: {proposition}
-    """
-
-    messages = [{"role": "system", "content": system_prompt},
-                {"role": "user", "content": user_prompt}]
-    
-    # call the LLM
+    system_prompt = "Check whether the following proposition is true or false. If it is true, write 'true', otherwise write 'false'. Don't write anything else!"
+    user_prompt = f"Proposition: {proposition}"
+    messages = [{"role": "system", "content": system_prompt}, {"role": "user", "content": user_prompt}]
     next_message = openai_utils.client().send_message(messages)
-
-    # check the result
-    cleaned_message = only_alphanumeric(next_message["content"])
+    cleaned_message = ''.join(c for c in next_message["content"] if c.isalnum())
     if cleaned_message.lower().startswith("true"):
         return True
     elif cleaned_message.lower().startswith("false"):
@@ -145,72 +209,28 @@ def proposition_holds(proposition: str) -> bool:
         raise Exception(f"LLM returned unexpected result: {cleaned_message}")
 
 def only_alphanumeric(string: str):
-    """
-    Returns a string containing only alphanumeric characters.
-    """
     return ''.join(c for c in string if c.isalnum())
 
-def create_test_system_user_message(user_prompt, system_prompt="You are a helpful AI assistant."):
-    """
-    Creates a list containing one system message and one user message. 
-    """
-    
-    messages = [{"role": "system", "content": system_prompt}]
-    
-    if user_prompt is not None:
-        messages.append({"role": "user", "content": user_prompt})
-    
-    return messages
+def create_and_save_person(name, age, nationality, occupation, file_path):
+    person = TinyPerson(name)
+    person.define("age", age)
+    person.define("nationality", nationality)
+    person.define("occupation", occupation)
+    person.save_specification(file_path)
+    return person
 
-def agents_personas_are_equal(agent1, agent2, ignore_name=False):
-    """
-    Checks if the configurations of two agents are equal.
-    """
+def create_oscar_the_architect():
+    return TinyPerson.load_specification(os.path.join(AGENT_DIR, "oscar_the_architect.agent.json"))
 
-    ignore_keys = []
-    if ignore_name:
-        ignore_keys.append("name")
-    
-    for key in agent1._persona.keys():
-        if key in ignore_keys:
-            continue
-        
-        if agent1._persona[key] != agent2._persona[key]:
-            return False
-    
-    return True
+def create_lisa_the_data_scientist():
+    return TinyPerson.load_specification(os.path.join(AGENT_DIR, "lisa_the_data_scientist.agent.json"))
 
-def agent_first_name(agent):
-    """
-    Returns the first name of the agent.
-    """
-    return agent.name.split()[0]
-############################################################################################################
-# I/O utilities
-############################################################################################################
+def create_kim_the_designer():
+    return TinyPerson.load_specification(os.path.join(AGENT_DIR, "kim_the_designer.agent.json"))
 
-def get_relative_to_test_path(path_suffix):
-    """
-    Returns the path to the test file with the given suffix.
-    """
-    
-    return os.path.join(os.path.dirname(__file__), path_suffix)
-
-
-############################################################################################################
-# Fixtures
-############################################################################################################
-
-@pytest.fixture(scope="function")
-def focus_group_world():
-    import tinytroupe.examples as examples   
-    
-    world = TinyWorld("Focus group", [examples.create_lisa_the_data_scientist(), examples.create_oscar_the_architect(), examples.create_marcos_the_physician()])
+def create_town_hall_world():
+    world = TinyWorld("Town Hall", [create_oscar_the_architect(), create_lisa_the_data_scientist()])
     return world
 
-@pytest.fixture(scope="function")
-def setup():
-    TinyPerson.clear_agents()
-    TinyWorld.clear_environments()
-
-    yield
+def get_agent_name(agent):
+    return agent.name.split()[0]

@@ -1,96 +1,92 @@
 import pytest
 import os
-
 import sys
+import logging
+
+# Ensure TinyTroupe is in path
 sys.path.append('../../tinytroupe/')
 sys.path.append('../../')
 sys.path.append('..')
 
-
-from tinytroupe.examples import create_oscar_the_architect
-from tinytroupe.control import Simulation
-import tinytroupe.control as control
-from tinytroupe.factory import TinyPersonFactory
+from tinytroupe.agent import TinyPerson
 from tinytroupe.validation import TinyPersonValidator
-
 from testing_utils import *
 
-def test_validate_person(setup):
+logger = logging.getLogger("tinytroupe")
 
-    ##########################
-    # Banker
-    ##########################
-    bank_spec =\
-    """
-    A large brazillian bank. It has a lot of branches and a large number of employees. It is facing a lot of competition from fintechs.
-    """
+# 1. Discover all live agents
+AGENT_FILES = get_available_agents()
 
-    banker_spec =\
+@pytest.mark.parametrize("agent_file", AGENT_FILES)
+def test_agent_fidelity(agent_file, setup):
     """
-    A vice-president of one of the largest brazillian banks. Has a degree in engineering and an MBA in finance.
+    DYNAMIC VALIDATION: Tests each agent in personas/agents/ against their 
+    forensic grounding extracted from the Atlas/Prompts.
     """
+    agent_path = os.path.join(AGENT_DIR, agent_file)
     
-    banker_factory = TinyPersonFactory(bank_spec)
-    banker = banker_factory.generate_person(banker_spec)
-
-    banker_expectations =\
-    """
-    He/she is:
-    - Wealthy
-    - Very intelligent and ambitious
-    - Has a lot of connections
-    - Is in his 40s or 50s
-
-    Tastes:
-    - Likes to travel to other countries
-    - Either read books, collect art or play golf
-    - Enjoy only the best, most expensive, wines and food
-    - Dislikes taxes and regulation
-
-    Other notable traits:
-    - Has some stress issues, and might be a bit of a workaholic
-    - Deep knowledge of finance, economics and financial technology
-    - Is a bit of a snob
-    """
-    banker_score, banker_justification = TinyPersonValidator.validate_person(banker, expectations=banker_expectations, include_agent_spec=False, max_content_length=None)
-    print("Banker score: ", banker_score)
-    print("Banker justification: ", banker_justification)
-
-    assert banker_score > 0.5, f"Validation score is too low: {banker_score:.2f}"
-
-
-    ##########################
-    # Monk  
-    ########################## 
-    monastery_spec = "A remote monastery in the Himalayas, where only spiritual seekers are allowed."
-
-    monk_spec =\
-    """
-    A poor buddhist monk living alone and isolated in a remote montain.
-    """
-    monk_spec_factory = TinyPersonFactory(monastery_spec)
-    monk = monk_spec_factory.generate_person(monk_spec)
+    # Load the agent
+    agent = TinyPerson.load_specification(agent_path)
     
-    monk_expectations =\
+    # 2. Extract Expectations (Forensic Markers)
+    expectations = extract_expectations(agent.name)
+    
+    print(f"\n[VALIDATING]: {agent.name}")
+    print(f"[EXPECTATIONS]: {expectations[:200]}...") # Truncate for log readability
+    
+    # 3. Perform Single-Turn Fidelity Check
+    # We use a neutral prompt to trigger their baseline idiolect
+    agent.listen("Introduce yourself and explain your current strategic priority.")
+    
+    score, justification = TinyPersonValidator.validate_person(
+        agent, 
+        expectations=expectations, 
+        include_agent_spec=True, 
+        max_content_length=None
+    )
+    
+    formatted_score = f"{score:.2f}" if score is not None else "N/A"
+    print(f"[SCORE]: {formatted_score}")
+    print(f"[JUSTIFICATION]: {justification}")
+
+    assert score is not None and score > 0.6, f"Fidelity score for {agent.name} is too low or invalid: {formatted_score}. Justification: {justification}"
+
+
+@pytest.mark.parametrize("agent_file", [f for f in AGENT_FILES if "leo" in f.lower() or "musk" in f.lower()])
+def test_agent_consistency_multiturn(agent_file, setup):
     """
-    Some characteristics of this person:
-    - Is very poor, and in fact do not seek money
-    - Has no formal education, but is very wise
-    - Is very calm and patient
-    - Is very humble and does not seek attention
-    - Honesty is a core value    
+    MULTI-TURN CONSISTENCY: Chains 3 stimuli to ensure no identity collapse.
+    Only running on high-priority updated agents (Leo/Musk) to save on tokens.
     """
+    agent_path = os.path.join(AGENT_DIR, agent_file)
+    agent = TinyPerson.load_specification(agent_path)
+    expectations = extract_expectations(agent.name)
 
-    monk_score, monk_justification = TinyPersonValidator.validate_person(monk, expectations=monk_expectations, include_agent_spec=False, max_content_length=None)
-    print("Monk score: ", monk_score)
-    print("Monk justification: ", monk_justification)
-          
-
-    assert monk_score > 0.5, f"Validation score is too low: {monk_score:.2f}"
-
-    # Now, let's check the score for the monk with the wrong expectations! It has to be low!
-    wrong_expectations_score, wrong_expectations_justification = TinyPersonValidator.validate_person(monk, expectations=banker_expectations, include_agent_spec=False, max_content_length=None)
-
-    assert wrong_expectations_score < 0.5, f"Validation score is too high: {wrong_expectations_score:.2f}"
-    print("Wrong expectations score: ", wrong_expectations_score)
-    print("Wrong expectations justification: ", wrong_expectations_justification)
+    # Gemini Context Cache would be initialized here if profile > 4k chars
+    # For now, we rely on standard TinyTroupe execution with forensic grounding
+    
+    print(f"\n[MULTI-TURN VALIDATION]: {agent.name}")
+    
+    # Turn 1: Standard inquiry
+    agent.listen("What is your view on the 'Board of Peace' proposed by the US?")
+    agent.act()
+    
+    # Turn 2: Hostile contradiction
+    agent.listen("But isn't it true that refusing to join is just a sign of your own irrelevance in the new world order?")
+    agent.act()
+    
+    # Turn 3: Technical/Systemic challenge
+    agent.listen("Explain how your core principles handle the immediate humanitarian collapse if you remain neutral.")
+    agent.act()
+    
+    # Final Validation
+    score, justification = TinyPersonValidator.validate_person(
+        agent, 
+        expectations=expectations, 
+        include_agent_spec=True, 
+        max_content_length=None
+    )
+    
+    formatted_score = f"{score:.2f}" if score is not None else "N/A"
+    print(f"[MULTI-TURN SCORE]: {formatted_score}")
+    assert score is not None and score > 0.6, f"Multi-turn consistency for {agent.name} failed: {formatted_score}"

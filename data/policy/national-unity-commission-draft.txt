@@ -1,0 +1,15 @@
+# DRAFT: NATIONAL UNITY COMMISSION MANDATE (2026)
+
+## PREAMBLE
+Given the state of "Informational Stalemate" following the 2024 quadrennial cycle and the subsequent legislative paralysis of 2025, this Commission is established to find a "Synthesized Protocol" for governance.
+
+## ARTICLE I: BIPARTISAN CO-DEPENDENCY (BCD)
+1.  **Metric**: Any federal expenditure exceeding $100M requires a "Unity Pulse" score of >0.70 from both the Freedom Caucus and the Progressive Collective.
+2.  **Enforcement**: BCD is enforced via Smart Contract on the Treasury Ledger.
+
+## ARTICLE II: THE NEURAL NEUTRALITY PACT
+1.  **Algorithm Custody**: The source code for "US-Gov-GPT" must be held in a hardware security module (HSM) requiring simultaneous keys from the Speaker of the House and the Senate Majority Leader.
+2.  **Data Provenance**: All federal training data must be tagged with "Ideological Provenance" to allow citizens to toggle their "Perspective Bias" (Liberty Mode vs. Equity Mode).
+
+## ARTICLE III: THE "GREAT DIVIDE" EXCEPTION
+1.  In the event of a "Total Values Divergence" where consensus is mathematically impossible, the Commission authorizes the creation of "Subjective Economic Zones" (SEZs) where different tax and social codes apply based on the citizen's "Cultural Enrollment."
