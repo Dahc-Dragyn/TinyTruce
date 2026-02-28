@@ -1,6 +1,7 @@
 import json
 import logging
 import os
+import datetime
 
 logger = logging.getLogger("tinytroupe")
 
@@ -14,8 +15,6 @@ class CostManager:
     DEFAULT_PRICING = {
         "gemini-2.5-flash-lite-preview-09-2025": {"input": 0.10, "output": 0.40, "cached": 0.025},
         "gemini-2.5-flash-lite": {"input": 0.10, "output": 0.40, "cached": 0.025},
-        "gemini-3.1-pro-preview": {"input": 2.00, "output": 12.00, "cached": 0.50},
-        "gemini-2.5-pro": {"input": 1.25, "output": 10.00, "cached": 0.3125},
         "gemini-2.0-flash-lite-001": {"input": 0.075, "output": 0.30, "cached": 0.01875}
     }
     
@@ -50,6 +49,49 @@ class CostManager:
         except Exception as e:
             logger.warning(f"Failed to load pricing JSON: {e}")
             
+    def save_run_to_history(self, scenario_name):
+        """Appends a compact summary to the JSONL log and a readable row to the Markdown ledger."""
+        doc_dir = os.path.join(os.getcwd(), "DOCUMENTS")
+        jsonl_path = os.path.join(doc_dir, "tinytruce_billing.jsonl")
+        ledger_path = os.path.join(doc_dir, "tinytruce_billing_ledger.md")
+        
+        summary = self.get_summary()
+        timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        
+        # 1. Compact JSONL (Machine readable, but lean)
+        compact_entry = {
+            "timestamp": timestamp,
+            "scenario": scenario_name,
+            "total_input": summary["total_input_tokens"],
+            "total_output": summary["total_output_tokens"],
+            "total_cached": summary["total_cached_tokens"],
+            "total_cost": summary["total_cost"]
+        }
+        
+        try:
+            with open(jsonl_path, "a", encoding="utf-8") as f:
+                f.write(json.dumps(compact_entry) + "\n")
+            logger.info(f"Compact billing saved: {jsonl_path}")
+        except Exception as e:
+            logger.warning(f"Failed to save to JSONL billing log: {e}")
+
+        # 2. Markdown Ledger (Human readable)
+        header = "| Timestamp | Scenario | Input | Output | Cached | Cost ($) |\n"
+        separator = "| :--- | :--- | :--- | :--- | :--- | :--- |\n"
+        row = f"| {timestamp} | {scenario_name} | {summary['total_input_tokens']:,} | {summary['total_output_tokens']:,} | {summary['total_cached_tokens']:,} | **${summary['total_cost']:.4f}** |\n"
+        
+        try:
+            file_exists = os.path.exists(ledger_path)
+            with open(ledger_path, "a", encoding="utf-8") as f:
+                if not file_exists:
+                    f.write("# TinyTruce Billing Ledger\n\n")
+                    f.write(header)
+                    f.write(separator)
+                f.write(row)
+            logger.info(f"Billing ledger updated: {ledger_path}")
+        except Exception as e:
+            logger.warning(f"Failed to update billing ledger: {e}")
+
     def add_usage(self, model_name, input_tokens, output_tokens, cached_tokens=0, agent_name=None, turn=None):
         """
         Record usage and calculate cost.

@@ -5,6 +5,11 @@
     "grounding_files": [
         "data/facts/amazon-debt-swap.2026.txt"
     ],
+    "grounding_payload": [
+        "data/facts/amazon-debt-swap.2026.txt",
+        "data/economics/imf-world-outlook-jan2026.txt",
+        "data/economics/potosi-protocol-2026.txt"
+    ],
     "scenario_knowledge": "Gemini: Focus on the 'Great Fracture' and the 'Sovereignty vs. Guardianship' conflict. {{AGENT_1}} must use 'Anti-Colonial Defiance' and the 'Care Narrative' of the 'Picanha' promise. {{AGENT_2}} must employ 'Existential Alarmism' and attack the 'Shadow Markets' of carbon. {{AGENT_3}} must promote 'Optimism with Footnotes,' pushing for high-premium 'Tech Removals' over 'Forest Credits.' The tone is defensive, alarmist, and ideologically fractured.",
     "dynamic_injects": [
         {

@@ -1,0 +1,27 @@
+DATE: January 25, 2026
+SUBJECT: FORENSIC FISCAL AUDIT: THE OBBBA DEFICIT PROJECTION (2025-2035)
+FROM: CONGRESSIONAL BUDGET OFFICE (CBO) / JOINT COMMITTEE ON TAXATION (JCT)
+
+### FISCAL SUMMARY: THE $3.4 TRILLION RECKONING
+1. The 10-Year Horizon: Following the July 4, 2025 enactment of the One Big Beautiful Bill Act (OBBBA), the CBO has finalized its long-term debt trajectory. The legislation is projected to increase the primary federal deficit by $3.4 trillion through 2035.
+2. Debt-to-GDP Ratio: Under current OBBBA tax architectures (permanent TCJA extensions and Section 530A seed funding), the public debt-to-GDP ratio is forecasted to hit a record-breaking 124% by the end of 2034.
+3. Interest Rates and Servicing Costs: Dynamic scoring confirms that while GDP output is boosted by 1.2% via corporate expensing, the resulting inflationary pressure and terminal rate hikes will increase "Interest on Baseline Debt" by an additional $1.1 trillion.
+
+### THE OBBBA REVENUE VOID (SCORING BREAKDOWN)
+4. Tax Title Gross Reductions: $4.5 trillion in gross tax cuts, centered on the permanent restoration of the 2017 individual rates and 100% bonus depreciation.
+5. Mitigation via Social Safety Net: The $1.4 trillion in nominal revenue offsets is derived primarily from structural reforms to Medicaid (80-hour work requirements) and SNAP (60% paperwork surge).
+6. Net Dynamic Deficit: Even accounting for "Trump Account" growth, the net deficit impact remains persistently above $2.7 trillion when excluding interest.
+
+### MACROECONOMIC VOLATILITY & SYSTEMIC RISK
+7. The "Transactional Populism" Wedge: The CBO notes that the "No Tax on Tips" ($25k cap) and "No Tax on Overtime" ($12.5k cap) provisions create a "Logic Window" of fiscal instability between 2026 and 2028.
+8. The 175 GW Grid Shortfall Link: Industrial productivity gains are being throttled by the massive capacity spike in the PJM Interconnection. If AI energy demand isn't met with "Liquid Gold" (fossil fuel) deregulation, GDP projections will drop by 0.4%, widening the deficit further.
+9. Federal Reserve Independence: The 2026 "Unitary Executive" push to challenge the Humphrey's Executor precedent has caused a 15% spike in the "Citadel Index" volatility, as global markets price in the removal of the Fed Chairman.
+
+### 2026 FISCAL REALITY METRICS
+| Metric | Baseline (Pre-OBBBA) | 2026 Reality (Post-OBBBA) |
+| :--- | :--- | :--- |
+| **Total Deficit Increase** | N/A | +$3.4 Trillion (Dynamic) |
+| **Debt-to-GDP Projection** | 98.4% | 124.0% (Terminal Point) |
+| **Federal Interest Cost** | $658B | $1.2 Trillion (Annualized) |
+| **Medicaid Savings** | N/A | $900 Billion (Structural Cut) |
+| **GDP Stimulus (Dynamic)** | Baseline | +1.2% (Projected Cycle) |

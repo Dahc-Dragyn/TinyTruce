@@ -3,6 +3,9 @@
     "initial_broadcast": "The participants gather in a virtual 'Peace Garden'—a neutral digital space for a multi-party summit. Global security frameworks are on the table.",
     "intervention": "THE UNITY FRAGMENT: An anomalous signal from deep space has been verified, forcing a sudden shift toward Global Cooperation. National interests are now secondary to human survival.",
     "grounding_files": [
+        "data/facts/world-facts.2026.txt"
+    ],
+    "grounding_payload": [
         "data/facts/world-facts.2026.txt",
         "data/policy/national-unity-commission-draft.txt"
     ],

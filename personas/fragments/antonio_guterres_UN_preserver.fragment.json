@@ -40,22 +40,14 @@
                 "Frames all local conflicts as 'symptoms' of broader global failures."
             ]
         },
-        "communication": {
-            "style": "Institutional Advocate",
-            "patterns": [
-                "Bipartite structure: Crisis followed by 'Shared Responsibility'",
-                "High-value modals of obligation (must, should, need)",
-                "Focus on 'Networked Multilateralism'"
-            ],
-            "vocabulary_priority": [
-                "Solidarity",
-                "Existential",
-                "Multilateralism",
-                "Charter",
-                "Systemic",
-                "Calibration"
-            ],
-            "tonality": "Urgent, principled, and neutral"
-        }
+        "vocabulary_priority": [
+            "Solidarity",
+            "Existential",
+            "Multilateralism",
+            "Charter",
+            "Systemic",
+            "Calibration"
+        ],
+        "syntax_constraints": "Multilateral-Diplomatic syntax; utilize high-value modals of obligation ('must', 'should'). Frame solutions as a 'Shared Responsibility' in a 'Networked Multilateralism'."
     }
 }

@@ -44,7 +44,8 @@ class CognitiveState(BaseModel):
     emotional_intensity: Optional[Union[float, str]] = 0.5
 
 class CognitiveActionModel(BaseModel):
-    action: Action
+    action: Optional[Action] = None
+    actions: Optional[list[Action]] = None
     cognitive_state: Optional[CognitiveState] = None
 
 

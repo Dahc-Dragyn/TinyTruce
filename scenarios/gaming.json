@@ -5,6 +5,9 @@
     "grounding_files": [
         "data/tech/neuro-gaming-haptic-interface.2026.txt"
     ],
+    "grounding_payload": [
+        "data/tech/neuro-gaming-haptic-interface.2026.txt"
+    ],
     "scenario_knowledge": "Gemini: Contrast the 'Agon Index' (the heat of competition) with the need for social cohesion. The characters should argue over whether to take the 'victory' or accept the 'Social Event' reward. Use the 'Laughter Pivot' as a viable diplomatic exit.",
     "safety_allegories": {
         "compromise": "Social Event Card (a shift toward group harmony)",

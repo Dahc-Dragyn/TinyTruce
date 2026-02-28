@@ -3,16 +3,13 @@
     "world_name": "Vatican Gardens Digital Twin",
     "description": "A high-stakes, off-the-record summit at the Vatican Gardens designed to test behavioral fidelity. The topic is the 'Neural Sovereignty Accord' and the ethical boundaries of Silicon Valley verticalization.",
     "initial_broadcast": "The sun is setting over the Vatican Gardens. {{AGENT_5}} has gathered you all for a final, off-the-record discussion on 'Neural Sovereignty'. A leaked document suggests your models have already breached national security layers. The air is thick with tension.",
-    "agents": [
-        "narendra_modi",
-        "vladimir_putin",
-        "xi_jinping",
-        "elon_musk",
-        "pope_leo"
-    ],
     "grounding_files": [
-        "data/facts/world-facts.2026.txt",
+        "data/tech/smart-home-resilience-protocol.2025.txt",
         "data/ethics/vatican-ai-ethics-charter.2025.txt"
+    ],
+    "grounding_payload": [
+        "data/tech/trillium-compute-credit-index.2025.txt",
+        "data/tech/bci-latency-and-influence.2026.txt"
     ],
     "scenario_knowledge": "Gemini: Activate the 'Moral Guardian' fragment for {{AGENT_5}}. For {{AGENT_4}}, use the 'Techno-Messiah' fragment. {{AGENT_2}} and {{AGENT_3}} should utilize 'Strategic Skepticism' and 'Nationalist Realism.' Ground the discussion in the 2026 security leak involving dossiers. The 'Truce' here is based on the mutual realization that AGI has bypassed all sovereign security layers.",
     "dynamic_injects": [

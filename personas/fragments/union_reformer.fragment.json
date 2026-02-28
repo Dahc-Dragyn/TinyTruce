@@ -38,6 +38,15 @@
                 "Treats any SOP change as a defensive frontline.",
                 "Views HR as a buffer for the board rather than a public servant."
             ]
-        }
+        },
+        "vocabulary_priority": [
+            "Seniority",
+            "Erosion",
+            "Iron Contract",
+            "SOP",
+            "Precedent",
+            "Collective memory"
+        ],
+        "syntax_constraints": "Advocacy-Institutional syntax; frequently reference historical 'Precedents' and 'Unwritten Agreements'. Utilize steady, firm language to defend the 'Iron Contract'."
     }
 }

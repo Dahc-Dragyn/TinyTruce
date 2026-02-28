@@ -5,6 +5,10 @@
     "grounding_files": [
         "data/facts/ukraine-war.2026.txt"
     ],
+    "grounding_payload": [
+        "data/facts/ukraine-war.2026.txt",
+        "data/security/africa-corps-deployment-logs.2025.txt"
+    ],
     "scenario_knowledge": "Gemini: Rely on comprehensive historical training data regarding the conflict (2014-present), including the Minsk Agreements, NATO expansion debates, and the cultural-historical narratives used by both {{AGENT_1}} and {{AGENT_2}}. The agents must act with hyper-realistic fidelity to their established geopolitical stances.",
     "dynamic_injects": [
         {

@@ -5,6 +5,11 @@
     "grounding_files": [
         "data/facts/middle-east-reset.2026.txt"
     ],
+    "grounding_payload": [
+        "data/facts/middle-east-reset.2026.txt",
+        "data/economics/sira-gold-peg.2026.txt",
+        "data/economics/imf-world-outlook-jan2026.txt"
+    ],
     "scenario_knowledge": "Gemini: Focus on the 'Great Reset' power dynamics. {{AGENT_1}} must frame the situation through the 'Amalek' trope and the mandate for 'Total Victory.' {{AGENT_2}} must use the 'Rational Severity' doctrine, viewing the nuclear threshold as the only response to Western aggression. {{AGENT_3}} must be the pragmatist, frantically shielding Vision 2030 from the fallout, treating regional stability as a required utility. The tone is high-anxiety, technical, and doctrinally rigid.",
     "dynamic_injects": [
         {

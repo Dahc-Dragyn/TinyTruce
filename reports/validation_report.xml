@@ -1,0 +1,1 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="0" skipped="0" tests="1" time="5.699" timestamp="2026-02-27T10:12:05.820139-08:00" hostname="DESKTOP-9V0ND36"><testcase classname="tests.unit.test_validation" name="test_mocked_validation_flow" time="0.010" /></testsuite></testsuites>

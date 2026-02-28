@@ -113,6 +113,13 @@ class EpisodicMemory(TinyMemory):
         """
         return len(self.memory)
 
+    def delete_episodes(self, start: int, end: int) -> None:
+        """
+        Deletes a range of episodes from memory.
+        """
+        if 0 <= start < end <= len(self.memory):
+            del self.memory[start:end]
+
     def retrieve(self, first_n: int, last_n: int, include_omission_info:bool=True) -> list:
         """
         Retrieves the first n and/or last n values from memory. If n is None, all values are retrieved.

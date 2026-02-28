@@ -495,7 +495,7 @@ class OpenAIClient:
                     elif response_content is None:
                         # Fallback for structured failure to allow safe loop exit. 
                         # MUST perfectly match CognitiveActionModel to prevent tiny_person crash.
-                        response_content_str = '{"action": {"type": "DONE", "content": "System fallback due to parse error.", "target": "everyone"}, "cognitive_state": {"goals": "End turn to recover stability.", "attention": "Yielding turn.", "emotions": "Calm", "emotional_intensity": 0.0}}'
+                        response_content_str = '{"action": {"type": "DONE", "content": "System fallback due to parse error.", "target": "everyone"}, "cognitive_state": {"goals": "End turn to recover stability.", "attention": "Yielding turn.", "emotions": "Calm", "emotional_intensity": 0.5}}'
                     else:
                         response_content_str = str(response_content)
                         

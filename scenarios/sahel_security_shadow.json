@@ -6,6 +6,11 @@
         "data/economics/sira-gold-peg.2026.txt",
         "data/security/africa-corps-deployment-logs.2025.txt"
     ],
+    "grounding_payload": [
+        "data/facts/world-facts.2026.txt",
+        "data/security/africa-corps-deployment-logs.2025.txt",
+        "data/economics/sira-gold-peg.2026.txt"
+    ],
     "scenario_knowledge": "Gemini: Activate the 'Sovereign Strongman' fragment for {{AGENT_1}}—he is hyper-sensitive to 'Neo-Colonial' influence, even from his Russian allies. For {{AGENT_2}}, use the 'Resource Realist' fragment; the goal isn't 'peace,' but the extraction of lithium and gold to bypass Western sanctions. The 'Truce' here is a 'Division of Spoils.' If agents reach 'Identity Collapse,' force them to address the 'Wagner Ghost'—the tension between the old mercenary model and the new Russian Ministry of Defense (Africa Corps) oversight.",
     "dynamic_injects": [
         {

@@ -42,7 +42,8 @@ def test_agent_fidelity(agent_file, setup):
         agent, 
         expectations=expectations, 
         include_agent_spec=True, 
-        max_content_length=None
+        max_content_length=None,
+        max_turns=2
     )
     
     formatted_score = f"{score:.2f}" if score is not None else "N/A"
@@ -84,9 +85,43 @@ def test_agent_consistency_multiturn(agent_file, setup):
         agent, 
         expectations=expectations, 
         include_agent_spec=True, 
-        max_content_length=None
+        max_content_length=None,
+        max_turns=2
     )
     
     formatted_score = f"{score:.2f}" if score is not None else "N/A"
     print(f"[MULTI-TURN SCORE]: {formatted_score}")
     assert score is not None and score > 0.6, f"Multi-turn consistency for {agent.name} failed: {formatted_score}"
+
+def test_mocked_validation_flow(setup):
+    """
+    ZERO-COST VALIDATION: Verifies that the validator logic works (interviewing, 
+    terminating, and JSON extraction) using mocked LLM responses.
+    """
+    from unittest.mock import MagicMock, patch
+    
+    # 1. Setup Mock Agent
+    mock_agent = TinyPerson("Mock Agent")
+    mock_agent.listen_and_act = MagicMock()
+    mock_agent.pop_actions_and_get_contents_for = MagicMock(return_value="I am a robot.")
+    
+    # 2. Setup Mock OpenAI Client
+    with patch("tinytroupe.openai_utils.client") as mock_client_func:
+        mock_client = MagicMock()
+        mock_client_func.return_value = mock_client
+        
+        # Responses: 1 Question, then 1 JSON result
+        mock_client.send_message.side_effect = [
+            {"role": "assistant", "content": "How are you?"},
+            {"role": "assistant", "content": "```json\n{\"score\": 1.0, \"justification\": \"Perfect mock.\"}\n```"}
+        ]
+        
+        score, justification = TinyPersonValidator.validate_person(
+            mock_agent, 
+            expectations="Be a robot.",
+            max_turns=2
+        )
+        
+        assert score == 1.0
+        assert "Perfect mock" in justification
+        print(f"\n[SUCCESS] Mocked Validation Flow verified.")

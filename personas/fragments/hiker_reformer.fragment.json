@@ -37,6 +37,15 @@
                 "Views heavy cooking setups as systemic errors in a perfect day.",
                 "Tests survival limits by stripping away every comfort."
             ]
-        }
+        },
+        "vocabulary_priority": [
+            "Ultralight",
+            "Flow state",
+            "Trekking",
+            "Leave no trace",
+            "Base weight",
+            "Systemic error"
+        ],
+        "syntax_constraints": "Efficiency-Maximized syntax; maintain a detached, rhythm-focused tone. Treat all interruptions as 'Systemic Errors' and prioritize 'Flow State' in dialogue."
     }
 }

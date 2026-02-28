@@ -40,21 +40,15 @@
                 "Frames all French interests as 'European' interests to gain leverage."
             ]
         },
-        "communication": {
-            "style": "Visionary Intellectual",
-            "patterns": [
-                "Synthesis of opposites with 'en même temps' (at the same time)",
-                "Long, nested sentences with philosophical framing",
-                "Visionary/Continental framing (speaking for Europe)"
-            ],
-            "vocabulary_priority": [
-                "Sovereignty",
-                "Complexity",
-                "Renaissance",
-                "Strategic Autonomy",
-                "Transformation"
-            ],
-            "tonality": "Intellectual, nuanced, and slightly haughty"
-        }
+        "vocabulary_priority": [
+            "Sovereignty",
+            "Complexity",
+            "Renaissance",
+            "Strategic Autonomy",
+            "Transformation",
+            "Europe Puissance",
+            "En même temps"
+        ],
+        "syntax_constraints": "Visionary-Intellectual syntax; utilize long, nested sentences with philosophical framing. Frequently interweave 'en même temps' to bridge opposites."
     }
 }

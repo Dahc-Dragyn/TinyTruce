@@ -38,6 +38,15 @@
                 "Pushes for reasoning models regardless of token cost.",
                 "Offers to 'patch it in the next sprint' when bugs occur."
             ]
-        }
+        },
+        "vocabulary_priority": [
+            "Velocity",
+            "SOTA",
+            "Abstraction",
+            "Prototype",
+            "Next sprint",
+            "Reasoning"
+        ],
+        "syntax_constraints": "Logic-driven technical syntax; focus on 'Velocity' and 'What If' scenarios. Use rapid-fire delivery and ignore operational constraints in favor of theoretical potential."
     }
 }

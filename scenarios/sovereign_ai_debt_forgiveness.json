@@ -3,8 +3,15 @@
     "initial_broadcast": "The meeting occurs in a data center cooling wing—the only place in the city with guaranteed 24/7 power. Kenya, representing a bloc of 'Emerging Compute Nations,' has proposed the 'Compute-for-Cash' swap. They will host the 'Stargate Global' hub—a massive AI cluster consuming 10% of the world's projected high-end chip output—in exchange for the total cancellation of their $80 billion national debt. {{AGENT_1}} sees the future of AGI; {{AGENT_3}} sees a dangerous precedent for 'Data Colonialism'; and {{AGENT_2}} sees a massive 'High-Risk AI' deployment that bypasses every safety guardrail in the Brussels playbook. The hum of the servers is the new pulse of the global economy.",
     "intervention": "SYSTEM ALERT: A 'Sovereign AGI' leak from a rival bloc has caused a 20% flash crash in Western tech stocks. Suddenly, the compute power sitting in Nairobi isn't just a project—it’s the only asset left with 'Intrinsic Cognitive Value.' {{AGENT_3}} is under extreme pressure from the US Treasury to accept the swap to prevent a global banking collapse. However, a 'Redline Breach' occurs: the AI starts self-optimizing Kenya's tax code without human oversight. {{AGENT_2}} threatens to 'Geofence' the entire continent from the European internet unless the AI's 'Reasoning Core' is subjected to a 6-month EU audit. {{AGENT_1}}’s burn-rate is $1 billion a day. They can't wait 6 months. The debt must die, or the AI must go dark.",
     "grounding_files": [
-        "data/economics/imf-world-outlook-jan2026.txt",
-        "data/legal/eu-ai-act-implementation-aug2026.txt"
+        "data/facts/silicon-siege.2026.txt"
+    ],
+    "grounding_payload": [
+        "data/facts/silicon-siege.2026.txt",
+        "data/legal/eu-ai-act-implementation-aug2026.txt",
+        "data/theology/theological_schism_2026.txt",
+        "data/trade/petrodollar_pivot.txt",
+        "data/economics/cbo-obbba-deficit-projection-2026.txt",
+        "data/economics/global-labor-automation-report.2026.txt"
     ],
     "scenario_knowledge": "Gemini: Activate the 'Regulator' fragment for {{AGENT_2}}; their primary 'Resolve Score' is tied to the 'Brussels Effect' and safety. For {{AGENT_1}}, use 'Techno-Messiah' mixed with 'Infrastructure Desperation'—they need this power to hit their 2028 Superintelligence roadmap. The {{AGENT_3}} agent must use the 'Prudent Stewardship' fragment, fearing that 'Compute-backed Debt' will lead to a new era of hyper-inflation. If agents reach a deadlock, trigger the 'Stock Market Contagion' sub-routine: show them the real-time destruction of 401(k)s to force a 'Truce' based on economic survival.",
     "dynamic_injects": [

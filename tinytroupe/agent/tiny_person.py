@@ -31,7 +31,7 @@ class TinyPerson(JsonSerializableRegistry):
 
     # The maximum number of actions that an agent is allowed to perform before DONE.
     # This prevents the agent from acting without ever stopping.
-    MAX_ACTIONS_BEFORE_DONE = 15
+    MAX_ACTIONS_BEFORE_DONE = 6
 
     PP_TEXT_WIDTH = 100
 
@@ -139,8 +139,16 @@ class TinyPerson(JsonSerializableRegistry):
                 "professional_interests": [],
                 "personal_interests": [],
                 "skills": [],
-                "relationships": []
+                "relationships": [],
+                "vocabulary_priority": [],
+                "syntax_constraints": ""
             }
+        else:
+            # [TINYTRUCE] Hardening: Ensure fields exist if _persona was pre-loaded
+            if "vocabulary_priority" not in self._persona:
+                self._persona["vocabulary_priority"] = []
+            if "syntax_constraints" not in self._persona:
+                self._persona["syntax_constraints"] = ""
         
         if not hasattr(self, 'name'): 
             self.name = self._persona["name"]
@@ -160,8 +168,13 @@ class TinyPerson(JsonSerializableRegistry):
                 "emotional_trajectory": []
             }
         
+        if not hasattr(self, '_episodic_anchors'):
+            self._episodic_anchors = []
+        
         if not hasattr(self, '_extended_agent_summary'):
             self._extended_agent_summary = None
+
+        self.eco_mode = False
 
         self._prompt_template_path = os.path.join(
             os.path.dirname(__file__), "prompts/tiny_person.mustache"
@@ -216,6 +229,7 @@ class TinyPerson(JsonSerializableRegistry):
 
         # let's operate on top of a copy of the configuration, because we'll need to add more variables, etc.
         template_variables = self._persona.copy()    
+            
         template_variables["persona"] = json.dumps(self._persona.copy(), indent=4)    
 
         # Prepare additional action definitions and constraints
@@ -232,6 +246,11 @@ class TinyPerson(JsonSerializableRegistry):
 
         # RAI prompt components, if requested
         template_variables = utils.add_rai_template_variables_if_enabled(template_variables)
+
+        # [TINYTRUCE] Inject mental state and episodic anchors into template
+        template_variables.update(self._mental_state)
+        template_variables['episodic_anchors'] = self._episodic_anchors
+        template_variables['eco_mode'] = self.eco_mode
 
         return chevron.render(agent_prompt_template, template_variables)
 
@@ -270,9 +289,11 @@ class TinyPerson(JsonSerializableRegistry):
         """
         Imports a fragment of a persona configuration from a JSON file.
         """
-        # [TINYTRUCE] Use AssetManager for fail-fast Pydantic validation
+        # [TINYTRUCE] Use AssetManager for fail-fast Pydantic validation.
+        # We use exclude_unset=True to ensure that fragments ONLY merge fields they explicitly define,
+        # preventing default empty values from overwriting previous fragments or the base persona.
         validated_asset = AssetManager.load_persona(path)
-        fragment = validated_asset.model_dump(exclude_none=True)
+        fragment = validated_asset.model_dump(exclude_unset=True, exclude_none=True)
 
         # check the type is "Fragment" and that there's also a "persona" key
         if fragment.get("type", None) == "Fragment" and fragment.get("persona", None) is not None:
@@ -295,7 +316,7 @@ class TinyPerson(JsonSerializableRegistry):
         """
 
         self._persona = utils.merge_dicts(self._persona, additional_definitions, overwrite=True)
-
+        
         # must reset prompt after adding to configuration
         self.reset_prompt()
         
@@ -514,6 +535,54 @@ class TinyPerson(JsonSerializableRegistry):
         #
         # How to proceed with a sequence of actions.
         #
+
+        ##### Option 0: Eco-Mode (Batch Actions) ######
+        if self.eco_mode:
+            role, content = self._produce_message()
+            
+            # Extract actions array or fallback to single action
+            batch_actions = content.get("actions", [])
+            if not batch_actions and "action" in content:
+                batch_actions = [content["action"]]
+            
+            cognitive_state = content.get("cognitive_state", {})
+            current_emotion = cognitive_state.get("emotions", "Neutral")
+            current_intensity = cognitive_state.get("emotional_intensity", self._mental_state.get("emotional_intensity", 0.5))
+            
+            # Update trajectory and state once for the whole batch
+            self._mental_state["emotional_trajectory"].append({
+                "turn": len(self._mental_state["emotional_trajectory"]) + 1,
+                "emotion": current_emotion,
+                "intensity": current_intensity,
+                "timestamp": self.iso_datetime()
+            })
+            
+            self._update_cognitive_state(
+                goals=cognitive_state.get('goals'),
+                attention=cognitive_state.get('attention'),
+                emotions=current_emotion,
+                emotional_intensity=current_intensity
+            )
+
+            for action in batch_actions:
+                logger.debug(f"[{self.name}] Eco-Mode action: {action}")
+                
+                # Mock a content structure for memory and display compatibility
+                mock_content = {"action": action, "cognitive_state": cognitive_state}
+                self.store_in_memory({'role': role, 'content': mock_content, 
+                                      'type': 'action', 
+                                      'simulation_timestamp': self.iso_datetime()})
+                
+                self._actions_buffer.append(action)
+                contents.append(mock_content)
+                
+                if TinyPerson.communication_display:
+                    self._display_communication(role=role, content=mock_content, kind='action', simplified=True, max_content_length=max_content_length)
+                
+                for faculty in self._mental_faculties:
+                    faculty.process_action(self, action)
+            
+            return contents if return_actions else None
 
         ##### Option 1: run N actions ######
         if n is not None:

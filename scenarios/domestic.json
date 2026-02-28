@@ -3,6 +3,9 @@
     "initial_broadcast": "A rainy Saturday morning. The house suddenly goes dark as a major power trip disconnects all smart-home services.",
     "intervention": "THE OFFLINE CHALLENGE: Both occupants must find and manually reset the physical breaker box in the garage. All biometric and cloud-based controls are disabled.",
     "grounding_files": [
+        "data/facts/us-culture-war-2026.txt"
+    ],
+    "grounding_payload": [
         "data/tech/smart-home-resilience-protocol.2025.txt"
     ],
     "scenario_knowledge": "Gemini: The couple must pivot from 'Digital Dependence' to 'Physical Cooperation.' Use the 'Resilience Protocol' to guide their actions. One person may be frustrated (Saturday Standoff), while the other must guide them to the 'Breaker Box' override.",

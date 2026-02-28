@@ -15,7 +15,7 @@ default_max_content_display_length = config["OpenAI"].getint("MAX_CONTENT_DISPLA
 class TinyPersonValidator:
 
     @staticmethod
-    def validate_person(person, expectations=None, include_agent_spec=True, max_content_length=default_max_content_display_length) -> tuple[float, str]:
+    def validate_person(person, expectations=None, include_agent_spec=True, max_content_length=default_max_content_display_length, max_turns=5) -> tuple[float, str]:
         """
         Validate a TinyPerson instance using OpenAI's LLM.
 
@@ -28,6 +28,7 @@ class TinyPersonValidator:
             expectations (str, optional): The expectations to be used in the validation process. Defaults to None.
             include_agent_spec (bool, optional): Whether to include the agent specification in the prompt. Defaults to False.
             max_content_length (int, optional): The maximum length of the content to be displayed when rendering the conversation.
+            max_turns (int, optional): The maximum number of questions to ask before forcing a score.
 
         Returns:
             float: The confidence score of the validation process (0.0 to 1.0), or None if the validation process fails.
@@ -45,7 +46,7 @@ class TinyPersonValidator:
 
         # use dedent
         import textwrap
-        user_prompt = textwrap.dedent(\
+        user_prompt = textwrap.dedent(
         """
         Now, based on the following characteristics of the person being interviewed, and following the rules given previously, 
         create your questions and interview the person. Good luck!
@@ -71,11 +72,12 @@ class TinyPersonValidator:
         # What string to look for to terminate the conversation
         termination_mark = "```json"
 
+        turn_count = 0
         while message is not None and message.get("content") is not None and not (termination_mark in message["content"]):
             # Appending the questions to the current messages
             questions = message["content"]
             current_messages.append({"role": message["role"], "content": questions})
-            logger.info(f"Question validation:\n{questions}")
+            logger.info(f"Question validation (Turn {turn_count+1}/{max_turns}):\n{questions}")
 
             # Asking the questions to the person
             person.listen_and_act(questions, max_content_length=max_content_length)
@@ -84,13 +86,24 @@ class TinyPersonValidator:
 
             # Appending the responses to the current conversation and checking the next message
             current_messages.append({"role": "user", "content": responses})
+            
+            turn_count += 1
+            if turn_count >= max_turns:
+                logger.warning(f"Validation reached max_turns ({max_turns}). Forcing score extraction.")
+                # Force the LLM to provide the final JSON score
+                current_messages.append({"role": "user", "content": "You have reached your question limit. Provide your final validation score and justification in the required JSON format NOW."})
+            
             message = openai_utils.client().send_message(current_messages)
 
         if message is not None:
             json_content = utils.extract_json(message['content'])
+            if not json_content:
+                logger.error(f"Failed to extract JSON from validation response: {message['content']}")
+                return None, None
+                
             # read score and justification
-            score = float(json_content["score"])
-            justification = json_content["justification"]
+            score = float(json_content.get("score", 0))
+            justification = json_content.get("justification", "No justification provided.")
             logger.info(f"Validation score: {score:.2f}; Justification: {justification}")
             
             return score, justification

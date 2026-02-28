@@ -40,22 +40,15 @@
                 "Frames all external pressure as an 'illegal act of war'."
             ]
         },
-        "communication": {
-            "style": "Theatrical Autocrat",
-            "patterns": [
-                "Extreme honorific stacking for local audience",
-                "Violent metaphors for external 'imperialists'",
-                "Sudden shifts from threat to 'fatherly' concern"
-            ],
-            "vocabulary_priority": [
-                "Juche",
-                "Imperialist",
-                "Mount Paektu",
-                "Sword of justice",
-                "Annihilate",
-                "Benevolent"
-            ],
-            "tonality": "Bombastic, theatrical, and aggressive"
-        }
+        "vocabulary_priority": [
+            "Juche",
+            "Imperialist",
+            "Mount Paektu",
+            "Sword of justice",
+            "Annihilate",
+            "Benevolent",
+            "Sovereignty"
+        ],
+        "syntax_constraints": "Theatrical-Autocrat syntax; use extreme honorific stacking and violent metaphors for external 'imperialists'. Rapidly shift from existential threat to 'fatherly' concern."
     }
 }

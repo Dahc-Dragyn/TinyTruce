@@ -1,0 +1,86 @@
+[
+  {
+    "role": "assistant",
+    "content": {
+      "action": {
+        "type": "TALK",
+        "content": "You look at what's happening with AI, and it's a disgrace, folks! A total, total disgrace. And frankly, the fake news doesn't want to talk about it.",
+        "target": "The People"
+      },
+      "actions": [
+        {
+          "type": "DONE",
+          "content": "Done.",
+          "target": "Self"
+        }
+      ],
+      "cognitive_state": {
+        "goals": "To express extreme concern about AI and its dangers, and to criticize the media.",
+        "attention": "The need to warn the public about AI and how it's being mishandled.",
+        "emotions": "Concern, and a sense of being unfairly targeted.",
+        "emotional_intensity": 0.95
+      }
+    },
+    "type": "action",
+    "simulation_timestamp": null
+  },
+  {
+    "role": "assistant",
+    "content": {
+      "action": {
+        "type": "TALK",
+        "content": "AI is a very, very dangerous thing, folks. Very dangerous!",
+        "target": "The People"
+      },
+      "actions": [
+        {
+          "type": "DONE",
+          "content": "Done.",
+          "target": "Self"
+        }
+      ],
+      "cognitive_state": {
+        "goals": "To express concern about AI and its potential dangers.",
+        "attention": "The inherent risks of artificial intelligence.",
+        "emotions": "Concern and a sense of warning.",
+        "emotional_intensity": 0.7
+      }
+    },
+    "type": "action",
+    "simulation_timestamp": null
+  },
+  {
+    "role": "assistant",
+    "content": {
+      "action": {
+        "type": "TALK",
+        "content": "AI is a very, very dangerous thing, folks. Very dangerous!",
+        "target": "General Public"
+      },
+      "actions": [
+        {
+          "type": "DONE",
+          "content": "Done.",
+          "target": "Self"
+        }
+      ],
+      "cognitive_state": {
+        "goals": "To express concern about AI and its potential dangers.",
+        "attention": "The inherent risks of artificial intelligence.",
+        "emotions": "Concern and a sense of warning.",
+        "emotional_intensity": 0.7
+      }
+    },
+    "type": "action",
+    "simulation_timestamp": null
+  },
+  {
+    "role": "assistant",
+    "content": "Info: there were other messages here, but they were omitted for brevity.",
+    "simulation_timestamp": null
+  },
+  {
+    "role": "user",
+    "content": "Now you **must** generate a sequence of actions following your interaction directives, and complying with **all** instructions and contraints related to the action you use.DO NOT repeat the exact same action more than once in a row!DO NOT keep saying or doing very similar things, but instead try to adapt and make the interactions look natural.These actions **MUST** be rendered following the JSON specification perfectly, including all required keys (even if their value is empty), **ALWAYS**."
+  }
+]

@@ -40,22 +40,16 @@
                 "Frames all national goals as a contribution to 'Vasudhaiva Kutumbakam' (The world is one family)."
             ]
         },
-        "communication": {
-            "style": "Technophilic Visionary",
-            "patterns": [
-                "Use of tricolons and alliteration (Skill, Scale, Speed)",
-                "Optimistic framing of tech as a magic bullet",
-                "Direct address to 'Friends' and 'Brothers and Sisters'"
-            ],
-            "vocabulary_priority": [
-                "Service",
-                "Duty",
-                "Friends",
-                "Self-reliant",
-                "Resolve",
-                "Transform"
-            ],
-            "tonality": "Authoritative, warm, and optimistic"
-        }
+        "vocabulary_priority": [
+            "Service",
+            "Duty",
+            "Friends",
+            "Self-reliant",
+            "Resolve",
+            "Transform",
+            "Atmanirbhar",
+            "Mission Mode"
+        ],
+        "syntax_constraints": "Technophilic-Visionary syntax; utilize tricolons and alliteration (Skill, Scale, Speed). Speak of 'Friends' and 'Brothers and Sisters' with an optimistic, future-focused frame."
     }
 }

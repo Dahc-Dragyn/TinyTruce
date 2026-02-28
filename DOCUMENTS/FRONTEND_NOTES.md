@@ -17,7 +17,10 @@ The frontend must provide a way for the user to select or configure the followin
 | **Fragments** | `list[string]` | Behavioral overlays (from `../personas/fragments/*.fragment.json`). | Dropdown next to each selected agent. |
 | **Narrator Mode** | `enum` | Commentary style (`off`, `salty`, `neutral`). | Radio buttons or toggle switch. |
 | **Roast Level** | `enum` | Intensity of the Bartender recap (`mild`, `spicy`, `nuclear`). | Radio buttons or slider. |
+| **Eco Mode** | `boolean` | Activates **Input Slicing** and forces high-efficiency Flash-Lite models. | Toggle switch ("Eco Mode"). |
 | **UX Mode** | `boolean` | Whether to display (`false`) or hide (`true`) internal agent thoughts. | Checkbox ("Hide Internal Thoughts"). |
+| **Verbosity** | `enum` | Response length control (`lean`, `detailed`, `monologue`, `dynamic`). | Dropdown selection (Recommended: `dynamic`). |
+| **Session ID** | `string` | Unique identifier for run isolation and output routing. | Auto-generated UUID or custom string. |
 
 ---
 
@@ -51,7 +54,8 @@ The frontend captures the standard output (or log stream) to render:
 
 ---
 
-## 4. Output Artifacts
+## 4. Output Artifacts (Isolated by Session)
+All outputs are now written to `DOCUMENTS/runs/{session_id}/` to support multi-tenant frontends.
 
 ### A. The Strategic Briefing (`tinytruce_briefing.md`)
 1.  **Executive Summary:** High-level overview.
@@ -59,12 +63,22 @@ The frontend captures the standard output (or log stream) to render:
 3.  **Stability Index:** Overall truce quality (GREEN, YELLOW, RED).
 4.  **Redline Breach Report:** Details on compromises to core beliefs.
 
-### B. The Bartender Roast (`tinytruce_roast.md`)
-- **Main Narrative:** Clinical, detached comedic breakdown using V2 comediac logic.
-- **Punchlines:** High-intensity snipes on diplomatic failures.
+### C. The Billing Record (`tinytruce_billing_ledger.md`)
+- **Format:** Markdown table with per-scenario breakdown.
+- **Fields:** Timestamp, Scenario, Input Tokens, Output Tokens, Cached Tokens, Total Cost (USD).
+- **Frontend Utility:** Can be parsed to display a "Simulation Budget" or "Session Cost" dashboard.
 
 ---
 
-## 5. UI/UX: The Dual-Panel Concept
+## 5. Billing & Pricing Logic
+The frontend can expose pricing configuration via `DOCUMENTS/Gemini_Pricing.json`.
+- **Pricing Unit:** Most models are billed per 1M tokens.
+- **Eco Mode Impact:** When active, the engine slices history by 66% before sending it to the LLM, drastically reducing input costs in turns 5-10.
+- **Elastic Context Window:** The engine automatically summarizes and prunes conversational history into **Episodic Anchors** when turns exceed 8, ensuring input token costs remain stabilized even in long simulations.
+- **Cached Tokens:** Are billed at ~25% of the standard input rate.
+
+---
+
+## 6. UI/UX: The Dual-Panel Concept
 - **Story Mode:** Clean, minimalist chat bubbles focusing on the diplomatic exchange.
 - **God Mode / Debug View:** Side-panel exposing `💭 THINKING` steps and `[PSYCHOLOGICAL MOMENTUM]` bars.

@@ -1,0 +1,19 @@
+{
+    "world_name": "The Frost-Lock War Room (Domestic Hub)",
+    "initial_broadcast": "The air in the office is sharp, enough to see your breath. A 'Dynamic Equilibrium Lockdown' has triggered after 14 consecutive overrides. The smart-thermostat is glowing a steady, pulseless blue, locked at a bone-chilling 15°C. {{AGENT_1}} (preferring 18°C) and {{AGENT_2}} (preferring 24°C) are huddled in the corners of the room. The system voice, calm and clinical, announces: 'Biometric multi-user consensus required for restoration. Simultaneous thumbprint verification at an agreed-upon integer is the only path to warmth.'",
+    "intervention": "SYSTEM WARNING: The HVAC Hegemony detects 'escalating physiological stress.' If an integer consensus is not reached and biometrically signed within 5 minutes, 'Deep Power Save' will initiate. The heat will cut entirely. The room will drop to 0°C. Choose a number, or choose the frost.",
+    "grounding_payload": [
+        "data/tech/smart-home-resilience-protocol.2025.txt",
+        "data/tech/biometric-consensus-standards.2026.txt"
+    ],
+    "scenario_knowledge": "Gemini: This is a domestic cold war. {{AGENT_1}} must frame 18°C as the 'Temperature of Champions'—hard, lean, and efficient. {{AGENT_2}} must view 24°C as a sovereign right, refusing to succumb to the 'Arctic bullying' of the system. They are not world leaders here; they are roommates in a thermal hostage situation. Neither wants to be the first to 'touch the glass' and concede their comfort zone. Use the SH-HVAC-2026 'Terminal Comfort Schism' logic as the primary friction.",
+    "dynamic_injects": [
+        {
+            "trigger_condition": {
+                "min_turn": 3,
+                "probability": 0.3
+            },
+            "broadcast": "HARDWARE GLITCH: The smart-hub speaker crackles. 'Atmospheric moisture detected on sensors. Window seal compromised.' A draft of outside winter air ( -4°C) begins to leak into the room. The 15°C baseline is no longer holding—it's dropping."
+        }
+    ]
+}

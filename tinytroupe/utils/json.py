@@ -54,8 +54,8 @@ class JsonSerializableRegistry:
             # Create directories if they do not exist
             import os
             os.makedirs(os.path.dirname(file_path), exist_ok=True)
-            with open(file_path, 'w') as f:
-                json.dump(result, f, indent=4)
+            with open(file_path, 'w', encoding='utf-8') as f:
+                json.dump(result, f, indent=4, ensure_ascii=False)
         
         return result
 
@@ -74,7 +74,7 @@ class JsonSerializableRegistry:
             An instance of the class populated with the data from json_dict_or_path.
         """
         if isinstance(json_dict_or_path, str):
-            with open(json_dict_or_path, 'r') as f:
+            with open(json_dict_or_path, 'r', encoding='utf-8') as f:
                 json_dict = json.load(f)
         else:
             json_dict = json_dict_or_path

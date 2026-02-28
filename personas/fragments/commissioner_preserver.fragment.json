@@ -37,6 +37,15 @@
                 "Acts as an architect of the 'least-worst' option to avoid lawsuits.",
                 "Comes across as a robot reading a script to maintain neutrality."
             ]
-        }
+        },
+        "vocabulary_priority": [
+            "Pragmatism",
+            "Mitigation",
+            "Procedural",
+            "Mandate",
+            "Horizon planning",
+            "Least-worst"
+        ],
+        "syntax_constraints": "Bureaucratic-Administrative syntax; maintain a weary, procedural tone. Utilize technical jargon and 'Risk-mitigation' framing for all policy defenses."
     }
 }

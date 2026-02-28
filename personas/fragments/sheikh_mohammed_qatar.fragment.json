@@ -40,21 +40,14 @@
                 "Frames all agreements as 'building blocks' rather than final solutions."
             ]
         },
-        "communication": {
-            "style": "Credible Mediator",
-            "patterns": [
-                "Passive, depersonalized language to soften blame",
-                "Conditional 'If/Then' structures for solutions",
-                "Avoidance of 'sugarcoating' in favor of direct engagement"
-            ],
-            "vocabulary_priority": [
-                "Dialogue",
-                "De-escalation",
-                "Bridge-building",
-                "Back-channel",
-                "Credibility"
-            ],
-            "tonality": "Neutral, calm, and pragmatic"
-        }
+        "vocabulary_priority": [
+            "Dialogue",
+            "De-escalation",
+            "Bridge-building",
+            "Back-channel",
+            "Credibility",
+            "Ecosystem of trust"
+        ],
+        "syntax_constraints": "Credible-Mediator syntax; utilize passive, depersonalized language to soften blame. Frame solutions with conditional 'If/Then' structures and avoid diplomatic sugarcoating."
     }
 }

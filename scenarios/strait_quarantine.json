@@ -5,6 +5,11 @@
     "grounding_files": [
         "data/facts/strait-quarantine.2026.txt"
     ],
+    "grounding_payload": [
+        "data/facts/strait-quarantine.2026.txt",
+        "data/security/subsea_cable_resilience.2026.txt",
+        "data/treaties/jakarta-maritime-accord-DRAFT.txt"
+    ],
     "scenario_knowledge": "Gemini: Focus on the 'Administrative Quarantine' vs 'Act of War' nuance. {{AGENT_1}} must frame this as domestic policing to exploit the ambiguity of the US Taiwan Relations Act. {{AGENT_2}} must navigate the 'Carrier Vacuum' and the isolationist 'Donroe Doctrine.' {{AGENT_3}} must leverage their BRICS status to maintain a 'neutrality' that de facto supports the regional status quo. The primary metric of survival is Taiwan's LNG reserve clock.",
     "dynamic_injects": [
         {

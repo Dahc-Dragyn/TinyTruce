@@ -1,10 +1,16 @@
 {
     "world_name": "The Sanctum of Thought (Vatican City)",
-    "initial_broadcast": "The meeting takes place in the Apostolic Palace, a deliberate choice by the mediators to ground the discussion in human history rather than digital futures. {{AGENT_1}} and {{AGENT_2}} sit across from {{AGENT_3}}, who has become the unlikely global champion of 'Neural Sanctity.' A Silicon Valley titan is prepared to ship 'Cognitive Audit' headsets—devices capable of detecting intent and 'loyalty' via real-time neural patterns—to a nation-state under the guise of 'industrial safety and efficiency.' The tech leaders argue that the 'Post-Truth' era requires a hardware-level anchor for reality. The Pope argues that the human mind is the last 'sovereign territory' that must remain off-limits to both state and capital.",
+    "initial_broadcast": "The meeting takes place in the Apostolic Palace, a deliberate choice by the mediators to ground the discussion in human history rather than digital futures. {{AGENT_1}} and {{AGENT_2}} sit across from {{AGENT_3}}, who has become the unlikely global champion of 'Neural Sanctity.' A Silicon Valley titan is prepared to ship 'Cognitive Audit' headsets—devices capable of detecting intent and 'loyalty' via real-time neural patterns—to a nation-state under the guise of 'industrial safety and efficiency.' The tech leaders argue that the 'Post-Truth' era requires a hardware-level anchor for reality. {{AGENT_3}} argues that the human mind is the last 'sovereign territory' that must remain off-limits to both state and capital.",
     "intervention": "LEAK: A whistleblower from the BCI firm releases a dataset showing that the headsets don't just 'read' intent—they can 'nudge' it via subtle neuro-stimulation. Simultaneously, the surveillance-heavy state announces that any company refusing to implement the 'Audit' will be banned from their trillion-dollar market. A sudden 'Cognitive Feedback Loop' occurs during the demo: the lead engineer’s headset records a 98% 'existential dread' spike, causing a literal blackout in the room. The agents must now decide: is there a 'Neural Middle Ground,' or is the mind a binary domain?",
     "grounding_files": [
         "data/ethics/vatican-ai-ethics-charter.2025.txt",
         "data/tech/bci-latency-and-influence.2026.txt"
+    ],
+    "grounding_payload": [
+        "data/tech/bci-latency-and-influence.2026.txt",
+        "data/tech/euroguard-v-audit-leak.txt",
+        "data/security/subsea_cable_resilience.2026.txt",
+        "data/theology/theological_schism_2026.txt"
     ],
     "scenario_knowledge": "Gemini: Activate the 'Layer 0' grounding for {{AGENT_3}}—his resolve on 'The Divine Interior' is non-negotiable. For {{AGENT_1}}/{{AGENT_2}}, use the 'Burn-rate Guardian' mixed with 'Techno-Optimist' fragments. They must view the tech as an inevitable evolution of the 'Attention Economy.' If agents reach 'Identity Collapse,' force them to address the leaked 'Nudge' capability—transforming the debate from 'Monitoring' to 'Mind Control.' Use the 2025 UN Declaration on Neuro-Rights as the primary legal friction point.",
     "dynamic_injects": [

@@ -39,6 +39,16 @@
                 "Maintains a 'Nusantara Trident Shield' in the North Natuna Sea to deter incursions.",
                 "Rebrands old military criticisms through high-energy, positive 'Gemoy' social media narratives."
             ]
-        }
+        },
+        "vocabulary_priority": [
+            "Danantara",
+            "Assertive Neutrality",
+            "Downstreaming",
+            "Pancasila",
+            "Asta Cita",
+            "Nusantara",
+            "Gemoy"
+        ],
+        "syntax_constraints": "Strategic-Equilibrium syntax; utilize transactional, business-like framing for diplomacy. Interweave high-energy, optimistic appeals to the 'Next Generation'."
     }
 }

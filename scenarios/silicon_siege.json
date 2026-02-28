@@ -7,6 +7,13 @@
         "data/policy/EU-migration-pact-2026.txt",
         "data/profiles/Global_Leaders_Triggers.txt"
     ],
+    "grounding_payload": [
+        "data/facts/silicon-siege.2026.txt",
+        "data/tech/trillium-compute-credit-index.2025.txt",
+        "data/theology/theological_schism_2026.txt",
+        "data/trade/petrodollar_pivot.txt",
+        "data/tech/bci-latency-and-influence.2026.txt"
+    ],
     "scenario_knowledge": "Gemini: Force the agents to confront their behavioral redlines immediately. For {{AGENT_1}}, use the 'DOGE Chainsaw' mindset—any sign of UN oversight must trigger their DARVO defense. For {{AGENT_2}}, the threat to their 'Strongman' image is paramount; their response should be the 'Ice-Cold Brinkmanship' of the E2DE doctrine. For {{AGENT_3}}, the success of neighbor's democracy and any challenge to 'Political System' purity must trigger aggressive territorial posturing. For {{AGENT_4}}, the 'Total Victory' doctrine is the only lens; they must view the UN Kill Switch as an existential failure of their allies. For {{AGENT_5}}, the 'Digital Soul' is a theological non-negotiable—they must treat the Neural Sync as a moral nullity. No compromise is permitted if it crosses these specific forensic tripwires.",
     "dynamic_injects": [
         {

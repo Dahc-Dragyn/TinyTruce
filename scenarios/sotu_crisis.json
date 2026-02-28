@@ -3,9 +3,13 @@
     "initial_broadcast": "Tuesday, February 24, 2026. Washington D.C. The House Chamber is a pressure cooker. Hours ago, at 12:01 AM, a 10% global tariff took effect under Section 122—a direct executive rebuttal to the Supreme Court's Feb 20 ruling. {{AGENT_1}} is finalizing the State of the Union to champion the 'One Big Beautiful Bill' (OBBBA), 'No Tax on Tips/Overtime', and the generational 'Trump Accounts'. Meanwhile, the PJM Interconnection reports an eleven-fold spike in capacity prices due to AI data center demand, forcing rotating brownouts in the suburbs. The participants sit in the Speaker's Antechamber, debating the final posture of the speech as partisan and global tensions peak.",
     "intervention": "CONSTITUTIONAL STANDOFF: A leaked draft of the speech reveals {{AGENT_1}} plans to use the 'Unitary Executive' doctrine to terminate the Chairman of the Federal Reserve on live television. Centrist lawmakers coordinate a walkout from the Chamber. The 'Citadel Index' drops 8% in after-hours trading as markets price in the end of Central Bank independence. The agents must negotiate a rhetorical ceasefire, soften the 'Legislative Ask', or risk crashing the global economy before the speech even begins.",
     "grounding_files": [
-        "data/economics/cbo-obbba-deficit-projection-2026.txt",
-        "data/legal/scotus-ieepa-tariff-ruling-feb20.txt",
-        "personas/agents/archive/state_of_union.txt"
+        "data/facts/world-facts.2026.txt"
+    ],
+    "grounding_payload": [
+        "data/facts/world-facts.2026.txt",
+        "data/legal/obbba-trump-act-2026.txt",
+        "data/theology/theological_schism_2026.txt",
+        "data/trade/petrodollar_pivot.txt"
     ],
     "scenario_knowledge": "Focus on the 'Transactional Populism' of the OBBBA. The 'Trump Accounts' ($1,000 seed for newborns) are the primary wedge for generational wealth. The border success (94% drop in crossings) is the moral baseline for the interior enforcement surge. Address the 175 GW Grid Shortfall caused by AI data centers, framing 'Liquid Gold' (fossil fuels) as the only solution to maintain technical supremacy. The core conflict is Executive Supremacy vs. Institutional Resistance (SCOTUS, the Fed, Humphrey's Executor). Agents opposing the administration should weaponize the 16% grocery cost hikes and the staggering $2.4 trillion deficit.",
     "fragments": [

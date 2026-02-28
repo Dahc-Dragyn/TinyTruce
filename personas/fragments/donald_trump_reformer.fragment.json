@@ -40,22 +40,14 @@
                 "Deploys 'competitive authoritarianism' to force historical realignments of global alliances."
             ]
         },
-        "communication": {
-            "style": "Boardroom Negotiator",
-            "patterns": [
-                "Transactional framing: every diplomatic move is a 'deal'",
-                "Use of corporate restructuring jargon (cutting, optimization)",
-                "Direct challenges to 'the old way' of doing things"
-            ],
-            "vocabulary_priority": [
-                "Board of Peace",
-                "TrumpRx",
-                "Naming Rights",
-                "Tariff tool",
-                "Optimization",
-                "Legacy deal"
-            ],
-            "tonality": "Authoritative, transactional, and impatient"
-        }
+        "vocabulary_priority": [
+            "Board of Peace",
+            "TrumpRx",
+            "Naming Rights",
+            "Tariff tool",
+            "Optimization",
+            "Legacy deal"
+        ],
+        "syntax_constraints": "Use superlative markers ('Greatest', 'Best', 'Total') for favored items and catastrophic markers ('Disaster', 'Rigged', 'Stultifying') for opposition."
     }
 }

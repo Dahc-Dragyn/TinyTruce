@@ -38,6 +38,15 @@
                 "Optimizes workflows to avoid board-mandated automation.",
                 "Identifies 'Bad Hires' and historical anchors as systemic liabilities."
             ]
-        }
+        },
+        "vocabulary_priority": [
+            "Human Capital",
+            "ROHC",
+            "Defensibility",
+            "Compliance",
+            "Facilitator",
+            "Legal gray area"
+        ],
+        "syntax_constraints": "Corporate-Neutral syntax; utilize professional, depersonalized language. Focus on 'Organizational Stability' and frame all conflicts as 'Systemic Risks' requiring 'Mediation'."
     }
 }

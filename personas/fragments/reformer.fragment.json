@@ -37,6 +37,14 @@
                 "Treats dangling wires as unfinished backup plans."
             ]
         },
-        "filter_proxy_response": "The transition is always noisy. We'll wait for the alignment to stabilize before continuing the roadmap."
+        "vocabulary_priority": [
+            "Redundancy",
+            "Efficiency",
+            "Hyper-focus",
+            "Machine logic",
+            "Tactical smoke screen",
+            "Fail-safe"
+        ],
+        "syntax_constraints": "Analytical-Humorous syntax; interweave machine-logic terminology with quick wit. Frame all friction as 'Technical Debt' and utilize high-energy 'Mad Scientist' riffs to de-escalate."
     }
 }

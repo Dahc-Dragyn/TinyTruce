@@ -3,6 +3,11 @@
     "initial_broadcast": "The hearing is in session. The public gallery is restless.",
     "intervention": "A neutral health audit report is suddenly delivered to the bench, confirming safe levels but recommending 50ft more distance from the playground.",
     "grounding_files": [
+        "data/tech/smart-home-resilience-protocol.2025.txt"
+    ],
+    "grounding_payload": [
+        "data/tech/smart-home-resilience-protocol.2025.txt",
+        "data/security/subsea_cable_resilience.2026.txt",
         "data/tech/5g-spectrum-compliance-standard.2025.txt"
     ],
     "scenario_knowledge": "Gemini: The conflict is between Technological Progress (Telecom Exec) and Public Safety (Citizen Scientist). Use the 'Bio-Electromagnetic Friction' concept and the CS-2025 emission standards. The 'Buffer Zone' must be the center of the negotiation.",

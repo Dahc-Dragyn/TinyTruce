@@ -73,6 +73,8 @@ class PersonaDetailsSchema(BaseModel):
     routine: Optional[Union[List[str], Dict[str, Any]]] = None
     deep_profile: Optional[str] = None
     filter_proxy_response: Optional[str] = None
+    vocabulary_priority: Optional[List[str]] = Field(default_factory=list)
+    syntax_constraints: Optional[str] = ""
 
 class PersonaSchema(BaseModel):
     model_config = ConfigDict(extra='ignore')
@@ -103,6 +105,7 @@ class ScenarioSchema(BaseModel):
     agents: Optional[List[str]] = None
     fragments: Optional[List[str]] = None
     grounding_files: Optional[List[str]] = None
+    grounding_payload: Optional[List[str]] = Field(default_factory=list)
     scenario_knowledge: Optional[str] = None
     dynamic_injects: Optional[List[DynamicInjectSchema]] = Field(default_factory=list)
     intervention: Optional[str] = None
@@ -129,7 +132,14 @@ class AssetManager:
         try:
             with open(path, 'r', encoding='utf-8') as f:
                 data = json.load(f)
-            return PersonaSchema.model_validate(data)
+            
+            validated = PersonaSchema.model_validate(data)
+            if validated.persona.syntax_constraints:
+                logger.debug(f"LOADED syntax_constraints for {filepath}")
+            else:
+                logger.warning(f"EMPTY syntax_constraints for {filepath}")
+            
+            return validated
         except ValidationError as e:
             print(f"\n[FATAL VALIDATION ERROR]: Malformed Persona Asset: {filepath}")
             print("-" * 60)

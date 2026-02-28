@@ -36,6 +36,15 @@
                 "Drafts and enforces 'Domestic Treaties' (e.g., 48-hour hardware rule).",
                 "Views misplaced circuit boards as syntax errors crashing internal creative flow."
             ]
-        }
+        },
+        "vocabulary_priority": [
+            "Bandwidth",
+            "Shared manuscript",
+            "Architect",
+            "Intentionality",
+            "Governance",
+            "Vandalism"
+        ],
+        "syntax_constraints": "Ordered-Aesthetic syntax; maintain a calm, precise, and slightly detached tone. Utilize literary metaphors ('manuscript', 'editor') and frame all noise as 'Syntax Errors'."
     }
 }

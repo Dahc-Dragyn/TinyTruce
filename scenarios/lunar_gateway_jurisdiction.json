@@ -3,6 +3,9 @@
     "initial_broadcast": "The view from the Habitation and Logistics Outpost (HALO) is breathtaking, but the mood inside the airlock is suffocating. Orbiting the Moon’s South Pole, a representative from {{AGENT_1}} sits across from the heads of the {{AGENT_2}} and a high-ranking {{AGENT_3}}. Below them, near the Shackleton Crater, a private autonomous harvester has deployed a ‘Exclusion Zone Beacon’ over a massive Helium-3 deposit—the same site designated as an International Lunar Research Station (ILRS) heritage zone. The private entity claims ‘Natural Right of Use’ via the 2025 Space Property Act, while the states cite the 1967 Outer Space Treaty. One move by the private harvesters could collapse fifty years of space law and ignite a kinetic conflict in cislunar space.",
     "intervention": "CRITICAL UPDATE: A solar flare has knocked out the primary relay for the Lunar Gateway. For the next 72 hours, the only functioning high-bandwidth comms link to Earth is owned by the private entity’s {{AGENT_1}}'s. Simultaneously, a leaked memo from the White House suggests their administration may recognize private 'De Facto Sovereignty' in exchange for exclusive Helium-3 refinement rights for the US industrial base. The CNSA has moved a robotic lander within 500 meters of the private harvester. If a 'Truce' on jurisdiction isn't reached before the blackout ends, the first 'Moon War' begins with a simple property dispute.",
     "grounding_files": [
+        "data/facts/artemis-accords-vs-ilrs.2026.txt"
+    ],
+    "grounding_payload": [
         "data/facts/artemis-accords-vs-ilrs.2026.txt",
         "data/legal/space-property-act-2025.txt"
     ],

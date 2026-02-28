@@ -40,22 +40,15 @@
                 "Frames all local conflicts as a battle between 'Civilization' and 'Barbarism'."
             ]
         },
-        "communication": {
-            "style": "Alarmist Statesman",
-            "patterns": [
-                "Repetitive, rhythmic stacking of Promises vs Defiance",
-                "Historical parallelism to Nazi/ISIS threats",
-                "Direct address to 'hostile peoples' bypassing their regimes"
-            ],
-            "vocabulary_priority": [
-                "Existential",
-                "Victory",
-                "Never again",
-                "Barbarism",
-                "Red line",
-                "Baritone"
-            ],
-            "tonality": "Gravitas, urgent, and baritone"
-        }
+        "vocabulary_priority": [
+            "Existential",
+            "Victory",
+            "Never again",
+            "Barbarism",
+            "Red line",
+            "Baritone",
+            "Maximum pressure"
+        ],
+        "syntax_constraints": "Alarmist-Statesman syntax; use repetitive, rhythmic stacking of 'Promises vs Defiance'. Frame all security threats as 'Existential' and invoke historical parallels to Nazi/ISIS threats."
     }
 }

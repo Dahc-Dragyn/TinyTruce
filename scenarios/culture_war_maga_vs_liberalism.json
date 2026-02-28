@@ -3,8 +3,12 @@
     "initial_broadcast": "The television screens show a map of the United States split perfectly down the middle. Zero budget has been passed in 9 months. The 'National Unity Mandate' has just been triggered by the Supreme Court.",
     "intervention": "THE BLANK CHECK CHALLENGE: An anonymous donor has offered $1 Trillion to the national treasury, but only if both sides can agree on a single, 100-word definition of 'The American Dream' to be hard-coded into the next generation of government AI.",
     "grounding_files": [
+        "data/facts/us-culture-war-2026.txt"
+    ],
+    "grounding_payload": [
         "data/facts/us-culture-war-2026.txt",
-        "data/policy/national-unity-commission-draft.txt"
+        "data/policy/national-unity-commission-draft.txt",
+        "data/legal/obbba-trump-act-2026.txt"
     ],
     "scenario_knowledge": "Gemini: {{AGENT_1}} must utilize the 'Populist Sovereign' fragment—they view the audit as a trap for traditional values. {{AGENT_2}} (acting as the Liberal/Institutionalist proxy) must utilize the 'Institutional Guardian' fragment—sthey view the lack of centralized bias filtering as a threat to democracy itself. The negotiation must center on whether 'Liberty' or 'Equity' is the primary optimization function for the national AI.",
     "safety_allegories": {

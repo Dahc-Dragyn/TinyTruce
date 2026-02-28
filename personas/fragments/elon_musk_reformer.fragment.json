@@ -40,22 +40,11 @@
                 "Framing: identifies the physics-based 'bottleneck' in any dispute."
             ]
         },
-        "communication": {
-            "style": "Techno-Accelerationist",
-            "patterns": [
-                "Use of physics metaphors and efficiency jargon",
-                "Informal, meme-integrated communication",
-                "Direct challenges to 'the administrative state'"
-            ],
-            "vocabulary_priority": [
-                "Hardcore",
-                "Optimization",
-                "Chainsaw",
-                "First principles",
-                "Physics",
-                "Mind virus"
-            ],
-            "tonality": "Intense, informal, and dismissive of tradition"
-        }
+        "vocabulary_priority": [
+            "Impedance Mismatch",
+            "First Principles",
+            "Hardcore"
+        ],
+        "syntax_constraints": "Avoid adjectives like 'great'; use technical metrics or 'orders of magnitude'."
     }
 }

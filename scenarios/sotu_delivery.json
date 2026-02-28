@@ -7,6 +7,13 @@
         "data/legal/scotus-ieepa-tariff-ruling-feb20.txt",
         "personas/agents/archive/state_of_union.txt"
     ],
+    "grounding_payload": [
+        "data/facts/world-facts.2026.txt",
+        "data/legal/obbba-trump-act-2026.txt",
+        "data/theology/theological_schism_2026.txt",
+        "data/trade/petrodollar_pivot.txt",
+        "data/finance/us-treasury-reserve-status-2026.txt"
+    ],
     "scenario_knowledge": "Focus on the 'Transactional Populism' of the OBBBA. The 'Trump Accounts' ($1,000 seed for newborns) are the primary wedge for generational wealth. The border success (94% drop in crossings) is the moral baseline for the interior enforcement surge. Opposition agents must weaponize the Washington State revenue hit ($2.2B loss) and the 16% hike in grocery costs caused by the regressive nature of the tariffs. Every policy is a 'deal' with the American worker, executed over the heads of 'unaccountable' judges and bureaucrats.",
     "fragments": [
         "preserver.fragment.json",

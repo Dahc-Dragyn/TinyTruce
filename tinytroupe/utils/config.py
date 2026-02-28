@@ -18,7 +18,6 @@ def read_config_file(use_cache=True, verbose=True) -> configparser.ConfigParser:
 
         # Read the default values in the module directory.
         config_file_path = Path(__file__).parent.absolute() / '../config.ini'
-        print(f"Looking for default config on: {config_file_path}") if verbose else None
         if config_file_path.exists():
             config.read(config_file_path)
             _config = config
@@ -29,14 +28,13 @@ def read_config_file(use_cache=True, verbose=True) -> configparser.ConfigParser:
         # Try the directory of the current main program
         config_file_path = Path.cwd() / "config.ini"
         if config_file_path.exists():
-            print(f"Found custom config on: {config_file_path}") if verbose else None
             config.read(config_file_path) # this only overrides the values that are present in the custom config
             _config = config
             return config
         else:
             if verbose:
-                print(f"Failed to find custom config on: {config_file_path}") if verbose else None
-                print("Will use only default values. IF THINGS FAIL, TRY CUSTOMIZING MODEL, API TYPE, etc.") if verbose else None
+                print(f"Failed to find custom config on: {config_file_path}")
+                print("Will use only default values. IF THINGS FAIL, TRY CUSTOMIZING MODEL, API TYPE, etc.")
         
         return config
 

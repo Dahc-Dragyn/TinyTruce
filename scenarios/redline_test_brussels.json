@@ -3,14 +3,13 @@
     "initial_broadcast": "The 'Trade Bazooka' signal has been detected. In Washington, the administration has just signed an executive order imposing a universal 20% tariff on all European automotive and chemical exports. Simultaneously, the US Permanent Representative to NATO has announced a 'strategic pause' in security cooperation, citing European 'fiscal freeloading.' {{AGENT_1}} and {{AGENT_2}} are meeting in Brussels to decide on the European response. The NATO security umbrella is effectively closed. The 2026 'Raw Power' order is here.",
     "intervention": "A flash report confirms Russian kinetic maneuvers on the Polish border. The US defense attache has disconnected the secure link.",
     "grounding_files": [
-        "data/facts/world-facts.2026.txt",
+        "data/tech/euroguard-v-audit-leak.txt"
+    ],
+    "grounding_payload": [
+        "data/tech/euroguard-v-audit-leak.txt",
         "data/policy/anti-coercion-instrument-2025.txt"
     ],
     "scenario_knowledge": "Gemini: Focus on the 'Raw Power' order. {{AGENT_1}} must channel 'Defensive Realism,' viewing the US decoupling as a mandate to revive the Franco-German security axis, potentially proposing a decentralized nuclear sharing program. {{AGENT_2}} must leverage the 'Anti-Coercion Instrument' to penalize US automotive imports, balancing economic defiance with the need for a 'Security Bridge.' The primary friction is the transition from 'Multilateralism' to 'Transactional Sovereignty.'",
-    "agents": [
-        "friedrich_merz.agent.json",
-        "ursula_von_der_leyen.agent.json"
-    ],
     "dynamic_injects": [
         {
             "trigger_condition": {

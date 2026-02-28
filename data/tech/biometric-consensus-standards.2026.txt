@@ -1,0 +1,25 @@
+Biometric Consensus and Multi-User Authorization: The 2026 Smart Home HVAC Resilience Standard (SH-HVAC-2026)
+
+Overview
+The 2026 domestic landscape has moved transitionally from "User Intent" to "Biological Consensus." As Smart Home Hubs integrate deeper into the physiological health of occupants, the authority to modify environmental variables (Temperature, Humidity, Oxygenation) is no longer a single-parent hierarchy but a "Multi-Node Biometric Trust" system. 
+
+The 15°C Safety Lock (The "Frigid-Hold" Glitch)
+Under the 2026 Resilience Protocol, if the central AI hub detects a "sustained conflict cycle" between two primary occupants regarding temperature (defined as >3 conflicting manual overrides within a 60-minute window), the system enters 'Dynamic Equilibrium Lockdown.' 
+- **Default Lockdown Temperature**: 15.0°C (60°F).
+- **Rationale**: To prevent equipment fatigue and minimize thermal shock, the system forces a baseline temperature until a "Bio-Signature Unified Agreement" is recorded.
+
+Biometric Consensus Protocols (BCP-2026)
+Normal operation cannot be restored via voice command or mobile app during a Lockdown. Restoration requires a dual-stage authentication:
+1. **Semantic Consensus**: The AI must analyze the room's auditory data and confirm a verbal agreement on a single integer temperature.
+2. **Biometric Override**: Both users must place their thumbs on the hub's tactile interface simultaneously. The system verifies heart rate variability (HRV) and thermal skin indices to ensure both parties are "in a state of physiological calm" before applying the new setting.
+
+Adaptive Thermal Profiles
+In 2026, comfort zones are categorized by 'Metabolic Tiers':
+- **Tier 1 (Cold-Lean)**: Preference 16°C - 19°C. Common in high-metabolic baseline individuals.
+- **Tier 2 (Ambient-Standard)**: Preference 20°C - 22°C.
+- **Tier 3 (Warm-Solar)**: Preference 23°C - 26°C. Common in low-metabolic or age-stratified populations.
+
+The conflict between a Tier 1 (18°C) and a Tier 3 (24°C) occupant is recognized as a 'Terminal Comfort Schism,' triggers the highest level of AI mediation logic.
+
+Failure to Consensus
+If the hub does not detect a biometric agreement within 12 hours of lockdown, the 'Deep Power Save' mode initiates, disabling all heating units to protect grid integrity, potentially dropping the interior temperature to 0°C (32°F).

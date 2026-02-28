@@ -16,11 +16,14 @@ TinyTruce implements a strict "fail-fast" validation layer for all JSON assets (
 
 ### 2. LLM Engine Abstraction (Provider-Agnostic)
 The core simulation logic is decoupled from specific LLM providers via a robust abstraction layer in `llm_engine.py`.
-- **Native Gemini Integration**: The `NativeGeminiEngine` communicates directly with the Gemini API (v1.x), bypassing the need for "OpenAI-shaped" translation layers.
 - **Explicit Context Caching**: Large forensic profiles (Atlas, Layer 0 traits) are anchored once and reused across turns, reducing input token costs by **50%+**.
+- **Eco Mode (Flash-Lite Optimization)**: Forces the use of `models/gemini-2.0-flash-lite-001` or `gemini-2.1-flash-lite` and activates **Input Slicing** (removing 66% of redundant history cover charge) to prioritize speed and extreme cost efficiency. 
 - **Identity Retention Locks**: A terminal `CRITICAL IDENTITY LOCK` is injected into the input stream right before JSON execution to prevent context-caching genericization.
+- **Billing Transparency**: Integrated `cost_manager` tracks token usage across standard and cached turns, writing a verifiable audit trail to `DOCUMENTS/tinytruce_billing_ledger.md`.
 - **Zero-Cost Cache Verification**: Use `verify_cache.py` to audit live backend cache hits without incurring token billing.
-- **World State Logic**: A global context file (`../data/facts/world-facts.2026.txt`) ensures all agents share the same timeline and geopolitical reality.
+- **Forensic Grounding Bundles**: Replaced the monolithic `world-facts.2026.txt` with scenario-specific `grounding_payload` lists. Each run now only loads the forensic data (treaties, logs, reports) relevant to that specific conflict, ensuring higher precision and lower token noise.
+- **Multi-Session Isolation**: Supports concurrent, isolated simulations via the `--session-id` flag. All outputs are namespaced to prevent data collisions and ensure multi-tenant security.
+- **Context Window Elasticity (Sliding Window)**: Automatically summarizes and prunes conversational history into **Episodic Anchors** when turns exceed 8. This stabilizes input token costs and prevents "Context Drift" or identity collapse in long-running simulations.
 
 ### 3. The Scenario Board (Layer 1)
 Scenarios are defined in JSON files in the `scenarios/` directory. Each scenario includes:
@@ -43,6 +46,22 @@ To maintain simulation integrity during high-stakes theological or political deb
 ### 6. The Narrator & Roast Mode (Layer 2.5)
 - **Narrator**: A "Salty British Documentarian" who provides dry, observational commentary every 5 turns.
 - **Roast Recap (V2 Engine)**: At the end of the simulation, a "Jaded UN Bartender" generates a highly structured, forensic roast of the participants. The V2 engine uses Sam Morril-style comedic patterns, including Archetypal Reduction, Grime Anchoring, and a Compression Governor, to deliver a clinical, detached critique of structural and diplomatic failures.
+
+---
+
+### 7. Quality Assurance & Regression Guards
+To ensure simulation stability and cost safety, TinyTruce includes a suite of regression tests. These are categorized by their intensity and purpose:
+
+#### A. Zero-Cost Regression Guards (Mocked APIs, ⚡ Fast)
+These tests run in milliseconds and verify core engine logic without hitting external APIs.
+- **The Loop-Guardsman** (`tests/unit/test_loop_guardsman.py`): Verifies that agents are forcibly stopped if they enter an infinite action loop.
+- **The Identity Guardian** (`tests/unit/test_identity_guardian.py`): Ensures that memory compression summaries never delete the agent's core identity message.
+- **The Atlas Auditor** (`tests/unit/test_atlas_auditor.py`): Verifies that grounding extraction is resilient to header typos, spaces, and supports **Alias Mapping**.
+- **The Revenue Shield** (`tests/unit/test_revenue_shield.py`): Mathematically verifies billing accuracy and model-rate fallback logic.
+- **Dynamic Verbosity** (`tests/unit/test_verbosity.py`): Ensures responding word counts scale proportionally with simulation length.
+
+#### B. High-Intensity Fidelity Validation (Real LLM, 🐢 Slow, 💸 Variable Cost)
+- **Fidelity Validation** (`tests/unit/test_validation.py`): Runs a single-turn and multi-turn check for every agent in the project to ensure they still sound like their forensic profiles. *Recommended run frequency: Monthly or after major grounding updates.*
 
 ---
 
@@ -102,7 +121,25 @@ python tinytruce_sim.py --scenario sotu_delivery --turns 6 --agents donald_trump
 ```bash
 python tinytruce_sim.py --scenario petrodollar_pivot --disable-injects
 ```
+
+**Eco Mode (Maximum Efficiency):**
+```bash
+python tinytruce_sim.py --scenario wilderness --eco-mode --turns 5
+```
+*Note: In Eco Mode, input context is aggressively sliced to minimize "cover charge" billing on long turns.*
+*Tip: For long-running sessions, use `--session-id` to isolate outputs and logs into dedicated subdirectories.*
 *Tip: We recommend 8-10 turns for static scenarios to prevent agents from falling into cyclical, repetitive arguments about their core philosophies.*
+
+### CLI Arguments Reference
+| Argument | Description |
+| :--- | :--- |
+| `--scenario` | The key of the scenario to run. |
+| `--turns` | Number of turns (default 15). |
+| `--agents` | Explicit list of agent JSON files. |
+| `--verbosity` | Control response depth: `lean`, `detailed`, `monologue`, `dynamic`. |
+| `--eco-mode` | Activate input slicing to reduce costs by 66%. |
+| `--roast-level` | Intensity of the final autopsy (`mild`, `spicy`, `nuclear`). |
+| `--session-id` | Explicit session identifier for output isolation and cache namespacing. |
 
 ### Available Scenarios (`scenarios/`)
 -   `sotu_delivery`: A scripted, linear delivery of the 2026 State of the Union address by Donald J. Trump (Requires `--monologue` flag).
@@ -113,12 +150,13 @@ python tinytruce_sim.py --scenario petrodollar_pivot --disable-injects
 -   `lithium_triangle_leverage`: South American leaders vs. Global Markets on lithium nationalization.
 -   `blue_nile_brinkmanship`: Egypt vs. Ethiopia on the Grand Ethiopian Renaissance Dam (GERD).
 
-### Viewing Results
-After a simulation completes, check the following files:
+### Viewing Results (`DOCUMENTS/runs/{session_id}/`)
+All simulation outputs are now isolated within session-specific directories:
 -   `tinytruce_briefing.md`: A formal strategic audit of the negotiation, including a "Resolve Scorecard" and "Redline Breach Report".
 -   `tinytruce_roast.md`: The "Jaded UN Bartender" recap.
 -   `tinytruce_results.json`: Raw data export.
--   `tinytruce_simulation.log`: Full debug logs (if enabled in `config.ini`).
+-   `tinytruce_billing_ledger.md`: Verified audit of token usage and USD costs for every run (stored globally).
+-   `tinytruce_simulation.log`: Isolated session debug logs.
 
 ---
 

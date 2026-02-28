@@ -6,6 +6,12 @@
         "data/finance/us-treasury-reserve-status-2026.txt",
         "data/tech/trillium-compute-credit-index.2025.txt"
     ],
+    "grounding_payload": [
+        "data/facts/middle-east-reset.2026.txt",
+        "data/tech/trillium-compute-credit-index.2025.txt",
+        "data/theology/theological_schism_2026.txt",
+        "data/trade/petrodollar_pivot.txt"
+    ],
     "scenario_knowledge": "Gemini: Activate the 'Disruptor' fragment for the tech CEOs—they are secretly thrilled by the de-dollarization as it moves power from DC to their servers. For {{AGENT_2}}, use the 'America First Realist' fragment; they must balance their desire to keep the dollar supreme with their need for cheap oil to fuel their domestic manufacturing push. {{AGENT_1}} should be played with 'Aggressive Diversification' logic, viewing the dollar as a legacy constraint on sovereignty. Use the 2026 Geneva Gambit as a baseline for the Saudi-Iranian rapprochement—emphasizing that their alignment is purely transactional and based on mutual survival against Western sanctions.",
     "dynamic_injects": [
         {

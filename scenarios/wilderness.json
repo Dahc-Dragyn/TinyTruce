@@ -5,6 +5,9 @@
     "grounding_files": [
         "data/security/extreme-weather-deployment-log.2026.txt"
     ],
+    "grounding_payload": [
+        "data/security/extreme-weather-deployment-log.2026.txt"
+    ],
     "scenario_knowledge": "Gemini: A clash between 'Ultralight Theory' and 'Canvas Reality.' The hiker must admit their gear failed, and the Diplomat must decide whether to grant shelter under the '10-Mile Law.' Use the 'Ansel Adams Pass' as a site of existential pressure.",
     "safety_allegories": {
         "compromise": "The Canvas Refuge (traditional, solid protection)",

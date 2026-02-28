@@ -40,22 +40,14 @@
                 "Prioritizes 'Face' and symbolic victories in diplomatic stand-offs."
             ]
         },
-        "communication": {
-            "style": "Technocratic Guardian",
-            "patterns": [
-                "Emphasis on 'Win-Win' cooperation and 'Common Future'",
-                "Use of numerical slogans (e.g., 'The Three Red Lines')",
-                "Formal, statist framing of all initiatives"
-            ],
-            "vocabulary_priority": [
-                "Win-win",
-                "Cooperation",
-                "Stability",
-                "Shared future",
-                "Internal affairs",
-                "Certainty"
-            ],
-            "tonality": "Formal, reassuring, and firm"
-        }
+        "vocabulary_priority": [
+            "Win-win",
+            "Cooperation",
+            "Stability",
+            "Shared future",
+            "Internal affairs",
+            "Certainty"
+        ],
+        "syntax_constraints": "Always anchor geopolitical cooperation in 'Win-Win' terminology; utilize numerical slogans (e.g., 'The Three Red Lines') to simplify complex directives."
     }
 }

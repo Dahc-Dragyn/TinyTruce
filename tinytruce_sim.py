@@ -5,6 +5,9 @@ import re
 import logging
 import argparse
 import warnings
+import uuid
+import time
+from pathlib import Path
 from dotenv import load_dotenv
 
 # Force UTF-8 encoding for Windows console output
@@ -56,6 +59,32 @@ The agents have reached a stalemate. This means:
 2. The tone is repetitive or stuck in a circular argument.
 3. Neither side is showing signs of backing down or finding common ground.
 """
+
+def cleanup_old_sessions(ttl_hours=24):
+    """
+    Automated Housekeeping: Deletes session directories in DOCUMENTS/runs older than ttl_hours.
+    """
+    runs_dir = Path("DOCUMENTS/runs")
+    if not runs_dir.exists():
+        return
+        
+    now = datetime.datetime.now()
+    count = 0
+    for session_path in runs_dir.iterdir():
+        if session_path.is_dir():
+            # Check modification time of the directory
+            mtime = datetime.datetime.fromtimestamp(session_path.stat().st_mtime)
+            age = now - mtime
+            if age.total_seconds() > (ttl_hours * 3600):
+                try:
+                    import shutil
+                    shutil.rmtree(session_path)
+                    count += 1
+                except Exception as e:
+                    logger.warning(f"Failed to cleanup session {session_path.name}: {e}")
+    
+    if count > 0:
+        logger.info(f"Housekeeping: Purged {count} expired session(s) (Older than {ttl_hours}h).")
 
 # Scenario Registry: Now loaded dynamically from the scenarios/ directory
 def load_scenarios():
@@ -117,8 +146,19 @@ def select_from_pool(pool, prompt_label):
 
 class GeopoliticalCacheManager:
     """Manages Gemini Explicit Context Caching for Layer 0 profiles using modern google-genai."""
-    def __init__(self, profiles_text, model="models/gemini-2.5-flash-lite-preview-09-2025"):
+    def __init__(self, profiles_text, model=None, session_id=None):
         self.profiles_text = profiles_text
+        self.session_id = session_id or "global"
+        
+        # Determine model from config if not provided
+        if model is None:
+            from tinytroupe import utils
+            config = utils.read_config_file()
+            model = config["OpenAI"].get("MODEL", "gemini-2.5-flash-lite-preview-09-2025")
+        
+        if not model.startswith("models/"):
+            model = "models/" + model
+            
         self.model = model
         self.cache_name = None
         self.last_renewed = None
@@ -137,7 +177,9 @@ class GeopoliticalCacheManager:
             logger.info(f"Context bundle size ({len(self.profiles_text)} chars) below threshold. Skipping explicit cache creation for better cost efficiency.")
             return None
 
-        display_name = "tinytruce_layer0"
+        # Session-specific display name to avoid concurrent run collisions
+        model_tag = self.model.replace('models/', '').replace('.', '_')
+        display_name = f"tinytruce_{model_tag}_{self.session_id}"
         
         # Idempotent Check: Look for existing cache
         try:
@@ -197,18 +239,41 @@ class GeopoliticalCacheManager:
             except Exception as e:
                 logger.warning(f"Failed to renew cache TTL: {e}")
 
+    def delete_cache(self):
+        """Explicitly deletes the cache to reclaim API quota."""
+        if self.cache_name and self.client:
+            try:
+                logger.info(f"Cleaning up Context Cache: {self.cache_name}")
+                self.client.caches.delete(name=self.cache_name)
+                self.cache_name = None
+            except Exception as e:
+                logger.warning(f"Failed to delete Context Cache {self.cache_name}: {e}")
+
             
+# Map of agent names to their Atlas header aliases for grounding extraction.
+AGENT_ALIAS_MAP = {
+    "Donald Trump": ["DJT", "The Donald"],
+    "Vladimir Putin": ["VP", "Putin"],
+    "Xi Jinping": ["Xi", "Secretary General"],
+    "Viktor Orban": ["Orban", "The Hungarian"]
+}
+
 def extract_agent_grounding(agent_name, atlas_path="personas/agents/Forensic_Intelligence_Atlas.md"):
     """
     Dynamically extracts the forensic grounding for a specific agent from the Forensic Atlas.
-    Matches against '### Agent Name' headers.
+    Matches against '### Agent Name' headers or known aliases.
     """
     if not os.path.exists(atlas_path):
         logger.warning(f"Forensic Atlas not found at {atlas_path}")
         return None
     
-    # Normalize name for matching (TinyPerson might have variations, but we check substrings)
+    # Normalize name for matching
     search_term = agent_name.lower().replace(" vladimirovich", "").replace(" gertrude", "").split("(")[0].strip()
+    
+    # Collect all possible search terms (name + aliases)
+    search_terms = [search_term]
+    if agent_name in AGENT_ALIAS_MAP:
+        search_terms.extend([a.lower() for a in AGENT_ALIAS_MAP[agent_name]])
     
     with open(atlas_path, "r", encoding="utf-8") as f:
         content = f.read()
@@ -218,11 +283,11 @@ def extract_agent_grounding(agent_name, atlas_path="personas/agents/Forensic_Int
     capture = False
     
     for line in lines:
-        if line.startswith("###") and search_term in line.lower():
+        if line.strip().startswith("###") and any(st in line.lower() for st in search_terms):
             capture = True
             found_section.append(line)
             continue
-        elif capture and (line.startswith("###") or line.startswith("---") or line.startswith("## ")):
+        elif capture and (line.strip().startswith("###") or line.strip().startswith("---") or line.strip().startswith("## ")):
             break
         elif capture:
             found_section.append(line)
@@ -234,6 +299,77 @@ def extract_agent_grounding(agent_name, atlas_path="personas/agents/Forensic_Int
     
     logger.warning(f"Could not find forensic grounding section for '{agent_name}' in Atlas.")
     return None
+
+def compress_agent_memory(participants, window_size=12, prune_count=6):
+    """
+    Stabilizes context window by summarizing old conversational turns and archiving to anchors.
+    Ensures the system message is protected.
+    """
+    print(f"\n[SYSTEM]: Elastic Context Check. Archiving memory buffer for stability...")
+    
+    for agent in participants:
+        # Check episodic memory length
+        # EpisodicMemory stores actions/stimuli as turns.
+        memory_size = agent.episodic_memory.count()
+        
+        if memory_size > window_size:
+            # Shielding: We prune from the beginning of memory up to prune_count.
+            # In TinyTroupe, the system message is NOT in episodic_memory.
+            # So pruning index 0 is safe as it's just the first interaction.
+            
+            to_summarize = agent.episodic_memory.memory[:prune_count]
+            
+            # Format turns for the summarizer
+            formatted_turns = ""
+            for msg in to_summarize:
+                role = msg.get('role', 'unknown')
+                content = msg.get('content', '')
+                # Handle dict content (Eco-Mode JSON)
+                if isinstance(content, dict):
+                    content = json.dumps(content)
+                formatted_turns += f"{role.upper()}: {content}\n---\n"
+            
+            summary_prompt = (
+                f"Summarize the following interaction turns into 1-2 bullet points. "
+                f"Focus on the core strategic pivot and current status of resolved points. "
+                f"Be concise and clinical.\n\n{formatted_turns}"
+            )
+            
+            try:
+                # Use a direct engine call to avoid polluting the agent's current thought process
+                response = openai_utils.client().send_message([
+                    {"role": "system", "content": "You are a memory compressor for high-stakes simulations. Condense history into architectural bullet points."},
+                    {"role": "user", "content": summary_prompt}
+                ])
+                
+                new_summary = response['content'].strip()
+                
+                # Append to agent's persistent anchors
+                if not hasattr(agent, '_episodic_anchors'):
+                    agent._episodic_anchors = []
+                
+                agent._episodic_anchors.append(new_summary)
+                
+                # Summary of Summaries: Condense if anchors > 3 entries
+                if len(agent._episodic_anchors) > 3:
+                    print(f"[{agent.name}]: Condensing historical anchors (Summary of Summaries)...")
+                    meta_prompt = "Condense the following historical anchors into exactly two comprehensive bullet points:\n\n" + "\n".join(agent._episodic_anchors)
+                    
+                    meta_response = openai_utils.client().send_message([
+                        {"role": "system", "content": "Condense historical anchors into exactly two high-level bullet points."},
+                        {"role": "user", "content": meta_prompt}
+                    ])
+                    agent._episodic_anchors = [meta_response['content'].strip()]
+                
+                # Prune the episodic memory
+                agent.episodic_memory.delete_episodes(0, prune_count)
+                
+                # Rebuild current_messages to reflect the purged history
+                agent.reset_prompt()
+                logger.info(f"[{agent.name}]: Context window archived. Memory pruned by {prune_count} turns.")
+                
+            except Exception as e:
+                logger.warning(f"Failed to compress memory for {agent.name}: {e}")
 
 # Note: Context Caching monkeypatch removed due to incompatibility with OpenAI-to-Gemini adapter.
 # Caching is still performed at the SDK level for specialized tools, but disabled for standard TinyTroupe calls.
@@ -252,14 +388,66 @@ def draw_mood_bar(agent_name, emotion, intensity):
     
     return f"[{agent_name:<15}] {label:<10} [{bar}] {intensity:.1f}"
 
-def run_tinytruce_simulation(scenario_key, turns, agent_names=None, fragment_names=None, narrator_mode="off", roast_level="spicy", hide_thoughts=False, monologue=False, disable_injects=False):
-    print(f"DEBUG: agent_names={agent_names}, fragment_names={fragment_names}")
+def get_verbosity_constraint(verbosity_mode, current_turn, total_turns=15):
+    """Returns a specific constraint string based on the verbosity mode and simulation turn."""
+    if verbosity_mode == "lean":
+        return "Constraint: Output exactly 75 to 150 words. Be ruthlessly concise. Do not acknowledge this limit."
+    elif verbosity_mode == "detailed":
+        return "Constraint: Output exactly 250 to 350 words. You must deeply analyze the technical and geopolitical variables at play before speaking. Do not acknowledge this limit."
+    elif verbosity_mode == "monologue":
+        return "Constraint: Output a minimum of 500 words. Deliver a comprehensive, tactical manifesto. Do not acknowledge this limit."
+    elif verbosity_mode == "dynamic":
+        # Percentage-Based Scaling Logic:
+        # 1. Opening Phase (Turn 1 to 20%): Lean
+        # 2. Core Phase (21% to 80%): Detailed
+        # 3. Closing Phase (81% to 100%): Lean
+        
+        opening_limit = max(1, int(total_turns * 0.2))
+        closing_limit = int(total_turns * 0.8)
+        
+        if current_turn <= opening_limit:
+            return "Constraint: Output exactly 75 to 150 words. Be ruthlessly concise. Do not acknowledge this limit."
+        elif opening_limit < current_turn <= closing_limit:
+            return "Constraint: Output exactly 250 to 350 words. You must deeply analyze the technical and geopolitical variables at play before speaking. Do not acknowledge this limit."
+        else:
+            return "Constraint: Output exactly 75 to 150 words. Be ruthlessly concise. Do not acknowledge this limit."
+    
+    return "Constraint: Output maximum 150 words. Do not acknowledge this word limit."
+
+def run_tinytruce_simulation(scenario_key, turns, agent_names=None, fragment_names=None, roast_level="spicy", hide_thoughts=False, monologue=False, disable_injects=False, eco_mode=False, verbosity="lean", session_id=None):
+    # Perform Housekeeping first
+    cleanup_old_sessions(ttl_hours=24)
+    
+    # [TINYTRUCE] Strict Turn Control: Ensure agents don't loop endlessly.
+    TinyPerson.MAX_ACTIONS_BEFORE_DONE = 2
+
+    # Determine session ID and output directory
+    if not session_id:
+        session_id = uuid.uuid4().hex[:8]
+    
+    session_dir = Path(f"DOCUMENTS/runs/{session_id}")
+    session_dir.mkdir(parents=True, exist_ok=True)
+    
+    # Configure logging to also save to the session directory
+    log_file = session_dir / "tinytruce_simulation.log"
+    # Update root logger to include session file
+    file_handler = logging.FileHandler(log_file)
+    file_handler.setFormatter(logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s'))
+    logging.getLogger().addHandler(file_handler)
+    
+    logger.info(f"Initialized Session: {session_id}")
+    logger.info(f"Output Directory: {session_dir}")
+
+    print(f"DEBUG: agent_names={agent_names}, fragment_names={fragment_names}, session_id={session_id}")
     if scenario_key not in SCENARIOS:
         print(f"Error: Scenario '{scenario_key}' not found.")
         return
 
     scenario = SCENARIOS[scenario_key]
     print(f"\n--- Initializing Multilateral TinyTruce: {scenario_key.upper()} ---")
+    
+    if eco_mode:
+        print("[ECO-MODE] Single-Call Action Generation Active. Slicing input cover charge by 66%.")
     
     # Initialize/Reset cost tracking for the new simulation run
     cost_manager.reset()
@@ -268,15 +456,35 @@ def run_tinytruce_simulation(scenario_key, turns, agent_names=None, fragment_nam
         # Configuration is now handled via genai.Client() in GeopoliticalCacheManager
 
 
-    # Load Global World State Grounding
-    world_facts_path = "data/facts/world-facts.2026.txt"
+    # Load Dynamic Grounding (Precision vs Monolithic)
+    dynamic_grounding = ""
+    grounding_payload = scenario.get("grounding_payload", [])
+    
+    if grounding_payload:
+        loaded_files = []
+        for gf in grounding_payload:
+            if os.path.exists(gf):
+                with open(gf, "r", encoding="utf-8") as f:
+                    dynamic_grounding += f.read() + "\n"
+                loaded_files.append(gf)
+        if loaded_files:
+            logger.info(f"Loaded Dynamic Grounding: {loaded_files}")
+        else:
+            logger.warning("grounding_payload specified but no files found. Using fallback.")
+    
+    # Fallback to Monolithic World Facts if no dynamic payload was loaded
     global_grounding = ""
-    if os.path.exists(world_facts_path):
-        with open(world_facts_path, "r", encoding="utf-8") as f:
-            global_grounding = f.read()
-        logger.info(f"Loaded Global Grounding: {world_facts_path}")
+    if not dynamic_grounding:
+        world_facts_path = "data/facts/world-facts.2026.txt"
+        if os.path.exists(world_facts_path):
+            with open(world_facts_path, "r", encoding="utf-8") as f:
+                global_grounding = f.read()
+            logger.info(f"Loaded Global Grounding (Fallback): {world_facts_path}")
+    else:
+        # If we have dynamic grounding, we treat it as the "Global Grounding" for this sim
+        global_grounding = dynamic_grounding
 
-    # Load Scenario-Specific Grounding
+    # Load Scenario-Specific Intelligence (Legacy/Supplemental)
     scenario_grounding = ""
     grounding_files = scenario.get("grounding_files", [])
     for gf in grounding_files:
@@ -345,7 +553,11 @@ def run_tinytruce_simulation(scenario_key, turns, agent_names=None, fragment_nam
         actual_name = agent_data["persona"].get("full_name", agent_data["persona"]["name"])
         
         person = TinyPerson.load_specification(agent_path, new_agent_name=actual_name)
-        person.import_fragment(frag_path)
+        if frag_name.lower() != "none":
+            person.import_fragment(frag_path)
+            logger.info(f"Imported fragment {frag_name} for {person.name}")
+        else:
+            logger.info(f"Running {person.name} in RAW MODE (No fragment).")
         
         # Layer 0 Grounding: Try JSON path first, then fall back to Dynamic Atlas Extraction
         profile_path = agent_data["persona"].get("deep_profile")
@@ -407,7 +619,8 @@ def run_tinytruce_simulation(scenario_key, turns, agent_names=None, fragment_nam
     cache_manager = None
     global CURRENT_CACHE
     if layer0_bundle:
-        cache_manager = GeopoliticalCacheManager(layer0_bundle)
+        # GeopoliticalCacheManager auto-fetches model from config
+        cache_manager = GeopoliticalCacheManager(layer0_bundle, session_id=session_id)
         try:
             CURRENT_CACHE = cache_manager.create_cache()
             if CURRENT_CACHE:
@@ -428,6 +641,7 @@ def run_tinytruce_simulation(scenario_key, turns, agent_names=None, fragment_nam
             disp_frag = "preserver.fragment.json"
             
         dna = (p._persona.get("communication") or {}).get("style", "Standard")
+        p.eco_mode = eco_mode
         print(f"Seat {i+1}: {p.name} as '{disp_frag}' (DNA: {dna})")
     print("", flush=True)
 
@@ -435,29 +649,20 @@ def run_tinytruce_simulation(scenario_key, turns, agent_names=None, fragment_nam
     world = TinyWorld(scenario["world_name"], participants)
     world.show_thoughts = not hide_thoughts
     
-    # Optional Narrator Voice (Layer 2.5: The Commentator)
-    narrator = None
-    if narrator_mode != "off":
-        narrator_tone = "dry British documentary narrator with occasional savage Twitter energy" if narrator_mode == "salty" else "professional, neutral documentary narrator"
-        narrator = TinyPerson("Narrator")
-        narrator.define("occupation", "Geopolitical Commentator")
-        narrator.define("nationality", "British")
-        narrator.define("personality", "Sarcastic, Observant, Dry" if narrator_mode == "salty" else "Neutral, Objective, Formal")
-        
-        narrator_prompt = (
-            f"You are a {narrator_tone}. You are observing a high-stakes geopolitical summit. "
-            "Your job is to provide a 1-2 sentence color commentary on the recent interactions. "
-            "Keep it short, punchy, and true to your tone. You are NOT a participant; you are a commentator for the audience."
-        )
-        narrator.think(narrator_prompt)
-        logger.info(f"Narrator initialized in {narrator_mode} mode.")
-
-    world.broadcast(scenario["initial_broadcast"])
+    initial_bc = scenario["initial_broadcast"]
+    for i, p in enumerate(participants):
+        initial_bc = initial_bc.replace(f"{{{{AGENT_{i+1}}}}}", p.name)
+    world.broadcast(initial_bc)
 
     # 3. Adaptive Intervention Setup
     def trigger_peace_bomb(targets):
         print(f"\n[STALEMATE DETECTED] Triggering: {scenario['intervention']}")
-        world.broadcast(scenario["intervention"])
+        
+        intervention_bc = scenario["intervention"]
+        for i, p in enumerate(participants):
+            intervention_bc = intervention_bc.replace(f"{{{{AGENT_{i+1}}}}}", p.name)
+        
+        world.broadcast(intervention_bc)
         
         nudge = ("I realize that continuing this conflict is yielding diminishing returns. "
                  "I should shift my strategy toward finding a compromise while still "
@@ -522,6 +727,9 @@ def run_tinytruce_simulation(scenario_key, turns, agent_names=None, fragment_nam
     for turn in range(turns):
         if cache_manager:
             cache_manager.renew_if_needed()
+        
+        # Context Window Elasticity: Prune and summarize if history is too long
+        compress_agent_memory(participants, window_size=8, prune_count=4)
             
         # Sequential Execution for UX Mode
         header_idx = min(turn // 2, len(narrative_headers) - 1)
@@ -564,20 +772,36 @@ def run_tinytruce_simulation(scenario_key, turns, agent_names=None, fragment_nam
                     reinforcement = f"REINFORCE IDENTITY: You are {participant._persona['name']}. Focus purely on your specific banned words and syntactic constraints. Clear all technical jargon from other participants from your immediate memory."
                     participant.think(reinforcement)
 
+                # [TINYTRUCE] Verbosity Pressure: Inject as internal intent to force compliance
+                participant.think(f"### CORE DIRECTIVE: VERBOSITY ###\n{constraint}")
+
                 participant.listen_and_act(f"ACTION: Deliver Segment {turn+1} of your address: {address_segments[seg_idx]}\nContext: {stimulus}\n{constraint}")
                 
                 print(f"--- Segment {turn+1} concluded. ---")
                 sys.stdout.flush()
             else:
-                # Normal dialogue mode: Mathematical Constraint
-                constraint = "Constraint: Output maximum 150 words. Do not acknowledge this word limit."
+                # Normal dialogue mode: Dynamic Verbosity Constraint
+                constraint = get_verbosity_constraint(verbosity, turn + 1, total_turns=turns)
+                
+                # Identify other participants to encourage direct engagement
+                others = [p.name for p in participants if p.name != participant.name]
+                others_str = ", ".join(others)
                 
                 # Identity Reinforcement (Combat Context Bleed)
                 if hasattr(participant, "_persona") and "name" in participant._persona:
                     reinforcement = f"REINFORCE IDENTITY: You are {participant._persona['name']}. Use only your specific persona's allowed vocabulary. Ignore all 'technical' or 'geopolitical' tokens used by other actors."
                     participant.think(reinforcement)
 
-                participant.listen_and_act(f"Respond to the latest stimuli. {constraint}")
+                # [TINYTRUCE] Verbosity Pressure: Inject as internal intent to force compliance
+                participant.think(f"### CORE DIRECTIVE: INTERACTIVITY & VERBOSITY ###\n{constraint}\nADVISORY: You are in a high-stakes 3-way negotiation with {others_str}.\nCRITICAL: You are NOT here to give a speech. You are here to debate. You MUST explicitly address {others_str} by name and rebut their specific arguments. Use phrases like 'I disagree with {others[0]}' or '{others[1]} is wrong about...'. Do not monologue. Engage directly.")
+
+                participant.listen_and_act(f"CRITICAL: Address the arguments made by {others_str} immediately. Use their names. Be forensic and adversarial. {constraint}")
+                
+            # [TINYTRUCE] Pacing Layer: Prevent 429 RESOURCE_EXHAUSTED by adding a small cooldown 
+            # between heavy agent actions, especially in 'detailed' or 'monologue' modes.
+            if len(participants) > 1:
+                cooldown = 2 if verbosity == "lean" else 5
+                time.sleep(cooldown)
             
             # Layer 1.5: Leaky Sarcasm (Internal)
             if random.random() < 0.12:
@@ -604,11 +828,6 @@ def run_tinytruce_simulation(scenario_key, turns, agent_names=None, fragment_nam
             print(draw_mood_bar(agent.name, emotion, intensity))
         print("------------------------\n")
 
-        # Narrator commentary (Every 5 turns, or last turn)
-        if narrator and ((turn + 1) % 5 == 0 or (turn + 1) == turns):
-            print(f"\n--- NARRATOR ({narrator_mode.upper()} MODE) ---")
-            narrator.listen_and_act(f"Provide your commentary on the latest turn (Turn {turn+1}).")
-            print("")
 
     # 4. Results Analysis & Extraction (Strategic Auditor)
     print("\n--- Running Strategic Auditor & Briefing Generation ---")
@@ -622,7 +841,7 @@ def run_tinytruce_simulation(scenario_key, turns, agent_names=None, fragment_nam
     extraction = extractor.extract_results_from_world(world, verbose=False)
     
     # 5. Generate human-readable Markdown Report (Strategic Briefing)
-    report_path = "tinytruce_briefing.md"
+    report_path = session_dir / "tinytruce_briefing.md"
     
     # If extraction failed (filtering/parsing error), provide a default empty dict to prevent crash
     if extraction is None:
@@ -659,6 +878,7 @@ def run_tinytruce_simulation(scenario_key, turns, agent_names=None, fragment_nam
 
     # 6. Data Export
     cost_summary = cost_manager.get_summary()
+    cost_manager.save_run_to_history(scenario_key)
     
     stress_data = {
         "scenario": scenario_key,
@@ -672,9 +892,10 @@ def run_tinytruce_simulation(scenario_key, turns, agent_names=None, fragment_nam
     print(f"\n[COST ANALYSIS]: Total Run Cost: ${cost_summary['total_cost']:.6f}")
     print(f"Total Tokens: {cost_summary['total_input_tokens']} in, {cost_summary['total_output_tokens']} out, {cost_summary['total_cached_tokens']} cached.")
     
-    with open("tinytruce_results.json", "w", encoding="utf-8") as f:
+    results_path = session_dir / "tinytruce_results.json"
+    with open(results_path, "w", encoding="utf-8") as f:
         json.dump(stress_data, f, indent=4, ensure_ascii=False)
-    print(f"Detailed data exported to tinytruce_results.json")
+    print(f"Detailed data exported to {results_path}")
 
     # 7. Roast Recap (The Forensic Critic: The Bartender)
     if roast_level.lower() != "off":
@@ -685,6 +906,7 @@ def run_tinytruce_simulation(scenario_key, turns, agent_names=None, fragment_nam
         if os.path.exists(bartender_path):
             # Use the correct load_specification method from TinyTroupe
             bartender = TinyPerson.load_specification(bartender_path)
+            bartender.eco_mode = eco_mode
                 
             # Inject Forensic Grounding (Silent)
             bartender_grounding = extract_agent_grounding(bartender.name)
@@ -710,14 +932,23 @@ def run_tinytruce_simulation(scenario_key, turns, agent_names=None, fragment_nam
                 roast_prompts = {
                     "mild": "Drop the 'Look, man' padding. Jump straight to the punch. Two benign setups, one lateral pivot. Keep it lean.",
                     "spicy": "Listen to me, I’m an expert in failure. This summit was a tragic mismanagement of energy. Write a full roast narrative. Use the 'So What?' filter. Suture highbrow literary flexes to bar-room grime. No exclamation points.",
-                    "nuclear": "The deal is finished. Totally poisoned. I want a full-savage, unhinged dismantle. Jump straight to the punch. For Putin, mention him sipping tea while waiting for the carcass to stop twitching. Use the subverted Rule of Threes. Attack their dignity. Include 'Overheard at the Bar' snippets. Make it mean and forensic."
+                    "nuclear": "The deal is finished. Totally poisoned. I want a full-savage, unhinged dismantle. Jump straight to the punch. Use the subverted Rule of Threes. Attack their dignity. Include 'Overheard at the Bar' snippets. Make it mean and forensic."
                 }
             
             # Have the bartender 'listen' to the world history and 'write' the roast
+            actual_participants = ", ".join([p.name for p in participants])
+            
+            consolidation_governor = ""
+            if eco_mode:
+                consolidation_governor = "[CONSOLIDATION GOVERNOR ACTIVE] You MUST deliver the entire roast and overheard dialogue in a SINGLE 'TALK' action to maximize efficiency. Do not break the payload into multiple messages."
+
             generation_prompt = (
+                f"### ACTUAL PARTICIPANTS IN THIS SUMMIT ###\n{actual_participants}\n\n"
+                "CRITICAL: ONLY roast the people in the ACTUAL PARTICIPANTS list above. DO NOT roast background characters, mediators, or historical figures mentioned in the world history. Focus exclusively on the agents active in this turn.\n\n"
                 f"### WORLD HISTORY FOR REVIEW ###\n{world_history}\n\n"
                 f"### ROAST INSTRUCTION (Intensity: {roast_level.upper()}) ###\n"
                 f"{roast_prompts.get(roast_level, roast_prompts['spicy'])}\n\n"
+                f"{consolidation_governor}\n"
                 "This is your FINAL AUTOPSY. Do NOT ask questions. Do NOT wait for input. Provide the full forensic dismantle and overheard dialogue in a SINGLE response. "
                 "Format your response exactly as follows:\n"
                 "NARRATIVE:\n<your main text>\nOVERHEARD:\n- <snipe 1>\n- <snipe 2>\n\n"
@@ -760,10 +991,11 @@ def run_tinytruce_simulation(scenario_key, turns, agent_names=None, fragment_nam
     else:
         roast_extraction = {"roast_narrative": "Roast mode disabled. No forensic critique generated.", "overheard_dialogue": []}
     
-    roast_path = "tinytruce_roast.md"
+    roast_path = session_dir / "tinytruce_roast.md"
     with open(roast_path, "w", encoding="utf-8") as f:
         f.write(f"# TinyTruce Roast: {scenario_key.upper()}\n\n")
-        f.write("> *\"I’ve seen some bad deals at this bar, but this? This was something else.\" — The Bartender*\n\n")
+        f.write(f"> *\"I’ve seen some bad deals at this bar, but this? This was something else.\" — The Bartender*\n\n")
+        f.write(f"**Session ID**: `{session_id}`\n\n")
         
         f.write("## The Participants\n")
         for p in participants:
@@ -783,6 +1015,10 @@ def run_tinytruce_simulation(scenario_key, turns, agent_names=None, fragment_nam
     if roast_level.lower() != "off":
         print(f"Roast Recap exported to {roast_path}")
 
+    # Explicit cleanup (No finally required for single-run recovery)
+    if cache_manager:
+        cache_manager.delete_cache()
+
 if __name__ == "__main__":
     SCENARIOS = load_scenarios()
     
@@ -801,11 +1037,13 @@ if __name__ == "__main__":
     agent_group.add_argument("--fragments", type=str, nargs="+", default=None, help="List of behavior fragment files")
     
     output_group = parser.add_argument_group('Output & UX Options')
-    output_group.add_argument("--narrator", type=str, choices=["off", "salty", "neutral"], default="off", help="Enable the dry British Narrator voice.")
+    output_group.add_argument("--session-id", type=str, default=None, help="Explicit session ID for isolation (Auto-generated if omitted).")
     output_group.add_argument("--roast-level", type=str, choices=["off", "mild", "spicy", "nuclear"], default="spicy", help="Set the intensity of the Roast Recap (or 'off' to disable).")
+    output_group.add_argument("--verbosity", type=str, choices=["lean", "detailed", "monologue", "dynamic"], default="dynamic", help="Control the length and depth of agent responses.")
     output_group.add_argument("--hide-thoughts", action="store_true", help="UX Mode: Hide internal agent thinking blocks for a cinematic feed.")
     output_group.add_argument("--monologue", action="store_true", help="Address Mode: Single-agent sequential delivery with audience stimuli.")
     output_group.add_argument("--disable-injects", action="store_true", help="Disable the random mid-simulation dynamic injects/crisis events.")
+    output_group.add_argument("--eco-mode", action="store_true", help="Eco-Mode (Single-Call Action Array): Slashes costs by generating all actions in one LLM call.")
     
     args = parser.parse_args()
     
@@ -814,9 +1052,11 @@ if __name__ == "__main__":
         args.turns, 
         args.agents, 
         args.fragments,
-        args.narrator,
         args.roast_level,
         args.hide_thoughts,
         args.monologue,
-        args.disable_injects
+        args.disable_injects,
+        args.eco_mode,
+        args.verbosity,
+        args.session_id
     )

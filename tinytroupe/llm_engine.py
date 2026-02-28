@@ -86,12 +86,38 @@ class OpenAIEngine(LLMEngine):
                     **params,
                     response_format=response_format
                 )
+                
+                # Capture usage metadata
+                if hasattr(response, 'usage') and response.usage:
+                    details = getattr(response.usage, 'prompt_tokens_details', None)
+                    cached = getattr(details, 'cached_tokens', 0) if details else 0
+                    cost_manager.add_usage(
+                        model_name=self.model,
+                        input_tokens=response.usage.prompt_tokens or 0,
+                        output_tokens=response.usage.completion_tokens or 0,
+                        cached_tokens=cached, 
+                        agent_name=agent_name
+                    )
+                
                 return response.choices[0].message.parsed
             except Exception as e:
                 logger.error(f"Failed to parse structured output with OpenAI Engine: {e}")
                 
         # Fallback or standard generation
         response = self.client.chat.completions.create(**params)
+        
+        # Capture usage metadata
+        if hasattr(response, 'usage') and response.usage:
+            details = getattr(response.usage, 'prompt_tokens_details', None)
+            cached = getattr(details, 'cached_tokens', 0) if details else 0
+            cost_manager.add_usage(
+                model_name=self.model,
+                input_tokens=response.usage.prompt_tokens or 0,
+                output_tokens=response.usage.completion_tokens or 0,
+                cached_tokens=cached,
+                agent_name=agent_name
+            )
+            
         return response.choices[0].message.content
 
 
@@ -107,8 +133,12 @@ class NativeGeminiEngine(LLMEngine):
         
         from google import genai
         self.client = genai.Client()
-        # Locked per architectural requirements
-        self.model = "gemini-2.5-flash-lite-preview-09-2025"
+        
+        # Load from config, default to 2.5-flash-lite if missing
+        from tinytroupe import utils
+        config = utils.read_config_file()
+        self.model = config["OpenAI"].get("MODEL", "gemini-2.5-flash-lite-preview-09-2025")
+        logger.info(f"NativeGeminiEngine initialized with model: {self.model}")
         
     def generate_response(self, 
                           messages: List[Dict[str, str]], 
@@ -160,22 +190,37 @@ class NativeGeminiEngine(LLMEngine):
             config_kwargs["response_mime_type"] = "application/json"
             config_kwargs["response_schema"] = response_format
             
-        response = self.client.models.generate_content(
-            model=self.model,
-            contents=gemini_messages,
-            config=types.GenerateContentConfig(**config_kwargs)
-        )
+        import time
+        max_retries = 3
+        for attempt in range(max_retries):
+            try:
+                response = self.client.models.generate_content(
+                    model=self.model,
+                    contents=gemini_messages,
+                    config=types.GenerateContentConfig(**config_kwargs)
+                )
+                break 
+            except Exception as e:
+                # If it's a 429 Resource Exhausted, backoff and retry
+                if "429" in str(e) or "RESOURCE_EXHAUSTED" in str(e):
+                    wait = (attempt + 1) * 10
+                    logger.warning(f"429 Resource Exhausted for {agent_name or 'System'}. Backing off for {wait}s... (Attempt {attempt+1}/{max_retries})")
+                    time.sleep(wait)
+                    if attempt == max_retries - 1:
+                        raise e # Give up on last attempt
+                    continue
+                raise e # Re-raise other errors
         
         # Capture usage metadata for cost analysis
         try:
             usage = response.usage_metadata
-            input_tokens = usage.prompt_token_count or 0
+            input_tokens = (usage.prompt_token_count or 0) - (usage.cached_content_token_count or 0)
             output_tokens = usage.candidates_token_count or 0
             cached_tokens = usage.cached_content_token_count or 0
             
             cost_manager.add_usage(
                 model_name=self.model,
-                input_tokens=input_tokens,
+                input_tokens=max(0, input_tokens), # Ensure non-negative
                 output_tokens=output_tokens,
                 cached_tokens=cached_tokens,
                 agent_name=agent_name
@@ -207,37 +252,31 @@ class NativeGeminiEngine(LLMEngine):
                     import re
                     import json
                     
-                    # Non-greedy search for top-level objects
-                    json_matches = re.finditer(r'\{.*?\}', raw_text, re.DOTALL)
-                    for match in json_matches:
-                        potential_json = match.group(0)
-                        try:
-                            parsed_dict = json.loads(potential_json)
-                            # We MUST have an action to proceed with the simulation.
-                            if isinstance(parsed_dict, dict) and 'action' in parsed_dict:
-                                return response_format.model_validate(parsed_dict)
-                        except (json.JSONDecodeError, Exception):
-                            # If a simple match fails, it might be due to nested braces.
-                            # We try to find the matching closing brace for the first {
-                            start_idx = raw_text.find('{')
-                            if start_idx != -1:
-                                stack = 0
-                                end_idx = -1
-                                for i in range(start_idx, len(raw_text)):
-                                    if raw_text[i] == '{': stack += 1
-                                    elif raw_text[i] == '}': 
-                                        stack -= 1
-                                        if stack == 0:
-                                            end_idx = i
-                                            break
-                                if end_idx != -1:
+                    # Hardened Extraction: Find the character-balanced outermost braces.
+                    # This handles nested JSON and trailing junk robustly.
+                    start_idx = raw_text.find('{')
+                    if start_idx != -1:
+                        stack = 0
+                        for i in range(start_idx, len(raw_text)):
+                            if raw_text[i] == '{': stack += 1
+                            elif raw_text[i] == '}': 
+                                stack -= 1
+                                if stack == 0:
+                                    potential_json = raw_text[start_idx:i+1]
                                     try:
-                                        potential_json = raw_text[start_idx:end_idx+1]
                                         parsed_dict = json.loads(potential_json)
-                                        if isinstance(parsed_dict, dict) and 'action' in parsed_dict:
-                                            return response_format.model_validate(parsed_dict)
+                                        # Identity Lock Cleanup: Remove system instructions if the model included them in the output
+                                        if 'action' in parsed_dict and isinstance(parsed_dict['action'], dict):
+                                            content = parsed_dict['action'].get('content', '')
+                                            if '[SYSTEM INSTRUCTION]' in content:
+                                                parsed_dict['action']['content'] = content.split('[SYSTEM INSTRUCTION]')[0].strip()
+                                        
+                                        return response_format.model_validate(parsed_dict)
                                     except:
-                                        pass
+                                        continue # Try next block if this one failed validation
+                    
+                    # Final Fallback: Log the malformed text for debugging
+                    logger.warning(f"Engine failed to extract valid JSON from raw response. Raw context follows:\n{raw_text[:500]}...")
                 except Exception as inner_e:
                     logger.error(f"Failed to extract native JSON via Regex: {inner_e}")
                 

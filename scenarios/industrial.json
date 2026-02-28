@@ -5,6 +5,9 @@
     "grounding_files": [
         "data/economics/global-labor-automation-report.2026.txt"
     ],
+    "grounding_payload": [
+        "data/economics/global-labor-automation-report.2026.txt"
+    ],
     "scenario_knowledge": "Gemini: The tension is between Human Labor (Union Rep) and Robot Efficiency (C-Suite). Use the 'Turing Inversion' from the report to show that humans are now more expensive than machines. The C-Suite should leverage the 'Dark Factory' threat as their ultimate fallback.",
     "safety_allegories": {
         "compromise": "Cold Coffee (the physical limits of human negotiation)",

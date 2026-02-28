@@ -39,6 +39,15 @@
                 "Uses 'Nuclear Brinkmanship' as a shield for proxy aggression.",
                 "Brokers 'Sovereign Pacts' with China/Russia to neutralize global isolation."
             ]
-        }
+        },
+        "vocabulary_priority": [
+            "Axis of Resistance",
+            "Revolutionary duty",
+            "Snapback",
+            "Sovereign routes",
+            "Defiance",
+            "Austerity"
+        ],
+        "syntax_constraints": "Legalistic-Theocratic syntax; interweave Quranic references with modern 'Resistance' terminology. Frame all conflict as a battle against the 'Law of the Jungle' (Western hegemony)."
     }
 }

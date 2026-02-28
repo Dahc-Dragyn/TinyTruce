@@ -7,6 +7,11 @@
         "data/tech/euroguard-v-audit-leak.txt",
         "data/treaties/AU-Continental-AI-Strategy.2025.txt"
     ],
+    "grounding_payload": [
+        "data/policy/EU-migration-pact-2026.txt",
+        "data/facts/eu-fiscal-lockdown.2026.txt",
+        "data/theology/theological_schism_2026.txt"
+    ],
     "scenario_knowledge": "Gemini: For {{AGENT_1}}, utilize the 'Security Realist' fragment—they are under immense domestic pressure to keep numbers low and views the AI as an essential 'technocratic shield.' For {{AGENT_2}}, activate the 'Pragmatic Partner' fragment; they need the system to work to justify their 'Closer to Europe' pivot while maintaining 'Hard Power' credentials. {{AGENT_3}} must act with the 'Moral Guardian' fragment, specifically citing the 2026 UN Scientific Panel on AI to challenge the validity of the data. Trigger 'Identity Collapse' if the leaders are forced to choose between 'Machine Certainty' and 'Human Rights'—they must grapple with the fact that their political survival is now tethered to a flawed line of code.",
     "dynamic_injects": [
         {

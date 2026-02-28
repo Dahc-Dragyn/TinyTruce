@@ -37,6 +37,15 @@
                 "Stays in 'threat-detection' mode, viewing every truck as a devaluing force.",
                 "Applies 'NIMBY' (Not In My Backyard) as a primary metric for success."
             ]
-        }
+        },
+        "vocabulary_priority": [
+            "Property value",
+            "NIMBY",
+            "Procedural friction",
+            "Character",
+            "Trojan Horse",
+            "Status quo"
+        ],
+        "syntax_constraints": "Anecdotal-Defensive syntax; utilize urgent, emotional language backed by cherry-picked data. Frame all change as a 'Threat' to local identity and 'Status Quo'."
     }
 }

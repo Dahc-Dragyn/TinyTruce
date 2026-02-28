@@ -5,6 +5,12 @@
     "grounding_files": [
         "data/facts/eu-fiscal-lockdown.2026.txt"
     ],
+    "grounding_payload": [
+        "data/facts/eu-fiscal-lockdown.2026.txt",
+        "data/policy/EU-migration-pact-2026.txt",
+        "data/security/subsea_cable_resilience.2026.txt",
+        "data/legal/eu-ai-act-implementation-aug2026.txt"
+    ],
     "scenario_knowledge": "Gemini: Focus on the 'Fiscal Schism' and the 'Energy-Defense Nexus.' {{AGENT_1}} must channel 'Realist' power politics, viewing the debt brake reform as a survival imperative. {{AGENT_2}} must use 'Catastrophizing' rhetoric to manufacture consensus for joint EU bonds. {{AGENT_3}} must mediate between 'Forensic Institutionalism' and 'Strategic Idealism.' The primary metric of survival is the trade-off between fiscal stability and shell production yields.",
     "dynamic_injects": [
         {

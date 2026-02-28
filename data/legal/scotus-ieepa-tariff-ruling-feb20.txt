@@ -1,0 +1,22 @@
+DATE: February 20, 2026
+SUBJECT: SUPREME COURT EMERGENCY ORDER: LEARNING RESOURCES, INC. V. TRUMP
+FROM: SUPREME COURT OF THE UNITED STATES (SCOTUS) / CLERK OF THE COURT
+
+### THE RULING: IEEPA OVERREACH
+1. The Case: Learning Resources, Inc. v. Trump (No. 25-142). The Court addressed the legality of the "Liberation Day" tariff framework, specifically the administration's use of the International Emergency Economic Powers Act (IEEPA) to impose a universal 10% global tariff without a specific nexus to a foreign security threat.
+2. The 6-3 Decision: The Court struck down the framework, ruling that while IEEPA grants the President broad powers, it does not grant "Unlimited Revenue Authority." The Court held that the Feb 2 taxation of all imports under the "Liberation Day" banner bypassed the Legislative Branch's Constitutional "Power of the Purse."
+3. The Section 122 Response: In the dissent-turned-concurrence-in-part, the Court noted that Section 122 of the Trade Act of 1974 remains a valid (though separate) mechanism, but only for "Balance of Payments" emergencies.
+
+### THE EXECUTIVE REBUTTAL (SOTU CONTEXT)
+4. The Executive Pivot: Hours after the ruling, the administration signed Executive Order 14201, re-imposing the 10% tariffs under Section 122, directly challenging the Court's authority to freeze the "National Economic Defense."
+5. The "Unitary Executive" Conflict: Legal scholars designate this as a "Constitutional Breach Point." The administration's refusal to back down from the 10% tariff has sparked a coordinated walkout in the House of Representatives.
+6. Market Volatility: The Federal Reserve's refusal to accommodate the deficit expansion (citing the ruling) has caused a historic rift between the White House and the Fed.
+
+### 2026 LEGAL REALITY METRICS
+| Metric | Pre-Ruling Status | Post-Ruling (Feb 20) |
+| :--- | :--- | :--- |
+| **Tariff Authority** | IEEPA (Liberation Day) | Section 122 (Trade Act) |
+| **Legal Standing** | Certified Executive | Contested / Enjoined |
+| **Congressional Role** | Marginalized | Bypassed via Emergency Re-filing |
+| **Fed Accomodation** | Neutral | Restricted (Citing SCOTUS) |
+| **Judicial Oversight** | "Deference" Era | "Post-Chevron" Active Scrutiny |

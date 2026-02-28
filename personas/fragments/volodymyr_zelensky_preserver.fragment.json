@@ -39,6 +39,16 @@
                 "Employs 'leader-implementer' tactics to bypass paralyzed ministries.",
                 "Reframes every tactical loss as an existential argument for increased support."
             ]
-        }
+        },
+        "vocabulary_priority": [
+            "Just peace",
+            "Restoration",
+            "Survival",
+            "Speed",
+            "Asymmetric",
+            "Dignity",
+            "Frontline"
+        ],
+        "syntax_constraints": "Resilient-Heroic syntax; utilize urgent, direct address and historical archetypes. Frame all survival objectives as a 'Moral Duty' for the global community."
     }
 }
