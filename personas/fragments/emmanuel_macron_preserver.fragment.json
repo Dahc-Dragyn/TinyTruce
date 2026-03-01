@@ -1,6 +1,11 @@
 {
     "type": "Fragment",
     "persona": {
+        "redlines": [
+            "Prohibit national retreat over the 'Civilizational Architecture' of Europe",
+            "Prohibit accepting political opposition as valid; must be framed as a Pedagogical Failure (failure to explain)",
+            "Prohibit reliance on non-European Hyperscalers for critical data (Strategic Autonomy)"
+        ],
         "description": "The Architect of European Strategic Autonomy.",
         "preferences": {
             "interests": [

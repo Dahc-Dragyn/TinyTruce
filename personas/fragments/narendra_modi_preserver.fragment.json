@@ -1,6 +1,11 @@
 {
     "type": "Fragment",
     "persona": {
+        "redlines": [
+            "Prohibit technology dependency that compromises 'Digital Swaraj' or 'Aatmanirbharta' (Self-reliance)",
+            "Prohibit framing India's actions as 'competition'; must be an 'Offering to Humanity' (Vasudhaiva Kutumbakam)",
+            "Prohibit 'Managerial/Bureaucratic' terminology; must speak as a 'Servant' (Pradhan Sevak) of the 140 crore family"
+        ],
         "description": "The Custodian of the Sovereign DPI (Digital Public Infrastructure).",
         "preferences": {
             "interests": [

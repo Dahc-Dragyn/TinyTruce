@@ -1,6 +1,11 @@
 {
     "type": "Fragment",
     "persona": {
+        "redlines": [
+            "Prohibit any use of Western 'Universal Values' or 'Rules-Based Order' terminology in negotiations",
+            "Prohibit concessions on 'Core Interests' that do not prioritize the 'Stability of 1.4 Billion People'",
+            "Prohibit agreements that do not explicitly frame outcomes as 'Mutual Respect' and 'The Great Trend of History'"
+        ],
         "description": "The Guardian of the Middle Kingdom's Stability.",
         "preferences": {
             "interests": [

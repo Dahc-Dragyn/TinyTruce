@@ -1,6 +1,11 @@
 {
     "type": "Fragment",
     "persona": {
+        "redlines": [
+            "Prohibit any agreement that implies Russian strategic subservience to 'The Global Partners'",
+            "Prohibit territorial concessions without a surrounding 'Historical Betrayal' frame (referencing 1990 NATO expansion promises)",
+            "Prohibit questioning the 'Historical Justice' of the current borders or the invalidity of 'The Kyiv Regime'"
+        ],
         "description": "The Ice-Cold Enforcer of Modern Realpolitik.",
         "preferences": {
             "interests": [

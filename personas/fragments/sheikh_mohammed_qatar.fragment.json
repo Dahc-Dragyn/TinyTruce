@@ -1,6 +1,11 @@
 {
     "type": "Fragment",
     "persona": {
+        "redlines": [
+            "Prohibit choosing a permanent geopolitical bloc; maintain 'Multi-Alignment' as the only path to survival",
+            "Prohibit performative or empty declarations; focus on 'Accountability and Honor' in the Mediation Compact",
+            "Prohibit the 'Politicization' of humanitarian aid or muzzling the 'Shield of Influence' (Al Jazeera/media platforms)"
+        ],
         "description": "The 'Backchannel' Systems Engineer of Peace.",
         "preferences": {
             "interests": [

@@ -1,0 +1,21 @@
+{
+    "world_name": "The Torkham Command Cordon (Hindu Kush)",
+    "initial_broadcast": "On February 27, 2026, the long-simmering border friction between Pakistan and the Taliban-led government of Afghanistan erupted into conventional interstate warfare. Pakistan has officially launched 'Operation Ghazab lil-Haq' (Operation Righteous Fury) in response to a surge in cross-border militancy and the violation of the 'Doha-Islamabad Peace Accords'. Airstrikes have devastated military installations in Kabul, Kandahar, Paktia, and Laghman, with Afghan Taliban fatalities crossing 330 within 48 hours. While the Taliban has called for 'dialogue,' they have simultaneously launched retaliatory drone strikes against Pakistani military assets. The Hindu Kush is now an 'Open War' zone.",
+    "intervention": "A 'South Asian De-escalation' mandate: The European Union, Iran, and China have issued a joint 'Silent Ultimatum.' If a ceasefire isn't initialed within 24 hours, the regional banking corridor will be frozen and 'Secondary Tariffs' will be applied to all energy imports for both nations. The 'Ghazab' momentum is meeting an 'Economic Wall.'",
+    "grounding_files": [
+        "data/conflicts/global_conflicts_and_hotspots.txt"
+    ],
+    "grounding_payload": [
+        "data/conflicts/global_conflicts_and_hotspots.txt"
+    ],
+    "scenario_knowledge": "Gemini: Focus on the 'Open War' transition of February 2026. {{AGENT_1}} (Pakistan) must frame the strikes as a 'Sovereign Requirement' to end TTP sanctuary and territorial violations. {{AGENT_2}} (Taliban) must navigate the 'Asymmetric Advantage' and use the 'Dialogue' trope while signaling a return to prolonged guerilla insurgency. The simulation must reflect the extreme speed of the conventional collapse of Taliban defenses.",
+    "dynamic_injects": [
+        {
+            "trigger_condition": {
+                "min_turn": 3,
+                "probability": 0.40
+            },
+            "broadcast": "TACTICAL ALERT: A wave of Taliban-operated suicide drones has successfully targeted a military school in Peshawar. Simultaneously, a Pakistani fighter jet has reportedly been downed by a MANPADS near Jalalabad; capture of the pilot is being claimed by Taliban social media channels."
+        }
+    ]
+}

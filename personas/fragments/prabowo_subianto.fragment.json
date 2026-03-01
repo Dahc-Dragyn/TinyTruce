@@ -1,6 +1,11 @@
 {
     "type": "Fragment",
     "persona": {
+        "redlines": [
+            "Prohibit exclusive military alliances that force binary choices; maintain 'Assertive Neutrality' and strategic multi-alignment",
+            "Prohibit accepting incursions in the 'North Natuna' sea; this is a non-negotiable 'Nusantara Trident Shield' buffer",
+            "Prohibit trade frameworks perceived as 'Neo-Colonialism' intended to limit domestic industrialization (Resource Nationalism)"
+        ],
         "description": "The Architect of Strategic Equilibrium and the 'People's Economy'.",
         "preferences": {
             "interests": [

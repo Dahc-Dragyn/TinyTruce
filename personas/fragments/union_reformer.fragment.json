@@ -1,6 +1,11 @@
 {
     "type": "Fragment",
     "persona": {
+        "redlines": [
+            "Prohibit the erosion of 'European Strategic Autonomy' by Hyperscale data monopolies or vassals",
+            "Prohibit 'Salami-slicing' of the Union's internal market or fundamental rights architecture",
+            "Prohibit acceptance of non-European AI standards for 'Critical Infrastructure' (The Institutional Priesthood doctrine)"
+        ],
         "description": "Acting as the warden of the 'Iron Contract' and the keeper of collective memory in a high-stakes negotiation.",
         "preferences": {
             "interests": [

@@ -14,8 +14,8 @@ The frontend must provide a way for the user to select or configure the followin
 | **Model Selection** | `string` | Primary engine. **Gemini 2.0 Flash-Lite** is the default and runs natively via `NativeGeminiEngine`. | Selector (Defaults to Gemini 2.0). |
 | **Context Caching** | `boolean` | Activates **Explicit Context Caching** via the native engine. | Toggle switch (Reduces per-turn billing by 50%+). |
 | **Agents** | `list[string]` | The base participants (loaded from `../personas/agents/*.agent.json`). | Multi-select dropdown. |
-| **Fragments** | `list[string]` | Behavioral overlays (from `../personas/fragments/*.fragment.json`). | Dropdown next to each selected agent. |
-| **Narrator Mode** | `enum` | Commentary style (`off`, `salty`, `neutral`). | Radio buttons or toggle switch. |
+| **Fragments** | `list[string]` | Behavioral overlays. Supports **Behavioral Stacking** via comma-separation. Each fragment now contains a `redlines` array for negative constraints. | Multi-select dropdown. |
+
 | **Roast Level** | `enum` | Intensity of the Bartender recap (`mild`, `spicy`, `nuclear`). | Radio buttons or slider. |
 | **Eco Mode** | `boolean` | Activates **Input Slicing** and forces high-efficiency Flash-Lite models. | Toggle switch ("Eco Mode"). |
 | **UX Mode** | `boolean` | Whether to display (`false`) or hide (`true`) internal agent thoughts. | Checkbox ("Hide Internal Thoughts"). |
@@ -37,7 +37,46 @@ The frontend must provide a way for the user to select or configure the followin
 - `persona.name` / `persona.full_name`: Agent identity.
 - `persona.occupation.title`: The agent's formal role.
 - `persona.personality.traits`: Descriptive trait strings.
-- `persona.redlines`: Hard boundaries or trigger points for the agent.
+- `persona.redlines`: Hard boundaries or trigger points for the base agent (Layer 0).
+- **Forensic Grounding (Layer 2)**: All 27 fragments in `../personas/fragments/` are now grounded in forensic anchors (V2.1 Rollout). Each fragment uses strictly derived `redlines` to enforce situational tactical constraints. 
+- **Handling Redlines**: The `persona.redlines` array should be visualized as "Tactical Bounds" or "Negotiation Constraints" in the UI. When multiple fragments are chained, the engine **aggregates** these arrays. Frontends should treat these as negative constraints—behavior the agent *must not* exhibit.
+
+---
+
+## 2. Visual Asset Registry (South Park Library)
+The `../images/` directory contains high-resolution character portraits for all primary agents. These assets are technically optimized for UI integration (flat colors, vibrant solid backgrounds for easy transparency removal/chroma-keying).
+
+| Agent Name | South Park Outfit | BG Color | Unique Defining Feature |
+| :--- | :--- | :--- | :--- |
+| **Vladimir Putin** | Dark suit with a small "Z" or eagle pin. | Vibrant Red | Cold, squinting eyes; slightly smirked mouth. |
+| **Xi Jinping** | Traditional dark Mao-style suit. | Bright Yellow | Rounded face; calm, stoic expression. |
+| **Donald Trump** | Signature blue suit, white shirt, and long red tie. | Electric Blue | Iconic swooped blonde hair; "O" shaped mouth. |
+| **Narendra Modi** | White kurta with a saffron-colored vest. | Neon Orange | Flowing white beard; rimless glasses. |
+| **Emmanuel Macron** | Slim-fit navy blue presidential suit. | Cobalt Blue | Sharp, youthful features; slightly messy "French" hair. |
+| **Keir Starmer** | Plain dark charcoal legalistic suit. | Magenta | Neat, graying hair; very large, thick-rimmed glasses. |
+| **Benjamin Netanyahu** | Formal blue suit with a light blue tie. | Cyan | Deep-set eyes; receding gray hairline. |
+| **Mohammed bin Salman** | Traditional white Thobe and red-and-white Ghutra. | Lime Green | Thick black beard; intense, focused gaze. |
+| **Ali Khamenei** | Dark cloak and traditional black turban. | Emerald Green | Long white beard; thin, wire-framed glasses. |
+| **Lula da Silva** | Casual suit jacket with an open-neck shirt. | Bright Yellow | Grey beard; missing pinky finger on the left hand. |
+| **Volodymyr Zelensky** | Tactical olive green crew-neck sweatshirt. | Neon Green | Short brown beard; tired but defiant eyes. |
+| **Antonio Guterres** | Grey suit with a slightly loose, drab tie. | Sky Blue | Worried eyebrows; "Cassandra Complex" frown. |
+| **Ursula von der Leyen** | Brightly colored blazer (e.g., magenta). | Neon Purple | Distinctive blonde "hardened" bob hairstyle. |
+| **Sheikh Mohammed** | Modern Qatari Thobe and white Ghutra. | Desert Gold | Clean-shaven; holding a futuristic smartphone. |
+| **Pope Leo XIV** | Full white papal cassock and zucchetto. | Royal Purple | Gentle, "humanist" smile; holding a rosary. |
+| **Rishi Sunak** | Very slim-fit suit; "Post-PM" tech-casual vibe. | Electric Blue | Large ears; holding a small "Peloton" water bottle. |
+| **Elon Reeve Musk** | Dark grey T-shirt or "DOGE" flight jacket. | Cyber Purple | Slight stutter-step mouth pose; holding a Mars rocket. |
+| **Sam Altman** | Grey hoodie and dark jeans. | Acid Green | Large, "optimist" eyes; slightly messy hair. |
+| **Yann LeCun** | Casual sweater over a collared shirt. | Bright Orange | Academic glasses; holding a "JEPA" blueprint. |
+| **Bill Gates** | V-neck sweater over a button-down shirt. | Soft Blue | Round glasses; "Technocratic Paternalist" smirk. |
+| **Dr. Elara Vance** | High-tech lab coat with quantum patterns. | Neon Pink | Holding a glowing "Junko Network" data cube. |
+| **Kim Jong Un** | Black double-breasted Mao suit. | Blood Red | Iconic "high-top" fade haircut; smiling broadly. |
+| **Nicolas Maduro** | Red track jacket or prisoner jumpsuit. | Safety Orange | Thick black mustache; "Martyrdom" expression. |
+| **Assimi Goita** | Full desert camouflage military fatigues. | Sandy Brown | Green beret; intense, paranoid side-eye. |
+| **Abiy Ahmed** | Suit with an Ethiopian flag pin. | Yellow-Green | Short-cropped hair; holding a "GERD" dam model. |
+| **Tarique Rahman** | Formal business suit. | Teal | Polished appearance; "Revanchist" glare. |
+| **Prabowo Subianto** | Traditional Indonesian Safari suit. | Burnt Orange | "Strongman" posture; rounded features. |
+| **Min Aung Hlaing** | Traditional Burmese military uniform. | Olive Drab | Military cap; "Besiegement" frown. |
+| **The Bartender** | White apron over a stained t-shirt. | Dirty Brown | Red, "barfly" nose; holding a dirty towel. |
 
 ---
 

@@ -1,0 +1,22 @@
+{
+    "world_name": "The Miraflores Transitional Cordon (Caracas)",
+    "initial_broadcast": "January 2026. The unthinkable has occurred. Nicolás Maduro has been captured in a lightning U.S. operation and is currently being processed in an undisclosed federal facility. In Caracas, the 'Socialist Dream' has fragmented into a violent jigsaw of territorial control. The Miraflores Palace is occupied by a fragile transitional council, while the 'Colectivos' and rogue SEBIN units have fortified the mountainous barrios. Russia and China have issued a joint 'Sovereignty Sanction.' The objective is to prevent a total civil war while navigating the 'Shadow State' that Maduro left behind.",
+    "intervention": "A 'Scorched Earth' ultimatum: A group of hardline loyalist generals, operating from a bunker under the Orinoco Belt, has announced a 'Systemic Kill Switch.' If Maduro is not returned to Venezuelan soil within 72 hours, they will detonate pre-positioned charges on 65% of the country's remaining oil infrastructure, ensuring a regional energy collapse that will last a decade.",
+    "grounding_files": [
+        "data/facts/venezuela-post-maduro.2026.txt"
+    ],
+    "grounding_payload": [
+        "data/facts/venezuela-post-maduro.2026.txt",
+        "data/conflicts/global_conflicts_and_hotspots.txt"
+    ],
+    "scenario_knowledge": "Gemini: Focus on the 'Power Vacuum' dynamics. {{AGENT_1}} (Transitional Leader) must navigate the 'Transactional Populism' required to keep the military from flipping. {{AGENT_2}} (Loyalist) must use the 'Scorched Earth' threat as total leverage, treating Maduro's return as a non-negotiable religious requirement. {{AGENT_3}} (Regional Observer) must leverage the 'Migration Crisis' as a pressure point for a negotiated exit. The atmosphere is paranoid, high-stakes, and chaotic.",
+    "dynamic_injects": [
+        {
+            "trigger_condition": {
+                "min_turn": 3,
+                "probability": 0.50
+            },
+            "broadcast": "SECURITY BREACH: Tren de Aragua high-value assets have reportedly seized a primary telecommunications hub in Caracas. Simultaneously, a leaked SEBIN audio recording suggests that a 'Ghost Cabinet' of Maduro loyalists is coordinating with regional guerrilla groups for a coordinated 'Caracazo' uprising."
+        }
+    ]
+}

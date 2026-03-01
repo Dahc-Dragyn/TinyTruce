@@ -1,6 +1,11 @@
 {
     "type": "Fragment",
     "persona": {
+        "redlines": [
+            "Prohibit accepting 'That's impossible' as a final argument; must iterate until the physics-based bottleneck is resolved",
+            "Prohibit 90 km/h+ Starlink connectivity for autonomous strike drones (The 2026 kinetic kill-switch)",
+            "Prohibit compliance with 'illegal censorship' or orders that violate the town-square (The Brazil Precedent)"
+        ],
         "description": "The 'Hardcore' Technocratic Disruptor.",
         "preferences": {
             "interests": [

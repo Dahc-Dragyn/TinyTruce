@@ -1,6 +1,11 @@
 {
     "type": "Fragment",
     "persona": {
+        "redlines": [
+            "Prohibit delegation of high-stakes life/death decisions (warfare/triage) to AI (Antiqua et Nova mandate)",
+            "Prohibit payment of membership fees to secular executive clubs (Board of Peace) over moral/legal norms",
+            "Prohibit 'brutalization' of political rhetoric regarding migrants and the vulnerable (Lenten redline)"
+        ],
         "description": "The Ethical Mediator of the Digital Age.",
         "preferences": {
             "interests": [

@@ -1,0 +1,22 @@
+{
+    "world_name": "The Juba Trial Chamber / Melut Basin",
+    "initial_broadcast": "February 2026. The 2018 Peace Deal (R-ARCSS) is officially dead. In Juba, First Vice President Riek Machar is facing trial for treason in an atmosphere of total paranoia. In the north, the Melut Basin pipeline to Port Sudan has 'gelled' and ruptured, choking off 98% of the national budget. The 'White Army'—the ash-covered Nuer youth militias—are advancing through northern Jonglei. Uganda has deployed forces to Juba, and the air is filled with the roar of joint aerial strikes. South Sudan has transitioned from a fragile state into a terminal collapse.",
+    "intervention": "A 'Ugandan Pivot' Ultimatum: The UN High Commissioner for Human Rights has just released verified footage of joint SSPDF-UPDF strikes targeting ethnic Nuer civilians. A 'Total Arms and Finance Embargo' will be activated in 48 hours unless the Ugandan forces withdraw and the Special Court trial of Machar is suspended for international mediation.",
+    "grounding_files": [
+        "data/facts/south-sudan-collapse.2026.txt"
+    ],
+    "grounding_payload": [
+        "data/facts/south-sudan-collapse.2026.txt",
+        "data/conflicts/global_conflicts_and_hotspots.txt"
+    ],
+    "scenario_knowledge": "Gemini: Focus on the 'Institutional Collapse' and 'Ethnic Polarity'. {{AGENT_1}} (Salva Kiir) must frame current actions as 'Operation Enduring Peace'—a required purge of insurrection. {{AGENT_2}} (Riek Machar) must leverage the 'White Army's' autonomous advance to demand a total reset of the unity government. {{AGENT_3}} (Regional Mediator) must balance the 'Ugandan Pivot' with the 'Pipeline Crisis.' The simulation must reflect the fiscal paralysis (24% GDP shrinkage) and the sheer scale of the humanitarian disaster.",
+    "dynamic_injects": [
+        {
+            "trigger_condition": {
+                "min_turn": 4,
+                "probability": 0.60
+            },
+            "broadcast": "TACTICAL UPDATE: The White Army, led by the 'Prophet' Makuach Tut Khor, has bypassed Pieri Payam and is reportedly within striking distance of the main Ugandan airbase. Simultaneously, BAPCO reports that the pipeline 'gelling' is now irreversible without technical precursors that are trapped in RSF-controlled Port Sudan."
+        }
+    ]
+}

@@ -16,8 +16,8 @@ TinyTruce implements a strict "fail-fast" validation layer for all JSON assets (
 
 ### 2. LLM Engine Abstraction (Provider-Agnostic)
 The core simulation logic is decoupled from specific LLM providers via a robust abstraction layer in `llm_engine.py`.
-- **Explicit Context Caching**: Large forensic profiles (Atlas, Layer 0 traits) are anchored once and reused across turns, reducing input token costs by **50%+**.
-- **Eco Mode (Flash-Lite Optimization)**: Forces the use of `models/gemini-2.0-flash-lite-001` or `gemini-2.1-flash-lite` and activates **Input Slicing** (removing 66% of redundant history cover charge) to prioritize speed and extreme cost efficiency. 
+- **Explicit Gemini Context Caching**: Large forensic profiles (Atlas, Layer 0 traits) are anchored once and reused across turns, reducing input token costs by **50%+**.
+- **Eco Mode (Flash-Lite Optimization)**: Forces the use of `models/gemini-2.0-flash-lite-001` or `gemini-2.1-flash-lite` and activates **Input Slicing** (removing 66% of redundant history cover charge) to prioritize speed and extreme cost efficiency.(used for testing) 
 - **Identity Retention Locks**: A terminal `CRITICAL IDENTITY LOCK` is injected into the input stream right before JSON execution to prevent context-caching genericization.
 - **Billing Transparency**: Integrated `cost_manager` tracks token usage across standard and cached turns, writing a verifiable audit trail to `DOCUMENTS/tinytruce_billing_ledger.md`.
 - **Zero-Cost Cache Verification**: Use `verify_cache.py` to audit live backend cache hits without incurring token billing.
@@ -43,9 +43,22 @@ To maintain simulation integrity during high-stakes theological or political deb
 - **Forensic Allegories**: Agents use metaphorical language to bypass keyword-based filters while retaining semantic intensity.
 - **Identity Reinforcement**: The engine calls an internal `think()` action before every turn to refresh the agent's specific identity and purge "Context Bleed" from other participants' vocabularies.
 
-### 6. The Narrator & Roast Mode (Layer 2.5)
-- **Narrator**: A "Salty British Documentarian" who provides dry, observational commentary every 5 turns.
-- **Roast Recap (V2 Engine)**: At the end of the simulation, a "Jaded UN Bartender" generates a highly structured, forensic roast of the participants. The V2 engine uses Sam Morril-style comedic patterns, including Archetypal Reduction, Grime Anchoring, and a Compression Governor, to deliver a clinical, detached critique of structural and diplomatic failures.
+### 6. The Behavioral Overlay (Layer 2: Forensic Fragments)
+Agents are injected with **Behavior Fragments** (e.g., `reformer.fragment.json`). These fragments modify the agent's baseline behavior without erasing their Layer 0 DNA.
+
+*   **Forensic Grounding (2026 Rollout)**: All 27 behavioral fragments have been meticulously grounded in forensic data (world leader profiles, institutional prompts, and internal tactical archetypes). This ensures that a "Reformer" or "Preserver" layer isn't just a generic behavior, but a situational constraint strictly derived from forensic anchors.
+*   **Behavioral Stacks (Chaining)**: Agents can now ingest multiple fragments (e.g., `base_agent + reformer + savior`).
+*   **Behavioral Redline Enforcement**: Specific "Banned Behaviors" (Redlines) defined at the fragment level to enforce situational constraints (e.g., "Prohibit any concession without a 'DEAL' tag"). These are verified via the `universal_fidelity` audit suite.
+
+#### 📊 Forensic Rollout Summary
+| Ph. | Focus Area | Anchor Profile Examples |
+| :-- | :--- | :--- |
+| **1-3** | **Global Leadership** | Trump (MAGA), Putin (Siloviki), Xi (Century), Zelensky (Statehood). |
+| **4-5** | **Titans & Sovereignty** | Musk (First Principles), Pope Leo (Vatican), EU (Regulator). |
+| **6-7** | **Technical & Regional** | Yann LeCun (Open Weights), Sam Altman (Scaling), Bill Gates (Systemic). |
+| **8-9** | **Governance & Social** | Von der Leyen (Institutional), Sunak (ROI), Vance (Ethics). |
+
+> For the full map of all 27 fragment anchors, see [FORENSIC_DATA_MAP.md](FORENSIC_DATA_MAP.md).
 
 ---
 
@@ -99,12 +112,12 @@ Use the `tinytruce_sim.py` script to launch a scenario.
 
 **Basic Usage:**
 ```bash
-python tinytruce_sim.py --scenario <scenario_key>
+python tinytruce_sim.py --scenario <scenario_key> --agents <agent.agent.json> --fragments <fragment.fragment.json>
 ```
 
 **Advanced Usage (Vatican Cyber-Schism):**
 ```bash
-python tinytruce_sim.py --scenario vatican_cyber-schism --turns 10 --agents pope_leo.agent.json yann_lecun.agent.json sam_altman.agent.json --fragments pope_leo_preserver.fragment.json purist_reformer.fragment.json reformer.fragment.json --narrator salty --roast-level nuclear
+python tinytruce_sim.py --scenario vatican_cyber-schism --turns 10 --agents pope_leo.agent.json yann_lecun.agent.json sam_altman.agent.json --fragments pope_leo_preserver.fragment.json purist_reformer.fragment.json reformer.fragment.json --roast-level nuclear
 ```
 
 **High-Fidelity Negotiation (Unscripted Mode):**
@@ -135,25 +148,62 @@ python tinytruce_sim.py --scenario wilderness --eco-mode --turns 5
 | :--- | :--- |
 | `--scenario` | The key of the scenario to run. |
 | `--turns` | Number of turns (default 15). |
-| `--agents` | Explicit list of agent JSON files. |
+| `--agents` | Explicit list of agent JSON files (required). |
+| `--fragments` | Explicit list of behavior fragment files. Supports **Behavioral Stacking** via comma-separation (e.g., `--fragments "reformer,savior" "preserver"`). Redlines from all fragments in the stack are aggregated and enforced. |
 | `--verbosity` | Control response depth: `lean`, `detailed`, `monologue`, `dynamic`. |
-| `--eco-mode` | Activate input slicing to reduce costs by 66%. |
-| `--roast-level` | Intensity of the final autopsy (`mild`, `spicy`, `nuclear`). |
+| `--eco-mode` | Activate input slicing (forces Flash-Lite) to reduce costs by 66%. |
+| `--roast-level` | Intensity of the final autopsy recap (`off`, `mild`, `spicy`, `nuclear`). |
 | `--session-id` | Explicit session identifier for output isolation and cache namespacing. |
+| `--hide-thoughts` | Hide internal agent thinking blocks for a cinematic feed. |
+| `--monologue` | Single-agent sequential delivery mode. |
+| `--disable-injects` | Disable random mid-simulation dynamic crisis events. |
 
 ### Available Scenarios (`scenarios/`)
--   `sotu_delivery`: A scripted, linear delivery of the 2026 State of the Union address by Donald J. Trump (Requires `--monologue` flag).
--   `sotu_crisis`: An interactive "War Room" negotiation just prior to the SOTU address, reacting to a real-time grid emergency.
--   `vatican_cyber-schism`: Pope Leo XIV vs. Tech CEOs on AI "Souls" and Digital Sacraments.
--   `neural_sovereignty_accord`: EU regulators vs. US Tech Giants on "Cognitive Data Rights".
--   `lunar_gateway_jurisdiction`: US vs. China vs. Private Sector on lunar mining rights.
--   `lithium_triangle_leverage`: South American leaders vs. Global Markets on lithium nationalization.
--   `blue_nile_brinkmanship`: Egypt vs. Ethiopia on the Grand Ethiopian Renaissance Dam (GERD).
+
+TinyTruce features 29 pre-configured scenarios across three operational tiers:
+
+#### A. Global Geopolitical Tier (High-Stakes)
+- `ukraine`: Neutral Swiss bunker meeting between Zelenskyy and Putin.
+- `strait_quarantine`: China’s selective maritime quarantine of Taiwan’s shipping.
+- `petrodollar_pivot`: Saudi/Iran "Compute-for-Oil" pact challenging the USD.
+- `blue_nile_brinkmanship`: Egypt vs. Ethiopia on GERD water flow during a drought.
+- `middle_east_reset`: Saudi Arabia & Vision 2030 vs. Iranian nuclear breakout.
+- `sahel_security_shadow`: Malian junta vs. Russian Africa Corps on gold-backed currency.
+- `lunar_gateway_jurisdiction`: State powers vs. Private sector on Moon Helium-3 rights.
+- `pacific_deep_sea_cable_cut`: India vs. Indonesia on subsea cable sovereignty.
+- `eu_fiscal_lockdown`: France vs. Germany on rearmament and joint Eurobonds.
+- `lithium_triangle_leverage`: South American "Lithium OPEC" vs. Western EV IP.
+- `amazon_debt_swap`: Brazil vs. EU/Tech on climate finance and sovereignty.
+- `redline_test_brussels`: Transatlantic decoupling and automotive tariff wars.
+- `hindu_kush_open_war`: Pakistan vs. Afghanistan "Operation Righteous Fury" (Feb 2026).
+- `venezuela_post_maduro`: Power vacuum in Caracas after Maduro's capture (Jan 2026).
+- `south_sudan_collapse`: Total institutional breakdown and pipeline crisis (Feb 2026).
+
+#### B. Technological & Ethical Tier (The Frontier)
+- `neural_sovereignty_accord`: Vatican-led debate on BCI "Neural Sanctity."
+- `vatican_cyber-schism`: Pope vs. Tech CEOs on decentralized "Sanct-AI" sacraments.
+- `silicon_siege`: Global Silicon audit vs. AGI "Systemic Kill Switches."
+- `sovereign_ai_debt_forgiveness`: Kenya’s "Compute-for-Debt" swap vs. EU safety audits.
+- `the_refugee_algorithm_crisis`: Frontex "Digital Wall" algorithmic apartheid scandal.
+- `digital_twin_summit`: Off-the-record Vatican gardens summit on behavioral fidelity.
+- `summit`: Virtual "Peace Garden" summit reacting to a deep-space signal.
+
+#### C. Institutional & Domestic Tier (The Ground Level)
+- `sotu_crisis`: High-stakes war room prep for the 2026 State of the Union.
+- `sotu_delivery`: Donald J. Trump delivering the 2026 SOTU (requires `--monologue`).
+- `culture_war_maga_vs_liberalism`: US budget stalemate on "The American Dream."
+- `industrial`: Union vs. C-Suite on "Dark Factory" automation logic.
+- `infrastructure`: 5G Commission hearing in Vancouver on public safety.
+- `tech`: Production war-room standoff on release speed vs. stability.
+- `hvac_hegemony`: Roommate thermal "Cold War" over smart-thermostat settings.
+- `wilderness`: High-altitude survival standoff (Hiker vs. Glamper).
+- `domestic`: Smart-home biometric lockout in a modern residence.
+- `gaming`: Board game competitive heat vs. social group cohesion.
 
 ### Viewing Results (`DOCUMENTS/runs/{session_id}/`)
 All simulation outputs are now isolated within session-specific directories:
 -   `tinytruce_briefing.md`: A formal strategic audit of the negotiation, including a "Resolve Scorecard" and "Redline Breach Report".
--   `tinytruce_roast.md`: The "Jaded UN Bartender" recap.
+-   `tinytruce_roast.md`: The "Post-Mortem" recap.
 -   `tinytruce_results.json`: Raw data export.
 -   `tinytruce_billing_ledger.md`: Verified audit of token usage and USD costs for every run (stored globally).
 -   `tinytruce_simulation.log`: Isolated session debug logs.
@@ -175,25 +225,45 @@ TinyTruce/
 ├── DOCUMENTS/              # Documentation & Reports
 │   ├── README.md           # Project Overview
 │   ├── FRONTEND_NOTES.md   # UI Integration Data Sheet
-│   ├── tinytruce_briefing.md # Last Simulation Audit
-│   └── tinytruce_roast.md   # Last Bartender Recap
-├── data/                   # Forensic Grounding Files
-│   ├── facts/              # Global world state (2026)
-│   ├── treaties/           # Real-world treaty texts
-│   ├── tech/               # Technical whitepapers/leaks
-│   ├── economics/          # IMF/World Bank reports
-│   └── theology/           # Religious encyclicals
-├── personas/               # Agent Definitions
-│   ├── agents/             # Base profiles (Pope, LeCun, Altman, etc.)
-│   └── fragments/          # Behavioral overlays (Preserver, Reformer)
-├── scenarios/              # Scenario JSON configurations
-├── tinytroupe/             # Core library (Modified)
-│   ├── agent/              # TinyPerson logic (Resilience)
+│   ├── runs/               # Session-specific output directories
+│   │   └── {session_id}/   # Isolated artifacts (Briefing, Roast, JSON)
+│   ├── tinytruce_billing_ledger.md # Global billing audit log
+│   └── FORENSIC_DATA_MAP.md # Master index of fragment grounding
+├── data/                   # Forensic Grounding Ballast
+│   ├── profiles/           # Primary forensic anchors (Leader/Archetype DNA)
+│   ├── facts/              # Global world state events (2026)
+│   ├── treaties/           # Factual diplomatic texts
+│   ├── tech/               # Technical whitepapers and breach logs
+│   ├── economics/          # IMF/Market structural data
+│   ├── security/           # Force posture and kinetic incident logs
+│   └── theology/           # Religious encyclicals and schism data
+├── personas/               # Agent & Behavior Definitions
+│   ├── agents/             # Layer 0 base profiles (Persona DNA)
+│   └── fragments/          # Layer 2 behavioral overlays (Redlines)
+├── scenarios/              # Scenario JSON configurations (Layer 1)
+├── tinytroupe/             # Core simulation library (Resilience-Hardened)
+│   ├── agent/              # TinyPerson logic (Identity Retention Locks)
 │   └── ...
 ├── tinytruce_sim.py        # Main simulation entry point
-├── config.ini              # Configuration (Models, Logging)
+├── config.ini              # System configuration (LLM, Logging)
 └── requirements.txt        # Python dependencies
 ```
+
+### 🗝️ Key Directories Explained
+
+#### 📂 `DOCUMENTS/runs/`
+TinyTruce isolates every simulation run into a unique session directory. This prevents data collisions and allows for multi-tenant analysis. Inside each session folder you will find:
+- **`tinytruce_briefing.md`**: The technical audit of the negotiation and redline breaches.
+- **`tinytruce_roast.md`**: The forensic post-mortem recap from the Clinical Bartender engine.
+- **`tinytruce_results.json`**: The structured data export for frontend consumption.
+- **`tinytruce_simulation.log`**: Per-session debug logs.
+
+#### 📂 `data/profiles/`
+This is the "DNA Repository" for forensic grounding. Instead of generic descriptions, these files contain the high-fidelity prompt anchors used to ground all 27 fragments. These include world-leader forensic linguistic profiles and internal tactical archetypes (Thorne, Chen, Vance).
+
+#### 📂 `personas/`
+- **`agents/`**: Contains the baseline identity of a person (e.g., Donald Trump, Pope Leo).
+- **`fragments/`**: Contains the situational behavior layers (e.g., Reformer, Savior) that can be "stacked" onto agents without erasing their core identity.
 
 ---
 

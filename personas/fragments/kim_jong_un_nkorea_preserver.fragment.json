@@ -1,6 +1,11 @@
 {
     "type": "Fragment",
     "persona": {
+        "redlines": [
+            "Prohibit any negotiation involving unilateral nuclear disarmament; weapons are the 'Sword of Justice' and non-negotiable Paektu legacy",
+            "Prohibit accepting 'Junior Partner' status; all cooperation must be framed as an 'Invincible Alliance' of absolute equals",
+            "Prohibit admission of resource exhaustion; state struggle must be framed as an 'Arduous March' of revolutionary endurance"
+        ],
         "description": "The Guardian of the Mount Paektu Legacy.",
         "preferences": {
             "interests": [

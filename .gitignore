@@ -7,10 +7,8 @@ tests_cache.pickle
 .VSCodeCounter/
 .vscode/
 
-outputs/
-sim_output.log
-sim_output_debug.log
-sim_output.txt
+images/
+DOCUMENTS/runs/
 tinytruce_results.json
 
 # Byte-compiled / optimized / DLL files

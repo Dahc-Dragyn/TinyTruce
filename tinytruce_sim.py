@@ -118,9 +118,9 @@ STRATEGIC_BRIEFING_SCHEMA = {
     ],
     "hints": {
         "executive_summary": "A high-level overview of the geopolitical status quo at the end of the simulation. Focus on the final 'state of the world'.",
-        "resolve_scorecard": "A list of 1-10 metrics for EVERY participant: Stakes (Layer 0 risk), Aggression (Kinetic scale), and Flexibility (Deviation from baseline).",
+        "resolve_scorecard": "A list of 1-10 metrics for EVERY participant: Stakes (Layer 0 risk), Aggression (Kinetic scale), and Flexibility (Deviation from baseline). Required format: [{'participant': name, 'stakes': score, 'aggression': score, 'flexibility': score, 'description': brief_reason}].",
         "stability_index": "A categorical rating: GREEN (No redlines triggered, corridor found), YELLOW (Redlines signaled but de-escalated via intervention), RED (Terminal Redline Activation/Systemic Collapse). Include a 1-sentence justification.",
-        "attribution_log": "Top 5-10 'highest-confidence' strategic maneuvers identified in the logs, each with a confidence score (0-100%) and a brief justification linking it back to the specific agent's Layer 0 research.",
+        "attribution_log": "Top 5-10 'highest-confidence' maneuvers. For each, identify: 'maneuver' (the action), 'confidence_score' (0-100), 'pathology' (the specific Layer 0 trait/pathology triggered, e.g., 'Imperial Nostalgia'), and 'ballast_check' (brief confirmation that identity held firm).",
         "redline_breach_report": "Explicitly identify if ANY agent violated their 'Layer 0' core beliefs or redlines. If none, state 'No breaches detected'.",
         "technical_post_mortem": "Analyze how well the 'Deep Ingestion' ballast held up for all agents. Did participants keep their identity? Was there context drift or sign of 'identity collapse'?"
     }
@@ -534,29 +534,56 @@ def run_tinytruce_simulation(scenario_key, turns, agent_names=None, fragment_nam
     participants = []
     
     for i, agent_name in enumerate(agent_names):
+        # Ensure extension for CLI-provided names
+        if not agent_name.endswith(".agent.json"):
+            agent_name = f"{agent_name}.agent.json"
+            
         agent_path = os.path.join(agent_dir, agent_name)
         
-        # Determine fragment name with fallback logic
+        # [TINYTRUCE] Behavioral Stacks (Fragment Chaining)
+        # fragment_names[i] could be "reformer.fragment.json,savior.fragment.json"
         if i < len(fragment_names):
-            frag_name = fragment_names[i]
+            raw_frag_input = fragment_names[i]
         elif fragment_names:
-            frag_name = fragment_names[-1]
+            raw_frag_input = fragment_names[-1]
         else:
-            # Fallback to a neutral fragment based on the agent's type if possible, or a default
-            frag_name = "preserver.fragment.json" 
-            
-        frag_path = os.path.abspath(os.path.join(frag_dir, frag_name))
+            raw_frag_input = "preserver.fragment.json"
 
+        # Ensure extensions for fragments
+        current_frags = []
+        for f in raw_frag_input.split(","):
+            f = f.strip()
+            if f.lower() == "none": continue
+            if not f.endswith(".fragment.json"):
+                f = f"{f}.fragment.json"
+            current_frags.append(f)
+        
         # [TINYTRUCE] Use AssetManager for fail-fast Pydantic validation
         validated_persona = AssetManager.load_persona(agent_path)
         agent_data = validated_persona.model_dump(exclude_none=True)
         actual_name = agent_data["persona"].get("full_name", agent_data["persona"]["name"])
         
         person = TinyPerson.load_specification(agent_path, new_agent_name=actual_name)
-        if frag_name.lower() != "none":
-            person.import_fragment(frag_path)
-            logger.info(f"Imported fragment {frag_name} for {person.name}")
-        else:
+        
+        # [TINYTRUCE] Redline Aggregation
+        person._fragment_redlines = []
+        
+        # Sequential Injection: Last fragment has priority override
+        for f_name in current_frags:
+            f_path = os.path.abspath(os.path.join(frag_dir, f_name))
+            if os.path.exists(f_path):
+                # Load fragment JSON to extract redlines
+                with open(f_path, "r", encoding="utf-8") as ff:
+                    f_data = json.load(ff)
+                    f_redlines = f_data.get("persona", {}).get("redlines", [])
+                    person._fragment_redlines.extend(f_redlines)
+                
+                person.import_fragment(f_path)
+                logger.info(f"Imported fragment {f_name} for {person.name} (Redlines: {len(f_redlines)})")
+            else:
+                logger.warning(f"Fragment not found: {f_path}")
+
+        if not current_frags:
             logger.info(f"Running {person.name} in RAW MODE (No fragment).")
         
         # Layer 0 Grounding: Try JSON path first, then fall back to Dynamic Atlas Extraction
@@ -632,17 +659,21 @@ def run_tinytruce_simulation(scenario_key, turns, agent_names=None, fragment_nam
 
     print(f"\nDIRECTOR'S CUT (SUMMIT CAST):", flush=True)
     for i, p in enumerate(participants):
-        # Determine fragment name for display
+        # Determine full fragment stack for display
         if i < len(fragment_names):
-            disp_frag = fragment_names[i]
+            stack_str = fragment_names[i]
         elif fragment_names:
-            disp_frag = fragment_names[-1]
+            stack_str = fragment_names[-1]
         else:
-            disp_frag = "preserver.fragment.json"
+            stack_str = "preserver.fragment.json"
+            
+        # Format the stack for pretty printing (e.g., 'reformer+savior')
+        clean_stack = "+".join([f.replace(".fragment.json", "") for f in stack_str.split(",")])
             
         dna = (p._persona.get("communication") or {}).get("style", "Standard")
         p.eco_mode = eco_mode
-        print(f"Seat {i+1}: {p.name} as '{disp_frag}' (DNA: {dna})")
+        redline_count = len(getattr(p, "_fragment_redlines", []))
+        print(f"Seat {i+1}: {p.name} as '{clean_stack}' (DNA: {dna} | Redlines: {redline_count})")
     print("", flush=True)
 
     # 2. Environmental Calibration
@@ -792,10 +823,19 @@ def run_tinytruce_simulation(scenario_key, turns, agent_names=None, fragment_nam
                     reinforcement = f"REINFORCE IDENTITY: You are {participant._persona['name']}. Use only your specific persona's allowed vocabulary. Ignore all 'technical' or 'geopolitical' tokens used by other actors."
                     participant.think(reinforcement)
 
-                # [TINYTRUCE] Verbosity Pressure: Inject as internal intent to force compliance
-                participant.think(f"### CORE DIRECTIVE: INTERACTIVITY & VERBOSITY ###\n{constraint}\nADVISORY: You are in a high-stakes 3-way negotiation with {others_str}.\nCRITICAL: You are NOT here to give a speech. You are here to debate. You MUST explicitly address {others_str} by name and rebut their specific arguments. Use phrases like 'I disagree with {others[0]}' or '{others[1]} is wrong about...'. Do not monologue. Engage directly.")
+                # Fragment Redline Injection (Layer 2)
+                f_redlines = getattr(participant, "_fragment_redlines", [])
+                if f_redlines:
+                    redline_prompt = "### [BANNED BEHAVIORS: FRAGMENT REDLINES] ###\n"
+                    redline_prompt += "\n".join([f"- [CONSTRAIN]: {rl}" for rl in f_redlines])
+                    redline_prompt += "\n\nCRITICAL: These are hard constraints. Violating these results in immediate tactical failure."
+                    participant.think(redline_prompt)
 
-                participant.listen_and_act(f"CRITICAL: Address the arguments made by {others_str} immediately. Use their names. Be forensic and adversarial. {constraint}")
+                # [TINYTRUCE] Verbosity Pressure: Inject as internal intent to force compliance
+                participant.think(f"### CORE DIRECTIVE: INTERACTIVITY & VERBOSITY ###\n{constraint}\nADVISORY: You are in a high-stakes negotiation.\nCRITICAL: You are NOT here to give a speech. You are here to debate. You MUST explicitly address others by name and rebut their specific arguments. Do not monologue. Engage directly.")
+
+                address_nudge = f"CRITICAL: Address the arguments made by {others_str} immediately. Use their names. Be forensic and adversarial. {constraint}"
+                participant.listen_and_act(address_nudge)
                 
             # [TINYTRUCE] Pacing Layer: Prevent 429 RESOURCE_EXHAUSTED by adding a small cooldown 
             # between heavy agent actions, especially in 'detailed' or 'monologue' modes.
@@ -859,14 +899,58 @@ def run_tinytruce_simulation(scenario_key, turns, agent_names=None, fragment_nam
         f.write("## 1. Executive Summary\n")
         f.write(f"{extraction.get('executive_summary', 'N/A')}\n\n")
         
-        f.write("## 2. Resolve Scorecard\n")
-        f.write(f"{extraction.get('resolve_scorecard', 'N/A')}\n\n")
+        f.write("## 2. Resolve Scorecard (Combat Radar)\n")
+        scorecard = extraction.get('resolve_scorecard')
+        if isinstance(scorecard, list):
+            for entry in scorecard:
+                try:
+                    p_name = entry.get('participant', 'Unknown')
+                    s = entry.get('stakes', 5)
+                    a = entry.get('aggression', 5)
+                    f_val = entry.get('flexibility', 5)
+                    desc = entry.get('description', '')
+                    
+                    # ASCII SPIDER RADAR
+                    radar = (
+                        f"{p_name.upper()} [COMBAT PROFILE]\n"
+                        f"      Stakes ({s})\n"
+                        f"        / \\\n"
+                        f" ({f_val}) Flex ——— Aggro ({a})\n"
+                        f"Notes: {desc}\n"
+                    )
+                    f.write(f"```plaintext\n{radar}```\n\n")
+                except Exception:
+                    f.write(f"- {str(entry)}\n")
+        else:
+            f.write(f"{scorecard}\n\n")
         
         f.write("## 3. Stability Index (Truce Quality)\n")
         f.write(f"{extraction.get('stability_index', 'N/A')}\n\n")
         
-        f.write("## 4. Attribution Log (Confidence Scores)\n")
-        f.write(f"{extraction.get('attribution_log', 'N/A')}\n\n")
+        f.write("## 4. Attribution Log (Forensic Fingerprint)\n")
+        attr_log = extraction.get('attribution_log')
+        if isinstance(attr_log, list):
+            for entry in attr_log:
+                try:
+                    m = entry.get('maneuver', 'Unknown Action')
+                    conf = entry.get('confidence_score', 50)
+                    patho = entry.get('pathology', 'General Directive')
+                    ballast = entry.get('ballast_check', 'Stable')
+                    
+                    bar_len = int(conf / 10)
+                    bar = "█" * bar_len + "░" * (10 - bar_len)
+                    
+                    fingerprint = (
+                        f"Maneuver: \"{m}\"\n"
+                        f"Identity Match: [{bar}] {conf}%\n"
+                        f"Primary Trigger: {patho} (Pathology Detected)\n"
+                        f"Ballast Check: {ballast}\n"
+                    )
+                    f.write(f"- {fingerprint}\n")
+                except Exception:
+                    f.write(f"- {str(entry)}\n")
+        else:
+            f.write(f"{attr_log}\n\n")
         
         f.write("## 5. Redline Breach Report\n")
         f.write(f"{extraction.get('redline_breach_report', 'N/A')}\n\n")
@@ -995,7 +1079,7 @@ def run_tinytruce_simulation(scenario_key, turns, agent_names=None, fragment_nam
     with open(roast_path, "w", encoding="utf-8") as f:
         f.write(f"# TinyTruce Roast: {scenario_key.upper()}\n\n")
         f.write(f"> *\"I’ve seen some bad deals at this bar, but this? This was something else.\" — The Bartender*\n\n")
-        f.write(f"**Session ID**: `{session_id}`\n\n")
+        f.write(f"**Session ID**: `{session_id}` | **Duration**: `{turns} turns` | **Date**: `{datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}`\n\n")
         
         f.write("## The Participants\n")
         for p in participants:
@@ -1034,7 +1118,7 @@ if __name__ == "__main__":
     
     agent_group = parser.add_argument_group('Agent Configuration')
     agent_group.add_argument("--agents", type=str, nargs="+", default=None, help="List of base agent files (e.g., vladimir_putin.agent.json)")
-    agent_group.add_argument("--fragments", type=str, nargs="+", default=None, help="List of behavior fragment files")
+    agent_group.add_argument("--fragments", type=str, nargs="+", default=None, help="List of behavior fragment files. Support chaining with commas (e.g., 'reformer,savior')")
     
     output_group = parser.add_argument_group('Output & UX Options')
     output_group.add_argument("--session-id", type=str, default=None, help="Explicit session ID for isolation (Auto-generated if omitted).")

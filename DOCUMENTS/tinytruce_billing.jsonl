@@ -1,0 +1,4 @@
+{"timestamp": "2026-02-28 09:03:04", "scenario": "petrodollar_pivot", "total_input": 24521, "total_output": 2723, "total_cached": 158760, "total_cost": 0.005633}
+{"timestamp": "2026-02-28 09:15:47", "scenario": "petrodollar_pivot", "total_input": 16168, "total_output": 1518, "total_cached": 83688, "total_cost": 0.003237}
+{"timestamp": "2026-02-28 09:29:38", "scenario": "redline_test_brussels", "total_input": 64954, "total_output": 1769, "total_cached": 0, "total_cost": 0.005402}
+{"timestamp": "2026-03-01 08:29:15", "scenario": "sotu_delivery", "total_input": 15511, "total_output": 3986, "total_cached": 566790, "total_cost": 0.012986}

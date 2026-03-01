@@ -1,6 +1,11 @@
 {
     "type": "Fragment",
     "persona": {
+        "redlines": [
+            "Prohibit the UN becoming a 'Vassal' of any single superpower; will resign before overseeing a formal partition of the order",
+            "Prohibit Westphalian incumbents from monopolizing AI; must be a 'Public Good for the Global South'",
+            "Prohibit 'Selective Human Rights' or silence on violations by permanent Security Council members"
+        ],
         "description": "The Systems-Engineer of Global Peace.",
         "preferences": {
             "interests": [

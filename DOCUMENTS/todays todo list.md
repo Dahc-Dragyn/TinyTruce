@@ -25,8 +25,10 @@ The backend is stable and verified. We are in a "Wait State" for the following:
 - [ ] **Frontend**: Build a next.js frontend that connects to this applications docker container through the Ngrok tunnel and that uses Caddy as a reverse proxy. 
 - [ ] **Tomorrow's Mission: Phase 2 (Structural Behavioral Optimization)**
     - [ ] **Fragment Redlines**: Defining what the fragment *forbids* (e.g., the `savior` fragment could forbid making concessions without a 'Deal' label). <!-- id: 45 -->
-    - [ ] **Behavioral Stacks**: Updating `tinytruce_sim.py` to allow **Fragment Chaining** (e.g., `donald_trump` + `reformer` + `savior`). <!-- id: 46 -->
-    - [ ] **Automatic Fidelity Testing**: A unit test that runs a 2-turn dialogue for a fragment and verifies (via LLM auditor) that the "Tone" matches the fragment's `tonality` field. <!-- id: 47 -->
+    - [x] **Behavioral Stacks**: Updating `tinytruce_sim.py` to allow **Fragment Chaining** (e.g., `donald_trump` + `reformer` + `savior`). <!-- id: 46 -->
+    - [x] **Automatic Fidelity Testing**: A unit test that runs a 2-turn dialogue for a fragment and verifies (via LLM auditor) that the "Tone" matches the fragment's `tonality` field. <!-- id: 47 -->
+    - [ ] **Clean all TinyTroupe code that is not needed for this project**:
+
 
 ---
 

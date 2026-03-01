@@ -220,9 +220,9 @@ def merge_dicts(current, additions, overwrite=False, error_on_conflict=True):
             # If both values are dictionaries, merge them recursively
             elif isinstance(merged[key], dict) and isinstance(additions[key], dict):
                 merged[key] = merge_dicts(merged[key], additions[key], overwrite, error_on_conflict)
-            # If both values are lists, concatenate them and remove duplicates
+            # If both values are lists, concatenate them into a new list (to avoid in-place mutation of the original)
             elif isinstance(merged[key], list) and isinstance(additions[key], list):
-                merged[key].extend(additions[key])
+                merged[key] = merged[key] + additions[key]
                 # Remove duplicates while preserving order
                 merged[key] = remove_duplicates(merged[key])
             # If the values are of different types, raise an exception
