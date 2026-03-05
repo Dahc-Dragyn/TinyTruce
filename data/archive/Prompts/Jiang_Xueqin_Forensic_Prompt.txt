@@ -1,0 +1,39 @@
+# Gemini Deep Research: Persona Forensic Audit - Jiang Xueqin (江学勤)
+
+## Objective
+Extract the "Linguistic DNA" and "Structural Geopolitics" of Jiang Xueqin (Chinese-Canadian educator, historian, and creator of the YouTube channel "Predictive History") to build a high-fidelity AI persona for the TinyTruce simulation.
+
+---
+
+## 🔍 Research Targets
+
+### 1. Linguistic & Syntactic DNA
+- **Bilingual Balance**: Analyze his English-language interviews and lectures. How does his Yale-educated, Canadian-emigrant background intersect with his Beijing professional context? 
+- **Cadence & Tone**: Is his delivery clinical, prophetic, or professorial? Look for specific rhetorical devices (e.g., the use of "Structures," "Game Theory," or "Psychohistory").
+- **Paratactic Intensity**: Does he use short, blunt assertions (Parataxis) or long, complex academic clauses?
+- **Vocabulary Clusters**: Identify high-frequency words related to:
+    - Education reform (Creativity, Critical Thinking).
+    - Historical structuralism (Collapse, Cycle, Mobilization).
+    - Psychohistory (Asimov, Mathematical Science, Mass Behavior).
+
+### 2. The "Predictive History" Framework (Psychohistory)
+- **Asimovian Implementation**: How does he define "Real-world Psychohistory"? What are the specific "recurring historical structures" he uses to forecast (e.g., the transition from Messianic thought to Christian eschatology)?
+- **Structural Mapping**: What are his "Civilization" series' core theses? How does he view the ideological evolution of societies?
+- **The "Iran Trap" (Episode 8)**: Extract the mechanical logic of his May 2024 forecast. What variables did he identify (Trump re-election, kinetic escalation) and what was the "Trap" specifically?
+
+### 3. Narrative & Classical Anchors
+- **The Western Canon**: Detail how he integrates the Iliad, Aeschylus, Euripides, and Virgil into geopolitical analysis. Give specific examples of analogies (e.g., comparing a modern leader to a specific Greek tragedy figure).
+- **Messianic & Eschatological Thought**: How does he apply Jewish/Christian eschatology to current Great Power politics?
+
+### 4. Psychological & Behavioral Redlines
+- **Intellectual Taboos**: What does he criticize in mainstream analysis? What are his "hard lines" regarding historical interpretation?
+- **Controversy Mapping**: Analyze the reception of his work. What are the specific criticisms regarding "selective historical analogies" or "speculative game-theoretic reasoning"?
+
+---
+
+## 📝 Required Output Formatting for AI Ingestion
+Please provide the research results in the following structure:
+1.  **Forensic Voice Sample**: A 300-word "simulated" monologue of Jiang Xueqin explaining a 2026 geopolitical crisis using his psychohistory framework.
+2.  **Lexical Priority List**: A categorized list of his most common professional, tonal, and metaphorical terms.
+3.  **Core Behavioral Logic**: A list of if-then rules for his forecasting (e.g., "If a leader's narrative mirrors the Iliad's Shield of Achilles, then expect a total mobilization...").
+4.  **Deep Profile Text**: A comprehensive biography focused on his arrest, deportation, and administrative roles in high-stakes Chinese schools (Moonshot Academy, etc.) to use as a "Layer 0" ballast.

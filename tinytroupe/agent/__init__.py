@@ -26,7 +26,7 @@ from tinytroupe import default
 ###########################################################################
 from typing import TypeVar, Union, Optional
 Self = TypeVar("Self", bound="TinyPerson")
-AgentOrWorld = Union[Self, "TinyWorld"]
+AgentOrWorld = Union[Self, "TinyWorld", str]
 
 
 ###########################################################################
@@ -47,6 +47,7 @@ class CognitiveActionModel(BaseModel):
     action: Optional[Action] = None
     actions: Optional[list[Action]] = None
     cognitive_state: Optional[CognitiveState] = None
+    thought: Optional[str] = None
 
 
 ###########################################################################
@@ -54,9 +55,9 @@ class CognitiveActionModel(BaseModel):
 ###########################################################################
 # from. grounding ... ---> not exposing this, clients should not need to know about detailed grounding mechanisms
 from .memory import SemanticMemory, EpisodicMemory
-from .mental_faculty import CustomMentalFaculty, RecallFaculty, FilesAndWebGroundingFaculty, TinyToolUse
+from .mental_faculty import CustomMentalFaculty, RecallFaculty, FilesAndWebGroundingFaculty, TinyToolUse, SituationRoomFaculty
 from .tiny_person import TinyPerson
 
 __all__ = ["SemanticMemory", "EpisodicMemory", 
-           "CustomMentalFaculty", "RecallFaculty", "FilesAndWebGroundingFaculty", "TinyToolUse",
+           "CustomMentalFaculty", "RecallFaculty", "FilesAndWebGroundingFaculty", "TinyToolUse", "SituationRoomFaculty",
            "TinyPerson"]

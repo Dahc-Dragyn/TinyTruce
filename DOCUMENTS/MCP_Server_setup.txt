@@ -1,0 +1,94 @@
+MCP Server Replication Guide: "Main" Machine Setup
+To get the same level of automation and situational awareness on your main machine as you have here, follow this setup guide. These tools are essential for TinyTroupe agents to interact with the real world (Docker, Chrome, Databases).
+
+🧰 Prerequisites
+Node.js v20+ and npm/npx
+Docker Desktop (or Engine)
+Python 3.10+ (for Mem0)
+Google API Key (Gemini)
+🏗️ 1. The Configuration (
+mcp_config.json
+)
+Your IDE (like Cursor or VS Code with the MCP extension) needs this file to know where the servers are.
+
+Path: ~/.mcp_config.json (or via IDE settings)
+
+json
+{
+  "mcpServers": {
+    "docker": {
+      "command": "/path/to/scripts/mcp_docker.sh"
+    },
+    "chrome-devtools": {
+      "command": "/path/to/scripts/mcp_chrome.sh"
+    },
+    "mem0": {
+      "command": "/path/to/scripts/mcp_mem0.sh"
+    },
+    "cloudrun": {
+      "command": "npx",
+      "args": ["-y", "@google-cloud/cloud-run-mcp"]
+    },
+    "sequential-thinking": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-sequential-thinking"]
+    }
+  }
+}
+🐳 2. Docker MCP (The "Safe" Wrapper)
+This allows your agents to manage containers without local dependency issues.
+
+Script: 
+mcp_docker.sh
+
+bash
+#!/bin/bash
+export DOCKER_HOST="unix:///var/run/docker.sock"
+exec docker run -i --rm \
+    -v /var/run/docker.sock:/var/run/docker.sock \
+    node:22-alpine \
+    sh -c "apk add -q --no-cache docker-cli && npm install -g @0xshariq/docker-mcp-server && node /usr/local/lib/node_modules/@0xshariq/docker-mcp-server/dist/index.js"
+TIP
+
+This "Docker-in-Docker" trick solves nearly all Node version mismatch problems.
+
+🌐 3. Chrome DevTools (The "Agent Eyes")
+Allows agents to see and interact with websites.
+
+Script: 
+mcp_chrome.sh
+
+bash
+#!/bin/bash
+# Clean up any old locks
+rm -f ~/.cache/mcp-chrome-profile/SingletonLock
+npx -y chrome-devtools-mcp \
+  --headless \
+  --user-data-dir=~/.cache/mcp-chrome-profile \
+  --chrome-arg="--no-sandbox" \
+  --chrome-arg="--remote-debugging-port=9222"
+🧠 4. Mem0 (Long-term Memory)
+Essential for agents to "remember" your preferences across sessions.
+
+Setup Postgres with Vector:
+bash
+docker run -d --name mem0-db -p 5432:5432 -e POSTGRES_PASSWORD=password ankane/pgvector:v0.5.1
+Install Mem0:
+bash
+pip install mem0ai mcp-server-mem0
+Script: 
+mcp_mem0.sh
+ (Configure your GOOGLE_API_KEY here).
+🔑 5. Essential Environment Variables (
+.env
+)
+Make sure your main machine has a 
+.env
+ file with:
+
+GOOGLE_API_KEY: Your Gemini key.
+MEM0_API_KEY: If using the hosted version (you can omit if using local Postgres).
+DOCKER_HOST: Usually unix:///var/run/docker.sock on Linux/Mac.
+IMPORTANT
+
+Always mark your shell scripts as executable: chmod +x mcp_*.sh.

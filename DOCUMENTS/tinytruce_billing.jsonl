@@ -1,4 +1,17 @@
-{"timestamp": "2026-02-28 09:03:04", "scenario": "petrodollar_pivot", "total_input": 24521, "total_output": 2723, "total_cached": 158760, "total_cost": 0.005633}
-{"timestamp": "2026-02-28 09:15:47", "scenario": "petrodollar_pivot", "total_input": 16168, "total_output": 1518, "total_cached": 83688, "total_cost": 0.003237}
-{"timestamp": "2026-02-28 09:29:38", "scenario": "redline_test_brussels", "total_input": 64954, "total_output": 1769, "total_cached": 0, "total_cost": 0.005402}
-{"timestamp": "2026-03-01 08:29:15", "scenario": "sotu_delivery", "total_input": 15511, "total_output": 3986, "total_cached": 566790, "total_cost": 0.012986}
+{"timestamp": "2026-03-03 06:59:09", "scenario": "Chronicler Geopolitical Update", "total_input": 67365, "total_output": 1318, "total_cached": 0, "total_cost": 0.005448}
+{"timestamp": "2026-03-03 07:08:45", "scenario": "Chronicler Geopolitical Update", "total_input": 317117, "total_output": 2694, "total_cached": 0, "total_cost": 0.024592}
+{"timestamp": "2026-03-03 07:10:00", "scenario": "Chronicler Geopolitical Update", "total_input": 323028, "total_output": 2390, "total_cached": 0, "total_cost": 0.024944}
+{"timestamp": "2026-03-03 07:14:11", "scenario": "Chronicler Geopolitical Update", "total_input": 529896, "total_output": 2572, "total_cached": 0, "total_cost": 0.040514}
+{"timestamp": "2026-03-03 07:16:19", "scenario": "Chronicler Geopolitical Update", "total_input": 594347, "total_output": 2755, "total_cached": 0, "total_cost": 0.045403}
+{"timestamp": "2026-03-03 07:20:50", "scenario": "Chronicler Geopolitical Update", "total_input": 100790, "total_output": 1248, "total_cached": 0, "total_cost": 0.007934}
+{"timestamp": "2026-03-03 07:28:15", "scenario": "Chronicler Geopolitical Update", "total_input": 100993, "total_output": 1266, "total_cached": 0, "total_cost": 0.007954}
+{"timestamp": "2026-03-03 07:35:19", "scenario": "Chronicler Geopolitical Update", "total_input": 230507, "total_output": 1733, "total_cached": 0, "total_cost": 0.017808}
+{"timestamp": "2026-03-03 07:41:36", "scenario": "Chronicler Geopolitical Update", "total_input": 231131, "total_output": 1826, "total_cached": 0, "total_cost": 0.017883}
+{"timestamp": "2026-03-03 10:21:03", "scenario": "amazon_debt_swap", "total_input": 20990, "total_output": 4097, "total_cached": 98578, "total_cost": 0.004652}
+{"timestamp": "2026-03-03 10:24:46", "scenario": "amazon_debt_swap", "total_input": 18182, "total_output": 3649, "total_cached": 90006, "total_cost": 0.004146}
+{"timestamp": "2026-03-03 10:35:11", "scenario": "amazon_debt_swap", "total_input": 20617, "total_output": 4272, "total_cached": 94292, "total_cost": 0.004596}
+{"timestamp": "2026-03-03 11:36:46", "scenario": "vatican_cyber-schism", "total_input": 19107, "total_output": 3518, "total_cached": 294672, "total_cost": 0.008014}
+{"timestamp": "2026-03-03 11:42:05", "scenario": "hvac_hegemony", "total_input": 57254, "total_output": 3818, "total_cached": 0, "total_cost": 0.005439}
+{"timestamp": "2026-03-03 13:22:49", "scenario": "middle_east_reset", "total_input": 21822, "total_output": 5923, "total_cached": 231616, "total_cost": 0.007756}
+{"timestamp": "2026-03-03 14:19:57", "scenario": "vatican_cyber-schism", "total_input": 50892, "total_output": 15482, "total_cached": 1269359, "total_cost": 0.032262}
+{"timestamp": "2026-03-05 07:23:06", "scenario": "Chronicler Geopolitical Update", "total_input": 264777, "total_output": 4157, "total_cached": 0, "total_cost": 0.028141}

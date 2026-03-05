@@ -5,15 +5,23 @@ This document serves as the project's canonical index for **Forensic Grounding**
 ---
 
 ## 📂 Data Directory Structure
-The grounding ballast is organized into six functional silos:
+The grounding ballast is organized into specialized functional silos to ensure high-fidelity situational awareness:
 
 1.  **`data/economics/`**: IMF reports, labor automation indices, and debt/deficit projections.
 2.  **`data/finance/`**: Treasury reserve status and sovereign debt forgiveness protocols.
 3.  **`data/legal/`**: Legislative acts (EU AI Act), judicial precedents, and compliance standards.
-4.  **`data/security/`**: Deployment logs, maritime forensics, and kinetic weather event tracking.
+4.  **`data/security/`**: Deployment logs, maritime forensics, and kinetic incident tracking (e.g., casualties, blockades).
 5.  **`data/tech/`**: Technical whitepapers, BCI latency logs, and compute-credit indices.
 6.  **`data/theology/`**: Vatican encyclicals, theological schism logs, and digital baptism whitepapers.
 7.  **`data/treaties/`**: Bilateral agreements and maritime accords (e.g., Jakarta Accord).
+8.  **`data/trade/`**: Commodity-specific protocols (e.g., SIRA Gold Peg, Potosí Protocol).
+9.  **`data/policy/`**: Institutional whitepapers and behavioral redline guidelines.
+10. **`data/ethics/`**: Charters and ethical frameworks for AI and BCI deployment.
+11. **`data/profiles/`**: **Layer 0 DNA Anchors**. The high-fidelity forensic profiles for all 27 fragments.
+12. **`data/facts/`**: 
+    - `world-facts.2026.txt`: Static global world state.
+    - `daily-intelligence.2026.txt`: Dynamic synthesized "Ground Truth" managed by **The Chronicler**.
+13. **`data/archive/`**: Deprecated or historical context assets (Grounding V1.0 snapshots).
 
 ---
 

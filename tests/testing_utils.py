@@ -35,7 +35,7 @@ from google.generativeai import caching
 ##################################################
 AGENT_DIR = os.path.join(_ROOT_DIR, "personas", "agents")
 ATLAS_PATH = os.path.join(AGENT_DIR, "Forensic_Intelligence_Atlas.md")
-PROMPTS_DIR = os.path.join(AGENT_DIR, "archive", "Prompts")
+PROMPTS_DIR = os.path.join(_ROOT_DIR, "data", "archive", "Prompts")
 CACHE_FILE_NAME = "tests_cache.pickle"
 EXPORT_BASE_FOLDER = os.path.join(_THIS_DIR, "outputs", "exports")
 

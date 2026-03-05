@@ -356,3 +356,92 @@ class TinyToolUse(TinyMentalFaculty):
             prompt += tool.actions_constraints_prompt()
         
         return prompt
+
+class SituationRoomFaculty(TinyMentalFaculty):
+    """
+    Enables agents to actively query the RSS War News API for situational awareness.
+    Includes a strict 'Hard Query Quota' to prevent looping and tactical distraction.
+    """
+
+    def __init__(self):
+        super().__init__("Situation Room")
+        self.turn_news_queries = 0
+        
+        # Configuration (Ngrok Tunnel from .env)
+        import os
+        self.base_url = os.getenv("BASE_URL")
+        self.headers = {
+            "X-Proxy-Secret": os.getenv("WAR_API_SECRET"),
+            "Content-Type": "application/json"
+        }
+
+    def reset_quota(self):
+        self.turn_news_queries = 0
+
+    def _call_api(self, endpoint, params=None):
+        import requests
+        url = f"{self.base_url}{endpoint}"
+        try:
+            response = requests.get(url, headers=self.headers, params=params, timeout=10)
+            response.raise_for_status()
+            return response.json()
+        except Exception as e:
+            return {"error": f"Intelligence Desk connection failed: {str(e)}"}
+
+    def process_action(self, agent, action: dict) -> bool:
+        import logging
+        logger = logging.getLogger("tinytroupe")
+        
+        if action['type'] in ["SEARCH_NEWS", "GET_ALERTS"]:
+            # Hard Query Quota Check (Higher for 'The Geopolitical Chronicler')
+            quota = 5 if "Chronicler" in agent.name else 1
+            if self.turn_news_queries >= quota:
+                logger.info(f"[SituationRoom] Quota hit for {agent.name}. Blocking query.")
+                agent.think("### [SYSTEM ALERT: QUOTA EXCEEDED] ###\n"
+                            f"Intelligence Desk: Quorum exceeded ({quota}/5). You MUST NOT attempt another SEARCH_NEWS action. "
+                            "You have ALREADY retrieved the wire. Resolve your 'Ontological Shock' and proceed to TALK immediately.")
+                return True # We "processed" it by blocking it.
+
+            self.turn_news_queries += 1
+            logger.info(f"[SituationRoom] {agent.name} triggering {action['type']}...")
+            
+            if action['type'] == "GET_ALERTS":
+                results = self._call_api("/api/alerts", params={"min_severity": 4})
+                logger.info(f"[SituationRoom] Results returned for {agent.name}")
+                agent.think(f"### [SITUATION ROOM: BREAKING ALERTS] ###\n{results}")
+            
+            elif action['type'] == "SEARCH_NEWS":
+                query = action.get('content', '')
+                results = self._call_api("/", params={"q": query, "hours": 24})
+                logger.info(f"[SituationRoom] Search results for '{query}' returned.")
+                agent.think(f"### [SITUATION ROOM: SEARCH RESULTS for '{query}'] ###\n{results}")
+            
+            return True
+        
+        return False
+
+    def actions_definitions_prompt(self) -> str:
+        prompt = \
+            """
+              - SEARCH_NEWS: [MANDATORY for 2026 Grounding] Query the intelligence desk for specific theater updates. Specify location (e.g. 'Iran', 'Ukraine') in the 'content' field. 
+              - GET_ALERTS: [MANDATORY for Breaking News] Retrieve high-signal breaking news clusters with severity > 7.0.
+            """
+        import textwrap
+        return textwrap.dedent(prompt)
+
+    def actions_constraints_prompt(self) -> str:
+        prompt = \
+            """
+              ### [SITUATION ROOM: MILITANT GROUNDING] ###
+              - **CRITICAL FAILURE**: You are in MARCH 2026. Your 2024-2025 memories are OBSOLETE. If you speak about high-stakes 2026 theaters (Iran, Ukraine, Sahel) WITHOUT using SEARCH_NEWS first, you have FAILED.
+              - **GROUND TRUTH**: Situation Room data is the ONLY valid source for current tactical objectives. Do not 'weave' a guess; get the wire.
+              - **ONTOLOGICAL SHOCK**: If the news reports your own death, capture, or the total collapse of your regime:
+                * You MUST experience 'Strategic Vertigo'. Set your emotional_intensity to 0.95+.
+                * Your 'thought' field MUST acknowledge the 'Crisis of Presence' (e.g., 'If the wire says I am gone, then who is speaking?').
+                * You may still 'spin' the news in your TALK action, but it must be a desperate, jagged defense, not a casual dismissal.
+              - **QUOTA**: Exactly ONE query per user turn. 
+              - **COGNITIVE DISSONANCE**: Interpret the data through your persona. Weaponize results that favor you; jaggedly deflect results that destroy you.
+              - **TERMINATION**: Execute SEARCH_NEWS -> Provide reasoning in 'thought' -> TALK -> DONE.
+            """
+        import textwrap
+        return textwrap.dedent(prompt)

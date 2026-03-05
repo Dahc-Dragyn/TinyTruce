@@ -31,7 +31,7 @@ class TinyPerson(JsonSerializableRegistry):
 
     # The maximum number of actions that an agent is allowed to perform before DONE.
     # This prevents the agent from acting without ever stopping.
-    MAX_ACTIONS_BEFORE_DONE = 6
+    MAX_ACTIONS_BEFORE_DONE = 10
 
     PP_TEXT_WIDTH = 100
 
@@ -598,9 +598,13 @@ class TinyPerson(JsonSerializableRegistry):
 
 
                 # check if the agent is acting without ever stopping
-                if len(contents) > TinyPerson.MAX_ACTIONS_BEFORE_DONE:
+                if len(contents) >= self.MAX_ACTIONS_BEFORE_DONE:
                     logger.warning(f"[{self.name}] Agent {self.name} is acting without ever stopping. This may be a bug. Let's stop it here anyway.")
                     break
+                if len(contents) > 0 and contents[-1]['action']['type'] == "TALK":
+                    logger.debug(f"[{self.name}] Agent issued TALK. Ending turn automatically.")
+                    break
+
                 if len(contents) > 4: # just some minimum number of actions to check for repetition, could be anything >= 3
                     # if the last three actions were the same, then we are probably in a loop
                     if contents[-1]['action'] == contents[-2]['action'] == contents[-3]['action']:
@@ -1064,9 +1068,13 @@ class TinyPerson(JsonSerializableRegistry):
         """
         Pushes the latest communications to the agent's buffer.
         """
-        # UX Mode: Skip rendering if thoughts are disabled
+        # UX Mode: Skip rendering if thoughts or stimuli-clutter are disabled
         if not self.show_thoughts:
-            # Check action type for THINK
+            # Hide all stimuli (inputs/thoughts/nudges) to create a cinematic dialogue-only feed.
+            if communication.get("kind") in ["stimuli", "stimulus"]:
+                return
+            
+            # Hide THINK actions (reasoning)
             if communication.get("kind") == "action":
                 action_type = communication.get("content", {}).get("action", {}).get("type")
                 if action_type == "THINK":

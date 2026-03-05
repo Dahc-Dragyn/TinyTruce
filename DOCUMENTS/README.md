@@ -50,6 +50,30 @@ Agents are injected with **Behavior Fragments** (e.g., `reformer.fragment.json`)
 *   **Behavioral Stacks (Chaining)**: Agents can now ingest multiple fragments (e.g., `base_agent + reformer + savior`).
 *   **Behavioral Redline Enforcement**: Specific "Banned Behaviors" (Redlines) defined at the fragment level to enforce situational constraints (e.g., "Prohibit any concession without a 'DEAL' tag"). These are verified via the `universal_fidelity` audit suite.
 
+---
+
+### 8. The Situation Room (Active Intelligence)
+TinyTruce integrates a real-time geopolitical data layer via the **RSS War News API**, allowing agents to query the "Ground Truth" of their theaters in 2026.
+- **SituationRoomFaculty**: A specialized mental faculty that gives agents the `SEARCH_NEWS` and `GET_ALERTS` actions.
+- **Militant Grounding**: Forceful prompts that make agents aware of their "Memory Obsolescence" (2024-2025) and mandate the use of the Situation Room for 2026 state verification.
+- **Ontological Shock Protocol**: A behavioral trigger for reports of an agent's own death or regime collapse. Forces a "Crisis of Presence" thought and high emotional intensity (0.95+).
+- **Infinite Loop Protection**:
+    - **JSON `thought` Field**: Consolidates reasoning and news incorporation into the primary action block, eliminating turn-one "Thought loops."
+    - **Auto-TALK Termination**: The engine automatically ends an agent's turn after a `TALK` action is reached, preventing redundant turn-extension attempts.
+    - **Query Quota**: Strict limit of **one search query per agent turn** to ensure conversational focus.
+- **The Dialogue Forge (`tinytruce_chat.py`)**: A 1-on-1 interrogation script that allows the user to directly question agents. It supports dynamic fragment loading and provides a "Nudge" layer for Situation Room and Ontological Shock triggers.
+- **The Geopolitical Chronicler (`personas/agents/chronicler.agent.json`)**: A specialized agent designed for objective intelligence synthesis.
+- **The Update Workflow (`scripts/chronicler_update.py`)**: A standalone script (the "Dawn Command") that harvests 2026 news and commits a `daily-intelligence.2026.txt` briefing to the grounding silo. This ensures all agents share a stable, up-to-date world state without redundant API calls.
+- **The Situation Room Bridge (`scripts/mcp_war_news.py`)**: A dedicated MCP-compatible bridge that tunnels to the RSS War News API. It provides a secure proxy for agents to pull live 2026 theater data.
+
+#### 🛰️ Situation Room API Spec (RSS War News)
+- **Base URL**: Set via `BASE_URL` in `.env`
+- **Auth Header**: `X-Proxy-Secret` (stored as `WAR_API_SECRET` in `.env`)
+- **Endpoints**:
+    - `GET /`: Latest situational news (params: `q`, `hours`, `region`).
+    - `GET /api/alerts`: High-signal breaking clusters.
+    - `GET /api/trends`: Hourly deltas and trending regions.
+
 #### 📊 Forensic Rollout Summary
 | Ph. | Focus Area | Anchor Profile Examples |
 | :-- | :--- | :--- |
@@ -143,6 +167,13 @@ python tinytruce_sim.py --scenario wilderness --eco-mode --turns 5
 *Tip: For long-running sessions, use `--session-id` to isolate outputs and logs into dedicated subdirectories.*
 *Tip: We recommend 8-10 turns for static scenarios to prevent agents from falling into cyclical, repetitive arguments about their core philosophies.*
 
+### Keeping Grounding Current (The Dawn Command)
+To ensure the simulation reflects the latest 2026 developments, run the Chronicler update script:
+```bash
+python scripts/chronicler_update.py
+```
+This script (the "Dawn Command") should be run manually after deployment or scheduled as a daily cron job on the server. It updates `data/facts/daily-intelligence.2026.txt`, which is automatically loaded by all agents during initialization.
+
 ### CLI Arguments Reference
 | Argument | Description |
 | :--- | :--- |
@@ -229,6 +260,9 @@ TinyTruce/
 │   │   └── {session_id}/   # Isolated artifacts (Briefing, Roast, JSON)
 │   ├── tinytruce_billing_ledger.md # Global billing audit log
 │   └── FORENSIC_DATA_MAP.md # Master index of fragment grounding
+├── scripts/                # Utility & Bridge Scripts
+│   ├── mcp_war_news.py     # Situation Room (RSS War News) MCP Bridge
+│   └── ...
 ├── data/                   # Forensic Grounding Ballast
 │   ├── profiles/           # Primary forensic anchors (Leader/Archetype DNA)
 │   ├── facts/              # Global world state events (2026)

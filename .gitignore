@@ -6,9 +6,8 @@ tests_cache.pickle
 *.local.*
 .VSCodeCounter/
 .vscode/
-
-images/
-DOCUMENTS/runs/
+DOCUMENTS/warness_connection_guide.txt
+DOCUMENTS/tinytruce_billing_ledger.md
 tinytruce_results.json
 
 # Byte-compiled / optimized / DLL files

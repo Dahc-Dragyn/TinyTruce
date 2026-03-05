@@ -8,6 +8,8 @@ import warnings
 import uuid
 import time
 from pathlib import Path
+from rich.console import Console
+from rich.panel import Panel
 from dotenv import load_dotenv
 
 # Force UTF-8 encoding for Windows console output
@@ -435,6 +437,8 @@ def run_tinytruce_simulation(scenario_key, turns, agent_names=None, fragment_nam
     file_handler.setFormatter(logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s'))
     logging.getLogger().addHandler(file_handler)
     
+    console = Console()
+    
     logger.info(f"Initialized Session: {session_id}")
     logger.info(f"Output Directory: {session_dir}")
 
@@ -476,10 +480,20 @@ def run_tinytruce_simulation(scenario_key, turns, agent_names=None, fragment_nam
     global_grounding = ""
     if not dynamic_grounding:
         world_facts_path = "data/facts/world-facts.2026.txt"
+        daily_intel_path = "data/facts/daily-intelligence.2026.txt"
+        
+        # Load core world facts
         if os.path.exists(world_facts_path):
             with open(world_facts_path, "r", encoding="utf-8") as f:
                 global_grounding = f.read()
-            logger.info(f"Loaded Global Grounding (Fallback): {world_facts_path}")
+            logger.info(f"Loaded Global Grounding (Core): {world_facts_path}")
+            
+        # [TINYTRUCE] Chronical Integration: Load Daily Intelligence Briefing
+        if os.path.exists(daily_intel_path):
+            with open(daily_intel_path, "r", encoding="utf-8") as f:
+                daily_intel = f.read()
+                global_grounding = f"### [CORE WORLD GROUNDING] ###\n{global_grounding}\n\n{daily_intel}"
+            logger.info(f"Loaded Geopolitical Chronicler Update: {daily_intel_path}")
     else:
         # If we have dynamic grounding, we treat it as the "Global Grounding" for this sim
         global_grounding = dynamic_grounding
@@ -613,6 +627,18 @@ def run_tinytruce_simulation(scenario_key, turns, agent_names=None, fragment_nam
                 person.think(f"### GLOBAL INTELLIGENCE BRIEFING: FEBRUARY 2026 ###\n{global_grounding}\n\nThis is the current state of the world.")
                 logger.info(f"Global Grounding injected for {person.name}")
             
+            # Scenario Knowledge Injection (Layer 2.5)
+            scenario_intel = scenario.get("scenario_knowledge", "")
+            if scenario_intel:
+                # Replace placeholders in scenario_intel too
+                for j, p2 in enumerate(participants):
+                    scenario_intel = scenario_intel.replace(f"{{{{AGENT_{j+1}}}}}", p2.name)
+                # Cleanup remaining placeholders
+                scenario_intel = re.sub(r"\{\{AGENT_\d+\}\}", "the third party", scenario_intel)
+                
+                person.think(f"### SCENARIO INTEL & GOALS ###\n{scenario_intel}")
+                logger.info(f"Scenario Intel injected for {person.name}")
+
             TinyPerson.communication_display = old_display
         
         # UX Mode: Set thought visibility
@@ -683,6 +709,13 @@ def run_tinytruce_simulation(scenario_key, turns, agent_names=None, fragment_nam
     initial_bc = scenario["initial_broadcast"]
     for i, p in enumerate(participants):
         initial_bc = initial_bc.replace(f"{{{{AGENT_{i+1}}}}}", p.name)
+    
+    # [TINYTRUCE] Wildcard Cleanup: Remove unresolved placeholders to prevent identity confusion
+    initial_bc = re.sub(r"\{\{AGENT_\d+\}\}", "the other participants", initial_bc)
+    
+    if hide_thoughts:
+        console.print(Panel(initial_bc, title="SCENARIO INITIALIZATION", border_style="blue"))
+        
     world.broadcast(initial_bc)
 
     # 3. Adaptive Intervention Setup
@@ -693,6 +726,12 @@ def run_tinytruce_simulation(scenario_key, turns, agent_names=None, fragment_nam
         for i, p in enumerate(participants):
             intervention_bc = intervention_bc.replace(f"{{{{AGENT_{i+1}}}}}", p.name)
         
+        # [TINYTRUCE] Wildcard Cleanup: Remove unresolved placeholders
+        intervention_bc = re.sub(r"\{\{AGENT_\d+\}\}", "the other participants", intervention_bc)
+        
+        if hide_thoughts:
+            console.print(Panel(intervention_bc, title="STALEMATE INTERVENTION", border_style="yellow"))
+            
         world.broadcast(intervention_bc)
         
         nudge = ("I realize that continuing this conflict is yielding diminishing returns. "
@@ -779,8 +818,17 @@ def run_tinytruce_simulation(scenario_key, turns, agent_names=None, fragment_nam
                 # Fire if we reached min turn and beat the probability roll
                 if (turn + 1) >= min_turn and random.random() < probability:
                     print(f"\n[🚨 DYNAMIC INJECT / CRISIS EVENT DETECTED 🚨]")
-                    print(f"BROADCASTING: {inject['broadcast']}")
-                    world.broadcast(inject['broadcast'])
+                    
+                    inject_bc = inject["broadcast"]
+                    # [TINYTRUCE] Placeholder Resolution for Injects
+                    for j, p in enumerate(participants):
+                        inject_bc = inject_bc.replace(f"{{{{AGENT_{j+1}}}}}", p.name)
+                    inject_bc = re.sub(r"\{\{AGENT_\d+\}\}", "the other participants", inject_bc)
+                    
+                    print(f"BROADCASTING: {inject_bc}")
+                    if hide_thoughts:
+                        console.print(Panel(inject_bc, title="DYNAMIC INJECT / CRISIS", border_style="red"))
+                    world.broadcast(inject_bc)
                     fired_injects.add(i)
                     break # Only fire one inject per turn
 
@@ -835,7 +883,8 @@ def run_tinytruce_simulation(scenario_key, turns, agent_names=None, fragment_nam
                 participant.think(f"### CORE DIRECTIVE: INTERACTIVITY & VERBOSITY ###\n{constraint}\nADVISORY: You are in a high-stakes negotiation.\nCRITICAL: You are NOT here to give a speech. You are here to debate. You MUST explicitly address others by name and rebut their specific arguments. Do not monologue. Engage directly.")
 
                 address_nudge = f"CRITICAL: Address the arguments made by {others_str} immediately. Use their names. Be forensic and adversarial. {constraint}"
-                participant.listen_and_act(address_nudge)
+                participant.think(address_nudge)
+                participant.act()
                 
             # [TINYTRUCE] Pacing Layer: Prevent 429 RESOURCE_EXHAUSTED by adding a small cooldown 
             # between heavy agent actions, especially in 'detailed' or 'monologue' modes.

@@ -21,6 +21,7 @@ The frontend must provide a way for the user to select or configure the followin
 | **UX Mode** | `boolean` | Whether to display (`false`) or hide (`true`) internal agent thoughts. | Checkbox ("Hide Internal Thoughts"). |
 | **Verbosity** | `enum` | Response length control (`lean`, `detailed`, `monologue`, `dynamic`). | Dropdown selection (Recommended: `dynamic`). |
 | **Session ID** | `string` | Unique identifier for run isolation and output routing. | Auto-generated UUID or custom string. |
+| **Interactive Mode** | `script` | `tinytruce_chat.py` provides a 1-on-1 interrogation interface. | Terminal/Console Interface. |
 
 ---
 
@@ -38,8 +39,30 @@ The frontend must provide a way for the user to select or configure the followin
 - `persona.occupation.title`: The agent's formal role.
 - `persona.personality.traits`: Descriptive trait strings.
 - `persona.redlines`: Hard boundaries or trigger points for the base agent (Layer 0).
-- **Forensic Grounding (Layer 2)**: All 27 fragments in `../personas/fragments/` are now grounded in forensic anchors (V2.1 Rollout). Each fragment uses strictly derived `redlines` to enforce situational tactical constraints. 
+- **Forensic Grounding (Layer 2)**: All 27 fragments in `../personas/fragments/` are now grounded in forensic anchors (V2.1 Rollout). Each fragment uses strictly derived `redlines` to enforce situational tactical constraints.
+### Geopolitical Chronicler & Daily Grounding
+- **The Chronicler**: A standalone agent system (`scripts/chronicler_update.py`) that acts as a "Forensic Scribe".
+- **Workflow**: 
+    1. Harvests news via `SituationRoomFaculty` (targeting Top 5 scenarios: AI Sovereignty, Petrodollar, Domestic, etc.).
+    2. Synthesizes a structured `daily-intelligence.2026.txt`.
+    3. Commits to the shared World State.
+- **Grounding**: All agents in `tinytruce_sim.py` automatically load this daily intelligence. This ensures a "Stable Narrative Baseline" and prevents token-heavy redundant API calls.
+- **Cost**: Optimized to ~$0.02 per global update for 5 targeted scenario-based queries.
+- **Severity**: Uses a 1-5 forensic severity scale for high-signal alerts.
+- **The Situation Room**: Agents can now perform `SEARCH_NEWS` (to retrieve theater grounding) and `GET_ALERTS` (to retrieve high-signal breaking news).
+  - *Action:* `action: {"type": "SEARCH_NEWS", "content": "Query String", "target": "everyone"}`
+
+> [!IMPORTANT]
+> **Manual World State Refresh**: While the Chronicler system is server-side, it must be triggered manually via `python scripts/chronicler_update.py` (or a scheduled cron job) to refresh the shared `daily-intelligence.2026.txt` world state. Frontend developers should ensure this "Dawn Command" has been executed after any major deployment or daily cycle.
+- **The `thought` Field**: High-fidelity agents now use a dedicated `thought` field in the `CognitiveActionModel` to consolidate reasoning within the same JSON block as their response.
+  - *JSON Structure:* `{"action": {...}, "cognitive_state": {...}, "thought": "Reasoning string..."}`
 - **Handling Redlines**: The `persona.redlines` array should be visualized as "Tactical Bounds" or "Negotiation Constraints" in the UI. When multiple fragments are chained, the engine **aggregates** these arrays. Frontends should treat these as negative constraints—behavior the agent *must not* exhibit.
+
+### Interactive Commands (`tinytruce_chat.py`)
+Users can interact with agents via terminal commands in the chat script:
+- `/fragment <name>`: Ingest a new behavior fragment mid-session.
+- `/clear`: Prunes agent memory (reset context).
+- `/bye`: Safely terminates the session and cleans up caches.
 
 ---
 

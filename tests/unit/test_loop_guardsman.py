@@ -14,8 +14,8 @@ def test_loop_guardsman_interruption():
     agent = TinyPerson("LoopingAgent")
     
     # 2. Mock the message production to NEVER return a 'DONE' action
-    # We want it to just keep suggesting 'TALK'
-    mock_action = {'type': 'TALK', 'content': 'I will never stop talking!', 'target': 'everyone'}
+    # We want it to just keep suggesting 'THINK'
+    mock_action = {'type': 'THINK', 'content': 'I will never stop thinking!', 'target': 'everyone'}
     
     with patch.object(agent, '_produce_message') as mock_produce:
         # Mocking the return of _produce_message. 
@@ -34,15 +34,13 @@ def test_loop_guardsman_interruption():
         actions = agent.act(until_done=True, return_actions=True)
         
         # 4. Verify the guard triggered
-        # If MAX_ACTIONS_BEFORE_DONE is 2:
         # Turn 1: 1 action (len 1)
-        # Turn 2: 2 actions (len 2)
-        # Turn 3: 3 actions (len 3) -> len > 2 is TRUE -> BREAK
-        assert len(actions) == 3
+        # Turn 2: 2 actions (len 2) -> len >= 2 is TRUE -> BREAK
+        assert len(actions) == 2
         
         # Verify it never issued a DONE
         for a in actions:
-            assert a['action']['type'] == 'TALK'
+            assert a['action']['type'] == 'THINK'
             
         print(f"\n[SUCCESS] Guard triggered after {len(actions)} actions. Infinite loop prevented.")
 
@@ -57,7 +55,7 @@ def test_loop_guardsman_no_interruption_on_done():
     with patch.object(agent, '_produce_message') as mock_produce:
         mock_produce.side_effect = [
             ("assistant", {
-                "action": {'type': 'TALK', 'content': 'First', 'target': 'everyone'}, 
+                "action": {'type': 'THINK', 'content': 'First', 'target': 'everyone'}, 
                 "cognitive_state": {
                     "goals": "Be helpful",
                     "attention": "The user",

@@ -1,0 +1,395 @@
+On his first day back in office, US President Donald Trump established the Department of Government Efficiency (DOGE) by issuing an executive order that repurposed the US Digital Service “to implement the President’s DOGE Agenda, by modernizing Federal technology and software to maximize governmental efficiency and productivity.” The billionaire Elon Musk, who spent close to $300 million to help elect Trump and other Republicans in 2024, led the initiative as a "special government employee."
+
+Now, Musk says he is departing from the role to return to his companies. Reportedly, other senior DOGE officials are also headed for the exit. In an interview with the Washington Post, Musk expressed frustration over the pace of change in Washington. “The federal bureaucracy situation is much worse than I realized,” he told the Post. “I thought there were problems, but it sure is an uphill battle trying to improve things in D.C., to say the least.”
+
+Whether DOGE has saved the government any money at all is contested. Some estimates suggest it could cost more than it saves. But in a farewell press conference in the Oval Office, Trump and Musk discussed what they regard as DOGE's accomplishments, including its use of technology to identify and eliminate government waste, and promised its work would continue.
+
+Tech Policy Press and its contributors have covered DOGE from a range of perspectives, including assessing its promises about the use of data and artificial intelligence applications to identify purported waste and fraud, as well as to automate the work of government agencies.
+
+In their remarks at the farewell press conference, Trump and Musk mentioned the use of computers and engineering expertise to detect fraud, modernize outdated systems, and analyze millions of government expense line items.
+
+Key quotes from President Trump
+On DOGE's technological capabilities:
+
+DOGE has installed geniuses with an engineering mindset and unbelievably talented people and computers. I actually asked Elon one time, what's their primary thing? And they have a lot of primary things all having to do with being smart, but he said the thing that they're really the best at is working with computers so that they can't be outsmarted by somebody that's not so honest.
+On modernizing government systems:
+
+With Elon's guidance, they're helping to detect fraud, slash waste and modernize broken and outdated systems. so as you know, we're talking about various systems and changing systems, and sadly it takes a long time to do that. You'll change, let's say a system at IRS and computerize it properly where the job can be done in one tenth at a time, but it takes sometimes years to rebuild those systems.
+On air traffic control modernization:
+
+I will say that this has less to do with Elon, but the air traffic control systems we're bidding out to the best companies in the world. Those systems right now, what the previous administration was horrible, what they did, they spent billions and billions of dollars and in the end it didn't even come close to working. They tried to hook up wire to copper and it can't be done, and they just spent billions of dollars and just wasted money actually made the system much worse. So we're going to get a brand new modern system. Congress is working with us on that and we're going to get it done as quickly as we can, but it's in the works and once it's done, it'll be good for 30 years. But we have a system that's 48 years old and would have a modern computer hooked into a very outdated computer and they don't hook up. I mean, they didn't hook up.
+Key quotes from Elon Musk
+On the analytical work required:
+
+It's mostly just a lot of hard work. It's really not any one person or Congress. It's going through really millions of line items and saying just each one of them makes sense or not make sense.
+On discovering waste through technology:
+
+We find situations where there are millions of software licenses where with zero people using them, zero, exactly... surely if there's millions of software licenses, someone should be using them.
+On DOGE's approach and future:
+
+The DOGE team will only grow stronger over time. The DOGE influence will only grow stronger. I'd liken it to sort of Buddhism. It's like a way of life. So it is permeating throughout the government.
+What follows is a lightly edited transcript of the discussion. Please refer to the audio of the press conference to check for accuracy when quoting. Various claims by Musk snd Trump are false or misleading.
+
+President Donald Trump:
+
+I think what I'll do, you don't mind, numbers have just come out which are rather extraordinary, and I thought I'd play a tape of one of the people who I've respected over the years, from Joe Kernan and Rick Santelli. This just came out, and we'll just play that for a second.
+
+(CNBC clip) Rick Santelli:
+
+Personal income is up eight-tenths up, eight-tenths of a percent. That is almost triple the expectations, the income, the income numbers really for the first four months of the year. They're stellar. They're really stellar. I mean, I could go back and look at the first four months of many different years, really very strong numbers, and you're right, this administration is criticized for just about everything under the sun. I've never, ever in my lifetime had glimpses into the politics of an administration in the form of transparency like this one. Why don't we give credit where credit is due income really shooting up.
+
+(CNBC clip) Joe Kernen:
+
+Rick, I also thought everybody was going to get one last order of imports that were going to be tariffed and they were loading up on things. How the hell, how did the hell they already fix the trade or not fix it, but to cut it in half? That's crazy. So there wasn't a lot of front loading of things that they needed before the tariffs hit.
+
+(CNBC clip) Rick Santelli:
+
+Yeah, I'll tell you what, it really does call in the question some of the conventional wisdoms, and it's going to be interesting to see what happens next month when we get this number or we see some of the other numbers like current account, see how they fared because I don't know, I've been watching these numbers a long time. I don't think I've ever seen the trade deficit cut in half in one month.
+
+President Donald Trump:
+
+Not bad, not bad. Come on guys. I see Howard and Scott are here, so it's great. You guys want to stand over here. You might as well. You're the ones that helped produce those numbers and it'll only get better. The tariffs are so important and that's why we were so happy with the decision yesterday where the tariffs continue because without the tariffs, our nation would be imperiled. We would really be imperiled. I think I can say that with great, sure Scott and Howard. And so we were very happy to get that decision, that big decision yesterday, and today it's about a man named Elon, and he's one of the greatest business leaders and innovators the world has ever produced. He stepped forward to put his very great talents into the service of our nation and we appreciate it. And I just want to say that Elon has worked tirelessly helping lead the most sweeping and consequential government reform program in generations and the kinds of things that he's found and his people have found, he's brought a group of very smart people in and they found things that are pretty unbelievable.
+
+I have to say that the numbers that we're talking about are substantial, but they're going to be very much more substantial with time because many of the things that we're working on right now, we're going to have to remember Elon as we find them, but the numbers could double and triple because many, many things, we don't want to go out with 'em until we're sure, but we've found things that are unbelievably stupid and unbelievably bad. With the Department of Government Efficiency, Elon's delivered a colossal change in the old ways of doing business in Washington. DOGE has installed geniuses with an engineering mindset and unbelievably talented people and computers. I actually asked Elon one time what's their primary thing? And they have a lot of primary things all having to do with being smart, but he said the thing that they're really the best at is working with computers so that they can't be outsmarted by somebody that's not so honest.
+
+That happens to also be good with computers, but not as good as these people. But the mindset and the senior ranks of every federal department, and it's really changed and with Elon's guidance, they're helping to detect fraud slash waste and modernize broken and outdated systems. So as you know, we're talking about various systems and changing systems, and sadly it takes a long time to do that. You'll change, let's say a system at IRS and computerize it properly where the job can be done in one tenth at a time, but it takes sometimes years to rebuild those systems. But we've started, in many cases we've started. I will say that this has less to do with Elon, but the air traffic control systems we're bidding out to the best companies in the world. Those systems right now, what the previous administration was horrible, what they did, they spent billions and billions of dollars and in the end it didn't even come close to working.
+
+They tried to hook up wire to copper and it can't be done, and they just spent billions of dollars and just wasted money actually made the system much worse. So we're going to get a brand new modern system. Congress is working with us on that and we're going to get it done as quickly as we can, but it's in the works and once it's done, it'll be good for 30 years. But we have a system that's 48 years old and would have a modern computer hooked into a very outdated computer and they don't hook up. I mean, they didn't hook up. So after spending billions of dollars, they turned on the system and in never any cases from local to countrywide, they never worked. More than 75,000 bureaucrats have voluntarily left their taxpayer funded jobs to come out and really do the job. Countless, wasteful and unnecessary contracts have been terminated, and you know that we have terminated many, many contracts and many contracts, Elon, are right now being looked at, and it may be six months, it may be almost a year in some cases. We're going through procedures, we're going through courts, and we'll remember you as we announced billions of dollars of extra waste, fraud and abuse. Just as an example, DOGE canceled $101 million for DEI contracts at the Department of Education, $101 million, and that was just a small section of the Department of Education, $59 million for illegal alien hotel rooms in New York City. And the landlord never made the kind of money that he made in the last short period of time, $59 million to a hotel in New York City, $45 million for diversity, equity and inclusion scholarships in Burma. In Burma. Does anyone know about Burma? $42 million for social and behavioral change in Uganda, $40 million to improve the social and economic inclusion of sedentary migrants. I can say it's $2 billion to Stacey Abrams and her environmental movement.
+
+There was a hundred dollars in the account and all of a sudden they found $2 billion in the account. And I assume that's being looked at. I don't know. I'm not sure, but I assume that's being looked at. Think of that $2 billion. And then Lee will tell you there's another one over there for $20 billion being spent on another environmental 20 billion, not 20 million, a lot, not 200,000, which is a lot. So think of it in her case, you have a hundred dollars and now all of a sudden she gets hit with an infusion of $2 billion just before I take office, $20 million for Arab Sesame Street in the Middle East. Nobody knows what that's all about. Nobody's been able to find it. $8 million for making mice transgender. So they spend $8 million on making mice transgender, and those are better than many of the others. I could sit here all day and read things just like that, but we have other things to do.
+
+So it's much, much more than just that. We're totally committed to making the DOGE cuts permanent and stopping much more of the waste and the months that come, we want to get our great big beautiful bill finished and done. After that, we're going to be, we put some of this into the bill, but most of it's going to come later. We're going to have it ized by Congress, affirmed by Congress. In some cases we'll make cuts. In some cases we'll just use it in a different layer to save the money, but it's hundreds of billions of dollars. DOGE has also fully modernized the federal retirement process and continues to work very hard on the IRS modernization, but we're taking that over with DOGE. Many of the DOGE people, Elon are staying behind too, so they're not leaving and Elon's really not leaving. He's going to be back and forth.
+
+I think I have a feeling it's his baby and I think he's going to be doing a lot of things. But Elon's service to America has been, without comparison in modern history, is already running one of the most innovative car companies in the world. You look at his factories and compare them with some of the old factories we have, and it's a big difference. And the most successful space company in, I guess in history, you would have to say the largest free speech platform on the internet, et cetera. Yet Elon willingly with all of the success, he willingly accepted the outrageous abuse and slander and lies and attacks because he does love our country. I know that very much he loves country, comes from another country, country that's going through trials and tribulations I would say, but he's all about the USA and Americans owe him a great debt of gratitude.
+
+So I just want to thank Elon for his time as a special government employee. Can you imagine he called him an employee, but it's a special government employee and for coming and helping us, and he really has changed the mindset of a lot of people. A lot of people thought maybe we'll cut 1% or 2% or 3%, then they said, wow, we can cut a lot more than that and we're going to do it very surgically. We're going to continue on the march. We're making America great again. When I was in Saudi Arabia and we were in as you know, three really great countries, predominantly the three, Qatar was great, UAE was great. Saudi Arabia, incredible what such an incredible experience to be in those three countries. But the Crown Prince of Saudi Arabia, and I must tell you the leaders, the great leaders of the other two that we just mentioned, they all said the same thing, that the United States is the hottest country right now anywhere in the world.
+
+And six months ago we thought it was dead. It was like a dead country and it would've been a dead country if we didn't have the right result on November 5th, it would've been a horrible, horrible situation. Was going on with the borders, with transgender for everyone, men playing in women's sports and so much more, but they were saying the hottest country anywhere in the world. And then I played that little clip because there was one person who's respected, but there were two people because Joe was in that one too. Joe's a good man, but that was one group of people saying something about the success of what we've done over the last four months. They cannot believe it. In the one case they said they've never seen anything like it. As long as they've been doing what they've been doing, they've been doing it for a long time.
+
+So I want to thank Elon for helping. And again, the United States right now is the hottest country anywhere in the world. There's no country is hot and we're doing really well where when I left, we had no wars, we had no problems. We defeated isis, we rebuilt our military and we had no inflation. And when I came back, we had a lot of inflation. We had wars all over the place. We had the embarrassment in Afghanistan where we gave up billions and billions of dollars of military equipment. The most embarrassing moment in the history of our country, I believe, I believe that strongly. We have Russia with Ukraine. We had the attack in Israel in October, the horrible attack, October 7th. Horrible, horrible attack. Nobody's ever seen anything like it. And now we have something where we're really healing a lot of that. We stopped India and Pakistan from fighting, I believe that could have turned out into a nuclear disaster.
+
+And I want to thank the leaders of India, the leaders of Pakistan, and I want to thank my people also. We talk trade and we said we can't trade with people that are shooting at each other and potentially using nuclear weapons and they're great leaders in those countries. And they understood and they agreed and that all stopped and were stopping others from fighting also because ultimately we can fight better than anybody. We have the greatest military in the world. We have the greatest leaders in the world. We put one of them in charge of the Joint Chiefs of Staff, as you know, General Raisin' Caine, and we wiped out ISIS, completely wiped out ISIS in three weeks. They said it would take five years and we did it in three weeks. And that's the way it is. But we don't want to have to use our military.
+
+We want to be peace through strength when we can and that's the way we're going to have it. So I just want to thank Elon and all of his people, most of those people are staying, almost all of them are staying and they're going to be with us and you're going to see the results coming long into the future, even a year and two years later, you're going to see a lot of the results in those hundreds of billions of dollars they're going to be adding up and they're going to continue to add. It'll be really interesting to see what the final number is going to be. But again, Elon gave an incredible service. Nobody liked him and he had to go through the slings and the arrows, which is a shame because he's an incredible patriot. The good news is that 90% of the country knows that and they appreciate it and they really appreciate what he did. And I gave him a little special something we have here. Thank you. A very special that I give to very special people. I have given it to some, but it goes to very special people and I thought I'd give it to Elon as a presentation from our country. Thank you. Thank you, elo. Thank you. Take care of you, sir. Thank you.
+
+Elon Musk:
+
+You see the lock? The lock on this is amazing that right, A large lock. Well, lemme say perhaps a few words. This is not the end of DOGE, but really the beginning my time as a special government employee necessarily had to end. It was a limited time thing. It's 134 days I believe, which ends in a few days so that it comes with a time limit. But the DOGE team will only grow stronger over time. The DOGE influence will only grow stronger. I'd liken it to sort of Buddhism. It's like a way of life. So it is permeating throughout the government and I'm confident that over time we'll see a trillion dollars of savings and reduction, a trillion dollars of waste, of fraud reduction. The calculations of the DOGE team thus far in terms of an FY 25 to FY 26 delta are over 160 billion.
+
+And that's climbing. We expect that that number will probably go over 200 billion soon. So I think the DOGE team is doing an incredible job. They're going to continue doing an incredible job and I'll continue to be visiting here and be a friend and advisor to the president. And I look forward to times being back in this amazing room. By the way, isn't this incredible? Look at this incredible, I mean it's stunning. I think the way that the Oval Office, the president has just completely redone the Oval Office. It's beautiful. I love the gold on the ceiling.
+
+President Donald Trump:
+
+Thank you. Pretty nice.
+
+Elon Musk:
+
+Yeah.
+
+President Donald Trump:
+
+It's been there a long time. That was plaster. Nobody ever really saw it. They didn't know the eagle was up there and we highlighted essentially it's a landmark, a great landmark, and that's 24 karat gold and everybody loved it, and now they all see it when they come in. So it's been good.
+
+Elon Musk:
+
+The Oval Office finally has the majesty that it deserves. Thanks to the President though, I look forward to continuing to be a being an advisor to the President, continuing to support the DOGE team. And we are relentlessly pursuing $8 trillion in waste and fraud reductions, which will benefit the American taxpayer. So that's it, really. Thank you, Mr. President.
+
+President Donald Trump:
+
+Thank you. Great job.
+
+Media question:
+
+Thank you. Thank you. President Trump. The president mentioned that you had to deal with all the slings and arrows during your time at DOGE.
+
+Elon Musk:
+
+There's some of the people, some of the media organizations in this room were the slingers.
+
+Media question:
+
+So there is a New York Times report today that accuses you of blurring a line between…
+
+Elon Musk:
+
+Wait is the New York Times, is that the same publication that got a Pulitzer Prize for false reporting on the Russiagate? Is it the same organization? I think the judge just ruled against the New York Times for their lies about the Russiagate hoax, and that they might have to give back that Pulitzer Prize. That New York Times? Let's move on. Okay, then next question.
+
+Media question:
+
+Got one for President Trump. So President Trump, Biden aides, who used to work here, are in talks with Republicans in Congress to go and testify about what they did or didn't do to possibly conceal President Biden's decline. Do you think that Dr. Jill Biden should also have to come in and testify about what she did or didn't do?
+
+President Donald Trump:
+
+Well, I hate the concept of it. It's the wife of a man who was going through a lot of problems and everybody that dealt with him understood that. And I guess it came out during the debate loud and clear, that was the biggest signal of all they have to do what's right. The country was, there was a lot of dishonesty. And the election, as you know, of 2020 that's been now caught, people understand it was a rigged election. And when you go further out, when you see the Autopen, I mean I think the Autopen is going to become one of the great scandals of all time because you have somebody operating it or a number of people operating because I knew Joe Biden, Joe Biden wasn't in favor of opening up orders, letting 21 million people into this from prisons and mental institutions and gang members. He wasn't into that at all. And who signed these orders, proclamations and all of the different things that he signed that set our country so far back that was so bad for our country.
+
+Media question:
+
+With the auto pen. How would it work? We're in the Oval Office right now. If there was a group of rogue staffers that worked for you who wanted to advance a bill or an executive order without your knowledge, how could they do it? How did they go behind the President’s back?
+
+President Donald Trump:
+
+I'd read your newspapers or your media the next day and I'd say, well, I didn't approve that and I would find it. I mean, they wouldn't get away with it for long because they'd say, I never signed that. Who the hell signed that? Auto Pens to me are used to sign letters to people. We get, I think they said 20,000 letters a week. And you like to be able, when somebody takes the time to write a letter, it's nice to sort of write back. And auto pens are meant for that. Auto pens are not meant to sign major proclamations or tax cuts or borders, anything having to do with the border, which is so important. If it happened on my watch, I would be able to see it because the next day or sooner I'd be reading about something that I knew nothing about and who the hell signed this.
+
+So I almost never used the auto pen. In fact, yesterday I was signing about 81, I think it was 81 proclamations and statements to people that I think should be signed by us. I think when you write letters to foreign dignitaries or presidents or prime ministers, you should be signing those letters. Not done with auto pens. I understand he signed almost everything with an auto pen. It's a very dangerous thing. It really means you're not president, whoever operated the auto pen. And we think we know who that is and it was actually more than one person, but that's not what the presidency is all about. I hardly used it.
+
+Media question:
+
+Mr. President, are you going to reinstate the tariffs on China? You said that they violated the agreement with the US.
+
+President Donald Trump:
+
+Well, they did. They violated a big part of the agreement we made. If you read that whole statement, I was very nice to that. I helped them because they were in trouble with the stoppage of a massive amount of business. But I'm sure that I'll speak to President Xi and hopefully we'll work that out. But yeah, that's a violation of the agreement. Yeah. Please.
+
+Media question:
+
+Mr. President, can you give us an update to the latest ceasefire agreement that Israel has agreed to, but Hamas still considering?
+
+President Donald Trump:
+
+Well, they're very close to an agreement on Gaza, and we'll let you know about it during the day or maybe tomorrow. And we have a chance of that. And I think we have a chance of making a deal with Iran also. They don't want to be blown up. They would rather make a deal. And I think that could happen in the not too distant future. That would be a great thing. If we could have a deal without bombs being dropped all over the Middle East, that would be a very good thing. They can't have a nuclear weapon. We want them to be safe. We want them to have a very, very successful nation. Let it be a great nation, but we can have, they cannot have a nuclear weapon. It's very simple and I think we're fairly close to a deal with Iran.
+
+Media question:
+
+Question for you. You said just now that you look forward to being a friend and advisor to the president.
+
+Elon Musk:
+
+Well, I am.
+
+Media question:
+
+So, do you expect to continue advising the president and DOGE informally, or are you going to sort of shift your focus entirely to your companies?
+
+Elon Musk:
+
+Well, I expect to continue to provide advice whenever the president would like advice.
+
+President Donald Trump:
+
+I hope so.
+
+Elon Musk:
+
+I mean, yeah, I expect to remain a friend and an advisor, and certainly if there's anything the president wants me to do, I'm at the President's service.
+
+Media question:
+
+You said that there was a trillion-dollar promise for cuts from DOGE.
+
+Elon Musk:
+
+Yes. I think we do expect over time to achieve the trillion dollars,
+
+Media question:
+
+But what have you found in your time here was the biggest roadblock to getting those cuts? Was it the cabinet or was it Congress or something else? What was the biggest roadblock from your work?
+
+Elon Musk:
+
+It's mostly just a lot of hard work. It's really not any one personal Congress. It's going through really millions of line items and saying just each one of them makes sense or not make sense. Obviously at times when you cut expenses, those who are receiving the money, whether they're receiving that money legitimately or not, they do complaint. And you're not going to hear someone confessing that they receive money inappropriately. Never. They're going to always say that they receive money appropriately for an important cause. Naturally that's what you'd expect. So it's just a lot of work going through the vast expenses of the federal government and just really asking questions, what's this money for? Are you sure it's actually being used? Well, many times we can't even find anyone who defend it. So for a lot of the expenses, there is actually no defender at all.
+
+Our Content delivered to your inbox.
+Join our newsletter on issues and ideas at the intersection of tech & democracy
+Enter email address
+Subscribe
+And then we have to just go work through the process of stopping the spending where there's often literally no defender, nobody even knows why the money's being spent. It's truly absurd. I mean, we find situations where there are millions of software licenses where with zero people using them, zero, exactly. This is the quizzical expression. You're like, surely if there's millions of software licenses, someone should be using them. No. And then we just, we've got to go through the process of saying, okay, look, if no one's using the software, we can terminate this software license agreement. Mr. That's everywhere in the government.
+
+Media question:
+
+Mr. Musk, what do you think would be easier, colonizing Mars or making the government efficient?
+
+Elon Musk:
+
+It's a tough call, but I think colonizing Mars and making life multi-planetary is harder. And as I said, we do expect to achieve over time the trillion dollars of savings. We can't do it in a few months. But if you say, I think the official end of DOGE, first the President may choose to extend is the middle of next year, say by the middle of next year, with the support of the president and Congress, could we achieve a trillion dollars of savings? I think so. We're on track to do so.
+
+Media question:
+
+Thank you, Mr. President. You had mentioned earlier in the week that DOE had become a whipping boy, and as the President mentioned, you went through a lot to go through this process. Was it worth it for you, and what would you change?
+
+Elon Musk:
+
+Yes. So what we found was happening was that if there were any cuts anywhere, then people would assume that was done by DOGE. And so we became essentially the DOGE boogeyman where if any cut anywhere would be ascribed to DOGE. A friend of mine's daughter who's at law school at Georgetown thought that DOGE had cut the Senate, the internships, the legal internships for the Senate, and we have nothing to do with that. So they have been cut not to do with us, just as an example. So it just became a bit ridiculous where anything, any cut anywhere was somehow do, including things that made no sense and we would agree, made no sense. So there are many things that occur in the government because it's the banal evil of bureaucracy. It's sort of the, frankly, largely, largely uncaring nature of bureaucracy. As the great Tom Friedman said, money is spent most poorly when it is someone else's money being spent on people you don't know. And that's how federal spending is. And then you can't really even blame the individuals because the way the government works is complaint minimization. So when someone within the government tries to stop that money being spent, there's usually some that complaints and then their manager will say, it's not worth the trouble, just pay it anyway. That happens over and over again.
+
+I think it was an important thing. I think it was a necessary thing and I think we'll have a good effect in the future.
+
+Media question:
+
+Thank you. President Trump. This week there was a video on board a plane that showed the first Lady of France slapping her husband, Emmanuel Macron. Do you have any world leader to world leader marital advice?
+
+President Donald Trump:
+
+Make sure the door remains closed. That was not good. No, I spoke to him and he's fine. They're fine. They're two really good people. I know him very well and I don't know what that was all about, but I know 'em very well and they're fine.
+
+Media question:
+
+What do you think about this Democratic Party plan to avoid being swept in every battleground state again by spending 20 million to study how to speak to American men?
+
+President Donald Trump:
+
+Well, they spent 2.8 billion. We spent 1.5, we spent much less. We spent about half of what they spent, and at the end they were $28 million short. They had to be a, spent 2.8 billion. It's a lot, but they couldn't get 28 million at the end. And now they want to spend, I read that they want to spend money to learn how to talk. That's fake. You don't want to be fake. You shouldn't have to hire consultants to say what America needs because then they should be, the consultants should be running the deal, not them. But I read that they want to spend a lot of money in each state. So we won all seven swing states, seven out of seven. We want a lot more than that. We won the popular vote. We want everything. And they want to spend money to find out what they did wrong.
+
+And I mean, I could tell you what they did wrong. I could tell you every one of their programs, when they say men playing in women's sports, I would say that's not a winner. When they say transgender for everybody, I think that's not a winner. When they say open border, so the entire world population of criminals can pour into our country. I don't think that's a winner. I mean, I just gave them that for free, but I don't know if they'll change their ways. I see 'em all the time. I see people that I know in Congress, Democrats, they're trying to justify some of the things I just said. You can't justify 'em. I always hear their 80/20 issues. I say, they're not 80 20, they're 97/3. They might be 99 to one. They're not 80/20. They wish they were 80/20. And they're wasting a lot of money if they're going to continue with that nonsense.
+
+Media question:
+
+And this one's a little bit more of a page six question, but back when you hosted The Apprentice, you mentioned once in 2012 that Diddy was a good friend of yours back then. He has since found himself in some very serious legal trouble.
+
+President Donald Trump:
+
+Yeah, that's true.
+
+Media question:
+
+Would you ever consider pardoning him?
+
+President Donald Trump:
+
+Well, nobody's asked. You had to be the one to ask Peter, but nobody's asked. But I know people are thinking about it. I know they're thinking about it. I think people have been very close to asking. First of all, I'd look at what's happening and I haven't been watching it too closely, although it's certainly getting a lot of coverage. I haven't seen him. I haven't spoken to him in years. He used to really like me a lot. But I think when I ran for politics, that relationship busted up from what I read. I don't know, he didn't tell me that, but I'd read some little bit nasty statements in the paper. All of a sudden it's different. You become a much different person when you run for politics and you do what's right. I could do other things and I'm sure he'd like me, and I'm sure other people would like me, but it wouldn't be as good for our country. As we said, our country's doing really well because of what we're doing, so it's not a popularity contest. So I don't know. I would certainly look at the facts. If I think somebody was mistreated, whether they like me or don't like me, it wouldn't have any impact on me.
+
+Media question:
+
+Mr. President, on the Big Beautiful Bill, would you like to see the Senate build in some support for your tariffs on the Big Beautiful Bill, or should that be a standalone bill?
+
+President Donald Trump:
+
+I have great support on the tariffs. I mean, I was so honored that we got that ridiculous stay lifted because I would've taken away presidential power. It would've taken away everything that was granted by the founders. It would've been a terrible thing, and it would've, most importantly, it would've left us vulnerable. We have a lot of countries that use tariffs on us and use them viciously, actually viciously. And if we didn't have the power to use tariffs on them and instantly not, when you go back to Congress and try and get hundreds of people to agree on something that would take months to get just one simple proclamation, if we didn't have the power to counteract their powers, you wouldn't have a country left. We have to act fast. We have to be fast and nimble as they say. And that was a really great moment. I think yesterday when that stay was lifted, and hopefully now we'll go to court and just win that battle because if we don't have the power to do what they're doing to us, we are going to be a great nation no longer.
+
+Media question:
+
+Elon Musk was once idolized by folks on the left in this country before joining your administration. Now he's considered a hero by conservatives. Why do you think this man, what he's done in American life has been so politicized all his life?
+
+President Donald Trump:
+
+His life has been amazing. I look at so many different things. I look at that rocket being guided back into position. I've never seen that before. I thought it was a space movie, thought it was a movie. You look at what he's done in terms of communication, it's been unbelievable. So many different, even tunnels going underground, not having to go through all the process of going. He's got a company that does that. He's got so many different companies. Starlink as an example, he saved a lot of lives, probably hundreds of lives in North Carolina. I don't even know if you remember, but I called you. They needed Starlink in North Carolina, and I didn't know what the hell starlink was. I said, what is it? Who owns it? He said, do you know Elon Musk? I said, you happen to know the gentleman. This was before his government stay.
+
+And they said, we really need it. Because North Carolina was literally became an island. Its people had no communication. They had no access to anything and they were dying. And I called up Elon and you can't get it. It's so successful. It's very hard to get. And he had so much of it brought over there and they told me it was unbelievable. It saved a lot of lives. He's just done a lot of things. I don't think, frankly, I don't think he gets credit for what he's done. He's a very good person too. You know what if he wasn't a good person, if he wasn't, but he did the same things. I probably maybe speak differently. He happens to be a really good person who loves the country.
+
+Media question:
+
+Mr. President, the one Big, Beautiful Bill. You had indicated this week that there were some things you didn't like about what had passed in the house. What changes do you want to see the Senate make? And you had also indicated there were things you didn't like about the bill. What would you be suggesting he pushed senators to change in their version?
+
+President Donald Trump:
+
+Well, I'll tell you. I'll go first. It's an unbelievable bill. It cuts your deficits, it cuts. It's a huge cutting. But there's things I'd like to see maybe cut a little bit more. I'd like to see a bigger cut in taxes. It's going to be the largest tax decrease or cut in the history of our country. I'd like to see it get down to an even lower number. I was shooting for a slightly lower number. I would've liked to have done that. But with all of that being said, when you look at the tax cut and the fact that the original tax cut, which made us so success, we had the most successful four years in the history of our country, the economy, and this is going to be even better. And you see that by the reports that came out just yesterday or tonight, I guess they were released this morning at eight o'clock.
+
+You see the kind of numbers where somebody that's a pro is like, whoa, I haven't seen numbers like this since I've been doing this. These are human emotions of professionals that have never seen numbers and we've just started. The bill is a great bill. It's going to be jiggered around a little bit. It's going to be negotiated with the Senate with the house, but the end result is it extends the Trump tax cuts. If it doesn't get approved, you'll have a 68% tax increase. You're going to go up 68%. That's a number that nobody's ever heard of before. You'll have a massive tax increase. If it does get approved, you'll have a large tax cut, the largest we've ever had. When you add the past tax cuts that we got you, the Trump tax, they call 'em the Trump tax cuts. It's an amazing bill.
+
+It does amazing things with all of that. It's going to be adjusted a little bit over the next coming weeks, and I think it's going to be a passed. The Republicans want to pass it with all of the great things it does, including an extension of debt, the extension, we have to extend the debt. If we don't extend debt, we're in default. Now, the Democrats might like our country to be in default, but in 250 years we've never been in default. That was handed to them by a very well-meaning man that gave it to them because he thought it was the right thing to do. It could have been their problem before the election. But this man thought it was the right thing to do, and he was well-meaning I don't hold anything against him for that. But that was put on our plate when it should have been on the Democrats September 28th, a famous date.
+
+It should have been taken care of by the Democrats, but this person, a man of power gave it to us so that in June that comes due. Well, we have to take care of that because if we don't take care of it, we have a country in default and we don't ever want have a country in default. I'll tell you, a certain Senator Elizabeth Warren said that she would never, ever allow a default on our debt. She would never let it happen. And she would like to get rid of the debt ceiling, what's called the debt ceiling. I call it the debt extension because we really need an extension that she'd like to see that gotten rid of. There are many people that agree, many Democrats agree with that. But we gave that through, I don't want to say an era. He did it well, meaning they gave that to us.
+
+It was a Democrat problem just before the election would've had a huge impact on the election. And to our benefit, we won anyway, but to our benefit, but felt that really for the good of the country, we should extend that. But Elizabeth Warren and various other people would like to see that her whole career. She wanted to see it terminated, gotten rid of not being voted on every five years or 10 years. And the reason was because so catastrophic for our country. And I always agreed with her. There was one thing I agreed with her on. Now I haven't spoken to her, but I would say that if you asked her that question now, she'd say, no, no, it's their problem. But it's a very unfortunate situation. It's very unfair situation. And she happened to be right on that. It should be gotten rid of or it should simply be extended. But that's one of the things that gets taken care of in this bill that automatically gets extended for a four year period. And it should be. But I agree with Elizabeth Warren on that. I think you should get rid of it. It's too catastrophic.
+
+Media question:
+
+Mr. President, what message do you like to send to international students? Are they still welcomed to study in the United States? And one question for Mr. Musk,
+
+President Donald Trump:
+
+The students. Well, we want to have great students here. We just don't want students that are causing trouble. We want to have students. I want to have foreign students. I think Harvard, it's close to 31%. That's a lot. Our country's given $5 billion plus to Harvard over a short period of time. Nobody knew that we found that out. I wouldn't say that was a DOGE thing, but we found that out over a period of time. That was sort of a Trump thing. We ended up in litigation for other reasons because they're very antisemitic. And in finding out and in going through the books, we found out that the country gave them $5 million plus much more than that actually. And we're having it out with them. And let's see what happens. I think we have a very good, well, it's a very sad case. It's a case we win.
+
+We can't lose that case. We have the right to make grants. We're not going to make any grants like that. But I don't think Harvard's been acting very nicely. I think Columbia wants to get to the bottom of the problem. They've acted very well. And there are other institutions too. They're acting. But Harvard's trying to be a big shot. And all that happens is every three days we find another a hundred million dollars that was given two days ago, we found $200 million more. The money's given to them like gravy. I'd like to see the money go to trade schools where people learn how to fix motors and engines, where people learn how to build rocket ships because somebody has to build those rocket ships.
+
+And I'd like to see trade school set up. You could take 5 billion plus hundreds of billions more, which is what's spent. And you could have the greatest trade school system anywhere in the world. And that's what we need to build his rockets and robots and things that he's doing and to build lots of other things. And I went to school with people in some cases they weren't good students, but they could fix the engine of a car better than anybody I've ever seen. They could take it apart blindfolded. They had an ability at that, and they did very well. They made a lot of money. It's a very skilled job. It's great. But I'd like to see a lot of money going into trade schools. I've always felt that. And we probably found our pot of gold, and that's what's been wasted at places like Harvard and the money's been wasted. Yeah, please,
+
+Media question:
+
+I wanted to ask quickly, Mr. Musk, is your eye okay? What happened to your eye? I noticed there's a bruise there.
+
+Elon Musk:
+
+Well, I wasn't anywhere near France.
+
+Media question:
+
+What does that mean?
+
+Elon Musk:
+
+I was just horse around with little X and I said, go ahead, punch me in the face. And he did. It turns out even a 5-year-old punching you in the face actually now
+
+President Donald Trump:
+
+It was X that did it? If you knew X.
+
+Elon Musk:
+
+He’s with his mom right now, I didn't really feel much at the time. And then I guess it bruises up, but I just horsing around with the kids.
+
+President Donald Trump:
+
+I didn't notice it actually.
+
+Media question:
+
+I know that you try to stay pretty neutral because not your war, but…
+
+President Donald Trump:
+
+By the way, not my war. I just want to solve the problem for people. This was not a war that was going to happen if I were president.
+
+Media question:
+
+Right? And so not your war, but as you try to fix it and as you survey this hellscape of the Ukrainian front lines…
+
+President Donald Trump:
+
+It's horrible.
+
+Media question:
+
+And you guys, you and your team deal with a very stubborn Vladimir Putin, do you…
+
+President Donald Trump:
+
+And Zelinsky.
+
+Media question:
+
+But do you look at this conflict…
+
+President Donald Trump:
+
+Zelensky too…
+
+Media question:
+
+Any differently Now, do you look at this and see Putin as the good guy or the bad guy?
+
+President Donald Trump:
+
+So I've known him very well, and I went through a lot of things with him because Russia was the Russia, Russia, Russia hoax turned out to be a total hoax. New York Times, they got a Pulitzer surprise. They have to give back the Pulitzer Prize. That's my lawsuit. And they're doing very poorly in that lawsuit. But they wrote stories about how it was true and it was false. And a lot of Washington Post also, I have gotten to see things that I was very surprised at rockets being shot into cities like Kyiv during a negotiation that I felt was maybe very close to ending. We were going to solve a problem and then all of a sudden rockets got shot into a couple of cities and people died. I saw things that I was surprised at and I don't like being surprised. So I'm very disappointed in that way. With that being said, I'd like to see it end 5,000 people. I think the numbers even more than that, but 5,000 people a week are being killed. Mostly soldiers, but also people that live in little cities and towns throughout Ukraine. And I'd like to see that stop.
+
+Media question:
+
+I want to ask you directly, so many of the things that you're trying to do are held up in court right now. If the courts are going to have so much influence over US policy, do you wish you would've just become a judge instead?
+
+President Donald Trump:
+
+Yeah. Well look, it wasn't meant to be that way. If you look at the founders, the president had certain powers and you have your three groups, and they all had supposed to be equal, pretty equal powers. But you can't have a judge in Boston running foreign policy and places all over the country because he's got a liberal bent or he's a radical left person. That's what the executive branch is for. And you have checks and balances. But we had millions of people pour into our country, many, many criminals poured into our country. Murderers, murderers, mental institutions from all over the world being emptied out into our country. And if we don't get 'em out and get 'em out quickly, we're going to could lose your country very easily. This is a bad that anybody would allow this to happen to our country. With all of the things we took over inflation, we took over some wars, we took over a lot of problems that didn't exist when I was president.
+
+None of it existed. We wiped out ices. Other than that, we had no wars. Putin was never going to hit Ukraine. Israel would've never been attacked that attack. As you know, Iran had no money. They didn't have money for Hamas, they didn't have money for Hezbollah. They had no money whatsoever. That wasn't going to happen. All of these things that happened weren't going to happen. You wouldn't have had inflation. So it's very sad when I came back. But the thing that is the hardest is that they allowed 21 million people into our country. And many of those people are stone cold criminals. They moved their criminal population into the United States. And of all the things that are bad, I solved inflation, I believe already. I got the fuel prices down. The fuel prices came down. That's one of the reasons they screwed up the energy. They screwed up the cost of gasoline and oil and gas, and you had tremendous inflation, the greatest inflation probably in the history of our country under Biden.
+
+And when people said, oh, but the economy was no, the economy was terrible for the people because they couldn't afford the energy. And the energy brought everything else up. Energy is the big deal. But with all of that, we solved that already in four months. We solved it. A dollar 99, a dollar 98, gasoline, first time. People have seen that in a long time since my term. But the hardest thing to solve is millions of people pouring into our country, many of whom are criminals. Because remember, these countries are smart leaders are very street smart. They're sending the people that they don't want. They don't want the people that are there, that are law abiding, that are productive, that are working hard. They want people that are in jails. We have 'em. They allow them to come in. And I always look to the other side, why would somebody do something in business?
+
+I'd try and study. Why would they want to do this? Why would they want to sell it? Why would they want to buy it? One thing I can't figure out is what would an administration, what were they thinking when they allowed millions of people from prisons all over the world, not just from South America, Venezuela, all over the world, from the Congo in Africa, hundreds of people, thousands of people from the Congo, rough, rough prisoners from Asia, from Europe, rough parts of Europe. Why would they allow them to come into our country? Why would they do that? It's the one thing I can't figure out, and I don't believe it was Joe Biden. I really don't. I mean, look, he's been a sort of a moderate person over his lifetime. Not a smart person, but a somewhat vicious person. I will say, if you feel sorry for him, don't feel so sorry.
+
+He is vicious what he did with his political opponent and all of the people that he heard a lot of people Biden. And so I really don't feel sorry for him. But he wasn't a person that would allow murderers to come into our country. He wasn't a person that was in favor of transgender for anybody that wanted it, take kids out of families, et cetera, et cetera. So I just don't understand why a thing like this, how a thing like this could have been allowed to happen. Very sad. It's very, very sad for our country.
+
+Elon Musk:
+
+I think the fundamental moral flaw of the left is empathy for the criminals and not empathy for the victims. Empathy for the criminals, but not empathy for the victims. And there's been way too much of that that needs to stop. To the President's point, there's been immense judicial overreach that is unconstitutional, that was never intended. And it's undermining the people's faith in the legal system. It needs to stop. It's gone too far
+
+President Donald Trump:
+
+And yesterday we had just a couple of hours ago, we had a great decision from the Supreme Court. Thank goodness that it was very important. We had two important decisions yesterday on the tariffs because again, we have to be able to fight a fair fight with other countries. Howard, would you say we have to be able to use tariffs to fight people that use tariffs on us? I mean, if we didn't have that power of tariffs, we would economically, but destroy it as a country because they will destroy us. Other countries will destroy us with unchecked tariffs. We can check them when we have the use. They tried to take that power away from us. And if you take that power away, we're not going to have a country. We won't have an economically viable country. But it's very important on immigration that we'd be able to get people out without having to go through a long court case.
+
+I mean, it was up to some of these judges, every single one of these millions of people, millions of people, criminals, prisoners that were let go from jails because they save a fortune. When they did, they brought 'em into the United States. You know what? They're saving the money they're saving. But some of murders, it's very important that we're able to get those people out of here fast, bring them back to their country where they belong, and those countries take 'em because if they don't take 'em, they have to go through the wrath of the United States and they take 'em. But we have judges that don't want that to happen, and it's a terrible thing that's going through the court system right now, that whole situation. But when ICE and with border patrol, they've done an incredible job when they do this incredible job and they capture 100 killers and drug dealers, and we can't keep them for years here. As we go through trials, we have to get 'em out rapidly. And we know who they are. We know who they are, and we're very careful about who they are. But we have to get 'em out rapidly or again, we're not going to have a country.
+
+Media question:
+
+Are you also concerned that tariffs may also affect companies like Tesla, which has parts manufactured of abroad. And this is also to you, Mr. Musk.
+
+President Donald Trump:
+
+Well, he's going to end up building his whole car here. I mean, I thought he built his whole car. Pretty much he does. He's got incredible factories. And I looked at one in Texas. It's unbelievable. I know all of the manufacturers will build their parts here too. I mean, it used to bother me. They make a part in Canada, a part in Mexico, a part in Europe, and it's sent all over the place and nobody knew what the hell was happening. I think it's ridiculous. You build a car, make it in America, and I gave them a little leeway on that, gave them some leeway, but over the next year, they've got to have the whole thing built in America. That's what we want. We want America to buy American built cars. Thank you very much everybody.

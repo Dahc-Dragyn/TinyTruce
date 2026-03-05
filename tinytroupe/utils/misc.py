@@ -8,9 +8,12 @@ AgentOrWorld = Union["TinyPerson", "TinyWorld"]
 def name_or_empty(named_entity: AgentOrWorld):
     """
     Returns the name of the specified agent or environment, or an empty string if the agent is None.
+    If a string is passed, returns the string itself.
     """
     if named_entity is None:
         return ""
+    elif isinstance(named_entity, str):
+        return named_entity
     else:
         return named_entity.name
 

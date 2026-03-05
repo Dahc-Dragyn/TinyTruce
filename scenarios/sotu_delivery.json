@@ -5,7 +5,7 @@
     "grounding_files": [
         "data/economics/cbo-obbba-deficit-projection-2026.txt",
         "data/legal/scotus-ieepa-tariff-ruling-feb20.txt",
-        "personas/agents/archive/state_of_union.txt"
+        "data/archive/state_of_union.txt"
     ],
     "grounding_payload": [
         "data/facts/world-facts.2026.txt",

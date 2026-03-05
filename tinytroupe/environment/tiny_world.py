@@ -530,8 +530,13 @@ class TinyWorld:
         """
         Pushes the latest communications to the agent's buffer.
         """
-        # UX Mode: Skip rendering if thoughts are disabled
+        # UX Mode: Skip rendering if thoughts or stimuli-clutter are disabled
         if not self.show_thoughts:
+            # Hide all stimuli (inputs/thoughts/nudges) to create a cinematic dialogue-only feed.
+            if communication.get("kind") in ["stimuli", "stimulus"]:
+                return
+            
+            # Hide THINK actions (reasoning)
             if communication.get("kind") == "action":
                 action_type = communication.get("content", {}).get("action", {}).get("type")
                 if action_type == "THINK":
