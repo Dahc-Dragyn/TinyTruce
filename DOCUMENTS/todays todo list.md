@@ -14,7 +14,7 @@ Successfully implemented the **Geopolitical Chronicler** system, providing a dyn
 ## 🚧 Phase 2: Operationalization & Scale (In Progress)
 The backend is stable and forensic-ready. We are now transitioning into the infrastructure and scale phase:
 
-- [/] **Automated Chronicler (Server-side)**: Transition `chronicler_update.py` into a scheduled cron job on the production server.
+- [ ] **Automated Chronicler (Server-side)**: Transition `chronicler_update.py` into a scheduled cron job on the production server.
 - [ ] **Infrastructure: Dockerization**: Create a lean `Dockerfile` and `docker-compose.yml` for the simulation engine.
 - [ ] **Library Pruning**: Strip `tinytroupe` of unused modules to minimize image size and attack surface.
 - [ ] **API Layer (FastMCP)**: Refactor `tinytruce_sim.py` into a FastMCP server to support the Next.js frontend.
