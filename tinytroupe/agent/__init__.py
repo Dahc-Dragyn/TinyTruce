@@ -35,7 +35,7 @@ AgentOrWorld = Union[Self, "TinyWorld", str]
 class Action(BaseModel):
     type: str
     content: str
-    target: str
+    target: Optional[str] = "everyone"
 
 class CognitiveState(BaseModel):
     goals: Optional[str] = "Maintain consistency."

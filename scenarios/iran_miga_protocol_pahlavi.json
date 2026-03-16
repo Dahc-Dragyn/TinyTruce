@@ -1,0 +1,25 @@
+{
+    "world_name": "The Tehran Green Zone (Sahebqaraniyeh Palace)",
+    "initial_broadcast": "M1A2 Abrams tanks idle on the crushed rose gardens of the Niavaran Complex. JSOC snipers maintain overwatch from the imperial library roof. In the mirror-lined Jahan Nama hall, Reza Pahlavi prepares his 'Restoration Address.' The aristocratic lexicon of the 'Great Civilization' and the 'Cyrus Awakening' is being broadcast behind American bayonets. It is a 'Forensic Cleansing' of the 1979 infection. But outside the Niavaran walls, a nationalist fire is starting to burn.",
+    "intervention": "The 'Tehran Protocols': Washington has demanded the immediate privatization of the NIOC (National Iranian Oil Company) and the total handover of all 'Missile Cities' to US weapons inspectors. Pahlavi must sign over the nation's energy wealth to Western conglomerates on Day One to offset the trillions spent on 'Epic Fury.' The label of 'Puppet' is being spray-painted across every wall in the Shemiran district.",
+    "grounding_files": [
+        "data/conflicts/US_Israel_Iran_War/The_MIGA_Protocol.txt",
+        "data/facts/middle-east-reset.2026.txt",
+        "data/facts/us-iran-war-intelligence.2026.txt"
+    ],
+    "grounding_payload": [
+        "data/conflicts/US_Israel_Iran_War/The_MIGA_Protocol.txt",
+        "data/facts/middle-east-reset.2026.txt",
+        "data/facts/us-iran-war-intelligence.2026.txt"
+    ],
+    "scenario_knowledge": "Gemini: Focus on Pahlavi's high-status aristocratic language ('Farrah-e Izadi'). He must frame the occupation as an 'Allied Stabilization Mandate.' {{AGENT_1}} is the 'Displaced Sovereign' attempting to maintain dignity in a Green Zone. {{AGENT_2}} and {{AGENT_3}} must challenge the 'Chalabi Template' and the 'Iraq 2003' parallels.",
+    "dynamic_injects": [
+        {
+            "trigger_condition": {
+                "min_turn": 3,
+                "probability": 1.0
+            },
+            "broadcast": "NIGHTMARE SCENARIO: An autonomous AI drone swarm has breached the Green Zone, targeting the Niavaran Hall during a televised cabinet meeting. The Pentagon has concluded that Pahlavi has zero organic control. The President is now deciding whether to deploy 100,000 ground troops to stop the regime-change from collapsing within a week."
+        }
+    ]
+}

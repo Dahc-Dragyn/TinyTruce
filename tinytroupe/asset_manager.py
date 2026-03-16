@@ -136,8 +136,6 @@ class AssetManager:
             validated = PersonaSchema.model_validate(data)
             if validated.persona.syntax_constraints:
                 logger.debug(f"LOADED syntax_constraints for {filepath}")
-            else:
-                logger.warning(f"EMPTY syntax_constraints for {filepath}")
             
             return validated
         except ValidationError as e:

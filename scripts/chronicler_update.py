@@ -4,6 +4,10 @@ import json
 import logging
 import datetime
 from pathlib import Path
+from dotenv import load_dotenv
+
+# Load environment variables from .env
+load_dotenv()
 
 # Add project root to path
 sys.path.append(str(Path(__file__).parent.parent))
@@ -36,6 +40,9 @@ class ChroniclerUpdate:
         # Ensure we're in the project root to fix config.ini and path lookup issues
         os.chdir(ROOT)
         
+        # Force Native Gemini engine to bypass OpenAI adapter issues
+        os.environ["TINYTRUCE_FORCE_NATIVE_LLM"] = "true"
+        
         # Reset costs at start
         cost_manager.reset()
         
@@ -51,77 +58,89 @@ class ChroniclerUpdate:
         self.agent.add_mental_faculty(self.situation_room)
         
     def harvest_and_synthesize(self):
-        logger.info("Harvesting news from Situation Room...")
+        logger.info("Harvesting global kinetic news from Situation Room...")
         self.agent.show_thoughts = True # Force visibility during update
         
-        # 1. Get Breaking Alerts
-        logger.info("Requesting Breaking Alerts...")
-        self.agent.think("System Command: Execute GET_ALERTS now. I must see the high-signal wire (Severity 4-5).")
+        # 1. Get Global High-Severity Alerts (MANDATORY START)
+        logger.info("Requesting Global High-Severity Alerts...")
+        self.agent.think("System Command: Execute GET_ALERTS. Prioritize Severity 4.5+ items across all theaters.")
         self.agent.act(until_done=True)
         
-        # 2. Consolidated Scenario Search
-        logger.info("Performing Consolidated Scenario Search...")
-        scenario_query = (
-            "Geopolitical Status March 2026: AI Sovereignty Trends, "
-            "Petrodollar Energy Shifts, US Domestic Stability (SOTU), "
-            "Vatican Cyber-Schism, Ukraine War Frontlines, "
-            "Middle East Reset, Hindu Kush Open War, and Venezuela Post-Maduro Transition"
-        )
-        self.agent.think(f"System Command: Execute SEARCH_NEWS for '{scenario_query}'.")
-        self.agent.act(until_done=True)
-
-        # 3. High-Signal Kinetic/Forensic Search
-        logger.info("Performing Forensic Kinetic Search...")
-        kinetic_keywords = (
-            "geopolitical kinetic flashpoints: assassination, nuclear, strike, casualties, "
-            "blockade, insurrection, annexation, cyber-sabotage, mobilization, asymmetric, radicalization"
-        )
-        self.agent.think(f"System Command: Execute SEARCH_NEWS for '{kinetic_keywords}'. "
-                         "I need raw tactical signal for these high-alert triggers.")
-        self.agent.act(until_done=True)
+        # 2. Global Kinetic Probes (Multi-Source Harvesting)
+        feed_clusters = [
+            ("ISW/ACLED Frontlines", "missile strikes, artillery escalation, drone blitz, offensive operations, mobilization"),
+            ("Reuters/AP Alerts", "assassinations, infrastructure sabotage, command center strikes, logistical failure"),
+            ("State Media Narrative", "blockades, nuclear threats, asymmetric warfare, regime collapse, internal insurrection")
+        ]
         
-        # Final ingestion thought
-        self.agent.think("I have the unified kinetic and scenario wire. I will now synthesize the 'Daily Intelligence Briefing'.")
+        for source_cluster, topics in feed_clusters:
+            logger.info(f"Probing source cluster: {source_cluster}...")
+            # We search globally, not by scenario, to capture the 'War Wire' signal cross-verified
+            query = f"Global {source_cluster}: {topics}"
+            self.agent.think(f"System Command: Execute SEARCH_NEWS for '{query}' from {source_cluster}. Focus on high-signal War News (Severity > 4.5).")
+            self.agent.act(until_done=True)
+            import time
+            time.sleep(15) # Pace the requests to avoid Vertex AI 429 errors
+
+        # 3. Quantitative Metrics Logic
+        logger.info("Executing Quantitative Metrics Logic...")
+        self.agent.think("I will now estimate the Kinetic and Economic Toll. I must identify: Estimated Casualty Counts, Infrastructure Damage (%), and Market Shocks (e.g., Oil/Gas price spikes).")
         self.agent.act(until_done=True)
 
-        logger.info("Synthesizing Daily Intelligence Briefing...")
-        # Force a summary thought that aggregates previous findings
-        self.agent.think("ACTION REQUIRED: You must now produce the FULL 'Daily Intelligence Briefing'.\n\n"
-                         "RULES:\n"
-                         "1. DO NOT give meta-commentary like 'The report is prepared'.\n"
-                         "2. DO NOT use placeholders.\n"
-                         "3. YOU MUST output the actual content: The Highlights, the Scenario Grounds (AI, Energy, Domestic, Ukraine, Middle East, Hindu Kush, Venezuela).\n"
-                         "4. CITE the wire for specific signal.\n\n"
+        # 4. Structural Synthesis thought
+        self.agent.think("I have the global tactical wire. I will now synthesize the **GLOBAL WAR WIRE BRIEFING**.")
+        self.agent.act(until_done=True)
+
+        logger.info("Synthesizing Global War Wire with Cross-Verification...")
+        # Force a summary thought that aggregates previous findings with high-severity priority
+        self.agent.think("ACTION REQUIRED: You must now produce the **'GLOBAL WAR WIRE: MARCH 2026'** report.\n\n"
+                         "### GLOBAL WAR WIRE PROTOCOL ###\n"
+                         "1. SEVERITY-FIRST: Start the report with the highest severity (Severity 5.0) items globally.\n"
+                         "2. NO SILOS: Do not group by scenario (e.g. 'Ukraine'). Group by **TACTICAL IMPACT**.\n"
+                         "3. TACTICAL FIDELITY: Describe specific weapon systems (e.g. 'Long-range drones', 'Pantsir-S2'), units, and damage assessments.\n"
+                         "4. IMPACT ANALYSIS: For every event, explain the immediate kinetic or strategic consequence.\n"
+                         "5. SOURCE DIVERSITY CHECK: For every Severity 4.5+ event, the Chronicler must check for corroboration across at least two sources.\n"
+                         "6. BIAS REDUCTION: Explicitly flag state media reports as 'Unverified Narrative' if they contradict Reuters/AP ground truth.\n"
+                         "7. TRAILING CONTEXT: Ensure the Global War Wire output uses the 'This follows...' logic to maintain a persistent timeline.\n"
+                         "8. CITE everything from the wire.\n\n"
                          "YOUR VERY NEXT ACTION MUST BE 'TALK' CONTAINING THE FULL REPORT.")
         
         # Keep acting until a TALK action with significant content is produced
-        max_attempts = 2
+        max_attempts = 3
         report = ""
         for attempt in range(max_attempts):
             actions = self.agent.act(until_done=True, return_actions=True)
             for action_content in actions:
                 if action_content['action']['type'] == 'TALK':
                     content = action_content['action']['content']
-                    # Ensure it's not meta-commentary
-                    if len(content) > 300 and "Daily Intelligence Briefing" in content:
+                    # Ensure it's a meaty tactical briefing
+                    if len(content) > 800 and "GLOBAL WAR WIRE" in content.upper():
                         report = content
                         break
             if report:
                 break
-            self.agent.think("FAILURE: The previous output was either too short or meta-commentary. "
-                             "I COMMAND YOU to output the FULL Geopolitical Report now. Mention AI, Petrodollar, and Conflict clusters.")
+            self.agent.think("FAILURE: Too vague. I need the raw tactical pulse. "
+                             "Mention specific strikes, sabotages, and fronts. Lead with the most severe signal. "
+                             "I am paying for high-level tactical intelligence, not a news digest.")
         
         return report
 
     def commit(self, report):
+        # Get costs
+        costs = cost_manager.total_cost
+        summary = cost_manager.get_summary()
+        
+        logger.info(f"Session Cost estimate: ${costs:.4f}")
+        logger.info(f"Usage Summary: {summary['total_input_tokens']} in, {summary['total_output_tokens']} out")
+
         if not report:
             logger.error("No report generated. Skipping commit.")
+            # Still save history if there was usage
+            if costs > 0:
+                cost_manager.save_run_to_history("Chronicler Geopolitical Update (FAILED)")
             return
             
         logger.info(f"Committing briefing to {self.output_file}...")
-        
-        # Get costs
-        costs = cost_manager.total_cost
         
         header = f"### DAILY INTELLIGENCE BRIEFING: {datetime.date.today().isoformat()} ###\n"
         header += "SOURCE: THE CHRONICLER // FORENSIC INTELLIGENCE DESK\n"
@@ -135,8 +154,6 @@ class ChroniclerUpdate:
             f.write(full_content)
         
         logger.info(f"Commit successful. Total Session Cost: ${costs:.4f}")
-        summary = cost_manager.get_summary()
-        logger.info(f"Usage Summary: {summary['total_input_tokens']} in, {summary['total_output_tokens']} out")
         
         # Save to permanent billing history
         cost_manager.save_run_to_history("Chronicler Geopolitical Update")

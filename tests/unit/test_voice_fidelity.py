@@ -118,5 +118,102 @@ def test_fragment_stacking_linguistic_logic():
     
     print(f"\n[SUCCESS] Fragment Stacking: Verified concatenated vocabulary and overwritten syntax constraints.")
 
+
+def test_voice_fidelity_claudia_sheinbaum():
+    """Verifies Sheinbaum's Technocratic Mandate linguistic locks."""
+    project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
+    agent_path = os.path.join(project_root, "personas", "agents", "claudia_sheinbaum.agent.json")
+    frag_path = os.path.join(project_root, "personas", "fragments", "claudia_sheinbaum_technocratic_mandate.fragment.json")
+    
+    agent = TinyPerson.load_specification(agent_path, new_agent_name="Sheinbaum_Test")
+    agent.import_fragment(frag_path)
+    
+    system_content = agent.current_messages[0]['content']
+    assert "Industrial Metrics" in system_content
+    assert "Plan México Priority" in system_content
+    assert "Digital Sovereignty" in system_content
+    
+    print(f"\n[SUCCESS] Voice Fidelity: Sheinbaum (Technocratic Mandate) locks verified.")
+
+def test_voice_fidelity_william_ruto():
+    """Verifies Ruto's Tech Sovereignty linguistic locks."""
+    project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
+    agent_path = os.path.join(project_root, "personas", "agents", "william_ruto.agent.json")
+    frag_path = os.path.join(project_root, "personas", "fragments", "william_ruto_tech_sovereignty.fragment.json")
+    
+    agent = TinyPerson.load_specification(agent_path, new_agent_name="Ruto_Test")
+    agent.import_fragment(frag_path)
+    
+    system_content = agent.current_messages[0]['content']
+    assert "Strategic Reciprocity" in system_content
+    assert "Digital Agency" in system_content
+    assert "Facing Forward" in system_content
+    
+    print(f"\n[SUCCESS] Voice Fidelity: Ruto (Tech Sovereignty) locks verified.")
+
+def test_voice_fidelity_anwar_ibrahim():
+    """Verifies Anwar's Moral Hedger linguistic locks."""
+    project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
+    agent_path = os.path.join(project_root, "personas", "agents", "anwar_ibrahim.agent.json")
+    frag_path = os.path.join(project_root, "personas", "fragments", "anwar_ibrahim_moral_hedger.fragment.json")
+    
+    agent = TinyPerson.load_specification(agent_path, new_agent_name="Anwar_Test")
+    agent.import_fragment(frag_path)
+    
+    system_content = agent.current_messages[0]['content']
+    assert "Madani Baseline" in system_content
+    assert "Consensus Metric" in system_content
+    assert "Transition Logic" in system_content
+    
+    print(f"\n[SUCCESS] Voice Fidelity: Ibrahim (Moral Hedger) locks verified.")
+
+def test_voice_fidelity_nayib_bukele():
+    """Verifies Bukele's Sovereign Disruptor linguistic locks."""
+    project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
+    agent_path = os.path.join(project_root, "personas", "agents", "nayib_bukele.agent.json")
+    frag_path = os.path.join(project_root, "personas", "fragments", "nayib_bukele_sovereign_disruptor.fragment.json")
+    
+    agent = TinyPerson.load_specification(agent_path, new_agent_name="Bukele_Test")
+    agent.import_fragment(frag_path)
+    
+    system_content = agent.current_messages[0]['content']
+    assert "Bare Metal" in system_content
+    assert "Sovereign AI" in system_content
+    assert "Optimization Protocol" in system_content
+    
+    print(f"\n[SUCCESS] Voice Fidelity: Bukele (Sovereign Disruptor) locks verified.")
+
+def test_voice_fidelity_giorgia_meloni():
+    """Verifies Meloni's Brussels Realism linguistic locks."""
+    project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
+    agent_path = os.path.join(project_root, "personas", "agents", "giorgia_meloni.agent.json")
+    frag_path = os.path.join(project_root, "personas", "fragments", "giorgia_meloni_brussels_realism.fragment.json")
+    
+    agent = TinyPerson.load_specification(agent_path, new_agent_name="Meloni_Test")
+    agent.import_fragment(frag_path)
+    
+    system_content = agent.current_messages[0]['content']
+    assert "Operational Reality" in system_content
+    assert "Smart Power" in system_content
+    assert "Logistical Fix" in system_content
+    
+    print(f"\n[SUCCESS] Voice Fidelity: Meloni (Brussels Realism) locks verified.")
+
+def test_voice_fidelity_mojtaba_khamenei():
+    """Verifies Mojtaba's Shadow Architect linguistic locks."""
+    project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
+    agent_path = os.path.join(project_root, "personas", "agents", "mojtaba_khamenei_iran.agent.json")
+    frag_path = os.path.join(project_root, "personas", "fragments", "mojtaba_khamenei_shadow_architect.fragment.json")
+    
+    agent = TinyPerson.load_specification(agent_path, new_agent_name="Mojtaba_Test")
+    agent.import_fragment(frag_path)
+    
+    system_content = agent.current_messages[0]['content']
+    assert "Nofuz" in system_content
+    assert "The Purge Logic" in system_content
+    assert "Sovereign Perimeter" in system_content
+    
+    print(f"\n[SUCCESS] Voice Fidelity: Mojtaba (Shadow Architect) locks verified.")
+
 if __name__ == "__main__":
     pytest.main([__file__])

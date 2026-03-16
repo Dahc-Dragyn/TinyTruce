@@ -1,5 +1,10 @@
 import os
 import sys
+
+# 🚨 TINYTRUCE MANDATE: WE DO NOT USE OPENAI. WE ONLY USE GEMINI. 🚨
+# Enforce Native Gemini Engine for all interactive sessions
+os.environ["TINYTRUCE_FORCE_NATIVE_LLM"] = "1"
+
 import json
 import logging
 import argparse
@@ -27,10 +32,11 @@ logger = logging.getLogger("tinytruce_chat")
 console = Console()
 
 class TinyTruceInterrogator:
-    def __init__(self, agent_file, fragment_names=None, scenario_file=None, session_id=None, use_cache=True):
+    def __init__(self, agent_file, fragment_names=None, scenario_file=None, extra_grounding=None, session_id=None, use_cache=True):
         self.agent_file = agent_file
         self.fragment_names = fragment_names or ["preserver.fragment.json"]
         self.scenario_file = scenario_file
+        self.extra_grounding = extra_grounding or []
         self.session_id = session_id or f"interrogate_{uuid.uuid4().hex[:8]}"
         self.use_cache = use_cache
         self.agent = None
@@ -66,31 +72,53 @@ class TinyTruceInterrogator:
                             scenario_grounding += f"\n### SCENARIO DATA: {Path(p).name} ###\n{gf.read()}\n"
                 
                 # Context
-                context_stimulus = (
-                    f"### SCENARIO: {self.scenario_data.get('world_name')} ###\n"
-                    f"CONTEXT: {self.scenario_data.get('initial_broadcast')}\n"
-                    f"INTERVENTION: {self.scenario_data.get('intervention')}\n"
-                    f"FOCUS: {self.scenario_data.get('scenario_knowledge')}\n"
-                )
+                    context_stimulus = (
+                        f"### SCENARIO: {self.scenario_data.get('world_name')} ###\n"
+                        f"CONTEXT: {self.scenario_data.get('initial_broadcast')}\n"
+                        f"INTERVENTION: {self.scenario_data.get('intervention')}\n"
+                        f"FOCUS: {self.scenario_data.get('scenario_knowledge')}\n"
+                    )
+        
+        # 0.5. Extra Grounding from CLI
+        extra_content = ""
+        for g_path in self.extra_grounding:
+            if os.path.exists(g_path):
+                if os.path.isdir(g_path):
+                    for root, _, files in os.walk(g_path):
+                        for f in files:
+                            if f.endswith(".txt") or f.endswith(".md"):
+                                full_p = os.path.join(root, f)
+                                with open(full_p, "r", encoding="utf-8") as gf:
+                                    extra_content += f"\n### INTEL: {f} ###\n{gf.read()}\n"
+                else:
+                    with open(g_path, "r", encoding="utf-8") as gf:
+                        extra_content += f"\n### INTEL: {Path(g_path).name} ###\n{gf.read()}\n"
+            else:
+                console.print(f"[yellow]Warning: Extra grounding path not found: {g_path}[/yellow]")
         
         # 1. Reset costs
         sim.cost_manager.reset()
         
         # 2. Prepare Grounding Bundle for Cache
-        world_facts_path = "data/facts/world-facts.2026.txt"
-        daily_intel_path = "data/facts/daily-intelligence.2026.txt"
-        
         global_grounding = ""
-        if os.path.exists(world_facts_path):
-            with open(world_facts_path, "r", encoding="utf-8") as f:
-                global_grounding = f.read()
+        facts_dir = Path("data/facts")
         
-        if os.path.exists(daily_intel_path):
-            with open(daily_intel_path, "r", encoding="utf-8") as f:
-                daily_intel = f.read()
-                global_grounding = f"### [CORE SHARED WORLD STATE (2026)] ###\n{global_grounding}\n\n{daily_intel}"
+        if facts_dir.exists():
+            console.print(f"[dim]Scanning for 2026 intelligence in {facts_dir}...[/dim]")
+            # Load ALL 2026 tactical intelligence files
+            for f_path in facts_dir.glob("*.2026.txt"):
+                try:
+                    with open(f_path, "r", encoding="utf-8") as f:
+                        file_content = f.read()
+                        global_grounding += f"\n### INTEL SOURCE: {f_path.name} ###\n{file_content}\n"
+                        console.print(f"  [dim]- Loaded: {f_path.name}[/dim]")
+                except Exception as e:
+                    console.print(f"[red]Error loading {f_path.name}: {e}[/red]")
+        else:
+            console.print(f"[yellow]Warning: Facts directory not found at {facts_dir}[/yellow]")
         
         global_grounding += scenario_grounding
+        global_grounding += extra_content
         
         layer0_bundle = f"### GLOBAL SHARED WORLD STATE (2026) ###\n{global_grounding}\n\n"
         
@@ -141,6 +169,7 @@ class TinyTruceInterrogator:
         
         # 4. Mandatory Cache Setup
         if self.use_cache:
+            # [TINYTRUCE] v2.4: Ensure shared caching logic matches the simulation engine
             self.cache_manager = sim.GeopoliticalCacheManager(layer0_bundle, session_id=self.session_id)
             try:
                 cache_id = self.cache_manager.create_cache()
@@ -148,7 +177,8 @@ class TinyTruceInterrogator:
                     os.environ["TINYTRUCE_CURRENT_CACHE"] = cache_id
                     console.print(f"[bold green]Gemini Cache Active for {self.agent.name}: {cache_id}[/bold green]")
             except Exception as e:
-                console.print(f"[yellow]Warning: Cache creation failed: {e}[/yellow]")
+                # If cache creation fails (e.g. region mismatch), fallback to standard Vertex calls
+                console.print(f"[yellow]Warning: Cache creation failed: {e}. Falling back to standard Vertex AI calls.[/yellow]")
 
         return True
 
@@ -274,6 +304,15 @@ class TinyTruceInterrogator:
             console.print(f"[red]Unknown command: {cmd}[/red]")
 
     def cleanup(self):
+        # [TINYTRUCE] v2.4: Save the interrogation session to the billing ledger
+        try:
+            cost_summary = sim.cost_manager.get_summary()
+            if cost_summary.get("total_input_tokens", 0) > 0:
+                sim.cost_manager.save_run_to_history(f"CHAT: {self.agent.name} ({self.session_id})")
+                console.print(f"[bold green]Session cost logged to tinytruce_billing_ledger.md: ${cost_summary['total_cost']:.6f}[/bold green]")
+        except Exception as e:
+            console.print(f"[yellow]Warning: Failed to save billing history: {e}[/yellow]")
+
         if self.cache_manager:
             self.cache_manager.delete_cache()
         console.print("[bold cyan]Interrogation session ended.[/bold cyan]")
@@ -283,6 +322,7 @@ if __name__ == "__main__":
     parser.add_argument("--agent", default="kai_chen.agent.json", help="Agent JSON file")
     parser.add_argument("--fragments", nargs="+", default=None, help="Behavior fragments")
     parser.add_argument("--scenario", default=None, help="Scenario JSON for context")
+    parser.add_argument("--grounding", nargs="+", default=None, help="Extra grounding files or directories")
     parser.add_argument("--session-id", help="Explicit session/cache ID")
     parser.add_argument("--no-cache", action="store_true", help="Disable context caching")
     
@@ -304,6 +344,7 @@ if __name__ == "__main__":
         agent_file=args.agent,
         fragment_names=fragments,
         scenario_file=args.scenario,
+        extra_grounding=args.grounding,
         session_id=args.session_id,
         use_cache=not args.no_cache
     )

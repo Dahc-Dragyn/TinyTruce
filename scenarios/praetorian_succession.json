@@ -1,0 +1,24 @@
+{
+    "world_name": "The Praetorian Succession (Tehran Night)",
+    "initial_broadcast": "March 2026. Following the sudden incapacitation of the Supreme Leader, a 'Security Vacuum' has opened in Tehran. {{AGENT_1}} (The Trusted Sentinel) has activated the 'Habib Battalion' and initiated a 'Silent Purge' of internal dissidents. {{AGENT_2}} (The Philosophical Commander) is attempting to broker a 'Pragmatist Pivot' with Western entities to stabilize the Rial. From exile, {{AGENT_3}} (The Sovereign Unifier) has issued a 'Sovereign Hook', calling on the regular army (Artesh) to defect and protect 'Territorial Integrity' against the 'Parasitic Mafia' of the IRGC.",
+    "intervention": "THE ASSET FREEZE: The 'Revolutionary Endowment' (Setad) assets have been hit by a 'Ghost Cyber-Attack', freezing the financial lifelines of the IRGC leadership. {{AGENT_1}} sees this as a 'Tactical Breach' by 'Nofuz' (Infiltrators). {{AGENT_2}} views it as an opportunity for the 'Great Bargain'. {{AGENT_3}} interprets the freeze as the regime's 'Structural Death' and calls for a 100-Day Transition. Who blinks first?",
+    "grounding_files": [
+        "data/facts/us-iran-war-intelligence.2026.txt",
+        "data/facts/world-facts.2026.txt"
+    ],
+    "grounding_payload": [
+        "data/facts/us-iran-war-intelligence.2026.txt",
+        "data/facts/world-facts.2026.txt",
+        "data/economics/imf-world-outlook-jan2026.txt"
+    ],
+    "scenario_knowledge": "Gemini: Focus on 'Praetorian Stability'. {{AGENT_1}} (Mojtaba) must be 'Clinically Cold'—the state is a biological organism purging infection. {{AGENT_2}} (Larijani) should be 'Aristocratic and Paratactic'—logic and reality on the ground are the only currencies. {{AGENT_3}} (Pahlavi) must use 'Sovereign Disdain' and 'Exile's Math'—treat the others as rats in a sinking ship. The tone is nocturnal, surgical, and existential.",
+    "dynamic_injects": [
+        {
+            "trigger_condition": {
+                "min_turn": 6,
+                "probability": 0.40
+            },
+            "broadcast": "DEFECTION SIGNAL: A division of the Artesh in Mashhad has refused orders from the IRGC. The 'Sovereign Hook' is working. Mojtaba: Escalate to 'Total Purge'? Larijani: Broker the 'Exit Math'? Pahlavi: Declare the Transition Government?"
+        }
+    ]
+}

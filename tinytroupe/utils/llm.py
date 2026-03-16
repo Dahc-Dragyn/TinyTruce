@@ -248,7 +248,7 @@ def truncate_actions_or_stimuli(list_of_actions_or_stimuli: Collection[dict], ma
             # has action, stimuli or stimulus as key?
             if "action" in msg_content:
                 # is content there?
-                if "content" in msg_content["action"]:
+                if msg_content["action"] and "content" in msg_content["action"]:
                     msg_content["action"]["content"] = break_text_at_length(msg_content["action"]["content"], max_content_length)
             elif "stimulus" in msg_content:
                 # is content there?

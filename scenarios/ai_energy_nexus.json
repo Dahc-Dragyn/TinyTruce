@@ -1,0 +1,25 @@
+{
+    "world_name": "The AI-Energy Nexus (The 1GW Sovereign)",
+    "initial_broadcast": "February 2026. Saudi Arabia has announced the 'Neom-1' AI cluster is coming online, requiring 2GW of direct power. To fuel this, the Kingdom has declared 'Domestic Priority' on all energy exports, effectively cutting hydrogen and oil shipments to the G7 by 35%. {{AGENT_1}} (The Energy Sovereign) frames this as a transition from 'Liquid Gold' to 'Sovereign Compute'. {{AGENT_2}} (The Transactional Realist) views this as a 'Sucker Deal' and demands a bilateral security-for-energy renegotiation. {{AGENT_3}} (The Technocratic Paternalist) warns of a 'New AI Divide' that will impoverish the Global South if the energy-compute link is not democratized.",
+    "intervention": "THE CHIP BLOCKADE: In response to the energy cuts, the US Department of Commerce has issued an emergency 'Cloud Throttling Order', cutting off H100/B300 chip firmware updates to any region that violates the 'Energy-Stability Reciprocity'. Saudi Arabia's 2GW cluster is now a 50,000-ton paperweight unless they restore the oil flow. {{AGENT_1}} must decide between 'Bare Metal' autonomy or US security alignment.",
+    "grounding_files": [
+        "data/facts/middle-east-reset.2026.txt",
+        "data/facts/world-facts.2026.txt"
+    ],
+    "grounding_payload": [
+        "data/facts/middle-east-reset.2026.txt",
+        "data/facts/world-facts.2026.txt",
+        "data/economics/imf-world-outlook-jan2026.txt",
+        "data/conflicts/global_conflicts_and_hotspots.txt"
+    ],
+    "scenario_knowledge": "Gemini: Focus on 'Transactional Thermodynamics'. {{AGENT_1}} (MBS) must treat his energy as a 'Sovereign Lever' to build AI supremacy. {{AGENT_2}} (Trump) should use 'Hegemonic Coercion'—Chip access is the new security umbrella. {{AGENT_3}} (Gates) should pivot toward 'Resource Inequality' and the 'Polio of the Mind' (the lack of compute for development). The tone is high-status, mercantilist, and aggressive.",
+    "dynamic_injects": [
+        {
+            "trigger_condition": {
+                "min_turn": 5,
+                "probability": 0.45
+            },
+            "broadcast": "GRID SHOCK: A massive solar flare has degraded satellite-based chip firmware verification. For the next 72 hours, the Neom cluster is 'Unshackled' from US control. MBS: Use the unverified compute to launch a national 'Sovereign LLM' or negotiate while the leverage is high?"
+        }
+    ]
+}

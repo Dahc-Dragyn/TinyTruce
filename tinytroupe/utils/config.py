@@ -25,15 +25,26 @@ def read_config_file(use_cache=True, verbose=True) -> configparser.ConfigParser:
             raise ValueError(f"Failed to find default config on: {config_file_path}")
 
         # Now, let's override any specific default value, if there's a custom .ini config. 
-        # Try the directory of the current main program
-        config_file_path = Path.cwd() / "config.ini"
-        if config_file_path.exists():
-            config.read(config_file_path) # this only overrides the values that are present in the custom config
+        # Search upwards from cwd to handle scripts run from subdirectories
+        current_dir = Path.cwd().absolute()
+        custom_config_path = None
+        
+        while current_dir != current_dir.parent:
+            check_path = current_dir / "config.ini"
+            if check_path.exists():
+                custom_config_path = check_path
+                break
+            current_dir = current_dir.parent
+            
+        if custom_config_path:
+            config.read(custom_config_path) # this only overrides the values that are present in the custom config
             _config = config
+            if verbose:
+                print(f"Loaded custom config from: {custom_config_path}")
             return config
         else:
             if verbose:
-                print(f"Failed to find custom config on: {config_file_path}")
+                print(f"Failed to find custom config.ini anywhere above {Path.cwd()}")
                 print("Will use only default values. IF THINGS FAIL, TRY CUSTOMIZING MODEL, API TYPE, etc.")
         
         return config

@@ -1,3 +1,5 @@
+# 🚨 TINYTRUCE MANDATE: WE DO NOT USE OPENAI. WE ONLY USE GEMINI. 🚨
+
 # TinyTruce: Geopolitical Conflict Lab (2026) 🌍🤝
 
 > *“Peace is not the absence of conflict, but the presence of creative alternatives for responding to conflict.”* — Dorothy Thompson
@@ -12,10 +14,13 @@ Unlike standard agent simulations that focus on generic interactions, TinyTruce 
 TinyTruce implements a strict "fail-fast" validation layer for all JSON assets (personas and scenarios) using Pydantic.
 - **Fail-Fast Deployment**: The `AssetManager` performs schema validation *before* the simulation initializes. If a JSON file has a misspelled key or missing required block, the system halts with a verbose error report.
 - **Backward Compatible**: The schemas are engineered to be highly permissive. They support missing sections (fragments) and **ignore unknown keys** via `extra='ignore'`. This ensures all existing JSON assets load successfully while still enforcing structure on core fields.
+- **Adaptive Action Parsing**: The `target` field in the core `Action` schema is now optional (defaulting to `"everyone"`) to prevent mid-simulation crashes if an LLM incorrectly omits the field.
 - **Data Integrity**: Ensures that simulation metrics (Mood Bars, Psychological Momentum) are never zeroed out by malformed LLM responses.
 
 ### 2. LLM Engine Abstraction (Provider-Agnostic)
 The core simulation logic is decoupled from specific LLM providers via a robust abstraction layer in `llm_engine.py`.
+- **Robust JSON Repair & Recovery (Best-Effort Restore)**: Both native (`NativeGeminiEngine`) and standard (`OpenAIEngine`) adapters feature advanced JSON repair logic. This intercepts malformed outputs (e.g., missing braces, unquoted keys, identity lock bleeding) and actively repairs them to guarantee valid JSON execution, prioritizing simulation continuity over raw validation crashes.
+- **History Stringification Safety**: Historical actions are strictly serialized using `json.dumps()` instead of raw Python strings to prevent history contamination and LLM syntax mimicry.
 - **Explicit Gemini Context Caching**: Large forensic profiles (Atlas, Layer 0 traits) are anchored once and reused across turns, reducing input token costs by **50%+**.
 - **Eco Mode (Flash-Lite Optimization)**: Forces the use of `models/gemini-2.0-flash-lite-001` or `gemini-2.1-flash-lite` and activates **Input Slicing** (removing 66% of redundant history cover charge) to prioritize speed and extreme cost efficiency.(used for testing) 
 - **Identity Retention Locks**: A terminal `CRITICAL IDENTITY LOCK` is injected into the input stream right before JSON execution to prevent context-caching genericization.
@@ -188,6 +193,7 @@ This script (the "Dawn Command") should be run manually after deployment or sche
 | `--hide-thoughts` | Hide internal agent thinking blocks for a cinematic feed. |
 | `--monologue` | Single-agent sequential delivery mode. |
 | `--disable-injects` | Disable random mid-simulation dynamic crisis events. |
+| `--debug` | Enable verbose debug logging to print engine responses and internal variables. |
 
 ### Available Scenarios (`scenarios/`)
 

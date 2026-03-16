@@ -51,10 +51,22 @@
             "cached": 0.50,
             "category": "Frontier Stable"
         },
+        "gemini-3.1-flash-lite-preview": {
+            "input": 0.25,
+            "output": 1.50,
+            "cached": 0.025,
+            "category": "Frontier Efficiency"
+        },
+        "gemini-3.1-flash-preview": {
+            "input": 0.50,
+            "output": 3.00,
+            "cached": 0.075,
+            "category": "Frontier Balanced"
+        },
         "gemini-3.1-pro-preview": {
             "input": 2.00,
             "output": 12.00,
-            "cached": 0.50,
+            "cached": 0.20,
             "category": "Frontier Reasoning"
         },
         "gemini-3-deep-think": {

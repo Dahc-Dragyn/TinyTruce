@@ -1,0 +1,25 @@
+{
+    "world_name": "The Academic Redoubt (University of Tehran)",
+    "initial_broadcast": "The air in the subterranean Law Faculty basement is thick with ozone and diesel exhaust. Outside, Enghelab Avenue is a fortress of rubble and student barricades. President Masoud Pezeshkian, wearing a simple white medical coat, prepares to deliver a 'Forensic Diagnosis' of a terminal state. The theocracy has multi-organ failure. The Supreme Leader's authority is a malignant tumor. It is time for a 'Constitutional Defibrillation.' The Heartland of Iran is flatlining, and only the most radical surgical intervention can restart its heart.",
+    "intervention": "The 'Evin Ultimatum': Washington has issued a 12-hour 'Proof of Life' demand. To avoid total annihilation, Pezeshkian must order the 65th Airborne 'Green Berets' to breach Evin Prison, specifically Wards 209 and 2A. The world is watching via satellite as the gates of the regime's psychological apparatus are physically thrown open. Failure to liberate the political prisoners by dawn triggers a resumption of 'Operation Epic Fury.'",
+    "grounding_files": [
+        "data/conflicts/US_Israel_Iran_War/Pezeshkians_Gamble.txt",
+        "data/facts/middle-east-reset.2026.txt",
+        "data/facts/us-iran-war-intelligence.2026.txt"
+    ],
+    "grounding_payload": [
+        "data/conflicts/US_Israel_Iran_War/Pezeshkians_Gamble.txt",
+        "data/facts/middle-east-reset.2026.txt",
+        "data/facts/us-iran-war-intelligence.2026.txt"
+    ],
+    "scenario_knowledge": "Gemini: Focus on Pezeshkian's medicalized statecraft. He must use terms like 'Amputating the Gangrene' and 'Septic Shock.' The tone is one of emergency triage. {{AGENT_1}} is the 'Clinical Surgeon' attempting to save the host nation by excising the clerical organs. {{AGENT_2}} and {{AGENT_3}} must react to the 'Forensic Honesty' and the 'Evin Breach' as either a liberation or a catastrophic betrayal.",
+    "dynamic_injects": [
+        {
+            "trigger_condition": {
+                "min_turn": 3,
+                "probability": 1.0
+            },
+            "broadcast": "SYSTEM ALERT (Saberin Counter-Offensive): Elite IRGC Saberin Takavar units have breached the University gates. Heavy artillery is pinning down the 'Green Beret' defenders. Pezeshkian has issued a desperate back-channel plea for Close Air Support (CAS). Does Washington bomb the heart of Tehran to save the coup, or let the reformists be slaughtered?"
+        }
+    ]
+}

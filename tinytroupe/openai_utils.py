@@ -466,19 +466,29 @@ class OpenAIClient:
                 if self.cache_api_calls and (cache_key in self.api_cache):
                     response_dict = self.api_cache[cache_key]
                 else:
-                    if waiting_time > 0:
-                        logger.info(f"Waiting {waiting_time} seconds before next API request (to avoid throttling)...")
-                        time.sleep(waiting_time)
+                    # [TINYTRUCE] Pacing Layer: Mandatory sleep delay to avoid 429s on high-throughput models.
+                    # Vertex AI standard quotas often require a slightly larger gap than AI Studio.
+                    pacing_delay = float(config["OpenAI"].get("PACING_DELAY", "2.5"))
+                    if waiting_time < pacing_delay:
+                        logger.info(f"Pacing Layer: Sleeping {pacing_delay}s to ensure quota compliance...")
+                        time.sleep(pacing_delay)
+                    elif waiting_time > 0:
+                        import random
+                        jitter = random.uniform(0.8, 1.2)
+                        actual_wait = waiting_time * jitter
+                        logger.info(f"Waiting {actual_wait:.2f} seconds before next API request (to avoid throttling)...")
+                        time.sleep(actual_wait)
                     
                     # [TINYTRUCE] Use Provider-Agnostic LLMEngine
                     import os
                     from tinytroupe.llm_engine import OpenAIEngine, NativeGeminiEngine
                     
                     cache_id = os.getenv("TINYTRUCE_CURRENT_CACHE")
-                    if cache_id:
-                        engine = NativeGeminiEngine()
-                    else:
-                        engine = OpenAIEngine(client=self.client, default_model=model)
+                    force_native = os.getenv("TINYTRUCE_FORCE_NATIVE_LLM", "false").lower() == "true"
+                    
+                    # [TINYTRUCE] Always use Native Gemini Engine to honor "Gemini Only" rule.
+                    from tinytroupe.llm_engine import NativeGeminiEngine
+                    engine = NativeGeminiEngine()
                         
                     # We pass a copy of current_messages so the identity lock injection doesn't mutate the caller's list permanently
                     msgs_copy = [m.copy() for m in current_messages]
@@ -487,7 +497,8 @@ class OpenAIClient:
                         messages=msgs_copy,
                         temperature=temperature,
                         response_format=response_format,
-                        agent_name=agent_name
+                        agent_name=agent_name,
+                        max_output_tokens=max_tokens
                     )
                     
                     if response_format and response_content is not None and not isinstance(response_content, str):

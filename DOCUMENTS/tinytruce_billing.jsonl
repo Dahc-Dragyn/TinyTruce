@@ -15,3 +15,122 @@
 {"timestamp": "2026-03-03 13:22:49", "scenario": "middle_east_reset", "total_input": 21822, "total_output": 5923, "total_cached": 231616, "total_cost": 0.007756}
 {"timestamp": "2026-03-03 14:19:57", "scenario": "vatican_cyber-schism", "total_input": 50892, "total_output": 15482, "total_cached": 1269359, "total_cost": 0.032262}
 {"timestamp": "2026-03-05 07:23:06", "scenario": "Chronicler Geopolitical Update", "total_input": 264777, "total_output": 4157, "total_cached": 0, "total_cost": 0.028141}
+{"timestamp": "2026-03-05 09:12:27", "scenario": "vatican_cyber-schism", "total_input": 23348, "total_output": 10920, "total_cached": 1025869, "total_cost": 0.024262}
+{"timestamp": "2026-03-05 11:41:02", "scenario": "domestic", "total_input": 4454, "total_output": 197, "total_cached": 0, "total_cost": 0.000393}
+{"timestamp": "2026-03-05 11:47:16", "scenario": "domestic", "total_input": 17137, "total_output": 537, "total_cached": 0, "total_cost": 0.001446}
+{"timestamp": "2026-03-05 11:51:53", "scenario": "domestic", "total_input": 10664, "total_output": 403, "total_cached": 0, "total_cost": 0.000921}
+{"timestamp": "2026-03-05 11:58:57", "scenario": "vatican_cyber-schism", "total_input": 14596, "total_output": 6884, "total_cached": 702650, "total_cost": 0.016335}
+{"timestamp": "2026-03-05 14:03:38", "scenario": "vatican_cyber-schism", "total_input": 14596, "total_output": 6541, "total_cached": 632385, "total_cost": 0.014914}
+{"timestamp": "2026-03-05 14:21:51", "scenario": "domestic", "total_input": 17307, "total_output": 691, "total_cached": 0, "total_cost": 0.001505}
+{"timestamp": "2026-03-05 14:30:41", "scenario": "domestic", "total_input": 16725, "total_output": 658, "total_cached": 0, "total_cost": 0.001452}
+{"timestamp": "2026-03-05 14:32:15", "scenario": "domestic", "total_input": 22830, "total_output": 1094, "total_cached": 0, "total_cost": 0.00204}
+{"timestamp": "2026-03-05 14:40:26", "scenario": "domestic", "total_input": 16704, "total_output": 674, "total_cached": 0, "total_cost": 0.001455}
+{"timestamp": "2026-03-05 14:41:22", "scenario": "domestic", "total_input": 16913, "total_output": 979, "total_cached": 0, "total_cost": 0.001562}
+{"timestamp": "2026-03-05 14:57:08", "scenario": "vatican_cyber-schism", "total_input": 31497, "total_output": 10162, "total_cached": 1039922, "total_cost": 0.024909}
+{"timestamp": "2026-03-05 15:17:12", "scenario": "ukraine", "total_input": 51696, "total_output": 16149, "total_cached": 1400400, "total_cost": 0.034979}
+{"timestamp": "2026-03-05 15:29:41", "scenario": "ukraine", "total_input": 21918, "total_output": 3474, "total_cached": 198390, "total_cost": 0.006406}
+{"timestamp": "2026-03-05 15:53:25", "scenario": "ukraine", "total_input": 21907, "total_output": 3315, "total_cached": 186720, "total_cost": 0.006139}
+{"timestamp": "2026-03-05 16:06:35", "scenario": "ukraine", "total_input": 42478, "total_output": 14878, "total_cached": 1400400, "total_cost": 0.033907}
+{"timestamp": "2026-03-05 16:15:26", "scenario": "ukraine", "total_input": 26081, "total_output": 6262, "total_cached": 478470, "total_cost": 0.012806}
+{"timestamp": "2026-03-05 16:24:31", "scenario": "ukraine", "total_input": 20940, "total_output": 6024, "total_cached": 466800, "total_cost": 0.01213}
+{"timestamp": "2026-03-06 07:48:53", "scenario": "Chronicler Geopolitical Update", "total_input": 233845, "total_output": 2021, "total_cached": 0, "total_cost": 0.018145}
+{"timestamp": "2026-03-06 07:56:58", "scenario": "Chronicler Geopolitical Update", "total_input": 294425, "total_output": 2036, "total_cached": 0, "total_cost": 0.022693}
+{"timestamp": "2026-03-06 08:01:06", "scenario": "Chronicler Geopolitical Update", "total_input": 150523, "total_output": 1724, "total_cached": 0, "total_cost": 0.011806}
+{"timestamp": "2026-03-06 08:19:02", "scenario": "ukraine", "total_input": 7357, "total_output": 2656, "total_cached": 175050, "total_cost": 0.004631}
+{"timestamp": "2026-03-06 08:23:58", "scenario": "ukraine", "total_input": 10927, "total_output": 3113, "total_cached": 175050, "total_cost": 0.005036}
+{"timestamp": "2026-03-06 08:52:30", "scenario": "ukraine", "total_input": 7357, "total_output": 2682, "total_cached": 175050, "total_cost": 0.004639}
+{"timestamp": "2026-03-06 09:06:34", "scenario": "ukraine", "total_input": 11257, "total_output": 7429, "total_cached": 583500, "total_cost": 0.014014}
+{"timestamp": "2026-03-06 09:28:53", "scenario": "ukraine", "total_input": 15132, "total_output": 11605, "total_cached": 618510, "total_cost": 0.016213}
+{"timestamp": "2026-03-06 09:39:32", "scenario": "ukraine", "total_input": 10907, "total_output": 5175, "total_cached": 338430, "total_cost": 0.008716}
+{"timestamp": "2026-03-06 09:47:36", "scenario": "ukraine", "total_input": 10886, "total_output": 4115, "total_cached": 280080, "total_cost": 0.007302}
+{"timestamp": "2026-03-06 10:04:51", "scenario": "ukraine", "total_input": 10885, "total_output": 4077, "total_cached": 210060, "total_cost": 0.005978}
+{"timestamp": "2026-03-06 10:25:35", "scenario": "ukraine", "total_input": 11700, "total_output": 8661, "total_cached": 571830, "total_cost": 0.014198}
+{"timestamp": "2026-03-06 10:54:23", "scenario": "vatican_cyber-schism", "total_input": 15947, "total_output": 8857, "total_cached": 739668, "total_cost": 0.017722}
+{"timestamp": "2026-03-06 11:57:43", "scenario": "amazon_debt_swap", "total_input": 46785, "total_output": 7062, "total_cached": 188235, "total_cost": 0.009157}
+{"timestamp": "2026-03-06 12:07:57", "scenario": "amazon_debt_swap", "total_input": 46576, "total_output": 7342, "total_cached": 192418, "total_cost": 0.009304}
+{"timestamp": "2026-03-06 12:28:25", "scenario": "amazon_debt_swap", "total_input": 44859, "total_output": 7165, "total_cached": 192418, "total_cost": 0.009122}
+{"timestamp": "2026-03-06 12:47:50", "scenario": "amazon_debt_swap", "total_input": 39561, "total_output": 6962, "total_cached": 188235, "total_cost": 0.008585}
+{"timestamp": "2026-03-06 13:19:16", "scenario": "amazon_debt_swap", "total_input": 44356, "total_output": 7181, "total_cached": 196601, "total_cost": 0.009167}
+{"timestamp": "2026-03-07 15:48:44", "scenario": "middle_east_reset", "total_input": 28840, "total_output": 10245, "total_cached": 554224, "total_cost": 0.015628}
+{"timestamp": "2026-03-07 16:20:35", "scenario": "Chronicler Geopolitical Update", "total_input": 196378, "total_output": 4254, "total_cached": 0, "total_cost": 0.021339}
+{"timestamp": "2026-03-07 18:54:30", "scenario": "iran_reformist_coup_pezeshkian", "total_input": 17584, "total_output": 9843, "total_cached": 799377, "total_cost": 0.01926}
+{"timestamp": "2026-03-08 07:47:56", "scenario": "iran_pragmatist_pivot_larijani", "total_input": 19915, "total_output": 10433, "total_cached": 716450, "total_cost": 0.018057}
+{"timestamp": "2026-03-08 07:58:07", "scenario": "iran_miga_protocol_pahlavi", "total_input": 20114, "total_output": 9423, "total_cached": 773180, "total_cost": 0.018833}
+{"timestamp": "2026-03-08 09:03:57", "scenario": "iran_pragmatist_pivot_larijani", "total_input": 15355, "total_output": 5486, "total_cached": 347990, "total_cost": 0.009322}
+{"timestamp": "2026-03-08 09:16:41", "scenario": "iran_pragmatist_pivot_larijani", "total_input": 13959, "total_output": 5529, "total_cached": 337755, "total_cost": 0.009039}
+{"timestamp": "2026-03-08 09:21:41", "scenario": "iran_pragmatist_pivot_larijani", "total_input": 10500, "total_output": 6197, "total_cached": 337755, "total_cost": 0.00898}
+{"timestamp": "2026-03-08 10:11:54", "scenario": "iran_pragmatist_pivot_larijani", "total_input": 93658, "total_output": 5755, "total_cached": 122820, "total_cost": 0.014738}
+{"timestamp": "2026-03-08 12:16:52", "scenario": "vatican_cyber-schism", "total_input": 592479, "total_output": 100849, "total_cached": 1433406, "total_cost": 0.135423}
+{"timestamp": "2026-03-08 16:18:37", "scenario": "Chronicler Geopolitical Update", "total_input": 101083, "total_output": 4686, "total_cached": 105681, "total_cost": 0.014625}
+{"timestamp": "2026-03-08 17:15:23", "scenario": "ukraine", "total_input": 267246, "total_output": 22934, "total_cached": 770220, "total_cost": 0.055154}
+{"timestamp": "2026-03-09 09:40:45", "scenario": "Chronicler Geopolitical Update", "total_input": 294309, "total_output": 6492, "total_cached": 0, "total_cost": 0.032028}
+{"timestamp": "2026-03-09 11:26:50", "scenario": "Ukraine Tactical Update (FAILED)", "total_input": 74557, "total_output": 3674, "total_cached": 42872, "total_cost": 0.009997}
+{"timestamp": "2026-03-09 11:44:50", "scenario": "Ukraine Tactical Update", "total_input": 56630, "total_output": 2355, "total_cached": 0, "total_cost": 0.006605}
+{"timestamp": "2026-03-09 11:48:36", "scenario": "Ukraine Tactical Update", "total_input": 49893, "total_output": 2243, "total_cached": 0, "total_cost": 0.005887}
+{"timestamp": "2026-03-09 12:09:29", "scenario": "ukraine", "total_input": 100355, "total_output": 6143, "total_cached": 217124, "total_cost": 0.017921}
+{"timestamp": "2026-03-09 12:14:31", "scenario": "US-Iran War Update", "total_input": 52464, "total_output": 2708, "total_cached": 8820, "total_cost": 0.00655}
+{"timestamp": "2026-03-09 12:27:16", "scenario": "middle_east_reset", "total_input": 286138, "total_output": 22689, "total_cached": 649638, "total_cost": 0.05393}
+{"timestamp": "2026-03-09 13:25:30", "scenario": "middle_east_reset", "total_input": 124988, "total_output": 5307, "total_cached": 118116, "total_cost": 0.017575}
+{"timestamp": "2026-03-09 13:29:36", "scenario": "middle_east_reset", "total_input": 125393, "total_output": 6032, "total_cached": 118116, "total_cost": 0.017905}
+{"timestamp": "2026-03-09 13:43:17", "scenario": "middle_east_reset", "total_input": 125782, "total_output": 5822, "total_cached": 118116, "total_cost": 0.01786}
+{"timestamp": "2026-03-10 08:47:42", "scenario": "ukraine", "total_input": 443352, "total_output": 98664, "total_cached": 842952, "total_cost": 0.104875}
+{"timestamp": "2026-03-10 09:19:47", "scenario": "US-Iran War Update", "total_input": 47651, "total_output": 3154, "total_cached": 0, "total_cost": 0.006027}
+{"timestamp": "2026-03-10 09:23:05", "scenario": "Ukraine Tactical Update", "total_input": 38366, "total_output": 2652, "total_cached": 8762, "total_cost": 0.005116}
+{"timestamp": "2026-03-10 09:30:12", "scenario": "Chronicler Geopolitical Update", "total_input": 287742, "total_output": 7094, "total_cached": 1629, "total_cost": 0.031653}
+{"timestamp": "2026-03-10 09:35:28", "scenario": "Ukraine Tactical Update", "total_input": 47281, "total_output": 2178, "total_cached": 0, "total_cost": 0.005599}
+{"timestamp": "2026-03-10 09:45:19", "scenario": "ukraine", "total_input": 51648, "total_output": 3529, "total_cached": 52252, "total_cost": 0.007883}
+{"timestamp": "2026-03-10 10:04:02", "scenario": "ukraine", "total_input": 180665, "total_output": 12610, "total_cached": 593370, "total_cost": 0.037945}
+{"timestamp": "2026-03-10 10:39:55", "scenario": "ukraine", "total_input": 147743, "total_output": 69449, "total_cached": 118674, "total_cost": 0.045521}
+{"timestamp": "2026-03-10 11:29:34", "scenario": "ukraine", "total_input": 95156, "total_output": 3499, "total_cached": 65930, "total_cost": 0.012563}
+{"timestamp": "2026-03-10 11:31:51", "scenario": "ukraine", "total_input": 79545, "total_output": 4489, "total_cached": 118674, "total_cost": 0.012717}
+{"timestamp": "2026-03-10 11:37:00", "scenario": "middle_east_reset", "total_input": 85846, "total_output": 4086, "total_cached": 97002, "total_cost": 0.012644}
+{"timestamp": "2026-03-10 11:41:24", "scenario": "vatican_cyber-schism", "total_input": 89584, "total_output": 4454, "total_cached": 125604, "total_cost": 0.01388}
+{"timestamp": "2026-03-10 12:07:55", "scenario": "ukraine", "total_input": 584441, "total_output": 23121, "total_cached": 474696, "total_cost": 0.07956}
+{"timestamp": "2026-03-10 12:19:19", "scenario": "ukraine", "total_input": 563050, "total_output": 16908, "total_cached": 474696, "total_cost": 0.074936}
+{"timestamp": "2026-03-10 12:32:50", "scenario": "iran_miga_protocol_pahlavi", "total_input": 472246, "total_output": 12075, "total_cached": 420850, "total_cost": 0.062576}
+{"timestamp": "2026-03-10 13:10:19", "scenario": "iran_miga_protocol_pahlavi", "total_input": 474468, "total_output": 12942, "total_cached": 420850, "total_cost": 0.063145}
+{"timestamp": "2026-03-10 13:22:14", "scenario": "vatican_cyber-schism", "total_input": 233770, "total_output": 5520, "total_cached": 128052, "total_cost": 0.028786}
+{"timestamp": "2026-03-10 15:35:00", "scenario": "CHAT: Seyyed Ali Hosseini Khamenei (BILLING-TEST)", "total_input": 285071, "total_output": 7830, "total_cached": 0, "total_cost": 0.031639}
+{"timestamp": "2026-03-10 15:37:33", "scenario": "vatican_cyber-schism", "total_input": 301079, "total_output": 7882, "total_cached": 170736, "total_cost": 0.037529}
+{"timestamp": "2026-03-12 08:16:07", "scenario": "Chronicler Geopolitical Update", "total_input": 232398, "total_output": 5019, "total_cached": 0, "total_cost": 0.025247}
+{"timestamp": "2026-03-12 08:18:28", "scenario": "Ukraine Tactical Update (FAILED)", "total_input": 106595, "total_output": 3049, "total_cached": 0, "total_cost": 0.011879}
+{"timestamp": "2026-03-12 08:20:16", "scenario": "US-Iran War Update", "total_input": 56659, "total_output": 2700, "total_cached": 0, "total_cost": 0.006746}
+{"timestamp": "2026-03-12 08:34:49", "scenario": "Ukraine Tactical Update", "total_input": 52604, "total_output": 1804, "total_cached": 0, "total_cost": 0.005982}
+{"timestamp": "2026-03-12 08:50:26", "scenario": "Ukraine Tactical Update", "total_input": 53542, "total_output": 2262, "total_cached": 0, "total_cost": 0.006259}
+{"timestamp": "2026-03-12 10:33:01", "scenario": "middle_east_reset", "total_input": 267449, "total_output": 8314, "total_cached": 116496, "total_cost": 0.032983}
+{"timestamp": "2026-03-12 10:40:37", "scenario": "ukraine", "total_input": 276570, "total_output": 7277, "total_cached": 160380, "total_cost": 0.034577}
+{"timestamp": "2026-03-12 10:57:32", "scenario": "ukraine", "total_input": 276710, "total_output": 7023, "total_cached": 160380, "total_cost": 0.03449}
+{"timestamp": "2026-03-12 14:06:40", "scenario": "praetorian_succession", "total_input": 428867, "total_output": 12046, "total_cached": 367600, "total_cost": 0.056895}
+{"timestamp": "2026-03-12 14:17:22", "scenario": "mexico_digital_sovereignty", "total_input": 408080, "total_output": 6551, "total_cached": 290082, "total_cost": 0.05068}
+{"timestamp": "2026-03-12 14:34:05", "scenario": "mexico_digital_sovereignty", "total_input": 159937, "total_output": 3039, "total_cached": 111570, "total_cost": 0.019999}
+{"timestamp": "2026-03-12 14:40:45", "scenario": "mexico_digital_sovereignty", "total_input": 416191, "total_output": 6047, "total_cached": 290082, "total_cost": 0.05129}
+{"timestamp": "2026-03-12 14:49:05", "scenario": "mexico_digital_sovereignty", "total_input": 416293, "total_output": 5815, "total_cached": 290082, "total_cost": 0.051207}
+{"timestamp": "2026-03-12 14:52:50", "scenario": "mexico_digital_sovereignty", "total_input": 160163, "total_output": 3422, "total_cached": 111570, "total_cost": 0.020174}
+{"timestamp": "2026-03-12 14:57:40", "scenario": "mexico_digital_sovereignty", "total_input": 415405, "total_output": 5785, "total_cached": 290082, "total_cost": 0.051107}
+{"timestamp": "2026-03-12 15:13:53", "scenario": "mexico_digital_sovereignty", "total_input": 417806, "total_output": 7113, "total_cached": 290082, "total_cost": 0.051878}
+{"timestamp": "2026-03-14 08:48:32", "scenario": "PROBE: donald_trump_unscripted (Mode: both) + Fragments: donald_trump_realism_v2.fragment.json", "total_input": 57139, "total_output": 2513, "total_cached": 9821, "total_cost": 0.006965}
+{"timestamp": "2026-03-14 08:58:23", "scenario": "Chronicler Geopolitical Update", "total_input": 71465, "total_output": 4638, "total_cached": 152002, "total_cost": 0.012802}
+{"timestamp": "2026-03-14 09:31:26", "scenario": "Ukraine Tactical Update", "total_input": 43397, "total_output": 1681, "total_cached": 0, "total_cost": 0.005012}
+{"timestamp": "2026-03-14 09:35:29", "scenario": "US-Iran War Update", "total_input": 51755, "total_output": 1926, "total_cached": 0, "total_cost": 0.005946}
+{"timestamp": "2026-03-14 09:41:33", "scenario": "CHAT: Donald J. Trump (interrogate_2fb252f2)", "total_input": 88363, "total_output": 790, "total_cached": 68565, "total_cost": 0.010866}
+{"timestamp": "2026-03-14 10:05:36", "scenario": "CHAT: Donald J. Trump (interrogate_6d83adf3)", "total_input": 134839, "total_output": 1810, "total_cached": 137130, "total_cost": 0.017636}
+{"timestamp": "2026-03-14 11:06:12", "scenario": "ukraine", "total_input": 391067, "total_output": 13316, "total_cached": 314925, "total_cost": 0.052306}
+{"timestamp": "2026-03-14 12:51:35", "scenario": "domestic", "total_input": 100354, "total_output": 5697, "total_cached": 15132, "total_cost": 0.012693}
+{"timestamp": "2026-03-14 13:01:17", "scenario": "domestic", "total_input": 100972, "total_output": 5953, "total_cached": 15132, "total_cost": 0.012857}
+{"timestamp": "2026-03-14 13:11:38", "scenario": "domestic", "total_input": 100181, "total_output": 6411, "total_cached": 15132, "total_cost": 0.012961}
+{"timestamp": "2026-03-15 07:48:07", "scenario": "culture_war_maga_vs_liberalism", "total_input": 465457, "total_output": 24292, "total_cached": 245016, "total_cost": 0.062388}
+{"timestamp": "2026-03-15 08:06:38", "scenario": "culture_war_maga_vs_liberalism", "total_input": 452912, "total_output": 19203, "total_cached": 245016, "total_cost": 0.059098}
+{"timestamp": "2026-03-15 08:18:54", "scenario": "culture_war_maga_vs_liberalism", "total_input": 446035, "total_output": 17492, "total_cached": 245016, "total_cost": 0.057726}
+{"timestamp": "2026-03-15 08:54:35", "scenario": "vatican_cyber-schism", "total_input": 435756, "total_output": 10649, "total_cached": 251208, "total_cost": 0.054115}
+{"timestamp": "2026-03-15 09:10:28", "scenario": "vatican_cyber-schism", "total_input": 434137, "total_output": 9972, "total_cached": 251208, "total_cost": 0.053683}
+{"timestamp": "2026-03-15 09:21:18", "scenario": "vatican_cyber-schism", "total_input": 435860, "total_output": 10694, "total_cached": 255708, "total_cost": 0.054256}
+{"timestamp": "2026-03-15 09:33:25", "scenario": "vatican_cyber-schism", "total_input": 437439, "total_output": 8678, "total_cached": 255708, "total_cost": 0.053608}
+{"timestamp": "2026-03-15 09:43:59", "scenario": "vatican_cyber-schism", "total_input": 442484, "total_output": 10642, "total_cached": 255708, "total_cost": 0.054898}
+{"timestamp": "2026-03-15 09:53:23", "scenario": "vatican_cyber-schism", "total_input": 368996, "total_output": 6448, "total_cached": 142060, "total_cost": 0.04303}
+{"timestamp": "2026-03-15 10:19:27", "scenario": "vatican_cyber-schism", "total_input": 607822, "total_output": 10211, "total_cached": 268717, "total_cost": 0.071585}
+{"timestamp": "2026-03-15 10:54:43", "scenario": "vatican_cyber-schism", "total_input": 588621, "total_output": 24265, "total_cached": 388935, "total_cost": 0.078291}
+{"timestamp": "2026-03-16 06:59:32", "scenario": "vatican_cyber-schism", "total_input": 568277, "total_output": 23464, "total_cached": 361800, "total_cost": 0.075258}
+{"timestamp": "2026-03-16 07:16:47", "scenario": "vatican_cyber-schism", "total_input": 452941, "total_output": 12500, "total_cached": 171855, "total_cost": 0.05459}
+{"timestamp": "2026-03-16 07:36:07", "scenario": "vatican_cyber-schism", "total_input": 576824, "total_output": 18639, "total_cached": 334665, "total_cost": 0.073505}
+{"timestamp": "2026-03-16 07:47:00", "scenario": "vatican_cyber-schism", "total_input": 571377, "total_output": 22458, "total_cached": 334665, "total_cost": 0.074488}
+{"timestamp": "2026-03-16 07:53:09", "scenario": "vatican_cyber-schism", "total_input": 178820, "total_output": 5369, "total_cached": 71584, "total_cost": 0.021819}

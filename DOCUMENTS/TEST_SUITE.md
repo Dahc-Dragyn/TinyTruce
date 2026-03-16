@@ -40,6 +40,12 @@ Tests the "Linguistic Lock" and "Fragment Stacking" logic. It ensures that vocab
 ### [test_universal_fidelity.py](file:///c:/Antigravity%20projects/TinyTruce/tests/unit/test_universal_fidelity.py)
 A structural audit that iterates through EVERY fragment in `personas/fragments/` to ensure they meet the hardening schema (Linguistic Locks) and correctly inject their contents into the prompt.
 
+### [test_output_fidelity.py](file:///c:/Antigravity%20projects/TinyTruce/tests/unit/test_output_fidelity.py)
+The dynamic "Voice DNA" auditor. Unlike previous tests that check prompt *assembly*, this test:
+-   **Forces Generation**: Prompts the agent to respond to a failing crisis.
+-   **LLM-Audit**: Uses a separate LLM-Auditor to grade the actual output against "Linguistic Locks" (Parataxis, Anti-Wonk, etc.).
+-   **Zero Tolerance**: Assertively fails if "Mediator Leak" or "Polite Diplomatese" is detected in the generated text.
+
 ---
 
 ## Interactive & API Tests

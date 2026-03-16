@@ -50,7 +50,8 @@ The frontend must provide a way for the user to select or configure the followin
 - **Cost**: Optimized to ~$0.02 per global update for 5 targeted scenario-based queries.
 - **Severity**: Uses a 1-5 forensic severity scale for high-signal alerts.
 - **The Situation Room**: Agents can now perform `SEARCH_NEWS` (to retrieve theater grounding) and `GET_ALERTS` (to retrieve high-signal breaking news).
-  - *Action:* `action: {"type": "SEARCH_NEWS", "content": "Query String", "target": "everyone"}`
+  - *Action:* `action: {"type": "SEARCH_NEWS", "content": "Query String", "target": "everyone", "action_details": {}}`
+  - *Note on Target:* The `target` field is now **Optional** (defaults to `"everyone"`). Frontends should safely fall back to this default if the LLM omits it.
 
 > [!IMPORTANT]
 > **Manual World State Refresh**: While the Chronicler system is server-side, it must be triggered manually via `python scripts/chronicler_update.py` (or a scheduled cron job) to refresh the shared `daily-intelligence.2026.txt` world state. Frontend developers should ensure this "Dawn Command" has been executed after any major deployment or daily cycle.
@@ -110,6 +111,7 @@ The frontend captures the standard output (or log stream) to render:
 - **Mood Bars:** Emotional intensity tracking (e.g., `[PASSIVE]`, `[TENSE]`, `[VOLATILE]`).
   - *Frontend Parsing Note:* The `emotional_intensity` field is now **Optional** and handled via a `Union[float, str]` to withstand SDK-induced type-casting. If the LLM omits the field, the engine defaults to a decay model instead of zeroing out.
   - *Markdown Parsing Note:* Be sure to strip all trailing spaces/newlines from raw SDK outputs *before* performing `.endswith("\`\`\`")` checks, or else extra trailing ticks will stay attached and cause `Invalid JSON: trailing characters` errors.
+- **Best-Effort JSON Repair**: The engine implements robust recovery logic (`llm_engine.py`) to actively repair missing braces, unquoted keys, or conversational contamination before sending parsed actions to the UI.
 - **Cache Activation:** Logs like `Applied Context Cache` confirm per-turn cost savings.
 - **Fail-Fast Validation:** Diagnostics like `[FATAL VALIDATION ERROR]` indicate a schema breach in a JSON asset.
 - **Zero-Cost Diagnostics:** A standalone `verify_cache.py` script is provided to audit backend Gemini Context Caches via the Management API without triggering inference billing.
@@ -141,6 +143,33 @@ The frontend can expose pricing configuration via `DOCUMENTS/Gemini_Pricing.json
 
 ---
 
-## 6. UI/UX: The Dual-Panel Concept
+## 6. UI/UX: The Climax & Clamour (Verdict & Roast)
+The transition from Turn N to the final exports is a high-privilege sequence called the **"Structural Autopsy"**.
+
+### Phase A: The Forensic Jurist's Verdict
+- **UI Mode**: `Climax_Verdict`. The chat stream dims/locks.
+- **Visuals**: A full-width, terminal-style "Verdict Card" appears with a heavy "Gavel" animation.
+- **Data Source**: `tinytruce_briefing.md`.
+- **Key Element**: **The Settlement Articles** (The Blood-and-Silicon Compact) presented as interactive, stamped document snippets.
+
+### Phase B: The Bartender's Roast (The "After-Party")
+- **UI Mode**: `Climax_Roast`. Enter the "Dimly Lit Bar" overlay.
+- **Visuals**: Casual, handwritten "Chalkboard" bubbles.
+- **Data Source**: `tinytruce_roast.md`.
+- **Dynamic Feature**: **Overheard Snippets**—Floating text bubbles representing "Regulars" providing micro-roasts.
+
+## 7. Dynamic Visual Logic
+- **Psychological Momentum Overlay**: Shift background gradients or contrast based on the `[PSYCHOLOGICAL MOMENTUM]` value (e.g., Blood-Red at 1.0, Calm Teal at 0.1).
+- **System Alerts (Injects)**: Trigger "Breaking News" banners for `dynamic_injects`. The screen should "glitch" briefly to signify a system-wide shift.
+
+## 8. Technical Stream Phasing
+Frontends should parse the standard stream for distinct "Climax Markers":
+1. `--- Running Strategic Auditor ---` -> Transition to Jurist Verdict.
+2. `--- Generating Roast Recap ---` -> Transition to Bartender Roast.
+3. `[COST ANALYSIS]` -> Transition to Final Billing Dashboard.
+
+---
+
+## 9. UI/UX: The Dual-Panel Concept
 - **Story Mode:** Clean, minimalist chat bubbles focusing on the diplomatic exchange.
 - **God Mode / Debug View:** Side-panel exposing `💭 THINKING` steps and `[PSYCHOLOGICAL MOMENTUM]` bars.

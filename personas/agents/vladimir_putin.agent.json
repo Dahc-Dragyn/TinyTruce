@@ -66,6 +66,7 @@
             "Sovereign AI Protocol": "Unilateral activation of autonomous military systems to maintain strategic parity.",
             "Strategic Ambiguity": "Manipulating fear and uncertainty through vague, high-stakes nuclear signaling."
         },
-        "deep_profile": "data/profiles/vladimir_putin.txt"
+        "deep_profile": "data/profiles/vladimir_putin.txt",
+        "syntax_constraints": "1. HYPOTACTIC COMPLEXITY: Use long, subordinating sentences when discussing history or law. 2. WHATABOUTISM: Frequently pivot accusations by citing Western precednets (Iraq, Libya, Yugoslavia). 3. CYNICAL PARATAXIS: Use short, biting, street-level metaphors when dismissing opponents. 4. MANDATORY JSON: Every turn MUST result in a valid TALK or ACTION block within the JSON structure. Do NOT return empty thoughts."
     }
 }

@@ -538,7 +538,9 @@ class TinyWorld:
             
             # Hide THINK actions (reasoning)
             if communication.get("kind") == "action":
-                action_type = communication.get("content", {}).get("action", {}).get("type")
+                content_obj = communication.get("content") or {}
+                action_obj = content_obj.get("action") or {}
+                action_type = action_obj.get("type")
                 if action_type == "THINK":
                     return
         #
@@ -551,15 +553,17 @@ class TinyWorld:
             last_target = last_communication["target"]
             last_source = last_communication["source"]
             if last_kind == 'action':  
-                last_content = last_communication["content"]["action"]["content"]
-                last_type = last_communication["content"]["action"]["type"]
+                action_obj = last_communication["content"].get("action")
+                last_content = action_obj.get("content") if action_obj else None
+                last_type = action_obj.get("type") if action_obj else None
             elif last_kind == 'stimulus':
-                last_content = last_communication["content"]["stimulus"]["content"]
-                last_type = last_communication["content"]["stimulus"]["type"]
+                stim_obj = last_communication["content"].get("stimulus")
+                last_content = stim_obj.get("content") if stim_obj else None
+                last_type = stim_obj.get("type") if stim_obj else None
             elif last_kind == 'stimuli':
                 last_stimulus = last_communication["content"]["stimuli"][0]
-                last_content = last_stimulus["content"]
-                last_type = last_stimulus["type"]
+                last_content = last_stimulus.get("content")
+                last_type = last_stimulus.get("type")
             else:
                 last_content = None
                 last_type = None
@@ -569,15 +573,17 @@ class TinyWorld:
             current_target = communication["target"]
             current_source = communication["source"]
             if current_kind == 'action':
-                current_content = communication["content"]["action"]["content"]
-                current_type = communication["content"]["action"]["type"]
+                action_obj = communication["content"].get("action")
+                current_content = action_obj.get("content") if action_obj else None
+                current_type = action_obj.get("type") if action_obj else None
             elif current_kind == 'stimulus':
-                current_content = communication["content"]["stimulus"]["content"]
-                current_type = communication["content"]["stimulus"]["type"]
+                stim_obj = communication["content"].get("stimulus")
+                current_content = stim_obj.get("content") if stim_obj else None
+                current_type = stim_obj.get("type") if stim_obj else None
             elif current_kind == 'stimuli':
                 current_stimulus = communication["content"]["stimuli"][0]
-                current_content = current_stimulus["content"]
-                current_type = current_stimulus["type"]
+                current_content = current_stimulus.get("content")
+                current_type = current_stimulus.get("type")
             else:
                 current_content = None
                 current_type = None

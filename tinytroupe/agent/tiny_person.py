@@ -125,6 +125,9 @@ class TinyPerson(JsonSerializableRegistry):
             # This default value MUST NOT be in the method signature, otherwise it will be shared across all instances.
             self._mental_faculties = []
 
+        # [TINYTRUCE] Default Syntax Constraints for stability and fidelity
+        self.DEFAULT_SYNTAX_CONSTRAINTS = "MANDATORY JSON: Every turn MUST result in a valid TALK or ACTION block within the JSON structure. Do NOT return empty thoughts or null action objects. If you wish to remain silent, you MUST issue a TALK action describing the silence (e.g., '[Agent Name] remains silent.')."
+
         # create the persona configuration dictionary
         if not hasattr(self, '_persona'):          
             self._persona = {
@@ -141,14 +144,18 @@ class TinyPerson(JsonSerializableRegistry):
                 "skills": [],
                 "relationships": [],
                 "vocabulary_priority": [],
-                "syntax_constraints": ""
+                "syntax_constraints": self.DEFAULT_SYNTAX_CONSTRAINTS
             }
         else:
             # [TINYTRUCE] Hardening: Ensure fields exist if _persona was pre-loaded
             if "vocabulary_priority" not in self._persona:
                 self._persona["vocabulary_priority"] = []
-            if "syntax_constraints" not in self._persona:
-                self._persona["syntax_constraints"] = ""
+            if "syntax_constraints" not in self._persona or not self._persona["syntax_constraints"]:
+                self._persona["syntax_constraints"] = self.DEFAULT_SYNTAX_CONSTRAINTS
+            else:
+                # Ensure the mandatory JSON rule is always present even if constraints are overridden
+                if "MANDATORY JSON" not in self._persona["syntax_constraints"]:
+                    self._persona["syntax_constraints"] += f" {self.DEFAULT_SYNTAX_CONSTRAINTS}"
         
         if not hasattr(self, 'name'): 
             self.name = self._persona["name"]
@@ -444,6 +451,8 @@ class TinyPerson(JsonSerializableRegistry):
         n=None,
         return_actions=False,
         max_content_length=default["max_content_display_length"],
+        temperature: float = None,
+        max_tokens: int = None
     ):
         """
         Acts in the environment and updates its internal cognitive state.
@@ -476,14 +485,14 @@ class TinyPerson(JsonSerializableRegistry):
         # Sometimes `content` contains EpisodicMemory's MEMORY_BLOCK_OMISSION_INFO message, which raises a TypeError on line 443
         @repeat_on_error(retries=5, exceptions=[KeyError, TypeError])
         def aux_act_once():
-            role, content = self._produce_message()
+            role, content = self._produce_message(temperature=temperature, max_tokens=max_tokens)
 
             cognitive_state = content["cognitive_state"]
             
             # Parse emotion and intensity
             current_emotion = cognitive_state.get("emotions", "Neutral")
             current_intensity = cognitive_state.get("emotional_intensity", None)
-            print(f"DEBUG {self.name} received cognitive_state: {cognitive_state}")
+            # print(f"DEBUG {self.name} received cognitive_state: {cognitive_state}")
             
             # Default fallback for intensity if not provided or invalid
             if current_intensity is None:
@@ -593,21 +602,36 @@ class TinyPerson(JsonSerializableRegistry):
         ##### Option 2: run until DONE ######
         elif until_done:
             while (len(contents) == 0) or (
-                not contents[-1]["action"]["type"] == "DONE"
+                contents[-1]["action"] is not None and not contents[-1]["action"]["type"] == "DONE"
             ):
 
 
+                # [TINYTRUCE] v2.5: Action Exhaustion Guide
+                # If the agent is acting too much without speaking or ending, nudge it.
+                if len(contents) == 5:
+                    logger.info(f"[{self.name}] Action exhaustion threshold reached (5). Nudging for termination.")
+                    self.think("I have performed several internal actions. I should now conclude my turn by speaking (TALK) or signaling I am finished (DONE).")
+
                 # check if the agent is acting without ever stopping
                 if len(contents) >= self.MAX_ACTIONS_BEFORE_DONE:
-                    logger.warning(f"[{self.name}] Agent {self.name} is acting without ever stopping. This may be a bug. Let's stop it here anyway.")
+                    logger.warning(f"[{self.name}] Agent {self.name} is acting without ever stopping. Hard-stop recovery in progress.")
+                    
+                    # Final Recovery: Attempt to wrap up with a TALK if they haven't spoken yet
+                    has_spoken = any(c['action']['type'] == "TALK" for c in contents if c['action'])
+                    if not has_spoken:
+                        recovery_msg = f"[{self.name} concludes their current assessment.]"
+                        contents.append({
+                            "action": {"type": "TALK", "content": recovery_msg, "target": "everyone"},
+                            "cognitive_state": {"goals": "Turn concluded via guardrail.", "attention": "The environment.", "emotions": "Steady"}
+                        })
                     break
-                if len(contents) > 0 and contents[-1]['action']['type'] == "TALK":
+                if len(contents) > 0 and contents[-1]['action'] is not None and contents[-1]['action']['type'] == "TALK":
                     logger.debug(f"[{self.name}] Agent issued TALK. Ending turn automatically.")
                     break
 
                 if len(contents) > 4: # just some minimum number of actions to check for repetition, could be anything >= 3
                     # if the last three actions were the same, then we are probably in a loop
-                    if contents[-1]['action'] == contents[-2]['action'] == contents[-3]['action']:
+                    if contents[-1]['action'] is not None and contents[-1]['action'] == contents[-2]['action'] == contents[-3]['action']:
                         logger.warning(f"[{self.name}] Agent {self.name} is acting in a loop. This may be a bug. Let's stop it here anyway.")
                         break
 
@@ -879,14 +903,14 @@ class TinyPerson(JsonSerializableRegistry):
         self._mental_state["accessible_agents"] = []
 
     @transactional
-    def _produce_message(self):
+    def _produce_message(self, temperature: float = None, max_tokens: int = None):
         # logger.debug(f"Current messages: {self.current_messages}")
 
         # ensure we have the latest prompt (initial system message + selected messages from memory)
         self.reset_prompt()
 
         messages = [
-            {"role": msg["role"], "content": msg["content"] if isinstance(msg["content"], str) else str(msg["content"])}
+            {"role": msg["role"], "content": msg["content"] if isinstance(msg["content"], str) else json.dumps(msg["content"])}
             for msg in self.current_messages
         ]
 
@@ -896,6 +920,8 @@ class TinyPerson(JsonSerializableRegistry):
 
         next_message = openai_utils.client().send_message(
             messages, 
+            temperature=temperature if temperature is not None else 0.2,
+            max_tokens=max_tokens,
             response_format=CognitiveActionModel,
             agent_name=self.name
         )
@@ -1050,7 +1076,13 @@ class TinyPerson(JsonSerializableRegistry):
                 max_content_length=max_content_length,
             )
             source = self.name
-            target = content["action"]["target"]
+            
+            # Safe extraction of target from potentially null action
+            action_obj = content.get("action")
+            if action_obj:
+                target = action_obj.get("target", "everyone")
+            else:
+                target = "everyone"
 
         else:
             raise ValueError(f"Unknown communication kind: {kind}")
@@ -1076,7 +1108,9 @@ class TinyPerson(JsonSerializableRegistry):
             
             # Hide THINK actions (reasoning)
             if communication.get("kind") == "action":
-                action_type = communication.get("content", {}).get("action", {}).get("type")
+                content_obj = communication.get("content") or {}
+                action_obj = content_obj.get("action") or {}
+                action_type = action_obj.get("type")
                 if action_type == "THINK":
                     return
 
@@ -1263,6 +1297,11 @@ class TinyPerson(JsonSerializableRegistry):
 
         lines = []
         msg_simplified_actor = "USER"
+        
+        # Guard against null content or missing stimuli
+        if not content or "stimuli" not in content:
+            return ""
+
         for stimus in content["stimuli"]:
             if simplified:
                 if stimus["source"] != "":
@@ -1310,8 +1349,18 @@ class TinyPerson(JsonSerializableRegistry):
         """
         if simplified:
             msg_simplified_actor = self.name
-            msg_simplified_type = content["action"]["type"]
-            msg_simplified_content = content["action"].get("content", "")
+            
+            # Guard against null content
+            content_obj = content or {}
+            action_obj = content_obj.get("action")
+            
+            if not action_obj:
+                # Fallback for null actions often returned by filtered or confused models
+                msg_simplified_type = "ACTION"
+                msg_simplified_content = "[No action returned by model]"
+            else:
+                msg_simplified_type = action_obj.get("type", "ACTION")
+                msg_simplified_content = action_obj.get("content", "")
             
             if msg_simplified_type == "THINK" and not self.show_thoughts:
                 return ""

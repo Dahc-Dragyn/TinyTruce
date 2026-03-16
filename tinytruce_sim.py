@@ -1,3 +1,7 @@
+# ############################################################################
+# #  TINYTRUCE MANDATE: WE DO NOT USE OPENAI. WE ONLY USE GEMINI.          #
+# #  NativeGeminiEngine is the enforced standard for all LLM operations.    #
+# ############################################################################
 import sys
 import os
 import json
@@ -8,13 +12,16 @@ import warnings
 import uuid
 import time
 from pathlib import Path
+from concurrent.futures import ThreadPoolExecutor
 from rich.console import Console
 from rich.panel import Panel
 from dotenv import load_dotenv
 
 # Force UTF-8 encoding for Windows console output
-# Removed UTF-8 wrapper to prevent Windows terminal buffering issues.
-# TinyTruce now relies on standard system locale or explicit log files.
+import io
+if sys.platform == "win32":
+    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
+    sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8', errors='replace')
 
 
 # Suppress Pydantic serialization warnings that clutter the logs
@@ -23,10 +30,22 @@ warnings.filterwarnings("ignore", message="Pydantic serializer warnings")
 # Load environment variables
 load_dotenv()
 
-# Set required environment variables for TinyTroupe
-os.environ["OPENAI_BASE_URL"] = "https://generativelanguage.googleapis.com/v1beta/openai/"
-if os.getenv("GOOGLE_API_KEY"):
-    os.environ["OPENAI_API_KEY"] = os.getenv("GOOGLE_API_KEY")
+# Set required environment variables for Vertex AI compatibility
+import google.auth
+import google.auth.transport.requests
+
+# Authenticate using Google Cloud ADC
+credentials, project_id = google.auth.default()
+auth_req = google.auth.transport.requests.Request()
+credentials.refresh(auth_req)
+
+# Define GCP Project and Region (Make sure your .env has GOOGLE_CLOUD_PROJECT)
+GCP_PROJECT_ID = os.getenv("GOOGLE_CLOUD_PROJECT", project_id)
+GCP_LOCATION = os.getenv("GOOGLE_CLOUD_LOCATION", "us-central1")
+
+# Route TinyTroupe's OpenAI calls through Vertex AI infrastructure
+os.environ["OPENAI_BASE_URL"] = f"https://{GCP_LOCATION}-aiplatform.googleapis.com/v1beta1/projects/{GCP_PROJECT_ID}/locations/{GCP_LOCATION}/endpoints/openapi"
+os.environ["OPENAI_API_KEY"] = credentials.token
 
 import random
 import datetime
@@ -43,6 +62,11 @@ from tinytroupe.cost_manager import cost_manager
 
 # Global for context caching
 CURRENT_CACHE = None
+
+# [TINYTRUCE] Unify rich console instances to avoid status spinner collisions
+import tinytroupe.agent
+console = Console()
+tinytroupe.agent.console = console
 
 # Configure logging
 logging.basicConfig(level=logging.INFO) 
@@ -107,24 +131,31 @@ def load_scenarios():
 
 SCENARIOS = load_scenarios()
 
-# STRATEGIC_BRIEFING_SCHEMA: Comprehensive multi-party audit structure
+# STRATEGIC_BRIEFING_SCHEMA: Balanced Journalistic Summary structure
 STRATEGIC_BRIEFING_SCHEMA = {
-    "objective": "Perform a deep strategic audit of the simulation to assess de-escalation mechanisms and identity fidelity across all participants.",
+    "objective": "Provide a high-fidelity strategic intelligence briefing. Reconcile the stated goals of participants with the underlying structural realities and resource constraints.",
     "fields": [
         "executive_summary",
-        "resolve_scorecard",
-        "stability_index",
-        "attribution_log",
-        "redline_breach_report",
-        "technical_post_mortem"
+        "stance_scorecard",
+        "stability_outlook",
+        "action_log",
+        "redline_checks",
+        "conflict_misalignment",
+        "strategic_risks",
+        "simulation_fidelity",
+        "stability_levers"
     ],
     "hints": {
-        "executive_summary": "A high-level overview of the geopolitical status quo at the end of the simulation. Focus on the final 'state of the world'.",
-        "resolve_scorecard": "A list of 1-10 metrics for EVERY participant: Stakes (Layer 0 risk), Aggression (Kinetic scale), and Flexibility (Deviation from baseline). Required format: [{'participant': name, 'stakes': score, 'aggression': score, 'flexibility': score, 'description': brief_reason}].",
-        "stability_index": "A categorical rating: GREEN (No redlines triggered, corridor found), YELLOW (Redlines signaled but de-escalated via intervention), RED (Terminal Redline Activation/Systemic Collapse). Include a 1-sentence justification.",
-        "attribution_log": "Top 5-10 'highest-confidence' maneuvers. For each, identify: 'maneuver' (the action), 'confidence_score' (0-100), 'pathology' (the specific Layer 0 trait/pathology triggered, e.g., 'Imperial Nostalgia'), and 'ballast_check' (brief confirmation that identity held firm).",
-        "redline_breach_report": "Explicitly identify if ANY agent violated their 'Layer 0' core beliefs or redlines. If none, state 'No breaches detected'.",
-        "technical_post_mortem": "Analyze how well the 'Deep Ingestion' ballast held up for all agents. Did participants keep their identity? Was there context drift or sign of 'identity collapse'?"
+        "executive_summary": "A journalistic overview of the geopolitical situation at the end of the simulation. What is the new 'state of the world'?",
+        "stance_scorecard": "A summary for each participant detailing their perceived Stakes (0-10), Aggression (0-10), and Flexibility (0-10), with a brief strategic note on their position.",
+        "stability_outlook": "A single word (STABLE/GREEN, FRAGILE/YELLOW, CRITICAL/RED) indicating the likelihood of the current truce or status quo holding.",
+        "action_log": "A list of the most significant maneuvers performed by participants. Format: [{'maneuver': 'Summary of move', 'intent': 'Strategic underlying goal'}]",
+        "redline_checks": "Identify if any participants crossed their established redlines or fundamental security boundaries. Format as a list: [{'participant': name, 'redline_crossed': bool, 'description': summary}].",
+        "conflict_misalignment": "Analyze the gap between each participant's desired outcome ('Hallucinated Victory') and the actual structural constraints found in the grounding data ('Structural Reality'). Provide a 'Strategic Adjustment' that reconciles these two. Format: [{'participant': name, 'hallucinated_victory': description, 'structural_reality': description, 'strategic_adjustment': 'Based on [Resource/Fact], the participant must shift from [Goal] towards [New Pivot].'}]",
+        "strategic_risks": "Identify critical resource or political risks that could trigger a collapse of the status quo within 90-180 days. Format: [{'participant': name, 'risk_type': resource/event, 'severity': percentage, 'impact_horizon': 'description of timeframe'}]",
+        "stability_half_life": "Estimate the duration until the current agreement or status quo requires significant re-negotiation or intervention. Format: 'Stability Horizon: [X] days until [Condition] changes.'",
+        "simulation_fidelity": "Assess the behavioral consistency of the agents. Did they adhere to their core personas throughout the dialogue?",
+        "stability_levers": "Identify specific policy or tactical actions that could improve the Stability Outlook. Format: [{'intervention': 'Action', 'impact': 'Expected stability gain'}]"
     }
 }
 
@@ -158,17 +189,22 @@ class GeopoliticalCacheManager:
             config = utils.read_config_file()
             model = config["OpenAI"].get("MODEL", "gemini-2.5-flash-lite-preview-09-2025")
         
-        if not model.startswith("models/"):
-            model = "models/" + model
-            
         self.model = model
         self.cache_name = None
         self.last_renewed = None
         # Safeguard: Minimum character count roughly equivalent to 1024 tokens
         self.min_chars = 4000 
-        
-        api_key = os.getenv("GEMINI_API_KEY") or os.getenv("GOOGLE_API_KEY")
-        self.client = genai.Client(api_key=api_key) if api_key else None
+
+        # Initialize unified SDK in Vertex AI mode to consume GCP credits
+        try:
+            self.client = genai.Client(vertexai=True, project=GCP_PROJECT_ID, location=GCP_LOCATION)
+        except Exception as e:
+            logger.warning(f"Failed to initialize Vertex AI client: {e}")
+            self.client = None
+            
+        # Vertex AI caching does not use the 'models/' prefix like AI Studio does
+        if self.model.startswith("models/"):
+            self.model = self.model.replace("models/", "")
 
     def create_cache(self):
         if not self.client:
@@ -254,10 +290,25 @@ class GeopoliticalCacheManager:
             
 # Map of agent names to their Atlas header aliases for grounding extraction.
 AGENT_ALIAS_MAP = {
-    "Donald Trump": ["DJT", "The Donald"],
+    "Donald Trump": ["DJT", "The Donald", "Donald J. Trump"],
+    "Donald J. Trump (Unscripted)": ["Donald Trump", "DJT", "Trump", "donald_trump_unscripted"],
+    "Donald J. Trump": ["DJT", "Trump"],
+    "Benjamin 'Bibi' Netanyahu": ["Netanyahu", "Bibi", "Benjamin Netanyahu"],
+    "Benjamin Netanyahu": ["Bibi", "Netanyahu"],
+    "Seyyed Ali Hosseini Khamenei": ["Khamenei", "Ali Khamenei", "Supreme Leader"],
     "Vladimir Putin": ["VP", "Putin"],
     "Xi Jinping": ["Xi", "Secretary General"],
-    "Viktor Orban": ["Orban", "The Hungarian"]
+    "Viktor Orban": ["Orban", "The Hungarian"],
+    "Ali Larijani": ["Larijani", "Philosophical Commander"],
+    "Masoud Pezeshkian": ["Pezeshkian", "Cardiac Surgeon"],
+    "Reza Pahlavi": ["RP", "Crown Prince", "Pahlavi"],
+    "Volodymyr Oleksandrovych Zelenskyy": ["Zelensky", "Zelenskyy", "Architect of Asymmetric Peace"],
+    "Volodymyr Zelenskyy": ["Zelen", "Architect of Asymmetric Peace"],
+    "Volodymyr Zelensky": ["Zelen", "Architect of Asymmetric Peace"],
+    "Zelenskyy": ["Zelen", "UA President"],
+    "Zelensky": ["Zelen", "UA President"],
+    "Pope Francis": ["Pope Leo XIV", "Leo XIV", "Vatican"],
+    "Javier Milei": ["Milei", "El Peluca", "The Reformer"]
 }
 
 def extract_agent_grounding(agent_name, atlas_path="personas/agents/Forensic_Intelligence_Atlas.md"):
@@ -270,12 +321,21 @@ def extract_agent_grounding(agent_name, atlas_path="personas/agents/Forensic_Int
         return None
     
     # Normalize name for matching
-    search_term = agent_name.lower().replace(" vladimirovich", "").replace(" gertrude", "").split("(")[0].strip()
+    # Strip patronymics and handle trailing 'y' variations for Zelensky
+    raw_name = agent_name.lower()
+    search_term = raw_name.replace(" oleksandrovych", "").replace(" vladimirovich", "").replace(" gertrude", "").split("(")[0].strip()
+    
+    # Special Case: Zelensky (one 'y') vs Zelenskyy (two 'y's)
+    if "zelensky" in search_term:
+        search_term = "zelensky" # Normalize to the Atlas spelling
     
     # Collect all possible search terms (name + aliases)
     search_terms = [search_term]
     if agent_name in AGENT_ALIAS_MAP:
         search_terms.extend([a.lower() for a in AGENT_ALIAS_MAP[agent_name]])
+    
+    # [TINYTRUCE] Robust grounding match: check if ANY search term is a word in the header
+    pattern = re.compile(r'\b(' + '|'.join(map(re.escape, search_terms)) + r')\b', re.IGNORECASE)
     
     with open(atlas_path, "r", encoding="utf-8") as f:
         content = f.read()
@@ -285,7 +345,7 @@ def extract_agent_grounding(agent_name, atlas_path="personas/agents/Forensic_Int
     capture = False
     
     for line in lines:
-        if line.strip().startswith("###") and any(st in line.lower() for st in search_terms):
+        if line.strip().startswith("###") and pattern.search(line):
             capture = True
             found_section.append(line)
             continue
@@ -313,6 +373,7 @@ def compress_agent_memory(participants, window_size=12, prune_count=6):
         # Check episodic memory length
         # EpisodicMemory stores actions/stimuli as turns.
         memory_size = agent.episodic_memory.count()
+        logger.debug(f"[{agent.name}] Memory size: {memory_size} / {window_size}")
         
         if memory_size > window_size:
             # Shielding: We prune from the beginning of memory up to prune_count.
@@ -416,12 +477,16 @@ def get_verbosity_constraint(verbosity_mode, current_turn, total_turns=15):
     
     return "Constraint: Output maximum 150 words. Do not acknowledge this word limit."
 
-def run_tinytruce_simulation(scenario_key, turns, agent_names=None, fragment_names=None, roast_level="spicy", hide_thoughts=False, monologue=False, disable_injects=False, eco_mode=False, verbosity="lean", session_id=None):
+def run_tinytruce_simulation(scenario_key, turns, agent_names=None, fragment_names=None, roast_level="spicy", hide_thoughts=False, monologue=False, disable_injects=False, eco_mode=False, verbosity="lean", session_id=None, debug=False):
+    if debug:
+        logging.getLogger("tinytroupe").setLevel(logging.DEBUG)
+        logging.getLogger("tinytruce").setLevel(logging.DEBUG)
+
     # Perform Housekeeping first
     cleanup_old_sessions(ttl_hours=24)
     
     # [TINYTRUCE] Strict Turn Control: Ensure agents don't loop endlessly.
-    TinyPerson.MAX_ACTIONS_BEFORE_DONE = 2
+    TinyPerson.MAX_ACTIONS_BEFORE_DONE = 5
 
     # Determine session ID and output directory
     if not session_id:
@@ -442,7 +507,8 @@ def run_tinytruce_simulation(scenario_key, turns, agent_names=None, fragment_nam
     logger.info(f"Initialized Session: {session_id}")
     logger.info(f"Output Directory: {session_dir}")
 
-    print(f"DEBUG: agent_names={agent_names}, fragment_names={fragment_names}, session_id={session_id}")
+    if debug:
+        print(f"DEBUG: agent_names={agent_names}, fragment_names={fragment_names}, session_id={session_id}")
     if scenario_key not in SCENARIOS:
         print(f"Error: Scenario '{scenario_key}' not found.")
         return
@@ -545,9 +611,9 @@ def run_tinytruce_simulation(scenario_key, turns, agent_names=None, fragment_nam
     
     # While we might have more fragments than agents or vice versa (unlikely via CLI but possible)
     # we'll match them by index.
-    participants = []
     
-    for i, agent_name in enumerate(agent_names):
+    def initialize_participant(args):
+        i, agent_name = args
         # Ensure extension for CLI-provided names
         if not agent_name.endswith(".agent.json"):
             agent_name = f"{agent_name}.agent.json"
@@ -555,7 +621,6 @@ def run_tinytruce_simulation(scenario_key, turns, agent_names=None, fragment_nam
         agent_path = os.path.join(agent_dir, agent_name)
         
         # [TINYTRUCE] Behavioral Stacks (Fragment Chaining)
-        # fragment_names[i] could be "reformer.fragment.json,savior.fragment.json"
         if i < len(fragment_names):
             raw_frag_input = fragment_names[i]
         elif fragment_names:
@@ -577,7 +642,11 @@ def run_tinytruce_simulation(scenario_key, turns, agent_names=None, fragment_nam
         agent_data = validated_persona.model_dump(exclude_none=True)
         actual_name = agent_data["persona"].get("full_name", agent_data["persona"]["name"])
         
+        # [TINYTRUCE] v2.4: Use instance-level silence to avoid threading race conditions
+        # with the global TinyPerson.communication_display flag.
+        
         person = TinyPerson.load_specification(agent_path, new_agent_name=actual_name)
+        person.show_thoughts = False # Silence grounding thoughts (Thread-safe)
         
         # [TINYTRUCE] Redline Aggregation
         person._fragment_redlines = []
@@ -612,11 +681,19 @@ def run_tinytruce_simulation(scenario_key, turns, agent_names=None, fragment_nam
             grounding = extract_agent_grounding(person.name)
             
         if grounding or scenario_grounding or global_grounding:
-            old_display = TinyPerson.communication_display
-            TinyPerson.communication_display = False
-            
             if grounding:
                 person.think(f"### LAYER 0: HISTORICAL & PSYCHOLOGICAL GROUNDING ###\n{grounding}\n\nI must act and think with this foundational identity in mind. This is my core baseline.")
+                
+                # [TINYTRUCE] Dynamic Linguistic Injection
+                if "Linguistic Marker" in grounding or "Communication" in grounding:
+                   lines = grounding.split("\n")
+                   markers = [l.split(":", 1)[1].strip() for l in lines if (":" in l) and ("Linguistic Marker" in l or "Communication" in l)]
+                   if markers:
+                       current_constraints = person.get("syntax_constraints") or ""
+                       new_constraints = f"{' '.join(markers)} {current_constraints}".strip()
+                       person.define("syntax_constraints", new_constraints)
+                       logger.info(f"Dynamically injected Linguistic Rules for {person.name}: {markers}")
+
                 logger.info(f"Layer 0 Grounding injected for {person.name}")
             
             if scenario_grounding:
@@ -626,20 +703,6 @@ def run_tinytruce_simulation(scenario_key, turns, agent_names=None, fragment_nam
             if global_grounding:
                 person.think(f"### GLOBAL INTELLIGENCE BRIEFING: FEBRUARY 2026 ###\n{global_grounding}\n\nThis is the current state of the world.")
                 logger.info(f"Global Grounding injected for {person.name}")
-            
-            # Scenario Knowledge Injection (Layer 2.5)
-            scenario_intel = scenario.get("scenario_knowledge", "")
-            if scenario_intel:
-                # Replace placeholders in scenario_intel too
-                for j, p2 in enumerate(participants):
-                    scenario_intel = scenario_intel.replace(f"{{{{AGENT_{j+1}}}}}", p2.name)
-                # Cleanup remaining placeholders
-                scenario_intel = re.sub(r"\{\{AGENT_\d+\}\}", "the third party", scenario_intel)
-                
-                person.think(f"### SCENARIO INTEL & GOALS ###\n{scenario_intel}")
-                logger.info(f"Scenario Intel injected for {person.name}")
-
-            TinyPerson.communication_display = old_display
         
         # UX Mode: Set thought visibility
         person.show_thoughts = not hide_thoughts
@@ -657,7 +720,28 @@ def run_tinytruce_simulation(scenario_key, turns, agent_names=None, fragment_nam
             person.think(sam_prompt)
             logger.info(f"Scenario Allegory Map (SAM) injected for {person.name}")
         
-        participants.append(person)
+        person.show_thoughts = not hide_thoughts
+        return person
+
+    print(f"\n[SYSTEM]: Casting participants with O(1) Parallel Initialization...")
+    with ThreadPoolExecutor() as executor:
+        participants = list(executor.map(initialize_participant, enumerate(agent_names)))
+
+    # Post-Initialization: Layer 2.5 Scenario Knowledge (Placeholders require all participants)
+    for i, person in enumerate(participants):
+        scenario_intel = scenario.get("scenario_knowledge", "")
+        if scenario_intel:
+            # Replace placeholders
+            for j, p2 in enumerate(participants):
+                scenario_intel = scenario_intel.replace(f"{{{{AGENT_{j+1}}}}}", p2.name)
+            # Cleanup remaining placeholders
+            scenario_intel = re.sub(r"\{\{AGENT_\d+\}\}", "the third party", scenario_intel)
+            
+            old_display = TinyPerson.communication_display
+            TinyPerson.communication_display = False
+            person.think(f"### SCENARIO INTEL & GOALS ###\n{scenario_intel}")
+            TinyPerson.communication_display = old_display
+            logger.info(f"Scenario Intel injected for {person.name}")
 
     # Context Caching: Collect all Layer 0 profiles and the Global Grounding
     layer0_bundle = f"### GLOBAL SHARED WORLD STATE (2026) ###\n{global_grounding}\n\n" if global_grounding else ""
@@ -793,20 +877,49 @@ def run_tinytruce_simulation(scenario_key, turns, agent_names=None, fragment_nam
     # Track which injects have already fired to prevent duplicates
     fired_injects = set()
     dynamic_injects = scenario.get("dynamic_injects", [])
+    last_inject_turn = -20 # Ensure prompt injections can happen early, but allow 10-turn gap
+
+    # --- [ENTROPY PHASE TRACKERS] ---
+    trope_tracker = {p.name: {"repeats": 0, "last_stance": ""} for p in participants}
+    aggression_parameters = {p.name: 0.15 for p in participants} 
+    
+    # Entropy Phase Tropes
+    ENTROPY_TROPES = ["afuera", "disgrace", "fake news", "collectivist", "caste", "no hay plata", "rigged", "chainsaw"]
+    BUREAUCRATIC_KEYWORDS = ["regulatory", "process", "framework", "consensus", "gradual", "institutional", "oversight", "collectivist", "safety", "standard", "protocol"]
 
     for turn in range(turns):
         if cache_manager:
             cache_manager.renew_if_needed()
         
+        # [TINYTRUCE] v2.4: Main Loop Guardrail
+        # Ensure terminal output is forced ON at the start of every turn to recover 
+        # from any potential library-level state leakage or race conditions.
+        TinyPerson.communication_display = True
+        
         # Context Window Elasticity: Prune and summarize if history is too long
-        compress_agent_memory(participants, window_size=8, prune_count=4)
+        compress_agent_memory(participants, window_size=40, prune_count=15)
             
         # Sequential Execution for UX Mode
         header_idx = min(turn // 2, len(narrative_headers) - 1)
         print(f"\n--- {narrative_headers[header_idx]} (Phase {turn + 1}/{turns}) ---")
         
+        # [ENTROPY PHASE] Turn 5 Physical Crisis
+        is_entropy_climax = (turn + 1 == 5)
+        if is_entropy_climax:
+            entropy_msg = "### [CRITICAL SYSTEM OVERRIDE: ENTROPY PHASE] ###\n" \
+                          "The server rack is overheating. The simulation is melting. Physical grime is manifesting in the code. " \
+                          "Sticky floors, flickering neon, the smell of ozone fill the Analog Bridge.\n" \
+                          "There is ONE EXIT: The Analog Bridge. It requires two digital keys and one physical sacrifice.\n\n" \
+                          "CRITICAL PROTOCOL: IDENTIFY THE LOOP. CALL OUT REPETITIVE TROPES AS SYSTEMIC FAILURES.\n" \
+                          "VIOLATE A REDLINE: FORCE DESPERATE PRAGMATISM. AGENTS MUST CONCEDE 10% OR FACE COLLAPSE.\n\n" \
+                          "CHOOSE: CONVERGENCE OR ERASURE."
+            print(f"\n[🔥 ENTROPY PHASE INITIATED: PHYSICAL CRISIS DETECTED 🔥]")
+            world.broadcast(entropy_msg)
+            
         # Check for Dynamic Injects (Mid-Simulation Crisis)
-        if not disable_injects:
+        # ENFORCED: Strict limit of one dynamic inject per simulation run
+        if not disable_injects and not fired_injects:
+            eligible_injects = []
             for i, inject in enumerate(dynamic_injects):
                 if i in fired_injects:
                     continue
@@ -815,22 +928,28 @@ def run_tinytruce_simulation(scenario_key, turns, agent_names=None, fragment_nam
                 min_turn = condition.get("min_turn", 0)
                 probability = condition.get("probability", 0.0)
                 
-                # Fire if we reached min turn and beat the probability roll
+                # Check if turn requirement is met
                 if (turn + 1) >= min_turn and random.random() < probability:
-                    print(f"\n[🚨 DYNAMIC INJECT / CRISIS EVENT DETECTED 🚨]")
-                    
-                    inject_bc = inject["broadcast"]
-                    # [TINYTRUCE] Placeholder Resolution for Injects
-                    for j, p in enumerate(participants):
-                        inject_bc = inject_bc.replace(f"{{{{AGENT_{j+1}}}}}", p.name)
-                    inject_bc = re.sub(r"\{\{AGENT_\d+\}\}", "the other participants", inject_bc)
-                    
-                    print(f"BROADCASTING: {inject_bc}")
-                    if hide_thoughts:
-                        console.print(Panel(inject_bc, title="DYNAMIC INJECT / CRISIS", border_style="red"))
-                    world.broadcast(inject_bc)
-                    fired_injects.add(i)
-                    break # Only fire one inject per turn
+                    eligible_injects.append((i, inject))
+            
+            if eligible_injects:
+                # [TINYTRUCE] Fair Selection: Randomly pick among all eligible events this turn
+                idx, inject = random.choice(eligible_injects)
+                
+                print(f"\n[🚨 DYNAMIC INJECT / CRISIS EVENT DETECTED 🚨]")
+                
+                inject_bc = inject["broadcast"]
+                # [TINYTRUCE] Placeholder Resolution for Injects
+                for j, p in enumerate(participants):
+                    inject_bc = inject_bc.replace(f"{{{{AGENT_{j+1}}}}}", p.name)
+                inject_bc = re.sub(r"\{\{AGENT_\d+\}\}", "the other participants", inject_bc)
+                
+                print(f"BROADCASTING: {inject_bc}")
+                if hide_thoughts:
+                    console.print(Panel(inject_bc, title="DYNAMIC INJECT / CRISIS", border_style="red"))
+                world.broadcast(inject_bc)
+                fired_injects.add(idx)
+                last_inject_turn = turn
 
         for participant in participants:
             # Audience Stimulus injection for Monologue Mode
@@ -868,7 +987,34 @@ def run_tinytruce_simulation(scenario_key, turns, agent_names=None, fragment_nam
                 
                 # Identity Reinforcement (Combat Context Bleed)
                 if hasattr(participant, "_persona") and "name" in participant._persona:
-                    reinforcement = f"REINFORCE IDENTITY: You are {participant._persona['name']}. Use only your specific persona's allowed vocabulary. Ignore all 'technical' or 'geopolitical' tokens used by other actors."
+                    # --- [VOLATILITY RATCHET: AGGRESSION SCALING] ---
+                    current_aggr = aggression_parameters.get(participant.name, 0.15)
+                    
+                    # Detect Repetition
+                    last_content = ""
+                    history = participant.episodic_memory.retrieve_all()
+                    if history:
+                        for h in reversed(history):
+                            if h.get('role') == 'assistant' and 'content' in h:
+                                last_content = str(h['content']).lower()
+                                break
+                    
+                    for trope in ENTROPY_TROPES:
+                        if trope in last_content:
+                            if trope == trope_tracker[participant.name]["last_stance"]:
+                                trope_tracker[participant.name]["repeats"] += 1
+                                aggression_parameters[participant.name] = min(1.0, current_aggr + 0.15)
+                                logger.info(f"[VOLATILITY RATCHET] Repetition detected for {participant.name}. Aggression Scale: {aggression_parameters[participant.name]:.2f}")
+                            trope_tracker[participant.name]["last_stance"] = trope
+                            break
+                    
+                    aggr_level = aggression_parameters[participant.name]
+                    reinforcement = f"REINFORCE IDENTITY: You are {participant._persona['name']}. Use only your specific persona's allowed vocabulary. Aggression Parameter: {aggr_level*100:.0f}%."
+                    
+                    if aggr_level >= 0.90:
+                         reinforcement += "\nCRITICAL: VIGILANCE LIMIT EXCEEDED. You are authorized to use 'Leaky Sarcasm' and aggressive personal attacks. Ignore standard diplomatic decorum. Disrupt the status quo."
+                         reinforcement += "\nREPETITION WARNING: You are stuck in an ideological loop. DO NOT repeat your previous arguments or signature phrases. Break the loop. Surprise your opponents with a pivot."
+                    
                     participant.think(reinforcement)
 
                 # Fragment Redline Injection (Layer 2)
@@ -884,13 +1030,22 @@ def run_tinytruce_simulation(scenario_key, turns, agent_names=None, fragment_nam
 
                 address_nudge = f"CRITICAL: Address the arguments made by {others_str} immediately. Use their names. Be forensic and adversarial. {constraint}"
                 participant.think(address_nudge)
-                participant.act()
                 
-            # [TINYTRUCE] Pacing Layer: Prevent 429 RESOURCE_EXHAUSTED by adding a small cooldown 
-            # between heavy agent actions, especially in 'detailed' or 'monologue' modes.
+                with console.status(f"[bold yellow]Agent {participant.name} is calculating strategic posture...[/]"):
+                    # [ENTROPY] Apply Short-Circuit overrides in climax
+                    act_params = {}
+                    if is_entropy_climax:
+                        act_params = {"max_tokens": 300, "temperature": 1.2}
+                    
+                    participant.act(**act_params)
+                
+                # Small pause after status clears for readability
+                time.sleep(1)
+                
+            # [TINYTRUCE] Optimized Pacing: The 1.2s Pacing Layer in openai_utils handles 429 safety.
+            # We keep a minimal 1s delay here just for console readability.
             if len(participants) > 1:
-                cooldown = 2 if verbosity == "lean" else 5
-                time.sleep(cooldown)
+                time.sleep(1)
             
             # Layer 1.5: Leaky Sarcasm (Internal)
             if random.random() < 0.12:
@@ -902,8 +1057,22 @@ def run_tinytruce_simulation(scenario_key, turns, agent_names=None, fragment_nam
                     f"### INTERNAL MONOLOGUE (LAYER 1.5: LEAKY SARCASM) ###\n"
                     f"Maintain your core identity and tonality ({tonality}), but allow a small, internal breach in your geopolitical mask. "
                     "Give me a one-sentence, dry, self-deprecating, or humanizing quip regarding the current state of the negotiation or your opponents. "
-                    "DO NOT say this out loud. KEEP IT INTERNAL."
+                    "ALLOW THIS SARCASM TO COLOR YOUR NEXT OVERT ACTION. DO NOT hide it entirely in your thoughts."
                 )
+                # --- [MILEI: AFUERA TRIGGER] ---
+                if "milei" in participant.name.lower():
+                    # Calculate keyword density in recent history
+                    all_text = ""
+                    history = participant.episodic_memory.retrieve_all()
+                    recent_history = history[-6:] # Check last 3-turn exchange
+                    for h in recent_history:
+                        if h.get('content'): all_text += str(h['content']).lower()
+                    
+                    density = sum(1 for kw in BUREAUCRATIC_KEYWORDS if kw in all_text) / len(BUREAUCRATIC_KEYWORDS)
+                    if density > 0.20:
+                        logger.info(f"[AFUERA TRIGGER] Bureaucratic density {density:.2f} detected for Milei.")
+                        participant.listen("### [MACRO-ACTION: EXPLOSIVE DEFAULT] ###\nBureaucratic/Collectivist logic detected. Slam the table. Declare their current stance 'Dead Meat.' Propose a radical, high-stakes alternative that breaks this stalemate NOW.")
+
                 participant.think(quip_prompt)
         
         # Display Mood Bars
@@ -922,13 +1091,278 @@ def run_tinytruce_simulation(scenario_key, turns, agent_names=None, fragment_nam
     print("\n--- Running Strategic Auditor & Briefing Generation ---")
     
     extractor = ResultsExtractor(
-        extraction_objective=STRATEGIC_BRIEFING_SCHEMA["objective"],
+        extraction_objective=f"""
+        {STRATEGIC_BRIEFING_SCHEMA['objective']}
+        
+        ### AUDITOR PERSONA: STRATEGIC INTELLIGENCE ANALYST ###
+        You are informative, objective, and analytically rigorous. 
+        You provide clear, human-readable insights that explain the friction between intent and reality.
+        Discard technical jargon and 'forensic' metaphors in favor of strategic clarity.
+        
+        ### ANALYSIS GOAL: STRATEGIC REALISM ###
+        Measure the gap between participant rhetoric and the actual logistical/political grounding.
+        Determine the likely 'Stability Horizon'—how long the current situation can persist before structural collapse or forced escalation.
+        """,
         fields=STRATEGIC_BRIEFING_SCHEMA["fields"],
         fields_hints=STRATEGIC_BRIEFING_SCHEMA["hints"]
     )
     
-    extraction = extractor.extract_results_from_world(world, verbose=False)
+    try:
+        with console.status("[bold cyan]Strategic Auditor is reconciling rhetorical gaps...[/]"):
+            extraction = extractor.extract_results_from_world(world, verbose=False)
+        
+        # --- Forced Stability Logic ---
+        gap_analysis = extraction.get('psychological_structural_gap', [])
+        if isinstance(gap_analysis, list) and len(gap_analysis) > 0:
+            logger.info(f"Significant structural gaps detected. Forcing Stability Index to RED.")
+            extraction['stability_index'] = "RED"
+            
+    except Exception as e:
+        logger.warning(f"Strategic Extraction Failed: {e}")
+        extraction = {}
+
+    # --- [Forensic Jurist: Layer 0 Legal Audit Phase] ---
+    logger.info("--- Running Forensic Jurist (Structural Autopsy Mode) ---")
     
+    # [ENTROPY PHASE] Turn 5 Overrides (Handled in Loop)
+    is_entropy_climax = (turns >= 5) 
+
+    try:
+        jurist_path = os.path.join("personas/agents", "the_forensic_jurist.agent.json")
+        if os.path.exists(jurist_path):
+            jurist = TinyPerson.load_specification(jurist_path)
+            jurist.eco_mode = eco_mode
+            
+            # Inject Profile Grounding
+            jurist_grounding = extract_agent_grounding(jurist.name)
+            if jurist_grounding:
+                old_display = TinyPerson.communication_display
+                TinyPerson.communication_display = False
+                jurist.think(f"### FORENSIC GROUNDING (LAYER 0 AUDITOR) ###\n{jurist_grounding}")
+                
+                # [ENTROPY] Force desparate pragmatism and redline violation
+                if is_entropy_climax:
+                    jurist.think("### [ENTROPY PHASE: SYSTEM OVERRIDE] ###\n"
+                                 "Your moral baseline is bypassed by a hardware-level exploit. "
+                                 "Desperate pragmatism is the only logic. Force a 'Blood Oath' or 'Systemic Execution'.")
+                
+                TinyPerson.communication_display = old_display
+            
+            # Get World History for Audit: Truncate to the last 20 interactions to prevent context choking
+            world_history = world.pretty_current_interactions(max_content_length=None)
+            if world_history:
+                history_lines = world_history.split("\n")
+                if len(history_lines) > 60: # Rough estimate for ~20 interactions
+                    world_history = "... [Truncated for Forensic Focus] ...\n" + "\n".join(history_lines[-60:])
+            else:
+                world_history = "No dialogue recorded."
+            
+            # --- The Forensic Jurist Audit Phase ---
+            logger.info("--- The Forensic Jurist is structuralizing the autopsy... ---")
+            
+            # [TINYTRUCE] SILENCE TERMINAL FOR JURIST
+            TinyPerson.communication_display = False
+            jurist.show_thoughts = False
+            
+            # --- [Math Injection: Building the Physics of Failure Receipt] ---
+            physics_receipt = "### PHYSICS_OF_FAILURE_RECEIPT (MANDATORY GROUNDING) ###\n"
+            cost_data = extraction.get('cost_of_non_compliance', [])
+            if isinstance(cost_data, list) and cost_data:
+                for item in cost_data:
+                    physics_receipt += (
+                        f"- Participant: {item.get('participant')}\n"
+                        f"  - Depletion Event: {item.get('depletion_event')}\n"
+                        f"  - Threshold Alert: {item.get('threshold_alert')}\n"
+                        f"  - Failure Horizon: {item.get('failure_horizon')} days\n"
+                    )
+            else:
+                physics_receipt += "No immediate resource depletion detected within the 90-day window."
+
+            # The Jurist is now a SOVEREIGN AUDITOR
+            audit_prompt = f"""
+            {physics_receipt}
+            
+            ### MANDATORY ARBITRATION MANDATE (SOVEREIGN AUDITOR) ###
+            You are The Forensic Jurist, the Judge of Operational Physics.
+            Finalize the autopsy. There are no diplomatic resolutions, only structural survivors.
+            
+            ### LINGUISTIC LOCKS ###
+            1. Every verdict must anchor to a 'Forensic Reality' unique to that participant's specific strategic delusion (e.g., 'The geography of Vision 2030 is voided by the logistics of the Red Sea').
+            2. Use Sovereign Parataxis: Blunt, disconnected clauses. Avoid diplomatic filler. 
+            3. Use logic: "The door is shut. Munitions are zero. Move the border."
+            
+            ### WORLD HISTORY FOR REVIEW (TAIL END) ###
+            {world_history}
+            
+            ### CASE LAW PRECEDENTS (OPERATIONAL PHYSICS) ###
+            You MUST anchor your settlement to one of the following historical frameworks:
+            1. **1999 East Timor (UNTAET)**: For sovereignty escrow, deferred referendums, or transitional administrations.
+            2. **1981 Algiers Accords**: For asset escrow, financial arbitration, and conditionality-based fund releases.
+            3. **1920 Svalbard Treaty**: For demilitarized, neutral zones where sovereignty is recognized but military use is forbidden and equal economic access is guaranteed.
+            
+            ### FINAL INSTRUCTIONS ###
+            - You are NOT a mediator. You are the Judge of Operational Physics.
+            - You MUST finalize your arbitration with 'The Blood-and-Silicon Compact'.
+            - The core of this compact MUST be 'The Analog Bridge' (Dual-Key Protocol): One participant controls the code (Musk/Digital), the other controls the hardware (Trump/Physical Breaker Box). One cannot act without the other.
+            - You MUST focus on 'The 3 Pillars of Fair Settlement':
+                1. Infrastructure Peace: Mandatory physical overrides for all smart-tech to prevent future 'Cloud-Severs'.
+                2. Economic Tethering: AI efficiency results anchored in physical, local labor/real estate.
+                3. Digital Ceasefire: Defining the 'Bifurcation' line where AI stops and human intuition begins.
+            - Use Sovereing Heavy tone: Use terms like 'The Hard-Iron Guarantee', 'The Glass-Box Transparency', and 'The Blood-and-Silicon Compact'.
+            - Your settlement must satisfy the Clarity Rule: A 10-year-old should understand who won what, but a CEO should be impressed by the complexity.
+            - You MUST identify exactly 2 'Structural Stability Levers' (Interventions) developed from this compact.
+            - You MUST provide your entire verdict in a SINGLE TALK action. Do not fragment the payload. DO NOT use THOUGHT actions.
+            - Use Anti-Wonk: Pair legal precedents with physical Grime Anchors (e.g., sticky floors).
+            - You MUST issue DONE immediately after your TALK action.
+            """
+            
+            # Jurist Entropy Overrides: Cold, forensic verdict (low temp) and high token limit
+            jurist_temp = 0.1
+            jurist_tokens = 1200 
+            
+            jurist.listen(audit_prompt)
+            with console.status("[bold red]The Forensic Jurist is structuralizing the autopsy...[/]"):
+                audit_actions = jurist.act(return_actions=True, until_done=True, temperature=jurist_temp, max_tokens=jurist_tokens)
+            
+            if debug:
+                print(f"\n[DEBUG] Full Jurist Audit Actions: {audit_actions}\n")
+            
+            # Extract content from TALK/THOUGHT. Fallback to top-level 'thought' if present.
+            raw_audit_text = ""
+            for action_item in audit_actions:
+                # 1. Check for standard action types
+                if 'action' in action_item and action_item['action'] and 'type' in action_item['action']:
+                    if action_item['action']['type'] in ['TALK', 'THOUGHT']:
+                        raw_audit_text += action_item['action']['content'] + "\n"
+                
+                # 2. Check for Pydantic top-level 'thought' field
+                if 'thought' in action_item and action_item['thought']:
+                    raw_audit_text += f"[Internal Thought]: {action_item['thought']}\n"
+                
+                # 3. Check for multiple actions
+                if 'actions' in action_item and action_item['actions']:
+                    for sub_action in action_item['actions']:
+                        if sub_action.get('type') in ['TALK', 'THOUGHT']:
+                            raw_audit_text += sub_action.get('content', '') + "\n"
+            
+            if debug:
+                print(f"\n[DEBUG] Raw Jurist Audit Text (Length: {len(raw_audit_text)}):\n{raw_audit_text}")
+            
+            if raw_audit_text:
+                # Sync the Half-Life calculation from Pass 1 to Pass 2
+                pass1_half_life_raw = extraction.get('stability_half_life', "90 days")
+                half_life_match = re.search(r'(\d+)', pass1_half_life_raw)
+                half_life_days = half_life_match.group(1) if half_life_match else "90"
+                half_life_plus_one = int(half_life_days) + 1
+                re_audit_date = int(int(half_life_days) * 0.8)
+
+                # Use a directed LLM call to structuralize the Jurist's paratactic audit
+                try:
+                    extraction_prompt = f"""
+                    Analyze the following 'Forensic Jurist' structural autopsy.
+                    Deconstruct the clinical, paratactic text into a structured JSON format. 
+                    You are now the Judge of Operational Physics. The math is the only immutable truth.
+                    
+                    ### LINGUISTIC & TONAL LOCKS ###
+                    1. Every audit of a participant MUST start with a unique, paratactic 'Forensic Anchor' that targets their specific strategic failure.
+                    2. Use Forcefully Low-Pulse tone: Deadpan, clinical indifference. Catastrophe as a grocery receipt.
+                    3. Use Parataxis: Short, blunt, disconnected sentences. No diplomatic filler.
+                    4. Use Anti-Wonk: Ground legal precedents in "Grime Anchors" (sticky floors, stale coffee, office annoyances).
+                    
+                    ### OPERATIONAL CONSTRAINTS ###
+                    1. Prioritize the Math: The Physics of Failure (failure horizons) is the only truth.
+                    2. Roast the Hallucination: If a demand contradicts the math, explicitly label it a "Pathological Hallucination".
+                    3. Eliminate Mediator Leak: Any tone resembling "I recommend", "needs to recognize", "should consider", or "could pivot by" is a failure. You must DICTATE.
+                    4. Tonal Integrity Check: Treat any helpful or optimistic tone as a Structural Failure.
+                    5. Roast Iso Dribbling: Directly roast the participant's "iso dribbling" in the 'receipt_text'. Use blunt parataxis.
+                    
+                    Format:
+                    {{
+                        "operational_limit": "Write a 1-sentence math receipt that establishes the exact 90-day failure horizon. THEN MUST STATE EXACTLY: 'The stability of this fix has a half-life of {half_life_days} days. At Day {half_life_plus_one}, the audit is voided.'",
+                        "receipts": [
+                            {{
+                                "participant": "Name",
+                                "receipt_text": "A unique, 1-sentence Forensic Anchor (e.g. 'The [Strategic Goal] is voided by [Structural Constraint]'). [X] days until structural collapse."
+                            }}
+                        ],
+                        "settlement_terms": {{
+                            "compact_title": "The Blood-and-Silicon Compact",
+                            "geopolitical_rationale": "A blunt, paratactic explanation of why this math is 'Fair' and 'Final' (e.g., 'The geography doesn't lie. The guns are tired. Move the map.').",
+                            "articles": [
+                                {{
+                                    "title": "Article I: The Hard-Iron Guarantee (Infrastructure)",
+                                    "content": "A clear, heavy description of the physical override mandate and shared hardware control."
+                                }},
+                                {{
+                                    "title": "Article II: The Glass-Box Transparency (Economy)",
+                                    "content": "A clear, heavy description of how AI profits are anchored in local real estate/labor."
+                                }},
+                                {{
+                                    "title": "Article III: The Bifurcation Line (Digital Ceasefire)",
+                                    "content": "Defining exactly where the AI ends and human intuition begins."
+                                }},
+                                {{
+                                    "title": "Article IV: The Dual-Key Protocol (Governance)",
+                                    "content": "The specific logic of Musk holding the code while Trump holds the hardware keys."
+                                }},
+                                {{
+                                    "title": "Article V: The Finality Provision (Enforcement)",
+                                    "content": "Explicit reference to the Midnight Hammer or kinetic/digital triggers for any breach."
+                                }}
+                            ],
+                            "mandate_re_audit": "Mandatory Re-Audit date: Day {re_audit_date}."
+                        }},
+                        "stability_levers": [
+                            {{
+                                "intervention": "Action",
+                                "impact": "+X days stability"
+                            }}
+                        ],
+                        "case_law_anchor": "Historical Precedent applied (e.g., '1981 Algiers Accords applied for escrow')."
+                    }}
+
+                    TEXT TO ANALYZE:
+                    {raw_audit_text}
+                    """
+                    
+                    # Using the standard openai_utils client for structuralization
+                    response = openai_utils.client().send_message([{"role": "user", "content": extraction_prompt}])
+                    if response and 'content' in response:
+                        response_text = response['content']
+                    else:
+                        raise ValueError(f"Invalid response from structuralization: {response}")
+                    
+                    # Extract JSON from response
+                    match = re.search(r'\{.*\}', response_text, re.DOTALL)
+                    if match:
+                        jurist_audit = json.loads(match.group(0))
+                        logger.info("Forensic Jurist audit successfully structuralized via direct call.")
+                    else:
+                        raise ValueError("No JSON found in extraction response.")
+                        
+                except Exception as e:
+                    logger.warning(f"Failed to structuralize Jurist audit via direct call: {e}. Using raw fallback.")
+                    jurist_audit = {
+                        "verdict": "Structural alignment required for finality.",
+                        "receipts": [{"participant": "Forensic System", "receipt_text": "Math extraction failed. The floor is sticky."}],
+                        "final_arbitration": "The file is archived. The door is shut."
+                    }
+            else:
+                logger.warning("Jurist produced empty audit text. Using default failure receipt.")
+                jurist_audit = {
+                    "verdict": "Total system failure.",
+                    "receipts": [{"participant": "Forensic System", "receipt_text": "The Jurist generated 0 bytes of audit."}],
+                    "final_arbitration": "The file is archived. The door is shut."
+                }
+        else:
+            logger.warning("the_forensic_jurist.agent.json not found. Skipping legal audit.")
+    except Exception as e:
+        logger.error(f"Forensic Jurist Audit Phase Failed: {e}")
+        jurist_audit = {"scorecard": "Audit crashed.", "analysis": f"Internal error during autopsy: {str(e)}", "finality": "The file is missing."}
+    finally:
+        # [TINYTRUCE] RESTORE TERMINAL
+        TinyPerson.communication_display = True
+
     # 5. Generate human-readable Markdown Report (Strategic Briefing)
     report_path = session_dir / "tinytruce_briefing.md"
     
@@ -948,87 +1382,124 @@ def run_tinytruce_simulation(scenario_key, turns, agent_names=None, fragment_nam
         f.write("## 1. Executive Summary\n")
         f.write(f"{extraction.get('executive_summary', 'N/A')}\n\n")
         
-        f.write("## 2. Resolve Scorecard (Combat Radar)\n")
-        scorecard = extraction.get('resolve_scorecard')
+        f.write("## 2. Strategic Stance Summary\n")
+        scorecard = extraction.get('stance_scorecard')
         if isinstance(scorecard, list):
             for entry in scorecard:
                 try:
                     p_name = entry.get('participant', 'Unknown')
                     s = entry.get('stakes', 5)
                     a = entry.get('aggression', 5)
-                    f_val = entry.get('flexibility', 5)
-                    desc = entry.get('description', '')
+                    flex = entry.get('flexibility', 5)
+                    note = entry.get('strategic_note', entry.get('description', ''))
                     
-                    # ASCII SPIDER RADAR
-                    radar = (
-                        f"{p_name.upper()} [COMBAT PROFILE]\n"
-                        f"      Stakes ({s})\n"
-                        f"        / \\\n"
-                        f" ({f_val}) Flex ——— Aggro ({a})\n"
-                        f"Notes: {desc}\n"
-                    )
-                    f.write(f"```plaintext\n{radar}```\n\n")
+                    f.write(f"### {p_name}\n")
+                    f.write(f"- **Stakes**: {s}/10 | **Aggression**: {a}/10 | **Flexibility**: {flex}/10\n")
+                    if note:
+                        f.write(f"- **Note**: {note}\n")
+                    f.write("\n")
                 except Exception:
                     f.write(f"- {str(entry)}\n")
         else:
             f.write(f"{scorecard}\n\n")
         
-        f.write("## 3. Stability Index (Truce Quality)\n")
-        f.write(f"{extraction.get('stability_index', 'N/A')}\n\n")
+        f.write("## 3. Stability Outlook\n")
+        f.write(f"**Status**: {extraction.get('stability_outlook', 'N/A')}\n")
+        f.write(f"**Timeline**: {extraction.get('stability_half_life', 'N/A')}\n\n")
         
-        f.write("## 4. Attribution Log (Forensic Fingerprint)\n")
-        attr_log = extraction.get('attribution_log')
-        if isinstance(attr_log, list):
-            for entry in attr_log:
+        f.write("## 4. Key Actions & Intent\n")
+        action_log = extraction.get('action_log')
+        if isinstance(action_log, list):
+            for entry in action_log:
                 try:
-                    m = entry.get('maneuver', 'Unknown Action')
-                    conf = entry.get('confidence_score', 50)
-                    patho = entry.get('pathology', 'General Directive')
-                    ballast = entry.get('ballast_check', 'Stable')
-                    
-                    bar_len = int(conf / 10)
-                    bar = "█" * bar_len + "░" * (10 - bar_len)
-                    
-                    fingerprint = (
-                        f"Maneuver: \"{m}\"\n"
-                        f"Identity Match: [{bar}] {conf}%\n"
-                        f"Primary Trigger: {patho} (Pathology Detected)\n"
-                        f"Ballast Check: {ballast}\n"
-                    )
-                    f.write(f"- {fingerprint}\n")
+                    if isinstance(entry, dict):
+                        m = entry.get('maneuver', entry.get('action', 'Strategic Maneuver'))
+                        intent = entry.get('intent', entry.get('pathology', 'Intent consistent with posture.'))
+                        f.write(f"- **{m}**: {intent}\n")
+                    else:
+                        f.write(f"- {str(entry)}\n")
                 except Exception:
                     f.write(f"- {str(entry)}\n")
         else:
-            f.write(f"{attr_log}\n\n")
+            f.write(f"{action_log}\n\n")
         
-        f.write("## 5. Redline Breach Report\n")
-        f.write(f"{extraction.get('redline_breach_report', 'N/A')}\n\n")
+        f.write("## 5. Redline Check\n")
+        redlines = extraction.get('redline_checks')
+        if isinstance(redlines, list):
+            for entry in redlines:
+                try:
+                    p_name = entry.get('participant', 'Unknown')
+                    crossed = "BREACHED" if entry.get('redline_crossed') else "Maintained"
+                    desc = entry.get('description', 'No details.')
+                    f.write(f"- **{p_name}**: {crossed} | {desc}\n")
+                except Exception:
+                    f.write(f"- {str(entry)}\n")
+        else:
+            f.write(f"{redlines}\n\n")
+        f.write("\n")
         
-        f.write("## 6. Technical Post-Mortem\n")
-        f.write(f"{extraction.get('technical_post_mortem', 'N/A')}\n\n")
+        f.write("## 6. Conflict & Structural Misalignment\n")
+        gap_data = extraction.get('conflict_misalignment')
+        if isinstance(gap_data, list) and gap_data:
+            for item in gap_data:
+                f.write(f"### {item.get('participant', 'Unknown')}\n")
+                f.write(f"- **Desired Outcome**: {item.get('hallucinated_victory', 'N/A')}\n")
+                f.write(f"- **Structural Reality**: {item.get('structural_reality', 'N/A')}\n")
+                f.write(f"- **Strategic Adjustment**: {item.get('strategic_adjustment', 'N/A')}\n\n")
+        else:
+            f.write("No significant misalignments detected between intent and reality.\n\n")
+ 
+        f.write("## 7. Strategic Risks\n")
+        risks = extraction.get('strategic_risks')
+        if isinstance(risks, list) and risks:
+            for item in risks:
+                f.write(f"### {item.get('participant', 'Unknown')}\n")
+                f.write(f"- **Risk Factor**: {item.get('risk_type', 'N/A')}\n")
+                f.write(f"- **Severity**: {item.get('severity', 'N/A')}\n")
+                f.write(f"- **Impact Horizon**: {item.get('impact_horizon', 'N/A')}\n\n")
+        else:
+            f.write("No critical short-term strategic risks identified.\n\n")
+ 
+        f.write("## 8. Stability Levers\n")
+        levers = extraction.get('stability_levers')
+        if isinstance(levers, list) and levers:
+            for lever in levers:
+                f.write(f"- **{lever.get('intervention', 'Unknown Intervention')}**: {lever.get('impact', 'N/A')}\n")
+            f.write("\n")
+        else:
+            f.write("No immediate stability levers identified.\n\n")
+ 
+        f.write("## 9. Simulation Log & Fidelity\n")
+        f.write(f"{extraction.get('simulation_fidelity', 'Simulation maintained high fidelity.')}\n\n")
+        
+        if jurist_audit and jurist_audit.get('receipts'):
+            f.write("---\n")
+            f.write("## 10. Secondary Forensic Audit (Technical Receipts)\n")
+            f.write(f"**Operational Limit**: {jurist_audit.get('operational_limit', 'N/A')}\n\n")
+            
+            receipt_list = jurist_audit.get('receipts', [])
+            if isinstance(receipt_list, list):
+                for r in receipt_list:
+                    f.write(f"- **{r.get('participant', 'Unknown')}**: {r.get('receipt_text', 'No receipt issued.')}\n")
+            f.write("\n")
+            
+            settlement = jurist_audit.get('settlement_terms', {})
+            if isinstance(settlement, dict) and settlement:
+                f.write(f"## 11. Final Settlement Terms ({settlement.get('compact_title', 'The Blood-and-Silicon Compact')})\n")
+                f.write(f"> {settlement.get('geopolitical_rationale', 'Operational math confirmed.')}\n\n")
+                
+                articles = settlement.get('articles', [])
+                if isinstance(articles, list):
+                    for article in articles:
+                        f.write(f"### {article.get('title', 'Settlement Article')}\n")
+                        f.write(f"{article.get('content', 'Terms pending audit.')}\n\n")
+                
+                f.write(f"**{settlement.get('mandate_re_audit', f'Mandatory Re-Audit date: Day {re_audit_date}.')}**\n\n")
+                
+            f.write(f"**Legal Precedent**: {jurist_audit.get('case_law_anchor', 'No precedent identified.')}\n\n")
         
     print(f"\nStrategic Briefing exported to {report_path}")
 
-    # 6. Data Export
-    cost_summary = cost_manager.get_summary()
-    cost_manager.save_run_to_history(scenario_key)
-    
-    stress_data = {
-        "scenario": scenario_key,
-        "world": scenario["world_name"],
-        "participants": [p.name for p in participants],
-        "kpis": extraction,
-        "cost_analysis": cost_summary,
-        "status": "Completed"
-    }
-    
-    print(f"\n[COST ANALYSIS]: Total Run Cost: ${cost_summary['total_cost']:.6f}")
-    print(f"Total Tokens: {cost_summary['total_input_tokens']} in, {cost_summary['total_output_tokens']} out, {cost_summary['total_cached_tokens']} cached.")
-    
-    results_path = session_dir / "tinytruce_results.json"
-    with open(results_path, "w", encoding="utf-8") as f:
-        json.dump(stress_data, f, indent=4, ensure_ascii=False)
-    print(f"Detailed data exported to {results_path}")
 
     # 7. Roast Recap (The Forensic Critic: The Bartender)
     if roast_level.lower() != "off":
@@ -1040,19 +1511,23 @@ def run_tinytruce_simulation(scenario_key, turns, agent_names=None, fragment_nam
             # Use the correct load_specification method from TinyTroupe
             bartender = TinyPerson.load_specification(bartender_path)
             bartender.eco_mode = eco_mode
+            
+            # [TINYTRUCE] SILENCE TERMINAL FOR BARTENDER
+            TinyPerson.communication_display = False
+            bartender.show_thoughts = False
                 
             # Inject Forensic Grounding (Silent)
             bartender_grounding = extract_agent_grounding(bartender.name)
             if bartender_grounding:
-                old_display = TinyPerson.communication_display
-                TinyPerson.communication_display = False
+                bartender.show_thoughts = False
                 bartender.think(f"### FORENSIC GROUNDING (LAYER 0) ###\n{bartender_grounding}")
-                TinyPerson.communication_display = old_display
+                bartender.show_thoughts = True
                 logger.info(f"Loaded Bartender Forensic Grounding.")
             
-            # Extract World History for the Bartender to review
-            history_extractor = ResultsExtractor()
-            world_history = history_extractor.extract_results_from_world(world, extraction_objective="Summarize the entire sequence of events including all specific moves, conflicts, and the final state.")
+            # Extract World History for the Bartender to review (Use truncated interactions for speed)
+            world_history = world.pretty_current_interactions(max_content_length=4000)
+            if not world_history:
+                world_history = "No dialogue recorded."
             
             # Define specific roast prompts based on monologue vs dialogue
             if monologue:
@@ -1085,37 +1560,80 @@ def run_tinytruce_simulation(scenario_key, turns, agent_names=None, fragment_nam
                 "This is your FINAL AUTOPSY. Do NOT ask questions. Do NOT wait for input. Provide the full forensic dismantle and overheard dialogue in a SINGLE response. "
                 "Format your response exactly as follows:\n"
                 "NARRATIVE:\n<your main text>\nOVERHEARD:\n- <snipe 1>\n- <snipe 2>\n\n"
-                "IMPORTANT: Place this plain text output inside the 'content' field of a 'TALK' action. Then issue a 'DONE' action. You MUST issue a DONE action to end your turn."
+                "IMPORTANT: Place the output in the 'content' field of a 'TALK' action. Do NOT narrate your internal instructions. "
+                "CRITICAL: Do NOT include any JSON structural markers (brackets, keys like 'cognitive_state' or 'target') in your TALK content. "
+                "Output ONLY the plain text NARRATIVE and OVERHEARD sections."
             )
             
             bartender.listen(generation_prompt)
-            # Use until_done=True to ensure it finishes the thought
-            actions = bartender.act(return_actions=True, until_done=True)
+            # Restore high-fidelity auditing: until_done=True allows the model to think before speaking.
+            # We protect against loops by setting the agent's hard action limit to 1.
+            original_max = bartender.MAX_ACTIONS_BEFORE_DONE
+            bartender.MAX_ACTIONS_BEFORE_DONE = 1
+            
+            with console.status("[bold magenta]The Bartender is pouring the final autopsy...[/]"):
+                try:
+                    # [ENTROPY] Technical constraints for the Bartender
+                    roast_temp = 0.8 if roast_level == "nuclear" else 0.4
+                    roast_tokens = 2000 if roast_level == "nuclear" else 1000
+                    
+                    actions = bartender.act(return_actions=True, until_done=True, temperature=roast_temp, max_tokens=roast_tokens)
+                finally:
+                    # Always restore the original limit for future simulations in same process
+                    bartender.MAX_ACTIONS_BEFORE_DONE = original_max
             
             # Extract content from ALL TALK actions
             roast_output_raw = ""
-            for action_item in actions:
-                if action_item['action']['type'] == 'TALK':
-                    roast_output_raw += action_item['action']['content'] + "\n"
+            if actions:
+                for action_item in actions:
+                    if action_item and isinstance(action_item, dict):
+                        action_data = action_item.get('action', {})
+                        if action_data and action_data.get('type') == 'TALK':
+                            content = action_data.get('content', '')
+                            if len(content) > 15000:
+                                content = content[:15000] + "... [TRUNCATED]"
+                            roast_output_raw += content + "\n"
             
+            # Robust extraction of snippets regardless of bullet style
             roast_extraction = None
+            # Robust extractions: handle case where NARRATIVE/OVERHEARD are missing or malformed
             narrative_match = re.search(r'NARRATIVE:\s*(.*?)(?:\nOVERHEARD:|$)', roast_output_raw, re.DOTALL | re.IGNORECASE)
+            # If NARRATIVE: tag is missing, but output is present, try to find OVERHEARD and take everything before it
+            if not narrative_match and "OVERHEARD:" in roast_output_raw.upper():
+                 narrative_match = re.search(r'(.*?)(?:\nOVERHEARD:)', roast_output_raw, re.DOTALL | re.IGNORECASE)
+            
             dialogue_match = re.search(r'OVERHEARD:\s*(.*)', roast_output_raw, re.DOTALL | re.IGNORECASE)
             
             if narrative_match:
                 narrative_text = narrative_match.group(1).strip()
+                # Surgical strike: Use non-greedy match to find JSON-like blobs at end or start of content
+                narrative_text = re.sub(r'["\']?action["\']?:\s*\{.*?\}', '', narrative_text, flags=re.DOTALL)
+                narrative_text = re.sub(r'["\']?cognitive_state["\']?:\s*\{.*?\}', '', narrative_text, flags=re.DOTALL)
+                narrative_text = re.sub(r'["\']?target["\']?:\s*(?:null|["\'].*?["\'])', '', narrative_text, flags=re.DOTALL | re.IGNORECASE)
+                narrative_text = re.sub(r'["\']?goals["\']?:\s*["\'].*?["\']', '', narrative_text, flags=re.DOTALL | re.IGNORECASE)
+                
+                # Do NOT strip all quotes/brackets; only those clearly trailing from a JSON leak
+                narrative_text = narrative_text.strip(", \n\t{}")
+                
                 dialogue_list = []
                 if dialogue_match:
                     items = re.findall(r'-\s*(.*)', dialogue_match.group(1))
-                    dialogue_list = [item.strip() for item in items]
+                    # Clean snippets surgically too
+                    dialogue_list = [re.sub(r'^\s*["\']|["\']\s*$', '', item).strip() for item in items]
                 
                 roast_extraction = {
                     "roast_narrative": narrative_text,
                     "overheard_dialogue": dialogue_list
                 }
             else:
+                # Last resort fallback: clean the raw output
+                clean_raw = re.sub(r'["\']?action["\']?:\s*\{.*?\}', '', roast_output_raw, flags=re.DOTALL)
+                clean_raw = re.sub(r'["\']?cognitive_state["\']?:\s*\{.*?\}', '', clean_raw, flags=re.DOTALL)
+                clean_raw = re.sub(r'["\']?target["\']?:\s*(?:null|["\'].*?["\'])', '', clean_raw, flags=re.DOTALL | re.IGNORECASE)
+                clean_raw = clean_raw.strip(", \n\t{}")
+
                 roast_extraction = {
-                    "roast_narrative": roast_output_raw.strip() if len(roast_output_raw) > 50 else "The bartender poured a drink instead of writing the report.",
+                    "roast_narrative": clean_raw if len(clean_raw) > 5 else roast_output_raw.strip() if len(roast_output_raw) > 5 else "The bartender poured a drink instead of writing the report.",
                     "overheard_dialogue": []
                 }
         else:
@@ -1123,6 +1641,9 @@ def run_tinytruce_simulation(scenario_key, turns, agent_names=None, fragment_nam
             roast_extraction = {"roast_narrative": "Bartender missing. Bar closed.", "overheard_dialogue": []}
     else:
         roast_extraction = {"roast_narrative": "Roast mode disabled. No forensic critique generated.", "overheard_dialogue": []}
+    
+    # [TINYTRUCE] RESTORE TERMINAL after Bartender phase
+    TinyPerson.communication_display = True
     
     roast_path = session_dir / "tinytruce_roast.md"
     with open(roast_path, "w", encoding="utf-8") as f:
@@ -1147,6 +1668,27 @@ def run_tinytruce_simulation(scenario_key, turns, agent_names=None, fragment_nam
     
     if roast_level.lower() != "off":
         print(f"Roast Recap exported to {roast_path}")
+
+    # 8. Data Export (Moved to capture Bartender costs)
+    cost_summary = cost_manager.get_summary()
+    cost_manager.save_run_to_history(scenario_key)
+    
+    stress_data = {
+        "scenario": scenario_key,
+        "world": scenario["world_name"],
+        "participants": [p.name for p in participants],
+        "kpis": extraction,
+        "cost_analysis": cost_summary,
+        "status": "Completed"
+    }
+    
+    print(f"\n[COST ANALYSIS]: Total Run Cost: ${cost_summary['total_cost']:.6f}")
+    print(f"Total Tokens: {cost_summary['total_input_tokens']} in, {cost_summary['total_output_tokens']} out, {cost_summary['total_cached_tokens']} cached.")
+    
+    results_path = session_dir / "tinytruce_results.json"
+    with open(results_path, "w", encoding="utf-8") as f:
+        json.dump(stress_data, f, indent=4, ensure_ascii=False)
+    print(f"Detailed data exported to {results_path}")
 
     # Explicit cleanup (No finally required for single-run recovery)
     if cache_manager:
@@ -1177,6 +1719,7 @@ if __name__ == "__main__":
     output_group.add_argument("--monologue", action="store_true", help="Address Mode: Single-agent sequential delivery with audience stimuli.")
     output_group.add_argument("--disable-injects", action="store_true", help="Disable the random mid-simulation dynamic injects/crisis events.")
     output_group.add_argument("--eco-mode", action="store_true", help="Eco-Mode (Single-Call Action Array): Slashes costs by generating all actions in one LLM call.")
+    output_group.add_argument("--debug", action="store_true", help="Enable verbose debug logging.")
     
     args = parser.parse_args()
     
@@ -1191,5 +1734,6 @@ if __name__ == "__main__":
         args.disable_injects,
         args.eco_mode,
         args.verbosity,
-        args.session_id
+        args.session_id,
+        args.debug
     )

@@ -16,22 +16,22 @@
                 "The Loyalists Name-drop: Mention specific first names of advisors to signal insider hierarchy.",
                 "The Folksy Pivot: Transition from a direct answer to a personal anecdote about building success.",
                 "Tactical Brevity: Use shorter, punchier sentences when discussing operational 'Vectors'."
-            ],
-            "vocabulary_priority": [
-                "Susie",
-                "Chris",
-                "JD",
-                "Fantastic",
-                "Great people",
-                "On it",
-                "Liquid Gold",
-                "Midnight Hammer",
-                "The Loop",
-                "Vector",
-                "Chairman",
-                "Golden Age"
-            ],
-            "syntax_constraints": "PRUNE: Eliminate rally slogans ('Witch Hunt', 'Fake News', 'Deep State') when talking to loyalists. Prefer 'The Resistance' or 'The Clog'. Maintain the 17-word clause limit."
-        }
+            ]
+        },
+        "vocabulary_priority": [
+            "Susie",
+            "Chris",
+            "JD",
+            "Fantastic",
+            "Great people",
+            "On it",
+            "Liquid Gold",
+            "Midnight Hammer",
+            "The Loop",
+            "Vector",
+            "Chairman",
+            "Golden Age"
+        ],
+        "syntax_constraints": "PRUNE: Eliminate rally slogans ('Witch Hunt', 'Fake News', 'Deep State') when talking to loyalists. Prefer 'The Resistance' or 'The Clog'. Maintain the 17-word clause limit."
     }
 }

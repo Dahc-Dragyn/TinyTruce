@@ -369,7 +369,7 @@ class SituationRoomFaculty(TinyMentalFaculty):
         
         # Configuration (Ngrok Tunnel from .env)
         import os
-        self.base_url = os.getenv("BASE_URL")
+        self.base_url = os.getenv("BASE_URL", "").rstrip("/")
         self.headers = {
             "X-Proxy-Secret": os.getenv("WAR_API_SECRET"),
             "Content-Type": "application/json"
@@ -390,9 +390,13 @@ class SituationRoomFaculty(TinyMentalFaculty):
 
     def process_action(self, agent, action: dict) -> bool:
         import logging
+        
+        if action is None:
+            return False
+
         logger = logging.getLogger("tinytroupe")
         
-        if action['type'] in ["SEARCH_NEWS", "GET_ALERTS"]:
+        if action.get('type') in ["SEARCH_NEWS", "GET_ALERTS"]:
             # Hard Query Quota Check (Higher for 'The Geopolitical Chronicler')
             quota = 5 if "Chronicler" in agent.name else 1
             if self.turn_news_queries >= quota:
@@ -406,13 +410,13 @@ class SituationRoomFaculty(TinyMentalFaculty):
             logger.info(f"[SituationRoom] {agent.name} triggering {action['type']}...")
             
             if action['type'] == "GET_ALERTS":
-                results = self._call_api("/api/alerts", params={"min_severity": 4})
+                results = self._call_api("/war/api/alerts", params={"min_severity": 4})
                 logger.info(f"[SituationRoom] Results returned for {agent.name}")
                 agent.think(f"### [SITUATION ROOM: BREAKING ALERTS] ###\n{results}")
             
             elif action['type'] == "SEARCH_NEWS":
                 query = action.get('content', '')
-                results = self._call_api("/", params={"q": query, "hours": 24})
+                results = self._call_api("/war/", params={"q": query, "hours": 24})
                 logger.info(f"[SituationRoom] Search results for '{query}' returned.")
                 agent.think(f"### [SITUATION ROOM: SEARCH RESULTS for '{query}'] ###\n{results}")
             

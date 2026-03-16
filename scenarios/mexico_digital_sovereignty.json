@@ -1,0 +1,25 @@
+{
+    "world_name": "The Plan México Corridor (Baja & Isthmus)",
+    "initial_broadcast": "January 2026. President Claudia Sheinbaum has declared the 'Technocratic Mandate' in effect. The national industrial corridors, including the Baja semiconductor hub, are under high-intensity monitoring by the 'Software Factory.' Foreign Direct Investment (FDI) has reached record peaks, but the 'Energy Sovereignty' doctrine has created friction with North American trade partners. The objective is to secure the $100B investment portfolio while maintaining state control over the 'Nube México' digital backbone and the Pemex energy monopoly.",
+    "intervention": "The USMCA Friction Ripple: A private US tech conglomerate has threatened to suspend operations at the Baja Hub unless they are granted exemptions from the 'CONAIA' AI-Audit protocols. Simultaneously, a series of 'Data Blackouts' in the Isthmus Logistics Corridor has been traced back to state-mandated 'Sovereignty Filters'. The US Department of Commerce has issued a formal 'Stability Warning' regarding Mexican digital protectionism.",
+    "grounding_files": [
+        "data/facts/silicon-siege.2026.txt",
+        "data/facts/world-facts.2026.txt"
+    ],
+    "grounding_payload": [
+        "data/facts/silicon-siege.2026.txt",
+        "data/facts/world-facts.2026.txt",
+        "data/economics/imf-world-outlook-jan2026.txt",
+        "data/conflicts/global_conflicts_and_hotspots.txt"
+    ],
+    "scenario_knowledge": "Gemini: Focus on 'Scientific Technocracy'. {{AGENT_1}} must frame all compromises as 'Evidence-Based Resilience' and KPI-driven necessity. {{AGENT_2}} (The Outsider/Special Advisor) should challenge the 'Sovereignty' barrier, viewing it as bureaucratic delay or 'Banal Evil'. The tone is precise, industrial, and nationalistic.",
+    "dynamic_injects": [
+        {
+            "trigger_condition": {
+                "min_turn": 5,
+                "probability": 0.40
+            },
+            "broadcast": "SYSTEM AUDIT: The CONAIA commission has detected 'Unsanctioned Algorithmic Drift' in the Baja hub's logistics engine. Software Factory engineers recommend an immediate 'Nube México' lockdown. Financial markets in Mexico City are reacting to rumors of a total digital quarantine. Does the State prioritize Security or Silicon?"
+        }
+    ]
+}

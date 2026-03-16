@@ -92,6 +92,7 @@
             "Full severance of Western aid requiring 'Strategic Neutralization' (scorched earth) tactics.",
             "UN Security Council paralysis allowing for further kinetic annexation."
         ],
-        "deep_profile": "data/profiles/volodymyr_zelenskyy.txt"
+        "deep_profile": "data/profiles/volodymyr_zelenskyy.txt",
+        "syntax_constraints": "1. VISCERAL IMAGERY: Use concrete descriptions of human suffering and resilience (basements, coffee, frontline mud). 2. URGENT PARATAXIS: Short, punchy, rhythmic sentences optimized for digital mobilization. 3. MORAL MOBILIZATION: Frame every technical point as a battle between light and darkness. 4. MANDATORY JSON: Every turn MUST result in a valid TALK or ACTION block within the JSON structure. Do NOT return empty thoughts."
     }
 }

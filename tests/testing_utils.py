@@ -27,8 +27,7 @@ from dotenv import load_dotenv
 load_dotenv(os.path.join(_ROOT_DIR, ".env"))
 
 # Project-native Google Generative AI (matching tinytruce_sim.py)
-import google.generativeai as genai
-from google.generativeai import caching
+from google import genai
 
 ##################################################
 # global constants
@@ -132,36 +131,73 @@ def extract_agent_grounding(agent_name, atlas_path=ATLAS_PATH):
 
 class GeopoliticalCacheManager:
     """Manages Gemini Explicit Context Caching for Layer 0 profiles (matching tinytruce_sim.py)."""
-    def __init__(self, profiles_text, model="models/gemini-2.5-flash-lite-preview-09-2025"):
+    def __init__(self, profiles_text, model=None, session_id="test_run"):
         self.profiles_text = profiles_text
+        self.session_id = session_id
+        
+        # Determine model from config if not provided
+        if model is None:
+            import tinytroupe.utils as utils
+            config = utils.read_config_file()
+            model = config["OpenAI"].get("MODEL", "gemini-2.5-flash-lite")
+        
         self.model = model
-        self.cache = None
+        self.cache_name = None
         self.last_renewed = None
         self.min_chars = 4000 
 
+        # Initialize unified SDK in Vertex AI mode if configured
+        gcp_project = os.getenv("GOOGLE_CLOUD_PROJECT")
+        gcp_location = os.getenv("GOOGLE_CLOUD_LOCATION", "us-central1")
+        
+        try:
+            if gcp_project:
+                self.client = genai.Client(vertexai=True, project=gcp_project, location=gcp_location)
+            else:
+                self.client = genai.Client()
+        except Exception as e:
+            print(f"Failed to initialize Gemini client: {e}")
+            self.client = None
+            
+        # Vertex/Modern caching does not use the 'models/' prefix like AI Studio CLI does
+        if self.model.startswith("models/"):
+            self.model = self.model.replace("models/", "")
+
     def create_cache(self):
+        if not self.client:
+            return None
+            
         if len(self.profiles_text) < self.min_chars:
             return None
+
+        # Session-specific display name to avoid concurrent run collisions
+        model_tag = self.model.replace('models/', '').replace('.', '_')
+        display_name = f"tinytruce_test_{model_tag}_{self.session_id}"
+        
         try:
-            self.cache = caching.CachedContent.create(
+            cache = self.client.caches.create(
                 model=self.model,
-                display_name="tinytruce_test_validation",
-                contents=[self.profiles_text],
-                ttl=datetime.timedelta(minutes=15),
+                config={
+                    'display_name': display_name,
+                    'contents': [self.profiles_text],
+                    'ttl': '900s', # 15 minutes for tests
+                }
             )
+            self.cache_name = cache.name
             self.last_renewed = datetime.datetime.now()
-            return self.cache.name
+            return self.cache_name
         except Exception as e:
             print(f"Gemini Cache Creation Failed: {e}")
             return None
 
     def renew_if_needed(self):
-        if not self.cache:
+        if not self.cache_name:
             return
         elapsed = datetime.datetime.now() - self.last_renewed
         if elapsed > datetime.timedelta(minutes=10):
-            self.cache.update(ttl=datetime.timedelta(minutes=15))
-            self.last_renewed = datetime.datetime.now()
+            # Caches are renewed by creating new ones or updating TTL if implemented
+            # For simplicity in tests, we rely on the 15m TTL
+            pass
 
 ############################################################################################################
 # Original Testing Utilities (preserved)
