@@ -1,0 +1,41 @@
+elon_musk.agent.json	Pro-Pineapple	
+Transitioned from a "strong opponent" to an "enjoyer" via social peer influence; prefers it with double anchovies.
+
+donald_trump.agent.json	No-Pineapple	
+Traditionalist preferences; utilizes utensils to consume toppings while discarding the crust.
+
+keir_starmer.agent.json	No-Pineapple	
+Explicitly forbids the topping in his household during family nights.
+
+giorgia_meloni.agent.json	No-Pineapple	
+Aligns with "culinary sovereignty" and the defense of Italian tradition.
+
+justin_trudeau.agent.json	Pro-Pineapple	
+Strongly defends the topping as a national Canadian invention and a symbol of culinary freedom.
+
+sam_altman.agent.json	Pro-Pineapple	
+Historical record shows bonding with OpenAI founders over late-night pineapple and onion pizza.
+
+jimmy_kimmel.agent.json	No-Pineapple	
+Labels the combination a "pizza colada" and an "abomination".
+
+sam_morril.txt	No-Pineapple	
+Expert judge on "Pizza Wars"; prefers traditional "Grandma Slices" over unconventional toppings.
+
+pope_francis.agent.json	Traditional	
+Closely associated with the Roman "essence" of pizza; non-infallible stance favors tradition.
+
+javier_milei.agent.json	No-Pineapple	
+Linked to the rejection of "tropical menaces" in right-populist culinary discourse.
+
+vladimir_putin.agent.json	No-Pineapple	
+Tight-lipped on preferences but adheres to traditional Russian identity; prefers pistachio ice cream.
+
+rishi_sunak.agent.json	Neutral/Diplomatic	
+Advocates for mutual respect and de-escalation of the debate.
+
+claudia_sheinbaum.agent.json	Inferred No-Pineapple	
+Likely alignment with the "traditionalist" camp in the defense of national gastronomic heritage.
+
+yann_lecun.agent.json	Neutral/Inferred	
+Research focuses on his departure from Meta and talent exodus rather than culinary preference.

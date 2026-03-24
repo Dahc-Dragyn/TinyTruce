@@ -1,0 +1,54 @@
+# TinyTruce: The Hallucination Loop Post-Mortem & Resolution
+
+## 1. The Core Issue: "Verbatim Hallucination Loop"
+In simulations exceeding 5-6 turns, agents were observed to snap back to their Phase 1 "Opening Statements" and repeat them verbatim for the remainder of the run. This rendered the simulation economically and analytically useless from Phase 6 onwards.
+
+## 2. Root Cause Analysis (Bifurcated Failure)
+
+### A. Silent Memory Pruning Failure (`memory.py`)
+A critical logic bug was found in `EpisodicMemory.delete_episodes`. The function contained a bounds check `if end <= len(self.memory):`. 
+- **Effect**: If the simulation was 10 turns long and a prune of 15 turns was requested, the check failed and the deletion was skipped entirely **without raising an error**.
+- **Result**: Memory was never cleared, leading to massive context bloat.
+
+### B. Default Context Bloat (`memory.py`)
+The default values for `fixed_prefix_length` (protection window) and `lookback_length` were both set to **100**.
+- **Effect**: In a 10-20 turn simulation, the "recent memory" logic never activated because the entire session was smaller than the "fixed prefix."
+- **Result**: Agents were force-fed their entire history every turn, overwhelming their "attention" and leading to Context Collapse.
+
+### C. Role Collapse & Lack of Delimiters (`llm_engine.py`)
+When injecting system instructions (persona/redlines) into the Gemini context while using Caching, the system merged instructions directly with user messages.
+- **Effect**: Without clear delimiters, the model could not distinguish between a "System Instruction Move" and the actual "Simulated Scenario Move."
+- **Result**: The model defaulted to the most "anchored" text it could find—its original opening prompt.
+
+### D. Mission Loss (Aggressive Pruning)
+In previous manual pruning attempts, the first 3 turns (Scenario Intel + Opening Statements) were being cleared.
+- **Effect**: Agents lost their "Layer 0" grounding (their core mission).
+- **Result**: They "forgot" the current crisis and reverted to a generic "opening" state.
+
+## 3. The Multi-Layered Fix
+
+### Fix 1: Hardened Pruning Logic (`memory.py`)
+- Removed the restrictive `end <= len(self.memory)` check. Deleting a range larger than the list now correctly clears the list (per standard Python behavior), ensuring pruning actually happens.
+- Reduced default `fixed_prefix_length` to **20**, allowing the sliding window to function correctly in shorter, high-intensity simulations.
+
+### Fix 2: Explicit Identity Delimiters (`llm_engine.py`)
+- Implemented a rigorous message merging loop.
+- Consecutive role blocks are now joined with an explicit structural delimiter: `\n\n--- [SYSTEM UPDATE] ---\n\n`.
+- This "Identity Lock" ensures the model treats system re-injections as meta-instructions rather than user dialogue.
+
+### Fix 3: "Layer 0" Grounding Protection (`tinytruce_sim.py`)
+- Modified `compress_agent_memory` to enforce an immutable **offset of 3 turns**.
+- The Scenario Intel and the first message from each agent are now protected from pruning. This ensures the "North Star" of the simulation is always in the model's active attention.
+
+### Fix 4: Context Window Elasticity
+- Pruning now occurs only when the actual turn count exceeds the protected grounding + the lookback window.
+- Summarization calls (the "Episodic Anchors") are explicitly routed to `gemini-2.5-flash-lite` to maintain cost efficiency.
+
+## 4. Verification Results (VERIFY_FIX Session)
+The `middle_east_reset` scenario was run for 10 turns with the fixes applied.
+- **Memory**: Successfully archived and summarized turns without losing the Layer 0 grounding.
+- **Context**: Delimiters correctly separated instructions from the "Isotope Spike" crisis events.
+- **Behavior**: Agents maintained unique, evolving dialogue through turn 10 without repeating their opening statements.
+
+---
+**Status**: RESOLVED | **Engine**: NativeGemini (Vertex AI Override) | **Date**: March 19, 2026

@@ -16,7 +16,7 @@ FROM: DEPARTMENT OF TREASURY / OFFICE OF DIGITAL ASSETS & COMPUTE STRATEGY
 9. Market Liquidity: The index enables institutional investors to gain direct exposure to the operational layer of AI and trade digital production capacity as a liquid product.
 10. Securitization Model: Compute credit securitization bridges institutional finance and computational infrastructure, allowing for secondary-market liquidity and mark-to-market visibility.
 
-### C4ISR & INFRASTRUCTURE (THE "DIGITAL VAULT")
+### Strategic Systems & Infrastructure (THE "DIGITAL VAULT")
 11. Infrastructure as Value: In 2026, managing full-stack infrastructure is equivalent to managing a gold vault; system failure results in immediate "currency evaporation".
 12. Edge Compute Micro-Credits: Small-scale "Edge Compute" nodes, including home hardware like Ryzen 5 processors and RX 580 GPUs, can now be registered to earn micro-credits in the Trillium economy.
 13. First Line of Defense: The role of the Field Engineer has transitioned into maintaining "Compute Integrity" to prevent economic "Asset Leakage" or "Processing Halts."

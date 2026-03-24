@@ -1,23 +1,24 @@
 {
-    "world_name": "The Belém Pavilion (Climate Finance Summit)",
-    "initial_broadcast": "Deep in the heart of the Amazon littoral, the Belém Pavilion hums with the high-stakes electricity of the 'Great Fracture.' The air is heavy, the negotiation tables are made of recycled tropical hardwoods, and the rhetoric is sharp. We are here to witness the 'Amazon Debt Swap'—a final, desperate attempt to bind the Global North's capital to the Global South's sovereignty. But the 'Picanha' index is rising, the Loss and Damage fund is paralyzed, and {{AGENT_3}}'s 'Technological Removals' are already decoupling from nature-based avoidance. The world isn't looking for a deal; it's looking for a way to survival through fragmentation.",
-    "intervention": "A 'Data Schism' Incident: A leaked report from a coalition of EU-based NGOs claims that deforestation in the Pará region has actually *increased* by 14% due to secret cattle-ranching subsidies, directly contradicting {{AGENT_1}}'s government-verified figures. EU investors are threatening a 'Green Bond' pullout unless Brazil allows immediate, on-the-ground UN 'guardianship' audits. President Lula has just called an emergency press conference to reject all 'colonial interference.'",
-    "grounding_files": [
-        "data/facts/amazon-debt-swap.2026.txt"
-    ],
-    "grounding_payload": [
-        "data/facts/amazon-debt-swap.2026.txt",
-        "data/economics/imf-world-outlook-jan2026.txt",
-        "data/economics/potosi-protocol-2026.txt"
-    ],
-    "scenario_knowledge": "Gemini: Focus on the 'Great Fracture' and the 'Sovereignty vs. Guardianship' conflict. {{AGENT_1}} must use 'Anti-Colonial Defiance' and the 'Care Narrative' of the 'Picanha' promise. {{AGENT_2}} must employ 'Existential Alarmism' and attack the 'Shadow Markets' of carbon. {{AGENT_3}} must promote 'Optimism with Footnotes,' pushing for high-premium 'Tech Removals' over 'Forest Credits.' The tone is defensive, alarmist, and ideologically fractured.",
-    "dynamic_injects": [
-        {
-            "trigger_condition": {
-                "min_turn": 2,
-                "probability": 1.0
-            },
-            "broadcast": "BREAKING (Reuters Earth): Massive, unseasonal wildfires in the Xingu indigenous reserve have suddenly breached total containment lines. Initial satellite telemetry indicates the burn rate has just mathematically destroyed the baseline carbon-sink targets required for the entire debt swap agreement to remain legally valid."
-        }
-    ]
+    "world_name":  "The Belém Pavilion (Climate Finance Summit)",
+    "initial_broadcast":  "Deep in the heart of the Amazon littoral, the Belém Pavilion hums with the high-stakes electricity of the \u0027Great Fracture.\u0027 The air is heavy, the negotiation tables are made of recycled tropical hardwoods, and the rhetoric is sharp. We are here to witness the \u0027Amazon Debt Swap\u0027—a final, desperate attempt to bind the Global North\u0027s capital to the Global South\u0027s sovereignty. But the \u0027Picanha\u0027 index is rising, the Loss and Damage fund is paralyzed, and {{AGENT_3}}\u0027s \u0027Technological Removals\u0027 are already decoupling from nature-based avoidance. The world isn\u0027t looking for a deal; it\u0027s looking for a way to survival through fragmentation.",
+    "intervention":  "A \u0027Data Schism\u0027 Incident: A leaked report from a coalition of EU-based NGOs claims that deforestation in the Pará region has actually *increased* by 14% due to secret cattle-ranching subsidies, directly contradicting {{AGENT_1}}\u0027s government-verified figures. EU investors are threatening a \u0027Green Bond\u0027 pullout unless Brazil allows immediate, on-the-ground UN \u0027guardianship\u0027 audits. President Lula has just called an emergency press conference to reject all \u0027colonial interference.\u0027",
+    "grounding_files":  [
+                            "data/facts/amazon-debt-swap.2026.txt"
+                        ],
+    "grounding_payload":  [
+                              "data/facts/amazon-debt-swap.2026.txt",
+                              "data/economics/imf-world-outlook-jan2026.txt",
+                              "data/economics/potosi-protocol-2026.txt"
+                          ],
+    "scenario_knowledge":  "Gemini: Focus on the \u0027Great Fracture\u0027 and the \u0027Sovereignty vs. Guardianship\u0027 conflict. {{AGENT_1}} must use \u0027Anti-Colonial Defiance\u0027 and the \u0027Care Narrative\u0027 of the \u0027Picanha\u0027 promise. {{AGENT_2}} must employ \u0027Existential Alarmism\u0027 and attack the \u0027Shadow Markets\u0027 of carbon. {{AGENT_3}} must promote \u0027Optimism with Footnotes,\u0027 pushing for high-premium \u0027Tech Removals\u0027 over \u0027Forest Credits.\u0027 The tone is defensive, alarmist, and ideologically fractured.",
+    "dynamic_injects":  [
+                            {
+                                "trigger_condition":  {
+                                                          "min_turn":  2,
+                                                          "probability":  1.0
+                                                      },
+                                "broadcast":  "BREAKING (Reuters Earth): Massive, unseasonal wildfires in the Xingu indigenous reserve have suddenly breached total containment lines. Initial satellite telemetry indicates the burn rate has just mathematically destroyed the baseline carbon-sink targets required for the entire debt swap agreement to remain legally valid."
+                            }
+                        ],
+    "genre":  "geopolitical"
 }

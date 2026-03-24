@@ -110,6 +110,9 @@ class ScenarioSchema(BaseModel):
     dynamic_injects: Optional[List[DynamicInjectSchema]] = Field(default_factory=list)
     intervention: Optional[str] = None
     safety_allegories: Optional[Dict[str, str]] = None
+    genre: Optional[str] = None
+    metadata: Optional[Dict[str, Any]] = None
+    hard_iron_constraint: Optional[Dict[str, Any]] = None
 
 ################################################################################
 # ASSET MANAGER

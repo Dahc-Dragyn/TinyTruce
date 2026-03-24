@@ -1,25 +1,26 @@
 {
-    "world_name": "The Nairobi Silicon Savannah (MNNA Frontier)",
-    "initial_broadcast": "March 2026. Kenya, under President William Ruto, has become the defining test-case for 'Pan-African Tech-Sovereignty.' The 'Digital Superhighway' has digitized 100% of state services, but the geopolitical alignment is fraying. Kenya's Major Non-NATO Ally (MNNA) status is under review by the US Senate following Ruto's 'Facing Forward' state visit to Beijing. The objective is to secure the 'AU-Google' digital agency partnership while avoiding a total rupture with Washington's security umbrella.",
-    "intervention": "The MNNA Sunset: A classified US Senate memo has leaked, proposing a '180-day review' of Kenya's diplomatic loyalty. At the same time, the 'Gava Express' digital identity system has reported a major breach attributed to 'External Geopolitical Actors.' Ruto must manage the 'Stress Pivot' between US security training and Chinese tech infrastructure.",
-    "grounding_files": [
-        "data/facts/blue-nile-gerd.2026.txt",
-        "data/facts/world-facts.2026.txt"
-    ],
-    "grounding_payload": [
-        "data/facts/blue-nile-gerd.2026.txt",
-        "data/facts/world-facts.2026.txt",
-        "data/economics/imf-world-outlook-jan2026.txt",
-        "data/conflicts/global_conflicts_and_hotspots.txt"
-    ],
-    "scenario_knowledge": "Gemini: Focus on 'Propulsive Pedagogy'. {{AGENT_1}} (The Tech-Sovereign) must use 'Rhetorical Question Pivots' to lead the conversation away from binary choices (East vs West) toward 'Opportunity.' {{AGENT_2}} (The Security/Trade Partner) should test the 'Strategic Reciprocity' logic, questioning if the nation is a 'Launchpad' or a 'Proxy.' The tone is rhythmic, kinetic, and defiant.",
-    "dynamic_injects": [
-        {
-            "trigger_condition": {
-                "min_turn": 4,
-                "probability": 0.35
-            },
-            "broadcast": "REVENUE SPIKE: The e-Citizen portal has reported a record KSh 2 Billion daily collection, but US Treasury sensors have flagged the 'Hustler Fund' for suspected 'Reciprocal Infrastructure' ties to Beijing. The 180-day MNNA clock is ticking. Stabilize or Pivot?"
-        }
-    ]
+    "world_name":  "The Nairobi Silicon Savannah (MNNA Frontier)",
+    "initial_broadcast":  "March 2026. Kenya, under President William Ruto, has become the defining test-case for \u0027Pan-African Tech-Sovereignty.\u0027 The \u0027Digital Superhighway\u0027 has digitized 100% of state services, but the geopolitical alignment is fraying. Kenya\u0027s Major Non-NATO Ally (MNNA) status is under review by the US Senate following Ruto\u0027s \u0027Facing Forward\u0027 state visit to Beijing. The objective is to secure the \u0027AU-Google\u0027 digital agency partnership while avoiding a total rupture with Washington\u0027s security umbrella.",
+    "intervention":  "The MNNA Sunset: A classified US Senate memo has leaked, proposing a \u0027180-day review\u0027 of Kenya\u0027s diplomatic loyalty. At the same time, the \u0027Gava Express\u0027 digital identity system has reported a major breach attributed to \u0027External Geopolitical Actors.\u0027 Ruto must manage the \u0027Stress Pivot\u0027 between US security training and Chinese tech infrastructure.",
+    "grounding_files":  [
+                            "data/facts/blue-nile-gerd.2026.txt",
+                            "data/facts/world-facts.2026.txt"
+                        ],
+    "grounding_payload":  [
+                              "data/facts/blue-nile-gerd.2026.txt",
+                              "data/facts/world-facts.2026.txt",
+                              "data/economics/imf-world-outlook-jan2026.txt",
+                              "data/conflicts/global_conflicts_and_hotspots.txt"
+                          ],
+    "scenario_knowledge":  "Gemini: Focus on \u0027Propulsive Pedagogy\u0027. {{AGENT_1}} (The Tech-Sovereign) must use \u0027Rhetorical Question Pivots\u0027 to lead the conversation away from binary choices (East vs West) toward \u0027Opportunity.\u0027 {{AGENT_2}} (The Security/Trade Partner) should test the \u0027Strategic Reciprocity\u0027 logic, questioning if the nation is a \u0027Launchpad\u0027 or a \u0027Proxy.\u0027 The tone is rhythmic, kinetic, and defiant.",
+    "dynamic_injects":  [
+                            {
+                                "trigger_condition":  {
+                                                          "min_turn":  4,
+                                                          "probability":  0.35
+                                                      },
+                                "broadcast":  "REVENUE SPIKE: The e-Citizen portal has reported a record KSh 2 Billion daily collection, but US Treasury sensors have flagged the \u0027Hustler Fund\u0027 for suspected \u0027Reciprocal Infrastructure\u0027 ties to Beijing. The 180-day MNNA clock is ticking. Stabilize or Pivot?"
+                            }
+                        ],
+    "genre":  "geopolitical"
 }

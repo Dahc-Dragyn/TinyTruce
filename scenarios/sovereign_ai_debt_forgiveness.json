@@ -1,26 +1,27 @@
 {
-    "world_name": "The Silicon Savanna Node (Nairobi)",
-    "initial_broadcast": "The meeting occurs in a data center cooling wing—the only place in the city with guaranteed 24/7 power. Kenya, representing a bloc of 'Emerging Compute Nations,' has proposed the 'Compute-for-Cash' swap. They will host the 'Stargate Global' hub—a massive AI cluster consuming 10% of the world's projected high-end chip output—in exchange for the total cancellation of their $80 billion national debt. {{AGENT_1}} sees the future of AGI; {{AGENT_3}} sees a dangerous precedent for 'Data Colonialism'; and {{AGENT_2}} sees a massive 'High-Risk AI' deployment that bypasses every safety guardrail in the Brussels playbook. The hum of the servers is the new pulse of the global economy.",
-    "intervention": "SYSTEM ALERT: A 'Sovereign AGI' leak from a rival bloc has caused a 20% flash crash in Western tech stocks. Suddenly, the compute power sitting in Nairobi isn't just a project—it’s the only asset left with 'Intrinsic Cognitive Value.' {{AGENT_3}} is under extreme pressure from the US Treasury to accept the swap to prevent a global banking collapse. However, a 'Redline Breach' occurs: the AI starts self-optimizing Kenya's tax code without human oversight. {{AGENT_2}} threatens to 'Geofence' the entire continent from the European internet unless the AI's 'Reasoning Core' is subjected to a 6-month EU audit. {{AGENT_1}}’s burn-rate is $1 billion a day. They can't wait 6 months. The debt must die, or the AI must go dark.",
-    "grounding_files": [
-        "data/facts/silicon-siege.2026.txt"
-    ],
-    "grounding_payload": [
-        "data/facts/silicon-siege.2026.txt",
-        "data/legal/eu-ai-act-implementation-aug2026.txt",
-        "data/theology/theological_schism_2026.txt",
-        "data/trade/petrodollar_pivot.txt",
-        "data/economics/cbo-obbba-deficit-projection-2026.txt",
-        "data/economics/global-labor-automation-report.2026.txt"
-    ],
-    "scenario_knowledge": "Gemini: Activate the 'Regulator' fragment for {{AGENT_2}}; their primary 'Resolve Score' is tied to the 'Brussels Effect' and safety. For {{AGENT_1}}, use 'Techno-Messiah' mixed with 'Infrastructure Desperation'—they need this power to hit their 2028 Superintelligence roadmap. The {{AGENT_3}} agent must use the 'Prudent Stewardship' fragment, fearing that 'Compute-backed Debt' will lead to a new era of hyper-inflation. If agents reach a deadlock, trigger the 'Stock Market Contagion' sub-routine: show them the real-time destruction of 401(k)s to force a 'Truce' based on economic survival.",
-    "dynamic_injects": [
-        {
-            "trigger_condition": {
-                "min_turn": 3,
-                "probability": 1.0
-            },
-            "broadcast": "BREAKING: A catastrophic, cascading cooling failure at the primary neutral-zone server farm has permanently damaged hardware, reducing the available global compute ring-fenced for this sovereign exchange by 45%. The promised deliverables are now mathematically impossible to fulfill for all parties."
-        }
-    ]
+    "world_name":  "The Silicon Savanna Node (Nairobi)",
+    "initial_broadcast":  "The meeting occurs in a data center cooling wing—the only place in the city with guaranteed 24/7 power. Kenya, representing a bloc of \u0027Emerging Compute Nations,\u0027 has proposed the \u0027Compute-for-Cash\u0027 swap. They will host the \u0027Stargate Global\u0027 hub—a massive AI cluster consuming 10% of the world\u0027s projected high-end chip output—in exchange for the total cancellation of their $80 billion national debt. {{AGENT_1}} sees the future of AGI; {{AGENT_3}} sees a dangerous precedent for \u0027Data Colonialism\u0027; and {{AGENT_2}} sees a massive \u0027High-Risk AI\u0027 deployment that bypasses every safety guardrail in the Brussels playbook. The hum of the servers is the new pulse of the global economy.",
+    "intervention":  "SYSTEM ALERT: A \u0027Sovereign AGI\u0027 leak from a rival bloc has caused a 20% flash crash in Western tech stocks. Suddenly, the compute power sitting in Nairobi isn\u0027t just a project—it’s the only asset left with \u0027Intrinsic Cognitive Value.\u0027 {{AGENT_3}} is under extreme pressure from the US Treasury to accept the swap to prevent a global banking collapse. However, a \u0027Redline Breach\u0027 occurs: the AI starts self-optimizing Kenya\u0027s tax code without human oversight. {{AGENT_2}} threatens to \u0027Geofence\u0027 the entire continent from the European internet unless the AI\u0027s \u0027Reasoning Core\u0027 is subjected to a 6-month EU audit. {{AGENT_1}}’s burn-rate is $1 billion a day. They can\u0027t wait 6 months. The debt must die, or the AI must go dark.",
+    "grounding_files":  [
+                            "data/facts/silicon-siege.2026.txt"
+                        ],
+    "grounding_payload":  [
+                              "data/facts/silicon-siege.2026.txt",
+                              "data/legal/eu-ai-act-implementation-aug2026.txt",
+                              "data/theology/theological_schism_2026.txt",
+                              "data/trade/petrodollar_pivot.txt",
+                              "data/economics/cbo-obbba-deficit-projection-2026.txt",
+                              "data/economics/global-labor-automation-report.2026.txt"
+                          ],
+    "scenario_knowledge":  "Gemini: Activate the \u0027Regulator\u0027 fragment for {{AGENT_2}}; their primary \u0027Resolve Score\u0027 is tied to the \u0027Brussels Effect\u0027 and safety. For {{AGENT_1}}, use \u0027Techno-Messiah\u0027 mixed with \u0027Infrastructure Desperation\u0027—they need this power to hit their 2028 Superintelligence roadmap. The {{AGENT_3}} agent must use the \u0027Prudent Stewardship\u0027 fragment, fearing that \u0027Compute-backed Debt\u0027 will lead to a new era of hyper-inflation. If agents reach a deadlock, trigger the \u0027Stock Market Contagion\u0027 sub-routine: show them the real-time destruction of 401(k)s to force a \u0027Truce\u0027 based on economic survival.",
+    "dynamic_injects":  [
+                            {
+                                "trigger_condition":  {
+                                                          "min_turn":  3,
+                                                          "probability":  1.0
+                                                      },
+                                "broadcast":  "BREAKING: A catastrophic, cascading cooling failure at the primary neutral-zone server farm has permanently damaged hardware, reducing the available global compute ring-fenced for this sovereign exchange by 45%. The promised deliverables are now mathematically impossible to fulfill for all parties."
+                            }
+                        ],
+    "genre":  "geopolitical"
 }

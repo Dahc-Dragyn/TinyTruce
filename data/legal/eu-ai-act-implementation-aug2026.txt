@@ -16,7 +16,7 @@ FROM: EUROPEAN AI OFFICE / MARKET SURVEILLANCE & COMPLIANCE DIVISION
 9. Data Residency vs. Sovereignty: 2026 case law (EU vs. Hyperscale Corp) established that "Data Residency" (storing data in Frankfurt) is insufficient if the provider is a US-incorporated entity.
 10. The "Black Box" Audit: The requirement for "Explainability" has made many 2024-era neural networks obsolete; if the training data can't be forensicly verified for "Bias Leaks," the model is de-certified.
 
-### C4ISR & ML INFRASTRUCTURE IMPACT
+### Systems & Intelligence Infrastructure IMPACT
 11. "First Line of Defense" Hardening: Any AI integrated into critical infrastructure (power, water, telecom) must now have a "Sovereign Kill Switch" that ensures it can operate entirely offline/on-prem.
 12. Algorithmic Resilience: The shift from "Compute Denial" to "Model Resilience." EU defense contractors are prioritizing "Small Language Models" (SLMs) that can run on hardened, local edge-servers.
 13. The "Brussels Effect" 2.0: Non-EU nations (like India and Brazil) are adopting "Sovereign AI Debt" frameworks, forcing global tech firms to offer "De-coupled" model variants.
@@ -30,4 +30,4 @@ FROM: EUROPEAN AI OFFICE / MARKET SURVEILLANCE & COMPLIANCE DIVISION
 | **Audit Type** | Self-Assessment | Mandatory Third-Party "Conformity" |
 | **Jurisdiction** | Global/Distributed | "Brussels-Nexus" (Strict residency) |
 | **Penalties** | Warning Letters | Active Market-Removal & Multi-Million Fines |
-| **C4ISR Focus** | Speed of Inference | Integrity of Training Data & Data Pedigree |
+| **Systems Focus** | Speed of Inference | Integrity of Training Data & Data Pedigree |

@@ -16,8 +16,8 @@ FROM: EU JOINT RESEARCH CENTRE (JRC) / AFRICAN UNION AI AGENCY (AAA) JOINT TASK 
 9. UN Moratorium: Secretary-General Guterres has called for an immediate global pause on all AI-only asylum vetting until "Explainable-by-Design" standards are met.
 10. The Brussels Rift: Internal EU friction has spiked, with Germany's "KI-MIG" enforcement agency threatening to de-certify the entire Entry/Exit System (EES) stack.
 
-### C4ISR & ML INFRASTRUCTURE (SYSTEM INTEGRITY)
-11. First Line of Defense Failure: This represents a "Logic Leak" in the middle of the C4ISR stack. The hardware and network remain secure, but the decision-making integrity is compromised.
+### Systems & Intelligence Infrastructure (SYSTEM INTEGRITY)
+11. First Line of Defense Failure: This represents a "Logic Leak" in the middle of the Strategic Systems stack. The hardware and network remain secure, but the decision-making integrity is compromised.
 12. Full-Stack Auditability: Future "Field Engineers" are now required to audit model weights and training lineages as frequently as they check RAID configurations.
 13. Explainable-by-Design: The 2026 push for "Explainable Borders" requires that every vetting decision be supported by a human-readable "Logic Trace."
 14. Eurodac 2.0 Integration: Because EuroGuard V is deep-linked into the Eurodac 2.0 "Digital Thread," the bias leak has contaminated millions of historical identity records.

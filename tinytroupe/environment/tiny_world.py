@@ -541,7 +541,7 @@ class TinyWorld:
                 content_obj = communication.get("content") or {}
                 action_obj = content_obj.get("action") or {}
                 action_type = action_obj.get("type")
-                if action_type == "THINK":
+                if action_type in ["THINK", "THOUGHT", "INTERNAL_MONOLOGUE"]:
                     return
         #
         # check if the communication is just repeating the last one for a different target

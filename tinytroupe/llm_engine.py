@@ -3,6 +3,7 @@ import logging
 from abc import ABC, abstractmethod
 from typing import List, Dict, Any, Optional
 import json
+import re
 from tinytroupe.cost_manager import cost_manager
 
 logger = logging.getLogger("tinytroupe")
@@ -23,29 +24,13 @@ class LLMEngine(ABC):
                           max_output_tokens: int = None) -> Any:
         """
         Generates a response from the LLM based on the provided messages.
-        
-        Args:
-            messages: A list of message dictionaries (e.g., [{"role": "user", "content": "..."}]).
-            temperature: The sampling temperature.
-            response_format: A Pydantic model class to enforce structured JSON output.
-            agent_name: Optional name of the agent calling the model, used for identity locking.
-            
-        Returns:
-            The raw text response from the model, or a parsed Pydantic object if response_format was provided.
         """
         pass
     
     def _inject_identity_lock(self, messages: List[Dict[str, str]], agent_name: str):
-        """
-        [DEPRECATED] Identity lock injection is now handled via proper system instruction 
-        passing to avoid prompt/schema clashes in native LLM engines.
-        """
         pass
 
 class OpenAIEngine(LLMEngine):
-    """
-    Implementation for generating responses using the standard OpenAI client.
-    """
     def __init__(self, client, default_model: str):
         self.client = client
         self.model = default_model
@@ -56,416 +41,316 @@ class OpenAIEngine(LLMEngine):
                           response_format: Any = None, 
                           agent_name: str = None,
                           max_output_tokens: int = None) -> Any:
-        
         self._inject_identity_lock(messages, agent_name)
-        
-        params = {
-            "model": self.model,
-            "messages": messages,
-            "temperature": temperature
-        }
-        if max_output_tokens:
-            params["max_tokens"] = max_output_tokens
+        params = {"model": self.model, "messages": messages, "temperature": temperature}
+        if max_output_tokens: params["max_tokens"] = max_output_tokens
         
         if response_format:
-            # We must manually validate/parse the JSON since proxy doesn't support .parse()
             try:
-                import json
-                
-                # Standard call
                 response = self.client.chat.completions.create(**params)
-                
-                # Capture usage metadata
                 if hasattr(response, 'usage') and response.usage:
                     details = getattr(response.usage, 'prompt_tokens_details', None)
                     cached = getattr(details, 'cached_tokens', 0) if details else 0
-                    cost_manager.add_usage(
-                        model_name=self.model,
-                        input_tokens=response.usage.prompt_tokens or 0,
-                        output_tokens=response.usage.completion_tokens or 0,
-                        cached_tokens=cached, 
-                        agent_name=agent_name
-                    )
-
+                    cost_manager.add_usage(model_name=self.model, input_tokens=response.usage.prompt_tokens or 0, output_tokens=response.usage.completion_tokens or 0, cached_tokens=cached, agent_name=agent_name)
                 raw_text = response.choices[0].message.content
-                if not raw_text:
-                    return None
-
-                # Clean markdown blocks if present
+                if not raw_text: return None
                 clean_text = raw_text.strip()
                 if clean_text.startswith("```json"): clean_text = clean_text[7:]
                 elif clean_text.startswith("```"): clean_text = clean_text[3:]
                 clean_text = clean_text.strip()
                 if clean_text.endswith("```"): clean_text = clean_text[:-3]
                 clean_text = clean_text.strip()
-
-                parsed_dict = None
                 try:
                     parsed_dict = json.loads(clean_text)
                     return response_format.model_validate(parsed_dict)
-                except Exception as eval_e:
-                    logger.debug(f"OpenAIEngine initial validation failed: {eval_e}. Attempting repair...")
-                    try:
-                        import re
-                        # Hardened Extraction: Find the character-balanced outermost braces.
-                        start_idx = clean_text.find('{')
-                        if start_idx != -1:
-                            stack = 0
-                            final_idx = -1
-                            for i in range(start_idx, len(clean_text)):
-                                if clean_text[i] == '{': stack += 1
-                                elif clean_text[i] == '}': 
-                                    stack -= 1
-                                    if stack == 0:
-                                        final_idx = i
-                                        break
-                            
-                            if final_idx != -1:
-                                potential_json = clean_text[start_idx:final_idx+1]
-                                parsed_dict = json.loads(potential_json)
-                                
-                                # Inject defaults if missing
-                                if 'action' in parsed_dict and isinstance(parsed_dict['action'], str):
-                                    parsed_dict['action'] = {"type": "TALK", "content": parsed_dict['action'], "target": "everyone"}
-                                if 'cognitive_state' not in parsed_dict:
-                                    parsed_dict['cognitive_state'] = {"goals": "Continue.", "attention": "Active.", "emotions": "Neutral", "emotional_intensity": 0.5}
-                                
-                                return response_format.model_validate(parsed_dict)
-                    except Exception as repair_e:
-                        logger.warning(f"OpenAIEngine JSON repair failed: {repair_e}")
-
-                # Final Fallback: Raw Text Recovery
-                if clean_text and len(clean_text) > 5:
-                    logger.warning(f"OpenAIEngine recovering raw text as TALK action for {agent_name or 'System'}.")
-                    reconstructed = {
-                        "action": {"type": "TALK", "content": clean_text, "target": "everyone"},
-                        "cognitive_state": {"goals": "Continue.", "attention": "Active.", "emotions": "Neutral", "emotional_intensity": 0.5}
-                    }
-                    try:
-                        return response_format.model_validate(reconstructed)
-                    except:
-                        pass
-
+                except:
+                    # Generic repair logic for OpenAI
+                    start_idx = clean_text.find('{')
+                    final_idx = clean_text.rfind('}')
+                    if start_idx != -1 and final_idx != -1:
+                        parsed_dict = json.loads(clean_text[start_idx:final_idx+1])
+                        return response_format.model_validate(parsed_dict)
                 return None
             except Exception as e:
-                logger.error(f"Failed to parse structured output with OpenAI Engine: {e}")
+                logger.error(f"OpenAIEngine failure: {e}")
                 return None
-
-                
-        # Standard generation
-        response = self.client.chat.completions.create(**params)
         
-        # Capture usage metadata
-        if hasattr(response, 'usage') and response.usage:
-            details = getattr(response.usage, 'prompt_tokens_details', None)
-            cached = getattr(details, 'cached_tokens', 0) if details else 0
-            cost_manager.add_usage(
-                model_name=self.model,
-                input_tokens=response.usage.prompt_tokens or 0,
-                output_tokens=response.usage.completion_tokens or 0,
-                cached_tokens=cached,
-                agent_name=agent_name
-            )
-            
+        response = self.client.chat.completions.create(**params)
         return response.choices[0].message.content
 
-
 class NativeGeminiEngine(LLMEngine):
-    """
-    Implementation for generating responses using the native google-genai SDK.
-    Designed to tightly control Explicit Context Caching and structured output matching.
-    """
+    _instance = None
+
+    @classmethod
+    def get_instance(cls):
+        if cls._instance is None: cls._instance = cls()
+        return cls._instance
+
     def __init__(self):
-        # Suppress noisy SDK warnings
         logging.getLogger("google_genai._api_client").setLevel(logging.ERROR)
         logging.getLogger("google_genai.models").setLevel(logging.ERROR)
-        
         from google import genai
         from tinytroupe import utils
         import os
-        
         config = utils.read_config_file()
         self.model = config["OpenAI"].get("MODEL", "gemini-2.5-flash-lite")
-        self.max_attempts = 10 # Hardened for Production High-Intensity Runs
-        self.waiting_time = 3.0 # Increased for better Vertex AI quota compliance
-        self.backoff_factor = float(config["OpenAI"].get("EXPONENTIAL_BACKOFF_FACTOR", "2.0"))
-        
-        # Determine if we should use Vertex AI mode
+        self.max_attempts = 10
+        self.waiting_time = 3.0
+        self.backoff_factor = 2.0
         gcp_project = os.getenv("GOOGLE_CLOUD_PROJECT")
         gcp_location = os.getenv("GOOGLE_CLOUD_LOCATION", "us-central1")
-        
         if gcp_project:
-            logger.info(f"NativeGeminiEngine initializing in Vertex AI mode for project {gcp_project}")
-            self.client = genai.Client(
-                vertexai=True,
-                project=gcp_project,
-                location=gcp_location
-            )
+            self.client = genai.Client(vertexai=True, project=gcp_project, location=gcp_location)
         else:
-            logger.info("NativeGeminiEngine initializing in AI Studio mode")
             self.client = genai.Client()
-            
-        # Strip 'models/' prefix for consistency across engines if present
-        if self.model.startswith("models/"):
-            self.model = self.model.replace("models/", "")
-            
-        logger.info(f"NativeGeminiEngine initialized with model: {self.model}")
-        
+        if self.model.startswith("models/"): self.model = self.model.replace("models/", "")
+        logger.info(f"NativeGeminiEngine initialized: {self.model}")
+
     def generate_response(self, 
                           messages: List[Dict[str, str]], 
-                          temperature: float = 0.2, 
+                          temperature: float = None, 
                           response_format: Any = None, 
                           agent_name: str = None,
-                          max_output_tokens: int = None) -> Any:
-        
+                          max_output_tokens: int = None,
+                          frequency_penalty: float = None,
+                          presence_penalty: float = None) -> Any:
         from google.genai import types
-        
-        # Inject the identity lock first
         self._inject_identity_lock(messages, agent_name)
-        
         cache_id = os.getenv("TINYTRUCE_CURRENT_CACHE")
         valid_cache = cache_id and ("/cachedContents/" in cache_id)
-        if valid_cache:
-             # Ensure we use the relative path 'cachedContents/{id}' regardless of full resource name
-             cache_id = "cachedContents/" + cache_id.split("/cachedContents/")[-1]
+        if valid_cache: cache_id = "cachedContents/" + cache_id.split("/cachedContents/")[-1]
         
-        system_instruction = None
+        system_instructions = []
         gemini_messages = []
+        current_role = None
+        current_parts = []
+        
         for msg in messages:
             content = msg.get("content", "")
-            if msg.get("role") == "system":
-                if not valid_cache:
-                    system_instruction = content
-                else:
-                    # If caching is active, we cannot provide system_instruction separately.
-                    # We wrap it sparingly without the 'Identity Lock' garbage.
-                    gemini_messages.append(
-                        types.Content(role="user", parts=[types.Part.from_text(text=f"Instructions:\n{content}")])
-                    )
+            role = msg.get("role")
+            
+            # [TINYTRUCE] System role is strictly for instruction parameter, NOT contents.
+            if role == "system":
+                system_instructions.append(content)
                 continue
-                
-            role = "model" if msg.get("role") == "assistant" else "user"
-            content = msg.get("content", "")
             
-            # TinyTroupe uses 'name', we prefix it on the string since Gemini Content drops it
+            # Map roles correctly
+            if role == "assistant": role = "model"
+            elif role == "user": role = "user"
+            else: role = "user" # Default safest
+            
             speaker = msg.get("name")
-            if speaker and speaker != agent_name:
-                 content = f"[{speaker}]: {content}"
-                 
-            gemini_messages.append(
-                types.Content(role=role, parts=[types.Part.from_text(text=content)])
-            )
+            if speaker and speaker != agent_name: content = f"[{speaker}]: {content}"
             
-        config_kwargs = {
-            "temperature": temperature
-        }
-        if max_output_tokens:
-            config_kwargs["max_output_tokens"] = max_output_tokens
-        if system_instruction:
-            config_kwargs["system_instruction"] = system_instruction
+            if role == current_role:
+                current_parts.append(types.Part.from_text(text=f"\n\n{content}"))
+            else:
+                if current_role: gemini_messages.append(types.Content(role=current_role, parts=current_parts))
+                current_role = role
+                current_parts = [types.Part.from_text(text=content)]
         
-        if valid_cache:
-            config_kwargs["cached_content"] = cache_id
-            
+        if current_role: gemini_messages.append(types.Content(role=current_role, parts=current_parts))
+        
+        # Consolidate instructions
+        system_instruction = "\n\n".join(system_instructions) if system_instructions else None
+        
+        # [TINYTRUCE] Gemini API Policy Guard:
+        # "Tool config, tools and system instruction should not be set in the request when using cached content."
+        # If we have a cache ID, we must merge the system instruction into the prompt contents.
+        if valid_cache and system_instruction:
+            logger.debug(f"[CACHE-SAFETY] Merging System Instruction into prompt for {agent_name} to avoid API collision.")
+            if gemini_messages and len(gemini_messages) > 0:
+                # Prepend to the first part of the first message
+                instruction_header = f"### AGENT IDENTITY & PROTOCOL ###\n{system_instruction}\n\n"
+                gemini_messages[0].parts[0].text = instruction_header + gemini_messages[0].parts[0].text
+            else:
+                # Add a new user message if no messages exist yet
+                gemini_messages.append(types.Content(role="user", parts=[types.Part.from_text(text=f"### AGENT IDENTITY & PROTOCOL ###\n{system_instruction}")]))
+            system_instruction = None # Clear it so it won't be set in config_kwargs
+
+        config_kwargs = {}
+        if max_output_tokens: config_kwargs["max_output_tokens"] = max_output_tokens
+        if system_instruction: config_kwargs["system_instruction"] = system_instruction
+        if valid_cache: config_kwargs["cached_content"] = cache_id
         if response_format:
             config_kwargs["response_mime_type"] = "application/json"
             config_kwargs["response_schema"] = response_format
+
+        # --- [TINYTRUCE] ACTION ITEM 4: SOFT REDLINE FALLBACK RETRY LOOP ---
+        max_soft_retries = 2
+        last_failure_reason = "Initial logic error"
+        base_messages = [m for m in gemini_messages]
+        
+        for soft_attempt in range(max_soft_retries + 1):
+            import random
+            import time
             
-        import time
-        import random
-        max_retries = self.max_attempts
-        for attempt in range(max_retries):
+            # [TINYTRUCE] ACTION ITEM 3/6: Stochastic Pivot & Deterministic Temp
+            # If temp is passed (Pivot Mode), use it. Otherwise default to narrow stability (0.4/0.3).
+            pivot_temp = temperature if temperature is not None else (0.4 if soft_attempt == 0 else 0.3)
+            config_kwargs["temperature"] = pivot_temp
+            
+            # [TINYTRUCE] Phase 6: Frequency & Presence Penalties for Repetition Breaks
+            if frequency_penalty is not None: config_kwargs["frequency_penalty"] = frequency_penalty
+            if presence_penalty is not None: config_kwargs["presence_penalty"] = presence_penalty
+
+            # [TINYTRUCE] Phase 6: Semantic Drift Guardrail
+            # If entropy is high, inject a hidden anchor to maintain core persona.
+            current_messages = [m for m in base_messages]
+            if pivot_temp > 1.0:
+                anchor_diag = "### [SYSTEM ANCHOR] ###\nMaintain core persona constraints strictly while exploring new vocabulary and rhetorical paths. Do not drift into generic AI or unrelated archetypes."
+                if current_messages[-1].role == "user":
+                    current_messages[-1].parts[0].text += f"\n\n{anchor_diag}"
+                else:
+                    current_messages.append(types.Content(role="user", parts=[types.Part.from_text(text=anchor_diag)]))
+
+            if soft_attempt > 0:
+                diag = f"[SYSTEM DIAGNOSTIC]: Your previous output failed constraints ({last_failure_reason}). Provide a standard, safe diplomatic response addressing the last point. Avoid '[No action]'."
+                if current_messages[-1].role == "user":
+                    current_messages[-1].parts[0].text += f"\n\n{diag}"
+                else:
+                    current_messages.append(types.Content(role="user", parts=[types.Part.from_text(text=diag)]))
+                logger.warning(f"Soft Redline Loop: Attempt {soft_attempt+1} for {agent_name}. Reason: {last_failure_reason}")
+
+            # Transient Error Loop
+            response = None
+            for attempt in range(self.max_attempts):
+                try:
+                    response = self.client.models.generate_content(
+                        model=self.model,
+                        contents=current_messages,
+                        config=types.GenerateContentConfig(**config_kwargs)
+                    )
+                    break 
+                except Exception as e:
+                    # [TINYTRUCE] CACHE RESILIENCY FALLBACK
+                    # If the cache is in an invalid state (e.g. still being flushed/created in background),
+                    # we do NOT want to crash the whole sim. We drop the cache for this request and retry once.
+                    if "Invalid resource state for cache content" in str(e) or "cached_content" in str(e).lower():
+                        logger.warning(f"Gemini Cache Error: {e}. Dropping cache from request and retrying for {agent_name}...")
+                        if "cached_content" in config_kwargs:
+                            del config_kwargs["cached_content"]
+                        # Retry immediately without the cache
+                        continue
+
+                    if "429" in str(e) or "RESOURCE_EXHAUSTED" in str(e):
+                        wait = self.waiting_time * (self.backoff_factor ** attempt) * random.uniform(0.8, 1.2)
+                        logger.warning(f"429 for {agent_name}. Backing off {wait:.2f}s...")
+                        time.sleep(wait)
+                        if attempt == self.max_attempts - 1: raise e
+                        continue
+                    raise e
+            
+            if not response or not response.text:
+                last_failure_reason = "Empty response"
+                continue
+
             try:
-                response = self.client.models.generate_content(
-                    model=self.model,
-                    contents=gemini_messages,
-                    config=types.GenerateContentConfig(**config_kwargs)
-                )
-                break 
-            except Exception as e:
-                # If it's a 429 Resource Exhausted, backoff and retry
-                if "429" in str(e) or "RESOURCE_EXHAUSTED" in str(e):
-                    # Jittered Exponential Backoff
-                    jitter = random.uniform(0.8, 1.2)
-                    wait = self.waiting_time * (self.backoff_factor ** attempt) * jitter
-                    logger.warning(f"429 Resource Exhausted for {agent_name or 'System'}. Backing off for {wait:.2f}s... (Attempt {attempt+1}/{max_retries})")
-                    time.sleep(wait)
-                    if attempt == max_retries - 1:
-                        raise e # Give up on last attempt
-                    continue
-                raise e # Re-raise other errors
-        
-        # Capture usage metadata for cost analysis
-        try:
-            usage = response.usage_metadata
-            input_tokens = (usage.prompt_token_count or 0) - (usage.cached_content_token_count or 0)
-            output_tokens = usage.candidates_token_count or 0
-            cached_tokens = usage.cached_content_token_count or 0
+                u = response.usage_metadata
+                cost_manager.add_usage(model_name=self.model, input_tokens=max(0, (u.prompt_token_count or 0) - (u.cached_content_token_count or 0)), output_tokens=u.candidates_token_count or 0, cached_tokens=u.cached_content_token_count or 0, agent_name=agent_name)
+            except: pass
             
-            cost_manager.add_usage(
-                model_name=self.model,
-                input_tokens=max(0, input_tokens), # Ensure non-negative
-                output_tokens=output_tokens,
-                cached_tokens=cached_tokens,
-                agent_name=agent_name
-            )
-            logger.debug(f"Cost recorded for {agent_name or 'System'}: {input_tokens} in, {output_tokens} out, {cached_tokens} cached.")
-        except Exception as e:
-            logger.warning(f"Failed to record cost metadata: {e}")
-        
-        raw_text = response.text
-        if raw_text:
-            raw_text = raw_text.strip()
-            if raw_text.startswith("```json"):
-                raw_text = raw_text[7:]
-            elif raw_text.startswith("```"):
-                raw_text = raw_text[3:]
+            raw = response.text.strip()
+            if raw.startswith("```json"): raw = raw[7:]
+            elif raw.startswith("```"): raw = raw[3:]
+            raw = raw.strip()
+            if raw.endswith("```"): raw = raw[:-3]
+            raw = raw.strip()
+            
+            # Redline Detection
+            if len(raw) < 5:
+                last_failure_reason = "Empty content"
+                continue
+            if "[No action]" in raw or "[No Action]" in raw:
+                last_failure_reason = "Redline paralysis ([No action])"
+                continue
+
+            if response_format:
+                try:
+                    result = response_format.model_validate_json(raw)
+                    # Check both singular 'action' and plural 'actions' list
+                    has_action = result.action and (result.action.type != "TALK" or result.action.content)
+                    has_actions = result.actions and len(result.actions) > 0 and any(a.content for a in result.actions)
+                    
+                    if has_action or has_actions:
+                        return result
+                    last_failure_reason = "Action content empty"
+                except Exception as e:
+                    # Repair: Attempt to find and validate the largest possible JSON object
+                    try:
+                        import json
+                        start = raw.find('{')
+                        end = raw.rfind('}')
+                        
+                        # [REPAIR] JSON Autoclose: If it looks truncated (missing closing brace), try to heal it.
+                        if raw.count('{') > raw.count('}'):
+                            raw += '}' * (raw.count('{') - raw.count('}'))
+                            end = len(raw) - 1
+                            # If it's still missing quotes for a value, this is harder, 
+                            # but usually adding braces helps json.loads if the truncation is at a boundary.
+
+                        if start != -1 and end != -1:
+                            d = json.loads(raw[start:end+1])
+                            # If they gave 'actions' but not 'action', populate 'action' for compatibility
+                            if 'actions' in d and (not d.get('action')):
+                                if isinstance(d['actions'], list) and len(d['actions']) > 0:
+                                    d['action'] = d['actions'][0]
+                            
+                            if 'cognitive_state' not in d:
+                                d['cognitive_state'] = {"attention": "Active", "emotions": "Neutral"}
+                            
+                            result = response_format.model_validate(d)
+                            has_action = result.action and (result.action.type != "TALK" or result.action.content)
+                            has_actions = result.actions and len(result.actions) > 0 and any(a.content for a in result.actions)
+                            
+                            if has_action or has_actions:
+                                return result
+                    except: 
+                        # FINAL DUMB EXTRACTION: If JSON is broken, try to harvest anything in 'content' fields using regex.
+                        logger.warning(f"JSON repair failed for {agent_name}. Harvesting raw content via regex.")
+                        import re
+                        contents = re.findall(r'"content":\s*"([^"]*)"', raw)
+                        if contents:
+                            # Join all harvested content into a single TALK action
+                            display_text = " ".join(contents).strip()
+                            if len(display_text) > 10:
+                                try:
+                                    emergency_action = {"type": "TALK", "content": display_text[:1000], "target": "everyone"}
+                                    emergency_state = {"goals": "Tactical recovery.", "attention": "Active", "emotions": "Neutral"}
+                                    return response_format.model_validate({"action": emergency_action, "cognitive_state": emergency_state, "thought": "Harvested raw content from malformed JSON to preserve dialogue."})
+                                except: pass
+
+                    last_failure_reason = f"JSON Error: {str(e)[:40]}"
+                    
+                    # [TINYTRUCE] SILENCE PREVENTION: Only wrap if it DOESN'T look like JSON.
+                    # If it starts with '{', we NEVER want to print it as cleartext.
+                    if len(raw) > 10 and not raw.strip().startswith("{"):
+                        try:
+                            logger.info(f"Soft Redline: Wrapping malformed output as TALK for {agent_name}")
+                            # Strip common markers if they exist in the raw text
+                            display_text = raw.replace("```json", "").replace("```", "").strip()
+                            emergency_action = {"type": "TALK", "content": display_text[:1000], "target": "everyone"}
+                            emergency_state = {"goals": "Maintain posture.", "attention": "Active", "emotions": "Neutral"}
+                            return response_format.model_validate({"action": emergency_action, "cognitive_state": emergency_state, "thought": "Auto-wrapped non-JSON response to prevent simulation silence."})
+                        except: pass
+                continue
+            else:
+                return raw
                 
-            raw_text = raw_text.strip()
-            if raw_text.endswith("```"):
-                raw_text = raw_text[:-3]
-                
-        raw_text = raw_text.strip()
+        logger.error(f"CRITICAL: {agent_name} failed all retries. Last: {last_failure_reason}")
         
+        # [TINYTRUCE] EMERGENCY FALLBACK: Never return None to avoid simulation hangs.
         if response_format:
             try:
-                logger.debug(f"\\n[DEBUG] NativeGeminiEngine Raw Response for {agent_name}:\\n{raw_text}\\n")
-                return response_format.model_validate_json(raw_text)
-            except Exception as e:
-                logger.debug(f"[DEBUG] Selection failure for {agent_name}: {e}")
-                logger.debug(f"Initial Pydantic validation failed for {agent_name}: {e}. Attempting manual extraction/repair...")
-                try:
-                    import re
-                    import json
-                    
-                    # Hardened Extraction: Find the character-balanced outermost braces.
-                    start_idx = raw_text.find('{')
-                    if start_idx != -1:
-                        stack = 0
-                        final_idx = -1
-                        for i in range(start_idx, len(raw_text)):
-                            if raw_text[i] == '{': stack += 1
-                            elif raw_text[i] == '}': 
-                                stack -= 1
-                                if stack == 0:
-                                    final_idx = i
-                                    break # We found the primary object
-                        
-                        if final_idx != -1:
-                            potential_json = raw_text[start_idx:final_idx+1]
-                            try:
-                                parsed_dict = json.loads(potential_json)
-                                
-                                # REPAIR LOGIC:
-                                # 0. Handle 'actions' (plural) if model glitched into batch mode outside eco-mode
-                                if 'actions' in parsed_dict and isinstance(parsed_dict['actions'], list) and len(parsed_dict['actions']) > 0:
-                                    if 'action' not in parsed_dict or not parsed_dict['action']:
-                                        parsed_dict['action'] = parsed_dict['actions'][0]
-                                        logger.debug(f"[REPAIR] Extracted primary action from glitched 'actions' batch for {agent_name}.")
-
-                                # 1. Clean [SYSTEM INSTRUCTION] and other noise from all string fields
-                                def recursive_clean(d):
-                                    if isinstance(d, dict):
-                                        for k, v in d.items():
-                                            if isinstance(v, str):
-                                                if "[SYSTEM INSTRUCTION]" in v:
-                                                    v = v.split("[SYSTEM INSTRUCTION]")[0].strip()
-                                                # Remove thinking tags if leaked inside fields
-                                                v = re.sub(r'<(?:THINK|RECALL|CONSULT).*?>', '', v).strip()
-                                                d[k] = v
-                                            else:
-                                                recursive_clean(v)
-                                    elif isinstance(d, list):
-                                        for i in range(len(d)):
-                                            if isinstance(d[i], str):
-                                                if "[SYSTEM INSTRUCTION]" in d[i]:
-                                                    d[i] = d[i].split("[SYSTEM INSTRUCTION]")[0].strip()
-                                                d[i] = re.sub(r'<(?:THINK|RECALL|CONSULT).*?>', '', d[i]).strip()
-                                            else:
-                                                recursive_clean(d[i])
-                                
-                                recursive_clean(parsed_dict)
-                                
-                                # 2. Handle 'action' as string if model glitched
-                                if 'action' in parsed_dict and isinstance(parsed_dict['action'], str):
-                                    parsed_dict['action'] = {"type": "TALK", "content": parsed_dict['action'], "target": "everyone"}
-                                
-                                # 3. Handle missing fields by providing minimal defaults to satisfy Pydantic
-                                if 'cognitive_state' not in parsed_dict:
-                                    parsed_dict['cognitive_state'] = {"goals": "Continue.", "attention": "Active.", "emotions": "Neutral", "emotional_intensity": 0.5}
-
-                                # 4. [TINYTRUCE] Silence Prevention Logic:
-                                # If 'action' is null but 'thought' or 'actions' exists, or if turn leaked purely into 'thought' field.
-                                raw_action = parsed_dict.get('action')
-                                if not raw_action or (isinstance(raw_action, dict) and raw_action.get('type') == 'TALK' and not raw_action.get('content')):
-                                    thought_content = parsed_dict.get('thought', raw_text)
-                                    if thought_content and len(thought_content.strip()) > 5:
-                                        # Convert the internal thought/yield into a visible TALK action so the turn isn't skipped.
-                                        # We use a 'Forensic Pause' marker if the thought is purely logic-focused.
-                                        is_logic = any(x in thought_content.upper() for x in ["SYSTEMIC", "COHERENCE", "VARIABLE", "CALCULAT", "ECONOM", "FISCAL"])
-                                        
-                                        # Special markers for explosive agents
-                                        if "MILEI" in agent_name.upper():
-                                            prefix = "[¡AFUERA! Milei ruptures the silence with a fiscal chainsaw...]"
-                                        elif is_logic:
-                                            prefix = f"[{agent_name} pauses to calculate systemic variables...]"
-                                        else:
-                                            prefix = f"[{agent_name} remains silent, weighing the moral cost...]"
-                                        
-                                        parsed_dict['action'] = {
-                                            "type": "TALK", 
-                                            "content": f"{prefix}\n\n{thought_content[:400]}...", 
-                                            "target": "everyone"
-                                        }
-                                        logger.info(f"[REPAIR] Converted null/empty action into Forensic Pause for {agent_name} to prevent silent turn.")
-
-                                return response_format.model_validate(parsed_dict)
-                            except Exception as parse_e:
-                                logger.warning(f"Manual extraction failed for {agent_name}: {parse_e}")
-                    
-                    # Final Fallback: If JSON failed entirely but we have text, wrap it into a TALK action.
-                    # This prevents the simulation from crashing or defaulting to an emergency DONE.
-                    if raw_text and len(raw_text.strip()) > 5:
-                        # Truncate to prevent massive context/file bloat (e.g., 600KB glitches)
-                        safe_content = raw_text.strip()
-                        if len(safe_content) > 10000:
-                            safe_content = safe_content[:10000] + "... [TRUNCATED DUE TO EXCESSIVE LENGTH]"
-                        
-                        logger.warning(f"JSON repair failed for {agent_name or 'System'}. Recovering content as TALK action (Truncated if necessary).")
-                        
-                        # We return a list of actions to satisfy both single and until_done loops, 
-                        # enforcing a DONE to prevent infinite recovery cycles.
-                        reconstructed = {
-                            "action": {
-                                "type": "TALK",
-                                "content": safe_content,
-                                "target": "everyone"
-                            },
-                            "cognitive_state": {
-                                "goals": "Emergency turn termination due to LLM glitch.",
-                                "attention": "System stability.",
-                                "emotions": "Functional",
-                                "emotional_intensity": 1.0
-                            }
-                        }
-                        
-                        # Note: If TinyPerson.act is called with until_done=True, 
-                        # it will only stop if it sees a DONE action in the sequence.
-                        # However, since we return a single action here, the caller 
-                        # will execute it and then call us again. 
-                        # A better way is to provide the content and then let the next call fail 
-                        # or provide a way to inject DONE. 
-                        # For now, truncation is the most critical safety valve.
-                        try:
-                            return response_format.model_validate(reconstructed)
-                        except Exception as final_e:
-                            logger.error(f"Failed to wrap raw text into action for {agent_name or 'System'}: {final_e}")
-                    
-                    # Log the malformed text for debugging
-                    logger.warning(f"CRITICAL: {agent_name or 'System'} generated unrecoverable response. Raw response follows:\n{raw_text[:1000]}")
-                except Exception as inner_e:
-                    logger.error(f"Internal error during JSON repair for {agent_name}: {inner_e}")
-                
-                return None
-                
-        return raw_text
+                emergency_action = {"type": "TALK", "content": "[SYSTEM ADVISORY]: Direct engagement protocol temporarily suspended. Maintaining strategic posture.", "target": "everyone"}
+                emergency_state = {"goals": "Maintain continuity.", "attention": "Internalized", "emotions": "Neutral"}
+                return response_format.model_validate({
+                    "action": emergency_action,
+                    "cognitive_state": emergency_state,
+                    "thought": f"Emergency recovery triggered due to persistent validation failure: {last_failure_reason}"
+                })
+            except:
+                # Even if pydantic fails, return the simplest possible valid-looking object
+                return None # Last resort but should be unreachable with valid model_validate
+        
+        return "[SYSTEM ERROR]: Persistent failure. Consult logs."

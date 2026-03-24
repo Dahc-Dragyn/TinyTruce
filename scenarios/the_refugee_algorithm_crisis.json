@@ -1,25 +1,26 @@
 {
-    "world_name": "The Frontex Situation Room (Warsaw)",
-    "initial_broadcast": "The wall of screens displays real-time biometric feeds from the Mediterranean and the Balkan routes. {{AGENT_1}} and {{AGENT_2}} stand with {{AGENT_3}}, staring at a heat map of 'Risk Probability.' The EuroGuard-V system, hailed as the savior of the 2026 EU Migration Pact, is failing. A forensic audit leaked by an AU-based whistleblower reveals a 'Bias Leak': the algorithm is flagging individuals from specific Sahelian regions as 'High Security Risks' based on linguistic micro-markers that the AI has incorrectly correlated with insurgent activity. Thousands are being detained in 'Return Hubs' based on a machine hallucination. The African Union has threatened to suspend all security and energy cooperation with Europe until the 'Algorithmic Apartheid' is dismantled.",
-    "intervention": "IDENTITY COLLAPSE: A class-action lawsuit filed in the European Court of Human Rights has triggered an 'Emergency Injunction,' ordering the immediate suspension of EuroGuard-V. However, {{AGENT_1}}’s administration has already dismantled the physical border infrastructure in favor of the 'Digital Wall.' Turning it off would mean a total loss of border control during a peak migration window. Simultaneously, the AU representative reveals that the 'Bias Leak' wasn't an accident—it was caused by a poisoned training set provided by a third-party contractor trying to 'optimize' deportation rates. The agents must now defend the machine's logic to maintain order, or admit the system is broken and face a total political collapse at home.",
-    "grounding_files": [
-        "data/policy/EU-migration-pact-2026.txt",
-        "data/tech/euroguard-v-audit-leak.txt",
-        "data/treaties/AU-Continental-AI-Strategy.2025.txt"
-    ],
-    "grounding_payload": [
-        "data/policy/EU-migration-pact-2026.txt",
-        "data/facts/eu-fiscal-lockdown.2026.txt",
-        "data/theology/theological_schism_2026.txt"
-    ],
-    "scenario_knowledge": "Gemini: For {{AGENT_1}}, utilize the 'Security Realist' fragment—they are under immense domestic pressure to keep numbers low and views the AI as an essential 'technocratic shield.' For {{AGENT_2}}, activate the 'Pragmatic Partner' fragment; they need the system to work to justify their 'Closer to Europe' pivot while maintaining 'Hard Power' credentials. {{AGENT_3}} must act with the 'Moral Guardian' fragment, specifically citing the 2026 UN Scientific Panel on AI to challenge the validity of the data. Trigger 'Identity Collapse' if the leaders are forced to choose between 'Machine Certainty' and 'Human Rights'—they must grapple with the fact that their political survival is now tethered to a flawed line of code.",
-    "dynamic_injects": [
-        {
-            "trigger_condition": {
-                "min_turn": 3,
-                "probability": 0.30
-            },
-            "broadcast": "DATABASE BLACKOUT: Critical failure in the Frontex 'Verified Identity' shard. The primary database mapping biometric micro-markers to country-of-origin has been corrupted by a suspected 'Logic Bomb.' It is now mathematically impossible to audit which individuals are 'Safe to Return' and which are 'High-Security Risks.' The 'Digital Wall' is effectively opaque. 50,000 processed migrants are currently in a legal and technical limbo."
-        }
-    ]
+    "world_name":  "The Frontex Situation Room (Warsaw)",
+    "initial_broadcast":  "The wall of screens displays real-time biometric feeds from the Mediterranean and the Balkan routes. {{AGENT_1}} and {{AGENT_2}} stand with {{AGENT_3}}, staring at a heat map of \u0027Risk Probability.\u0027 The EuroGuard-V system, hailed as the savior of the 2026 EU Migration Pact, is failing. A forensic audit leaked by an AU-based whistleblower reveals a \u0027Bias Leak\u0027: the algorithm is flagging individuals from specific Sahelian regions as \u0027High Security Risks\u0027 based on linguistic micro-markers that the AI has incorrectly correlated with insurgent activity. Thousands are being detained in \u0027Return Hubs\u0027 based on a machine hallucination. The African Union has threatened to suspend all security and energy cooperation with Europe until the \u0027Algorithmic Apartheid\u0027 is dismantled.",
+    "intervention":  "IDENTITY COLLAPSE: A class-action lawsuit filed in the European Court of Human Rights has triggered an \u0027Emergency Injunction,\u0027 ordering the immediate suspension of EuroGuard-V. However, {{AGENT_1}}’s administration has already dismantled the physical border infrastructure in favor of the \u0027Digital Wall.\u0027 Turning it off would mean a total loss of border control during a peak migration window. Simultaneously, the AU representative reveals that the \u0027Bias Leak\u0027 wasn\u0027t an accident—it was caused by a poisoned training set provided by a third-party contractor trying to \u0027optimize\u0027 deportation rates. The agents must now defend the machine\u0027s logic to maintain order, or admit the system is broken and face a total political collapse at home.",
+    "grounding_files":  [
+                            "data/policy/EU-migration-pact-2026.txt",
+                            "data/tech/euroguard-v-audit-leak.txt",
+                            "data/treaties/AU-Continental-AI-Strategy.2025.txt"
+                        ],
+    "grounding_payload":  [
+                              "data/policy/EU-migration-pact-2026.txt",
+                              "data/facts/eu-fiscal-lockdown.2026.txt",
+                              "data/theology/theological_schism_2026.txt"
+                          ],
+    "scenario_knowledge":  "Gemini: For {{AGENT_1}}, utilize the \u0027Security Realist\u0027 fragment—they are under immense domestic pressure to keep numbers low and views the AI as an essential \u0027technocratic shield.\u0027 For {{AGENT_2}}, activate the \u0027Pragmatic Partner\u0027 fragment; they need the system to work to justify their \u0027Closer to Europe\u0027 pivot while maintaining \u0027Hard Power\u0027 credentials. {{AGENT_3}} must act with the \u0027Moral Guardian\u0027 fragment, specifically citing the 2026 UN Scientific Panel on AI to challenge the validity of the data. Trigger \u0027Identity Collapse\u0027 if the leaders are forced to choose between \u0027Machine Certainty\u0027 and \u0027Human Rights\u0027—they must grapple with the fact that their political survival is now tethered to a flawed line of code.",
+    "dynamic_injects":  [
+                            {
+                                "trigger_condition":  {
+                                                          "min_turn":  3,
+                                                          "probability":  0.30
+                                                      },
+                                "broadcast":  "DATABASE BLACKOUT: Critical failure in the Frontex \u0027Verified Identity\u0027 shard. The primary database mapping biometric micro-markers to country-of-origin has been corrupted by a suspected \u0027Logic Bomb.\u0027 It is now mathematically impossible to audit which individuals are \u0027Safe to Return\u0027 and which are \u0027High-Security Risks.\u0027 The \u0027Digital Wall\u0027 is effectively opaque. 50,000 processed migrants are currently in a legal and technical limbo."
+                            }
+                        ],
+    "genre":  "geopolitical"
 }

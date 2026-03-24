@@ -29,6 +29,8 @@ The core simulation logic is decoupled from specific LLM providers via a robust 
 - **Forensic Grounding Bundles**: Replaced the monolithic `world-facts.2026.txt` with scenario-specific `grounding_payload` lists. Each run now only loads the forensic data (treaties, logs, reports) relevant to that specific conflict, ensuring higher precision and lower token noise.
 - **Multi-Session Isolation**: Supports concurrent, isolated simulations via the `--session-id` flag. All outputs are namespaced to prevent data collisions and ensure multi-tenant security.
 - **Context Window Elasticity (Sliding Window)**: Automatically summarizes and prunes conversational history into **Episodic Anchors** when turns exceed 8. This stabilizes input token costs and prevents "Context Drift" or identity collapse in long-running simulations.
+- **Soft Redline Fallback (2-Retry Loop)**: Intercepts JSON validation errors or "No action" returns at the engine level. It downshifts temperature to `0.1` and provides a diagnostic re-prompt to guide the LLM back to valid execution.
+- **Silence Prevention & Ultimate Fallback**: Ensures simulation continuity by wrapping non-JSON "discursive ruptures" into valid `TALK` actions. If all retries fail, the engine synthesizes an emergency recovery sequence to prevent process hangs.
 
 ### 3. The Scenario Board (Layer 1)
 Scenarios are defined in JSON files in the `scenarios/` directory. Each scenario includes:
@@ -47,6 +49,8 @@ To maintain simulation integrity during high-stakes theological or political deb
 - **Diplomatic Pivots**: If an LLM response is blocked by safety filters, the agent automatically pivots to a persona-specific "safe" response.
 - **Forensic Allegories**: Agents use metaphorical language to bypass keyword-based filters while retaining semantic intensity.
 - **Identity Reinforcement**: The engine calls an internal `think()` action before every turn to refresh the agent's specific identity and purge "Context Bleed" from other participants' vocabularies.
+- **Antigravity Circuit Breaker (Repetition Detector)**: Uses `SequenceMatcher` to audit turn-to-turn similarity. If similarity exceeds 75-80%, the agent is flagged for "Anchoring" and penalized with a strategic override.
+- **Linguistic Marker Shifts**: When repetitions are detected, agents are mandated to switch their 'Linguistic Marker' (e.g., shifting from *Pragmatic* to *Desperate Diplomat* or *Clinical Forensicist*) to break rhetorical stalemates.
 
 ### 6. The Behavioral Overlay (Layer 2: Forensic Fragments)
 Agents are injected with **Behavior Fragments** (e.g., `reformer.fragment.json`). These fragments modify the agent's baseline behavior without erasing their Layer 0 DNA.
@@ -54,6 +58,7 @@ Agents are injected with **Behavior Fragments** (e.g., `reformer.fragment.json`)
 *   **Forensic Grounding (2026 Rollout)**: All 27 behavioral fragments have been meticulously grounded in forensic data (world leader profiles, institutional prompts, and internal tactical archetypes). This ensures that a "Reformer" or "Preserver" layer isn't just a generic behavior, but a situational constraint strictly derived from forensic anchors.
 *   **Behavioral Stacks (Chaining)**: Agents can now ingest multiple fragments (e.g., `base_agent + reformer + savior`).
 *   **Behavioral Redline Enforcement**: Specific "Banned Behaviors" (Redlines) defined at the fragment level to enforce situational constraints (e.g., "Prohibit any concession without a 'DEAL' tag"). These are verified via the `universal_fidelity` audit suite.
+*   **Hard-Iron Constraint Enforcement**: High-stakes scenarios (e.g., *One Pizza Rule*) implement strict logic-level checking. If an agent attempts to bypass a core constraint (e.g., "Two Pizzas" loophole), the turn is rejected and a mandatory re-prompt is issued.
 
 ---
 
@@ -193,7 +198,11 @@ This script (the "Dawn Command") should be run manually after deployment or sche
 | `--hide-thoughts` | Hide internal agent thinking blocks for a cinematic feed. |
 | `--monologue` | Single-agent sequential delivery mode. |
 | `--disable-injects` | Disable random mid-simulation dynamic crisis events. |
+| `--flush` | Flush the Vertex AI Context Cache before starting the simulation to ensure absolute state purity. |
 | `--debug` | Enable verbose debug logging to print engine responses and internal variables. |
+| `--status-light-fix` | Force Jurist to recalculate the Status Light if it's missing or invalid. |
+| `--force-bunker-accord` | Override Jurist outcome with the 'Bunker Accord' (Strategic Pepperoni Pivot). |
+| `--extraction-fix` | Enable aggressive regex-based extraction for stubborn LLM outputs. |
 
 ### Available Scenarios (`scenarios/`)
 
@@ -304,6 +313,67 @@ This is the "DNA Repository" for forensic grounding. Instead of generic descript
 #### 📂 `personas/`
 - **`agents/`**: Contains the baseline identity of a person (e.g., Donald Trump, Pope Leo).
 - **`fragments/`**: Contains the situational behavior layers (e.g., Reformer, Savior) that can be "stacked" onto agents without erasing their core identity.
+
+### 9. Data Directory Inventory (Grounding Ballast)
+
+This inventory lists the forensic grounding files available in the `data/` directory, categorized by their thematic focus. Developers can use these paths in scenario `grounding_payload` lists to anchor simulations in factual data.
+
+#### 📂 `data/economics/` & `finance/`
+| Filename | Summary |
+| :--- | :--- |
+| `cbo-obbba-deficit-projection-2026.txt` | CBO analysis of the 2026 deficit under the OBBBA/Trump administration. |
+| `global-labor-automation-report.2026.txt` | 2026 report on AI-driven labor displacement and automation trends. |
+| `imf-world-outlook-jan2026.txt` | IMF Global Economic Outlook for 2026, focusing on growth and inflation. |
+| `potosi-protocol-2026.txt` | Commodity-backed currency framework for South American trade. |
+| `sira-gold-peg.2026.txt` | Details on the Saudi-Iran Gold-Pegged digital currency initiative. |
+| `us-treasury-reserve-status-2026.txt` | Forensic audit of US Treasury reserves and sovereign debt liquidity. |
+
+#### 📂 `data/legal/` & `policy/`
+| Filename | Summary |
+| :--- | :--- |
+| `eu-ai-act-implementation-aug2026.txt` | Implementation status and enforcement logs for the EU AI Act (2026). |
+| `obbba-trump-act-2026.txt` | Legislative text of the "Old Boy Business & Border Act" (OBBBA). |
+| `scotus-ieepa-tariff-ruling-feb20.txt` | SCOTUS ruling on the use of IEEPA for executive maritime tariffs. |
+| `space-property-act-2025.txt` | Legal framework for orbital and lunar property rights. |
+| `EU-migration-pact-2026.txt` | 2026 revisions to the EU Asylum and Migration Management Regulation. |
+| `anti-coercion-instrument-2025.txt` | EU policy on responding to foreign economic coercion. |
+
+#### 📂 `data/security/`
+| Filename | Summary |
+| :--- | :--- |
+| `africa-corps-deployment-logs.2025.txt` | Kinetic tracking of Russian Africa Corps movements and bases. |
+| `extreme-weather-deployment-log.2026.txt` | Logistics log for military operations in extreme environmental conditions. |
+| `malacca-straits-cable-forensics.2026.txt` | Forensic analysis of subsea cable interference in the Malacca Strait. |
+| `subsea_cable_resilience.2026.txt` | Global map and resilience audit of critical subsea data infrastructure. |
+
+#### 📂 `data/tech/`
+| Filename | Summary |
+| :--- | :--- |
+| `5g-spectrum-compliance-standard.2025.txt` | Technical standards for 5G network safety and spectrum allocation. |
+| `bci-latency-and-influence.2026.txt` | Neuro-tech report on Brain-Computer Interface latency and psychological effect. |
+| `biometric-consensus-standards.2026.txt` | Global standard for smart-home and institutional biometric auth. |
+| `trillium-compute-credit-index.2025.txt` | Pricing and availability index for sovereign GPU/Compute credits. |
+| `euroguard-v-audit-leak.txt` | Leaked audit of EU's "EuroGuard" algorithmic border security system. |
+
+#### 📂 `data/theology/` & `facts/`
+| Filename | Summary |
+| :--- | :--- |
+| `theological_schism_2026.txt` | Logs of the digital schism within the Catholic Church regarding "Sanct-AI". |
+| `ukraine-war.2026.txt` | Synthetic world-state briefing on the Ukraine-Russia frontlines (Feb 2026). |
+| `middle-east-reset.2026.txt` | Factual grounding for the Riyadh-Tehran normalization accords. |
+| `silicon-siege.2026.txt` | Records of the global silicon audit and "Kill Switch" protocols. |
+| `world-facts.2026.txt` | Master baseline of global events, elections, and crises in 2026. |
+
+#### 📂 `data/conflicts/` (War Wire)
+| Filename | Summary |
+| :--- | :--- |
+| `US_Israel_Iran_War/Pezeshkians_Gamble.txt` | Detailed tactical breakdown of the Iranian Reformist Coup (2026). |
+| `US_Israel_Iran_War/The_Larijani_Pivot.txt` | Forensic analysis of the IRGC Pragmatist surrender scenario. |
+| `US_Israel_Iran_War/The_MIGA_Protocol.txt` | The "Make Iran Great Again" (MIGA) restoration framework. |
+| `pineapple_on_pizza_war.txt` | A specialized behavioral test scenario for agent irrationality. |
+
+#### 📂 `data/profiles/` (Layer 0 DNA)
+This directory contains 47+ high-fidelity **Forensic DNA** files for world leaders (Trump, Putin, Xi, Modi, etc.) and technical archetypes (Thorne, Vance, Altman). These files ground the agents' linguistic locks and tactical idiolects.
 
 ---
 

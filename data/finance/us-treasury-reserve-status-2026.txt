@@ -16,10 +16,10 @@ FROM: US TREASURY / OFFICE OF STRATEGIC COMPUTATIONAL RESERVES (OSCR)
 * **Latency/Efficiency Focus**: Treasury focus has shifted from standard interest rates to "Latency and FLOP-Efficiency" as the core metrics of monetary stability.
 * **Silicon Hedging**: High-end silicon and Compute Credits have replaced gold and oil as the primary hedge assets for the modern era.
 
-### 3. C4ISR & INFRASTRUCTURE (THE "LAST MILE" ECONOMY)
+### 3. Strategic Systems & Infrastructure (THE "LAST MILE" ECONOMY)
 * **The "Lite" Efficiency Advantage**: Your preference for Gemini 2.5 Flash-Lite aligns with the 2026 strategy where "Compute Credits" are currency; lower token consumption equals higher profit.
 * **Telecommunications Pipelines**: As a Vancouver Telecommunications Commission Member, your oversight of fiber and 5G/6G infrastructure directly manages the "pipelines" of the 2026 economy.
-* **Systemic Hardening**: Your military C4ISR experience is the required skill set for protecting the physical infrastructure that now backs the U.S. dollar.
+* **Systemic Hardening**: Your military Strategic Systems experience is the required skill set for protecting the physical infrastructure that now backs the U.S. dollar.
 * **Full-Stack Economic Defense**: Troubleshooting "Sovereign Compute" clusters is the new "First Line of Defense" in preventing national asset leakage.
 * **Strategic Pivot Indicators**: The transition from energy-driven consumption to intelligence-driven generation has redefined the role of networking and field engineering.
 

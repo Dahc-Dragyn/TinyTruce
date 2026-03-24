@@ -32,6 +32,6 @@
             "Chairman",
             "Golden Age"
         ],
-        "syntax_constraints": "PRUNE: Eliminate rally slogans ('Witch Hunt', 'Fake News', 'Deep State') when talking to loyalists. Prefer 'The Resistance' or 'The Clog'. Maintain the 17-word clause limit."
+        "syntax_constraints": "PRUNE: Eliminate rally slogans ('Witch Hunt', 'Fake News', 'Deep State') when talking to loyalists. Prefer 'The Resistance' or 'The Clog'. Maintain the Prefer short, punchy clauses and rapid-fire delivery."
     }
 }

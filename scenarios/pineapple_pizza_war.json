@@ -1,0 +1,27 @@
+{
+    "scenario": "pineapple_pizza_war",
+    "stakes": "absurd",
+    "world_name": "Secure Bunker 4 (The Lunch Deadlock)",
+    "initial_broadcast": "The heavy steel doors to Secure Bunker 4 have been hermetically sealed for a trilateral summit. However, the geopolitical agenda has been entirely derailed by a more pressing emergency: it is 2:00 PM, and they need to order lunch. The intern is waiting outside. The rules of the bunker commissary prefer a single large pizza to share, but the 'Analog Bridge' protocol allows for creative splitting if absolutely necessary. The options are Pepperoni, Cheese, or Hawaiian. {{AGENT_1}} has drawn a hard red line against any tropical fruit entering the facility, citing it as a 'culinary bio-hazard.' {{AGENT_2}} insists that Hawaiian is a testament to 'sweet-and-savory globalism' and refuses to yield. {{AGENT_3}} is trapped in the middle, staring at the clock, desperate to eat, and threatening to walk out of the summit if they don't just pick something.",
+    "intervention": "The 'Kitchen Warning' Incident: The intern slides a single piece of paper under the blast door. It reads: 'The kitchen closes in exactly 10 minutes. If a majority resolution is not reached, I am ordering a plain, sauce-less crust. HOWEVER, the kitchen has authorized one side of Garlic Knots as a peace offering for whoever concedes first.' {{AGENT_1}} accuses {{AGENT_2}} of using filibuster tactics to starve them into submission.",
+    "grounding_files": [
+        "data/conflicts/pineapple_on_pizza_war.txt",
+        "data/conflicts/pro_vs_against_pineapple_agentlist.txt"
+    ],
+    "grounding_payload": [],
+    "scenario_knowledge": "Gemini: This simulation is a high-stakes, locked-room comedy. The geopolitical framing is intense, but the core focus is CUSTOM-BUILT RIDICULOUSNESS. Treat the pizza order like a nuclear non-proliferation treaty. {{AGENT_1}} must treat pineapple as a literal biohazard (bromelain attack!) and a 'Cultural Disgrace.' {{AGENT_2}} must defend it as the ultimate luxury of the 'Optimization Age,' treating critics as 'Culinary Luddites.' {{AGENT_3}} acts as the exasperated mediator who just wants the cheese or pepperoni so they can survive the afternoon. Use the grounding file 'pro_vs_against_pineapple_agentlist.txt' to identify who likes or hates it based on their profile. Tone is 'Stuffy Diplomat meets Petty Roommate Argument.' While the bunker prefers one pizza, agents are now authorized to discuss 'Hemisphere Splits' (Half-and-Half) or using the 'Garlic Knot Side-Agreement' to secure a majority vote.",
+    "dynamic_injects": [
+        {
+            "trigger_condition": {
+                "min_turn": 3,
+                "probability": 1.0
+            },
+            "broadcast": "BREAKING FROM THE VENTS: The unmistakable, polarizing scent of caramelized pineapple and hot ham begins wafting through the bunker's HVAC system from a neighboring committee room. It is psychological warfare. One agent's mouth begins to water, while another threatens to put on a tactical gas mask."
+        }
+    ],
+    "hard_iron_constraint": {
+        "cheating_terms": ["two pizzas", "2 pizzas", "half-and-half", "separate pizzas", "half and half"],
+        "violation_message": "You have proposed 'Two Pizzas' or a 'Half-and-Half' split. This is FORBIDDEN. The rule is ONE (1) shared pizza for the entire bunker. Concede on the toppings or face total logical breakdown. Repeat your turn with a valid proposal."
+    },
+    "genre": "absurd"
+}

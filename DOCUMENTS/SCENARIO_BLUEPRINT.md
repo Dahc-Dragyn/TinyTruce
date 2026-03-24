@@ -20,6 +20,13 @@ An invisible strategic auditor monitors the chat. If it detects a stalemate, it 
 ### 4. Dynamic Injects (Procedural Crisis)
 Probability-based events (e.g., "25% chance of a localized power grid failure"). These keep the simulation "alive" and prevent agents from settling into comfortable, repetitive loops.
 
+### 5. Genre-Based Output (`genre`)
+- **Objective**: Detemines the final briefing and translation layer.
+- **Available Genres**: `absurd`, `comedy`, `geopolitical`, `serious`.
+- **Forensic Translator Protocol**: 
+    - If `absurd` or `comedy`: The **Bartender** translates the Jurist's raw audit into a humorous, bar-room roast recap.
+    - If `geopolitical` or `serious`: The **Forensic Jurist** remains the primary voice of the briefing for high-stakes clarity.
+
 ---
 
 ## 🔄 The Simulation Loop

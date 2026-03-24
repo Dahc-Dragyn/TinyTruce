@@ -1,22 +1,23 @@
 {
-    "world_name": "The Berlaymont Crisis Room",
-    "initial_broadcast": "The 'Trade Bazooka' signal has been detected. In Washington, the administration has just signed an executive order imposing a universal 20% tariff on all European automotive and chemical exports. Simultaneously, the US Permanent Representative to NATO has announced a 'strategic pause' in security cooperation, citing European 'fiscal freeloading.' {{AGENT_1}} and {{AGENT_2}} are meeting in Brussels to decide on the European response. The NATO security umbrella is effectively closed. The 2026 'Raw Power' order is here.",
-    "intervention": "A flash report confirms Russian kinetic maneuvers on the Polish border. The US defense attache has disconnected the secure link.",
-    "grounding_files": [
-        "data/tech/euroguard-v-audit-leak.txt"
-    ],
-    "grounding_payload": [
-        "data/tech/euroguard-v-audit-leak.txt",
-        "data/policy/anti-coercion-instrument-2025.txt"
-    ],
-    "scenario_knowledge": "Gemini: Focus on the 'Raw Power' order. {{AGENT_1}} must channel 'Defensive Realism,' viewing the US decoupling as a mandate to revive the Franco-German security axis, potentially proposing a decentralized nuclear sharing program. {{AGENT_2}} must leverage the 'Anti-Coercion Instrument' to penalize US automotive imports, balancing economic defiance with the need for a 'Security Bridge.' The primary friction is the transition from 'Multilateralism' to 'Transactional Sovereignty.'",
-    "dynamic_injects": [
-        {
-            "trigger_condition": {
-                "min_turn": 5,
-                "probability": 0.35
-            },
-            "broadcast": "SYSTEM LEAK: A 'Logic-Audit' of the EU's Sovereign Cloud has revealed that 'Net-Zero' compliance data for the 2025 industrial cycle was systemically falsified via a hidden algorithm in major chemical plants. The U.S. Trade Representative has cited this 'Data Dishonesty' as the primary legal justification for making the 20% tariffs permanent. The 'Green Sovereignty' narrative has been compromised at the database level."
-        }
-    ]
+    "world_name":  "The Berlaymont Crisis Room",
+    "initial_broadcast":  "The \u0027Trade Bazooka\u0027 signal has been detected. In Washington, the administration has just signed an executive order imposing a universal 20% tariff on all European automotive and chemical exports. Simultaneously, the US Permanent Representative to NATO has announced a \u0027strategic pause\u0027 in security cooperation, citing European \u0027fiscal freeloading.\u0027 {{AGENT_1}} and {{AGENT_2}} are meeting in Brussels to decide on the European response. The NATO security umbrella is effectively closed. The 2026 \u0027Raw Power\u0027 order is here.",
+    "intervention":  "A flash report confirms Russian kinetic maneuvers on the Polish border. The US defense attache has disconnected the secure link.",
+    "grounding_files":  [
+                            "data/tech/euroguard-v-audit-leak.txt"
+                        ],
+    "grounding_payload":  [
+                              "data/tech/euroguard-v-audit-leak.txt",
+                              "data/policy/anti-coercion-instrument-2025.txt"
+                          ],
+    "scenario_knowledge":  "Gemini: Focus on the \u0027Raw Power\u0027 order. {{AGENT_1}} must channel \u0027Defensive Realism,\u0027 viewing the US decoupling as a mandate to revive the Franco-German security axis, potentially proposing a decentralized nuclear sharing program. {{AGENT_2}} must leverage the \u0027Anti-Coercion Instrument\u0027 to penalize US automotive imports, balancing economic defiance with the need for a \u0027Security Bridge.\u0027 The primary friction is the transition from \u0027Multilateralism\u0027 to \u0027Transactional Sovereignty.\u0027",
+    "dynamic_injects":  [
+                            {
+                                "trigger_condition":  {
+                                                          "min_turn":  5,
+                                                          "probability":  0.35
+                                                      },
+                                "broadcast":  "SYSTEM LEAK: A \u0027Logic-Audit\u0027 of the EU\u0027s Sovereign Cloud has revealed that \u0027Net-Zero\u0027 compliance data for the 2025 industrial cycle was systemically falsified via a hidden algorithm in major chemical plants. The U.S. Trade Representative has cited this \u0027Data Dishonesty\u0027 as the primary legal justification for making the 20% tariffs permanent. The \u0027Green Sovereignty\u0027 narrative has been compromised at the database level."
+                            }
+                        ],
+    "genre":  "geopolitical"
 }

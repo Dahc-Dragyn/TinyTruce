@@ -12,7 +12,7 @@ FROM: EUROPEAN COMMISSION / DG TRADE / UNIT G.1 (TRADE DEFENCE)
 5. The NATO security decoupling: The 2026 "Strategic Pause" in NATO cooperation is being used as a counter-lever. The EU is currently evaluating the "Security-for-Trade" bypass, offering US firms access to the internal market in exchange for decentralized nuclear sharing participation.
 6. The Berlaymont Protocol: Any agreement reached in the Brussels Berlaymont Crisis Room must be backed by a "Model-Verified" de-escalation scorecard.
 
-### C4ISR & TRADE DEFENCE INFRASTRUCTURE
+### Strategic Systems & TRADE DEFENCE INFRASTRUCTURE
 7. Logic-Audit of Tariffs: The EU Joint Research Centre (JRC) is utilizing AI-driven "Trade Flow Monitors" to identify US firms most vulnerable to ACI de-certification.
 8. Sovereign Data Integrity: Retaliatory measures include the "Geofencing" of US Cloud providers from EU industrial data if Section 122 tariffs are not frozen within 60 days.
 9. "Brussels Effect" 2.0 Enforcement: The EU is coordinating with the "Emerging Compute Nations" (Kenya, Brazil) to apply mutual ACI standards against US "Data Colonialism."

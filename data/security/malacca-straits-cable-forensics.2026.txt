@@ -16,7 +16,7 @@ FROM: INDO-PACIFIC MARITIME SECURITY COUNCIL / BENTHIC FORENSICS DIV
 * **Benthic Sovereignty**: The incident has birthed a new era of "Subsea Lawfare," where control of the seafloor is as vital as Freedom of Navigation.
 * **Real-Time Forensic Feed**: Data from the benthic sensors is fed directly to the Andaman naval base for immediate tactical response.
 
-### 3. C4ISR & NETWORKING (THE "LATENCY TAX")
+### 3. Strategic Networking (THE "LATENCY TAX")
 * **124ms Latency Spike**: Rerouting data through terrestrial and satellite links caused latency to jump from 35ms to 124ms, creating a massive "Latency Tax" on the regional AI economy.
 * **Physical-to-Application Impact**: Just like legacy RAID or networking issues (DTSS), this physical layer failure results in critical application layer consequences, including the loss of Neural Sovereignty.
 * **Tactical Redundancy**: The crisis has forced a shift toward sovereign-led "Dark Fiber" redundancy to ensure resilience against deniable state-sponsored sabotage.

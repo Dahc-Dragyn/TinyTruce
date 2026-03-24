@@ -16,7 +16,7 @@ FROM: PONTIFICAL ACADEMY FOR LIFE / OFFICE OF NEURO-ETHICAL OVERSIGHT
 9. Workplace "Cognitive Auditing": The Charter is the primary legal shield against corporate "Efficiency Audits" that use BCIs to monitor employee engagement and loyalty.
 10. The "Divine Registry": Proposed 2026 initiative to create a "Whitelisted" directory of AI agents that comply with the Vatican’s "Human-First" communication standards.
 
-### C4ISR & ML INFRASTRUCTURE (TECHNICAL DEBT)
+### Systems & Intelligence Infrastructure (TECHNICAL DEBT)
 11. Neural Air-Gapping: The Charter demands that processing of sensitive cognitive data must happen on "Local Edge" devices. Sending raw neural signals to a central "Sovereign Cloud" is categorized as a "High-Risk Moral Breach."
 12. Influence Logic Audits: ML builders must now provide "Forensic Traceability" for any agent that utilizes user sentiment or biometric data, proving no "Subliminal Manipulation" is occurring.
 13. Algorithmic Transparency (Rome Call 2.0): Requires a "Human-in-the-Loop" for any decision influenced by BCI data, effectively banning "Autonomous Cognitive Adjustments."

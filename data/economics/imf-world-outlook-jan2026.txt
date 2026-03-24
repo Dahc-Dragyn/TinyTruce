@@ -16,7 +16,7 @@ FROM: INTERNATIONAL MONETARY FUND (IMF) / MACRO-FISCAL RISK DIVISION
 * **Compliance Deadline**: Fiscal stress is peaking as nations rush to meet the August 2026 EU AI Act mandates for jurisdictional independence.
 * **Geopolitical Vulnerability**: The report warns that a lack of full-stack oversight makes national economies vulnerable to external "kill-switch" events.
 
-### 3. C4ISR & ML ENGINEERING (THE "DEBT-FREE" STACK)
+### 3. Strategic Systems Engineering (THE "DEBT-FREE" STACK)
 * **Refactor or Rot**: In 2026, technical roadmaps must prioritize long-term compliance over initial token price to avoid accumulating technical debt.
 * **Sovereign-Compliant Clouds**: Utilizing models like Gemini 2.5 Flash-Lite on localized GCP instances is a primary strategy for building "Debt-Free" infrastructure.
 * **Full-Stack Independence**: National security now requires full-stack oversight, including the ability to troubleshoot bias leaks and localized hardware issues.

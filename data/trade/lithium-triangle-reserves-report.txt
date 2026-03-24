@@ -16,12 +16,12 @@ FROM: GLOBAL ENERGY TRANSITION BUREAU / GEOLOGICAL INTELLIGENCE UNIT
 * **Efficiency Gains**: The 2026 report shifts the industrial focus from raw "tonnage in the ground" to "velocity of sustainable processing".
 * **Industrial Backbone**: Companies like EnergyX and Lilac Solutions are providing the standardized hardware modules that now define the Triangle’s production floor.
 
-### 3. C4ISR & INFRASTRUCTURE (RESERVE MONITORING)
+### 3. Strategic Systems & Infrastructure (RESERVE MONITORING)
 * **The Sensor Mesh**: Managing these reserves requires a massive deployment of Geospatial and IoT monitoring, mirroring the Digital Topographic Support System (DTSS) architecture.
 * **3D Prospectivity Mapping**: Mines now utilize satellite-driven 3D mapping and seismic sensors to ensure compliance with the Potosí Protocol's strict environmental rules.
 * **Supply Chain Digital Twins**: Every ton of extracted lithium is tracked via blockchain-based verification, syncing physical extraction with digital "Trillium Credits".
 * **Edge Computing Density**: Higher Triangle output and battery density directly improve the performance and duration of edge-computing agents in the field.
-* **First Line of Defense**: C4ISR expertise is now utilized to manage the "Integrated Digital Twin" of the mining sector, protecting against data-poisoning or physical sabotage.
+* **First Line of Defense**: structural expertise is now utilized to manage the "Integrated Digital Twin" of the mining sector, protecting against data-poisoning or physical sabotage.
 
 ### 4. 2026 TRIANGLE PRODUCTION METRICS
 | Country   | Identified Resources (2026) | 2026 Production Status         | Key Extraction Site       |

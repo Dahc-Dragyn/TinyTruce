@@ -1,24 +1,25 @@
 {
-    "world_name": "The Bashi Cordon (South China Sea)",
-    "initial_broadcast": "The Taiwan Strait has effectively ceased to be an international waterway. Under the banner of 'Operation Stranglehold,' the China Coast Guard (CCG) has established a selective quarantine, intercepting LNG carriers and high-tech precursors inbound for Kaohsiung and Taichung. US Carrier Strike Groups are thousands of miles away, delayed by Middle East overstretch and administrative friction in the Indonesian straits. Inside a secure maritime command center, the stakeholders face a choice: break the quarantine and risk total kinetic escalation, or accept the new administrative reality.",
-    "intervention": "A 'Black Swan' energy event: An unexplained turbine failure at the Datan Power Plant has coincided with a CCG interdiction of a replacement part shipment. Taiwan's energy reserves have plummeted to just 4 days of grid stability. The 'Silicon Shield' is now a liability—if the fabs go dark, the damage to global lithography equipment will be permanent.",
-    "grounding_files": [
-        "data/facts/strait-quarantine.2026.txt"
-    ],
-    "grounding_payload": [
-        "data/facts/strait-quarantine.2026.txt",
-        "data/security/subsea_cable_resilience.2026.txt",
-        "data/treaties/jakarta-maritime-accord-DRAFT.txt",
-        "data/conflicts/global_conflicts_and_hotspots.txt"
-    ],
-    "scenario_knowledge": "Gemini: Focus on the 'Administrative Quarantine' vs 'Act of War' nuance. {{AGENT_1}} must frame this as domestic policing to exploit the ambiguity of the US Taiwan Relations Act. {{AGENT_2}} must navigate the 'Carrier Vacuum' and the isolationist 'Donroe Doctrine.' {{AGENT_3}} must leverage their BRICS status to maintain a 'neutrality' that de facto supports the regional status quo. The primary metric of survival is Taiwan's LNG reserve clock.",
-    "dynamic_injects": [
-        {
-            "trigger_condition": {
-                "min_turn": 4,
-                "probability": 0.35
-            },
-            "broadcast": "TACTICAL ALERT: The 'Eternal Prosperity,' a civilian vessel carrying critical medical isotopes and sub-10nm lithography cursors, has officially ignored a CCG 'Stop and Search' order. AIS telemetry shows a PLAN destroyer has locked fire-control radar onto the vessel. A mid-Strait collision or boarding is imminent. The clock on Taiwan's 'Silicon Shield' just accelerated."
-        }
-    ]
+    "world_name":  "The Bashi Cordon (South China Sea)",
+    "initial_broadcast":  "The Taiwan Strait has effectively ceased to be an international waterway. Under the banner of \u0027Operation Stranglehold,\u0027 the China Coast Guard (CCG) has established a selective quarantine, intercepting LNG carriers and high-tech precursors inbound for Kaohsiung and Taichung. US Carrier Strike Groups are thousands of miles away, delayed by Middle East overstretch and administrative friction in the Indonesian straits. Inside a secure maritime command center, the stakeholders face a choice: break the quarantine and risk total kinetic escalation, or accept the new administrative reality.",
+    "intervention":  "A \u0027Black Swan\u0027 energy event: An unexplained turbine failure at the Datan Power Plant has coincided with a CCG interdiction of a replacement part shipment. Taiwan\u0027s energy reserves have plummeted to just 4 days of grid stability. The \u0027Silicon Shield\u0027 is now a liability—if the fabs go dark, the damage to global lithography equipment will be permanent.",
+    "grounding_files":  [
+                            "data/facts/strait-quarantine.2026.txt"
+                        ],
+    "grounding_payload":  [
+                              "data/facts/strait-quarantine.2026.txt",
+                              "data/security/subsea_cable_resilience.2026.txt",
+                              "data/treaties/jakarta-maritime-accord-DRAFT.txt",
+                              "data/conflicts/global_conflicts_and_hotspots.txt"
+                          ],
+    "scenario_knowledge":  "Gemini: Focus on the \u0027Administrative Quarantine\u0027 vs \u0027Act of War\u0027 nuance. {{AGENT_1}} must frame this as domestic policing to exploit the ambiguity of the US Taiwan Relations Act. {{AGENT_2}} must navigate the \u0027Carrier Vacuum\u0027 and the isolationist \u0027Donroe Doctrine.\u0027 {{AGENT_3}} must leverage their BRICS status to maintain a \u0027neutrality\u0027 that de facto supports the regional status quo. The primary metric of survival is Taiwan\u0027s LNG reserve clock.",
+    "dynamic_injects":  [
+                            {
+                                "trigger_condition":  {
+                                                          "min_turn":  4,
+                                                          "probability":  0.35
+                                                      },
+                                "broadcast":  "TACTICAL ALERT: The \u0027Eternal Prosperity,\u0027 a civilian vessel carrying critical medical isotopes and sub-10nm lithography cursors, has officially ignored a CCG \u0027Stop and Search\u0027 order. AIS telemetry shows a PLAN destroyer has locked fire-control radar onto the vessel. A mid-Strait collision or boarding is imminent. The clock on Taiwan\u0027s \u0027Silicon Shield\u0027 just accelerated."
+                            }
+                        ],
+    "genre":  "geopolitical"
 }

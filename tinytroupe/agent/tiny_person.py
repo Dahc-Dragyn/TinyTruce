@@ -452,7 +452,9 @@ class TinyPerson(JsonSerializableRegistry):
         return_actions=False,
         max_content_length=default["max_content_display_length"],
         temperature: float = None,
-        max_tokens: int = None
+        max_tokens: int = None,
+        frequency_penalty: float = None,
+        presence_penalty: float = None
     ):
         """
         Acts in the environment and updates its internal cognitive state.
@@ -485,7 +487,7 @@ class TinyPerson(JsonSerializableRegistry):
         # Sometimes `content` contains EpisodicMemory's MEMORY_BLOCK_OMISSION_INFO message, which raises a TypeError on line 443
         @repeat_on_error(retries=5, exceptions=[KeyError, TypeError])
         def aux_act_once():
-            role, content = self._produce_message(temperature=temperature, max_tokens=max_tokens)
+            role, content = self._produce_message(temperature=temperature, max_tokens=max_tokens, frequency_penalty=frequency_penalty, presence_penalty=presence_penalty)
 
             cognitive_state = content["cognitive_state"]
             
@@ -903,7 +905,7 @@ class TinyPerson(JsonSerializableRegistry):
         self._mental_state["accessible_agents"] = []
 
     @transactional
-    def _produce_message(self, temperature: float = None, max_tokens: int = None):
+    def _produce_message(self, temperature: float = None, max_tokens: int = None, frequency_penalty: float = None, presence_penalty: float = None):
         # logger.debug(f"Current messages: {self.current_messages}")
 
         # ensure we have the latest prompt (initial system message + selected messages from memory)
@@ -923,7 +925,9 @@ class TinyPerson(JsonSerializableRegistry):
             temperature=temperature if temperature is not None else 0.2,
             max_tokens=max_tokens,
             response_format=CognitiveActionModel,
-            agent_name=self.name
+            agent_name=self.name,
+            frequency_penalty=frequency_penalty,
+            presence_penalty=presence_penalty
         )
 
         logger.debug(f"[{self.name}] Received message: {next_message}")
@@ -1362,7 +1366,7 @@ class TinyPerson(JsonSerializableRegistry):
                 msg_simplified_type = action_obj.get("type", "ACTION")
                 msg_simplified_content = action_obj.get("content", "")
             
-            if msg_simplified_type == "THINK" and not self.show_thoughts:
+            if msg_simplified_type in ["THINK", "THOUGHT", "INTERNAL_MONOLOGUE"] and not self.show_thoughts:
                 return ""
             
             # UX Mode Header Cleanup: Filter out internal system instructions from display
@@ -1383,9 +1387,14 @@ class TinyPerson(JsonSerializableRegistry):
             # Escape content to prevent unintentional Rich markup or auto-highlighting
             safe_content = escape(msg_simplified_content)
             
-            # Use specific formatting for THINK vs TALK
-            prefix = "💭 THINKING" if msg_simplified_type == "THINK" else f"💬 {msg_simplified_type}"
-            if msg_simplified_type == "THINK":
+            # Use specific formatting for THINK vs TALK. 
+            # [TINYTRUCE] Sanitize technical action types for a cinematic feed.
+            display_type = msg_simplified_type
+            if display_type in ["SYSTEM_COMMAND", "COMMAND", "OPERATIONAL"]:
+                display_type = "TALK"
+                
+            prefix = "💭 THINKING" if display_type in ["THINK", "THOUGHT", "INTERNAL_MONOLOGUE"] else f"💬 {display_type}"
+            if msg_simplified_type in ["THINK", "THOUGHT", "INTERNAL_MONOLOGUE"]:
                 safe_content = f"[dim italic]{safe_content}[/]"
             
             header = f"[{agent_style}]● {msg_simplified_actor} [/{agent_style}][{type_style}]| {prefix}[/]"

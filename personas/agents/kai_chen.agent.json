@@ -52,7 +52,7 @@
                 "Biospheric Bandwidth"
             ],
             "syntactic_rules": {
-                "max_words_per_clause": 10,
+                "clause_structure": "concise",
                 "preferred_structure": "Subject-Verb-Object",
                 "prohibited_elements": [
                     "Fluff",

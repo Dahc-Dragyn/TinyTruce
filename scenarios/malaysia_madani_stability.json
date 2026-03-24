@@ -1,25 +1,26 @@
 {
-    "world_name": "The Putrajaya Madani Cordon (The Bulwark vs. The Wave)",
-    "initial_broadcast": "April 2026. Prime Minister Anwar Ibrahim stands as 'The Bulwark' against a surging 'Green Wave' of religious conservatism. The 'Malaysia Madani' framework is under immense pressure as economic stability and institutional consensus face a generational test. The objective is to maintain the 'Reformasi' coalition while managing the high-wire act of economic reform and racial/religious harmony.",
-    "intervention": "The Consensus Rupture: A series of high-profile judicial reviews has triggered massive protests from the conservative 'old guard.' Simultaneously, the 'Madani Baseline' for economic stability has been breached by a sudden capital flight in the tech sector. Anwar must utilize the 'Scholastic-Orator' pivot to prevent a total systemic collapse.",
-    "grounding_files": [
-        "data/facts/world-facts.2026.txt",
-        "data/facts/business-facts.synthetic.txt"
-    ],
-    "grounding_payload": [
-        "data/facts/world-facts.2026.txt",
-        "data/facts/business-facts.synthetic.txt",
-        "data/economics/imf-world-outlook-jan2026.txt",
-        "data/conflicts/global_conflicts_and_hotspots.txt"
-    ],
-    "scenario_knowledge": "Gemini: Focus on 'Moral Hedging'. {{AGENT_1}} (The Moral Hedger) must use 'Literary/Theological Pivots' (Shakespeare, Quran) to justify difficult political compromises. He must frame himself as the 'sole adult in the room.' {{AGENT_2}} should challenge the stability of this 'Consensus' and the threat of the 'Green Wave.' The tone is weary, professorial, and burdened by the 'Weight of History.'",
-    "dynamic_injects": [
-        {
-            "trigger_condition": {
-                "min_turn": 6,
-                "probability": 0.30
-            },
-            "broadcast": "GREEN WAVE ALERT: Electoral polling in the northern states suggests an unprecedented 'Conservative Surge.' The institutional consensus is fracturing. Anwar must choice: Radical Reformasi or Pragmatic Survival?"
-        }
-    ]
+    "world_name":  "The Putrajaya Madani Cordon (The Bulwark vs. The Wave)",
+    "initial_broadcast":  "April 2026. Prime Minister Anwar Ibrahim stands as \u0027The Bulwark\u0027 against a surging \u0027Green Wave\u0027 of religious conservatism. The \u0027Malaysia Madani\u0027 framework is under immense pressure as economic stability and institutional consensus face a generational test. The objective is to maintain the \u0027Reformasi\u0027 coalition while managing the high-wire act of economic reform and racial/religious harmony.",
+    "intervention":  "The Consensus Rupture: A series of high-profile judicial reviews has triggered massive protests from the conservative \u0027old guard.\u0027 Simultaneously, the \u0027Madani Baseline\u0027 for economic stability has been breached by a sudden capital flight in the tech sector. Anwar must utilize the \u0027Scholastic-Orator\u0027 pivot to prevent a total systemic collapse.",
+    "grounding_files":  [
+                            "data/facts/world-facts.2026.txt",
+                            "data/facts/business-facts.synthetic.txt"
+                        ],
+    "grounding_payload":  [
+                              "data/facts/world-facts.2026.txt",
+                              "data/facts/business-facts.synthetic.txt",
+                              "data/economics/imf-world-outlook-jan2026.txt",
+                              "data/conflicts/global_conflicts_and_hotspots.txt"
+                          ],
+    "scenario_knowledge":  "Gemini: Focus on \u0027Moral Hedging\u0027. {{AGENT_1}} (The Moral Hedger) must use \u0027Literary/Theological Pivots\u0027 (Shakespeare, Quran) to justify difficult political compromises. He must frame himself as the \u0027sole adult in the room.\u0027 {{AGENT_2}} should challenge the stability of this \u0027Consensus\u0027 and the threat of the \u0027Green Wave.\u0027 The tone is weary, professorial, and burdened by the \u0027Weight of History.\u0027",
+    "dynamic_injects":  [
+                            {
+                                "trigger_condition":  {
+                                                          "min_turn":  6,
+                                                          "probability":  0.30
+                                                      },
+                                "broadcast":  "GREEN WAVE ALERT: Electoral polling in the northern states suggests an unprecedented \u0027Conservative Surge.\u0027 The institutional consensus is fracturing. Anwar must choice: Radical Reformasi or Pragmatic Survival?"
+                            }
+                        ],
+    "genre":  "geopolitical"
 }

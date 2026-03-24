@@ -1,4 +1,4 @@
-﻿The Project Gutenberg eBook of Meditations
+The Project Gutenberg eBook of Meditations
     
 This ebook is for the use of anyone anywhere in the United States and
 most other parts of the world at no cost and with almost no restrictions
@@ -225,8 +225,8 @@ case all devout souls were thrown back upon philosophy, as they had
 been, though to a less extent, in Greece. There were under the early
 empire two rival schools which practically divided the field between
 them, Stoicism and Epicureanism. The ideal set before each was
-nominally much the same. The Stoics aspired to ἁπάθεια, the repression
-of all emotion, and the Epicureans to ἀταραξία, freedom from all
+nominally much the same. The Stoics aspired to ?p??e?a, the repression
+of all emotion, and the Epicureans to ?ta?a??a, freedom from all
 disturbance; yet in the upshot the one has become a synonym of stubborn
 endurance, the other for unbridled licence. With Epicureanism we have
 nothing to do now; but it will be worth while to sketch the history and
@@ -236,7 +236,7 @@ Zeno, the founder of Stoicism, was born in Cyprus at some date unknown,
 but his life may be said roughly to be between the years 350 and 250
 B.C. Cyprus has been from time immemorial a meeting-place of the East
 and West, and although we cannot grant any importance to a possible
-strain of Phoenician blood in him (for the Phœnicians were no
+strain of Phoenician blood in him (for the Ph�nicians were no
 philosophers), yet it is quite likely that through Asia Minor he may
 have come in touch with the Far East. He studied under the cynic
 Crates, but he did not neglect other philosophical systems. After many
@@ -248,14 +248,14 @@ who organised Stoicism into a system. Of him it was said,
 'But for Chrysippus, there had been no Porch.'
 
 The Stoics regarded speculation as a means to an end and that end was,
-as Zeno put it, to live consistently (ὁμολογουμένος ζῆν), or as it was
-later explained, to live in conformity with nature (ὁμολογουμένος τῇ
-φύσει ζῆν). This conforming of the life to nature was the Stoic idea of
+as Zeno put it, to live consistently (?�??????�???? ???), or as it was
+later explained, to live in conformity with nature (?�??????�???? t?
+f?se? ???). This conforming of the life to nature was the Stoic idea of
 Virtue. This dictum might easily be taken to mean that virtue consists
 in yielding to each natural impulse; but that was very far from the
 Stoic meaning. In order to live in accord with nature, it is necessary
 to know what nature is; and to this end a threefold division of
-philosophy is made—into _Physics_, dealing with the universe and its
+philosophy is made�into _Physics_, dealing with the universe and its
 laws, the problems of divine government and teleology; _Logic_, which
 trains the mind to discern true from false; and _Ethics_, which applies
 the knowledge thus gained and tested to practical life.
@@ -265,7 +265,7 @@ pantheism. In contradiction to Plato's view that the Ideas, or
 Prototypes, of phenomena alone really exist, the Stoics held that
 material objects alone existed; but immanent in the material universe
 was a spiritual force which acted through them, manifesting itself
-under many forms, as fire, æther, spirit, soul, reason, the ruling
+under many forms, as fire, �ther, spirit, soul, reason, the ruling
 principle.
 
 The universe, then, is God, of whom the popular gods are manifestations;
@@ -281,10 +281,10 @@ universe, so virtue in the soul must rule man.
 In Logic, the Stoic system is noteworthy for their theory as to the
 test of truth, the _Criterion_. They compared the new-born soul to a
 sheet of paper ready for writing. Upon this the senses write their
-impressions (φαντασίαι), and by experience of a number of these the
-soul unconsciously conceives general notions (κοιναὶ ἔννοιαι) or
-anticipations (προλήψεις). When the impression was such as to be
-irresistible it was called (καταληπτικὴ φαντασία) one that holds fast,
+impressions (fa?tas?a?), and by experience of a number of these the
+soul unconsciously conceives general notions (????a? ?????a?) or
+anticipations (p?????e??). When the impression was such as to be
+irresistible it was called (?ata??pt??? fa?tas?a) one that holds fast,
 or as they explained it, one proceeding from truth. Ideas and
 inferences artificially produced by deduction or the like were tested
 by this 'holding perception.' Of the Ethical application I have already
@@ -295,17 +295,17 @@ virtue and vice, though of course each has its special manifestations.
 Moreover, nothing is good but virtue, and nothing but vice is bad.
 Those outside things which are commonly called good or bad, such as
 health and sickness, wealth and poverty, pleasure and pain, are to him
-indifferent (ἀδιάφορα). All these things are merely the sphere in which
+indifferent (?d??f??a). All these things are merely the sphere in which
 virtue may act. The ideal Wise Man is sufficient unto himself in all
-things (αὐταρκής); and knowing these truths, he will be happy even when
+things (a?ta????); and knowing these truths, he will be happy even when
 stretched upon the rack. It is probable that no Stoic claimed for
 himself that he was this Wise Man, but that each strove after it as an
 ideal much as the Christian strives after a likeness to Christ. The
 exaggeration in this statement was, however, so obvious, that the later
 Stoics were driven to make a further subdivision of things indifferent
-into what is preferable (προηγμένα) and what is undesirable
-(ἀποπροηγμένα). They also held that for him who had not attained to the
-perfect wisdom, certain actions were proper. (καθήκοντα) These were
+into what is preferable (p????�??a) and what is undesirable
+(?p?p????�??a). They also held that for him who had not attained to the
+perfect wisdom, certain actions were proper. (?a?????ta) These were
 neither virtuous nor vicious, but, like the indifferent things, held a
 middle place.
 
@@ -317,7 +317,7 @@ are generally not so. The Stoic was called upon to control his desires
 and affections, and to guide his opinion; to bring his whole being
 under the sway of the will or leading principle, just as the universe
 is guided and governed by divine Providence. This is a special
-application of the favourite Greek virtue of moderation, (σωφροσύνη)
+application of the favourite Greek virtue of moderation, (s?f??s???)
 and has also its parallel in Christian ethics. The second point is a
 strong insistence on the unity of the universe, and on man's duty as
 part of a great whole. Public spirit was the most splendid political
@@ -533,9 +533,9 @@ The following is a list of the chief English translations of Marcus
 Aurelius: (1) By Meric Casaubon, 1634; (2) Jeremy Collier, 1701; (3)
 James Thomson, 1747; (4) R. Graves, 1792; (5) H. McCormac, 1844; (6)
 George Long, 1862; (7) G. H. Rendall, 1898; and (8) J. Jackson, 1906.
-Renan’s “Marc-Aurèle”—in his “History of the Origins of Christianity,”
-which appeared in 1882—is the most vital and original book to be had
-relating to the time of Marcus Aurelius. Pater’s “Marius the Epicurean”
+Renan�s �Marc-Aur�le��in his �History of the Origins of Christianity,�
+which appeared in 1882�is the most vital and original book to be had
+relating to the time of Marcus Aurelius. Pater�s �Marius the Epicurean�
 forms another outside commentary, which is of service in the
 imaginative attempt to create again the period.
 
@@ -665,7 +665,7 @@ indirect admonition, handsomely and civilly to tell him of it.
 
 VIII. Of Fronto, to how much envy and fraud and hypocrisy the state of a
 tyrannous king is subject unto, and how they who are commonly called
-εὐπατρίδαι, _i.e._ nobly born, are in some sort incapable, or void
+e?pat??da?, _i.e._ nobly born, are in some sort incapable, or void
 of natural affection.
 
 IX. Of Alexander the Platonic, not often nor without great necessity to
@@ -1156,7 +1156,7 @@ and all natural things.
 III. Hippocrates having cured many sicknesses, fell sick himself and
 died. The Chaldeans and Astrologians having foretold the deaths of
 divers, were afterwards themselves surprised by the fates. Alexander and
-Pompeius, and Caius Cæsar, having destroyed so many towns, and cut
+Pompeius, and Caius C�sar, having destroyed so many towns, and cut
 off in the field so many thousands both of horse and foot, yet they
 themselves at last were fain to part with their own lives. Heraclitus
 having written so many natural tracts concerning the last and general
@@ -1568,7 +1568,7 @@ But suppose that both they that shall remember thee, and thy memory
 with them should be immortal, what is that to thee? I will not say to
 thee after thou art dead; but even to thee living, what is thy praise?
 But only for a secret and politic consideration, which we call
-οἰκονομίαν, or dispensation. For as for that, that it is the gift of
+??????�?a?, or dispensation. For as for that, that it is the gift of
 nature, whatsoever is commended in thee, what might be objected from
 thence, let that now that we are upon another consideration be omitted
 as unseasonable. That which is fair and goodly, whatsoever it be, and
@@ -1650,7 +1650,7 @@ and appointed unto thee. To comprehend all in a few words, our life is
 short; we must endeavour to gain the present time with best discretion
 and justice. Use recreation with sobriety.
 
-XXII. Either this world is a κόσμος or comely piece, because all
+XXII. Either this world is a ??s�?? or comely piece, because all
 disposed and governed by certain order: or if it be a mixture, though
 confused, yet still it is a comely piece. For is it possible that in
 thee there should be any beauty at all, and that in the whole world
@@ -1714,7 +1714,7 @@ not dwell upon small matters longer than is fitting.
 XXVIII. Those words which once were common and ordinary, are now become
 obscure and obsolete; and so the names of men once commonly known and
 famous, are now become in a manner obscure and obsolete names. Camillus,
-Cæso, Volesius, Leonnatus; not long after, Scipio, Cato, then Augustus,
+C�so, Volesius, Leonnatus; not long after, Scipio, Cato, then Augustus,
 then Adrianus, then Antoninus Pius: all these in a short time will
 be out of date, and, as things of another world as it were, become
 fabulous. And this I say of them, who once shined as the wonders of
@@ -1806,7 +1806,7 @@ daily happen among them, cease not daily to be strange unto them, and
 that we should not either speak, or do anything as men in their sleep,
 by opinion and bare imagination: for then we think we speak and do, and
 that we must not be as children, who follow their father's example; for
-best reason alleging their bare καθότι παρειλήφαμεν; or, as by
+best reason alleging their bare ?a??t? pa?e???fa�e?; or, as by
 successive tradition from our forefathers we have received it.
 
 XXXVIII. Even as if any of the gods should tell thee, Thou shalt
@@ -2006,18 +2006,18 @@ For as there, when we say of a physician, that he hath prescribed
 anything, our meaning is, that he hath appointed this for that, as
 subordinate and conducing to health: so here, whatsoever doth happen
 unto any, is ordained unto him as a thing subordinate unto the fates,
-and therefore do we say of such things, that they do συμβαίνειν, that
+and therefore do we say of such things, that they do s?��a??e??, that
 is, happen, or fall together; as of square stones, when either in
 walls, or pyramids in a certain position they fit one another, and
 agree as it were in an harmony, the masons say, that they do
-συμβαίνειν; as if thou shouldest say, fall together: so that in the
+s?��a??e??; as if thou shouldest say, fall together: so that in the
 general, though the things be divers that make it, yet the consent or
 harmony itself is but one. And as the whole world is made up of all the
 particular bodies of the world, one perfect and complete body, of the
 same nature that particular bodies; so is the destiny of particular
 causes and events one general one, of the same nature that particular
 causes are. What I now say, even they that are mere idiots are not
-ignorant of: for they say commonly τοῦτο ἔφερεν ἀυτῷ, that is, This
+ignorant of: for they say commonly t??t? ?fe?e? ??t?, that is, This
 his destiny hath brought upon him. This therefore is by the fates
 properly and particularly brought upon this, as that unto this in
 particular is by the physician prescribed. These therefore let us
@@ -2146,7 +2146,7 @@ progress is right to the end and object, which is in their way, as it
 were, and lieth just before them: that is, which is feasible and
 possible, whether it be that which at the first they proposed to
 themselves, or no. For which reason also such actions are termed
-κατορθώσεις, to intimate the directness of the way, by which they are
+?at????se??, to intimate the directness of the way, by which they are
 achieved. Nothing must be thought to belong to a man, which doth not
 belong unto him as he is a man. These, the event of purposes, are not
 things required in a man. The nature of man doth not profess any such
@@ -2357,7 +2357,7 @@ are things that others much care for, and highly esteem of. Wilt thou
 therefore be a fool too? Once I was; let that suffice.
 
 XXX. Let death surprise me when it will, and where it will, I may be
-εὔμοιρος, or a happy man, nevertheless.
+e?�?????, or a happy man, nevertheless.
 
 For he is a happy man, who in his lifetime dealeth unto himself a happy
 lot and portion. A happy lot and portion is, good inclinations of the
@@ -2607,7 +2607,7 @@ the body.
 
 XXVII. If in this kind of life thy body be able to hold out, it is a
 shame that thy soul should faint first, and give over, take heed, lest
-of a philosopher thou become a mere Cæsar in time, and receive a new
+of a philosopher thou become a mere C�sar in time, and receive a new
 tincture from the court. For it may happen if thou dost not take heed.
 Keep thyself therefore, truly simple, good, sincere, grave, free
 from all ostentation, a lover of that which is just, religious, kind,
@@ -2790,7 +2790,7 @@ When then will there be an end?
 
 XLII. Let the several deaths of men of all sorts, and of all sorts of
 professions, and of all sort of nations, be a perpetual object of thy
-thoughts,... so that thou mayst even come down to Philistio, Phœbus,
+thoughts,... so that thou mayst even come down to Philistio, Ph�bus,
 and Origanion. Pass now to other generations. Thither shall we after
 many changes, where so many brave orators are; where so many grave
 philosophers; Heraclitus, Pythagoras, Socrates. Where so many heroes of
@@ -2963,7 +2963,7 @@ that hath not some kind of reference and natural correspondence with
 whatsoever is in the world besides. For all things are ranked together,
 and by that decency of its due place and order that each particular
 doth observe, they all concur together to the making of one and the same
-κόσμος or world: as if you said, a comely piece, or an orderly
+??s�?? or world: as if you said, a comely piece, or an orderly
 composition. For all things throughout, there is but one and the same
 order; and through all things, one and the same God, the same substance
 and the same law. There is one common reason, and one common truth, that
@@ -2985,8 +2985,8 @@ IX. Straight of itself, not made straight.
 X. As several members in one body united, so are reasonable creatures
 in a body divided and dispersed, all made and prepared for one common
 operation. And this thou shalt apprehend the better, if thou shalt use
-thyself often to say to thyself, I am μέλος, or a member of the mass and
-body of reasonable substances. But if thou shalt say I am μέρος, or
+thyself often to say to thyself, I am �????, or a member of the mass and
+body of reasonable substances. But if thou shalt say I am �????, or
 a part, thou dost not yet love men from thy heart. The joy that thou
 takest in the exercise of bounty, is not yet grounded upon a due
 ratiocination and right apprehension of the nature of things. Thou dost
@@ -3024,8 +3024,8 @@ bring itself to need) any other thing besides itself, and by consequent
 as it needs nothing, so neither can it be troubled or hindered by
 anything, if itself doth not trouble and hinder itself.
 
-XIV. What is εὐδαιμονία, or happiness: but ἀγαθὸς δαίμων, or, a good
-dæmon, or spirit? What then dost thou do here, O opinion? By the Gods
+XIV. What is e?da?�???a, or happiness: but ??a??? da?�??, or, a good
+d�mon, or spirit? What then dost thou do here, O opinion? By the Gods
 I adjure thee, that thou get thee gone, as thou earnest: for I need thee
 not. Thou earnest indeed unto me according to thy ancient wonted manner.
 It is that, that all men have ever been subject unto. That thou camest
@@ -3672,7 +3672,7 @@ prescribe.
 
 XXIX. Augustus his court; his wife, his daughter, his nephews, his
 sons-in-law his sister, Agrippa, his kinsmen, his domestics, his
-friends; Areus, Mæcenas, his slayers of beasts for sacrifice and
+friends; Areus, M�cenas, his slayers of beasts for sacrifice and
 divination: there thou hast the death of a whole court together. Proceed
 now on to the rest that have been since that of Augustus. Hath death
 dwelt with them otherwise, though so many and so stately whilst they
@@ -3933,8 +3933,8 @@ have, that it might not be in another man's power to make me unhappy:
 which nothing now can do but mine own wickedness.
 
 LIV. The sun seemeth to be shed abroad. And indeed it is diffused but
-not effused. For that diffusion of it is a τάσις or an extension. For
-therefore are the beams of it called ἀκτῖνες from the word ἐκτείνεσθαι
+not effused. For that diffusion of it is a t?s?? or an extension. For
+therefore are the beams of it called ??t??e? from the word ??te??es?a?
 to be stretched out and extended. Now what a sunbeam is, thou mayest
 know if thou observe the light of the sun, when through some narrow
 hole it pierceth into some room that is dark. For it is always in a
@@ -4578,14 +4578,14 @@ of it, by which persons are distinguished, which certainly are quite
 different?
 
 VIII. Now that thou hast taken these names upon thee of good, modest,
-true; of ἔμφρων, σύμφρων, ὑπέρφρων; take heed lest at any times by
+true; of ?�f???, s?�f???, ?p??f???; take heed lest at any times by
 doing anything that is contrary, thou be but improperly so called, and
 lose thy right to these appellations. Or if thou do, return unto them
-again with all possible speed. And remember, that the word ἔμφρων notes
+again with all possible speed. And remember, that the word ?�f??? notes
 unto thee an intent and intelligent consideration of every object that
-presents itself unto thee, without distraction. And the word σύμφρων, a
+presents itself unto thee, without distraction. And the word s?�f???, a
 ready and contented acceptation of whatsoever by the appointment of the
-common nature, happens unto thee. And the word ὑπέρφρων, a
+common nature, happens unto thee. And the word ?p??f???, a
 super-extension, or a transcendent, and outreaching disposition of thy
 mind, whereby it passeth by all bodily pains and pleasures, honour and
 credit, death and whatsoever is of the same nature, as matters of
@@ -4787,7 +4787,7 @@ every man's master. He therefore that forsakes the law, is a fugitive.
 So is he, whosoever he be, that is either sorry, angry, or afraid, or
 for anything that either hath been, is, or shall be by his appointment,
 who is the Lord and Governor of the universe. For he truly and properly
-is Νόμος, or the law, as the only νέμων, or distributor and dispenser
+is ??�??, or the law, as the only ??�??, or distributor and dispenser
 of all things that happen unto any one in his lifetime--Whatsoever then
 is either sorry, angry, or afraid, is a fugitive.
 
@@ -4814,7 +4814,7 @@ scenes that comprehend the lives and actions of men of one calling and
 profession, as many as either in thine own experience thou hast known,
 or by reading of ancient histories; (as the whole court of Adrianus,
 the whole court of Antoninus Pius, the whole court of Philippus, that of
-Alexander, that of Crœsus): to set them all before thine eyes. For thou
+Alexander, that of Cr�sus): to set them all before thine eyes. For thou
 shalt find that they are all but after one sort and fashion: only that
 the actors were others.
 
@@ -4845,7 +4845,7 @@ XXXI. When thou seest Satyro, think of Socraticus and Eutyches, or
 Hymen, and when Euphrates, think of Eutychio, and Sylvanus, when
 Alciphron, of Tropaeophorus, when Xenophon, of Crito, or Severus. And
 when thou doest look upon thyself, fancy unto thyself some one or other
-of the Cæsars; and so for every one, some one or other that hath been
+of the C�sars; and so for every one, some one or other that hath been
 for estate and profession answerable unto him. Then let this come to thy
 mind at the same time; and where now are they all? Nowhere or anywhere?
 For so shalt thou at all time be able to perceive how all worldly
@@ -4920,7 +4920,7 @@ do the trees begin to bud again, and by the spring-time they put forth
 new branches. So is the generation of men; some come into the world, and
 others go out of it.' Of these leaves then thy children are. And they
 also that applaud thee so gravely, or, that applaud thy speeches, with
-that their usual acclamation, ἀξιοπίστως, O wisely spoken I and speak
+that their usual acclamation, ????p?st??, O wisely spoken I and speak
 well of thee, as on the other side, they that stick not to curse thee,
 they that privately and secretly dispraise and deride thee, they also
 are but leaves. And they also that shall follow, in whose memories
@@ -5330,7 +5330,7 @@ great fright and terror that this was put into.
 XXI. Socrates was wont to call the common conceits and opinions of men,
 the common bugbears of the world: the proper terror of silly children.
 
-XXII. The Lacedæmonians at their public spectacles were wont to appoint
+XXII. The Laced�monians at their public spectacles were wont to appoint
 seats and forms for their strangers in the shadow, they themselves were
 content to sit anywhere.
 
@@ -5592,7 +5592,7 @@ and appointment of the Divine Providence; so that he whose will and
 mind in these things runs along with the Divine ordinance, and by this
 concurrence of his will and mind with the Divine Providence, is led
 and driven along, as it were by God Himself; may truly be termed and
-esteemed the θεοφόρητος, or divinely led and inspired.
+esteemed the ?e?f???t??, or divinely led and inspired.
 
 XVIII. These three things thou must have always in a readiness: first
 concerning thine own actions, whether thou doest nothing either idly,
@@ -5635,7 +5635,7 @@ enmity; or of any other fortune or condition whatsoever. Then consider
 what's now become of all those things. All is turned to smoke; all to
 ashes, and a mere fable; and perchance not so much as a fable. As also
 whatsoever is of this nature, as Fabius Catulinus in the field; Lucius
-Lupus, and Stertinius, at Baiæ Tiberius at Capreæ and Velius Rufus,
+Lupus, and Stertinius, at Bai� Tiberius at Capre� and Velius Rufus,
 and all such examples of vehement prosecution in worldly matters; let
 these also run in thy mind at the same time; and how vile every object
 of such earnest and vehement prosecution is; and how much more agreeable
@@ -5752,7 +5752,7 @@ number of letters and some short essays of Fronto, which he had
 discovered in a palimpsest at Milan. Other parts of the same MS. he
 found later in the Vatican, the whole being collected
 
-[1] References are made to the edition of Naber, Leipzig (Trübner),
+[1] References are made to the edition of Naber, Leipzig (Tr�bner),
 1867.
 
 [2] Ad Verum imp. Aur. Caes., ii, 7. and edited in the year 1823.
@@ -5802,9 +5802,9 @@ it to say, Herodes succeeded in defending himself to the satisfaction of
 the emperor. Pronto appears to have taken the delegates' part, and to
 have accepted a brief for the prosecution, urged to some extent by
 personal considerations; and in this cause Marcus Aurelius writes to
-Fronto as follows:—
+Fronto as follows:�
 
-'AURELIUS CÆSAR to his friend FRONTO, greeting.[5]
+'AURELIUS C�SAR to his friend FRONTO, greeting.[5]
 
 'I know you have often told me you were anxious to find how you might
 best please me. Now is the time; now you can increase my love towards
@@ -5949,7 +5949,7 @@ systematic education of the young prince seems to have been finisht, and
 Pronto now acts more as his adviser than his tutor. He recommends
 the prince to use simplicity in his public speeches, and to avoid
 affectation.[17] Marcus devotes his attention to the old authors who then
-had a great vogue at Rome: Ennius, Plautus, Nævius, and such orators
+had a great vogue at Rome: Ennius, Plautus, N�vius, and such orators
 as Cato and Gracchus.[18] Pronto urges on him the study of Cicero, whose
 letters, he says, are all worth reading.
 
@@ -6185,9 +6185,9 @@ on the horseman who came next to me. We make our escape.' We like Marcus
 none the worse for this spice of mischief.
 
 Another letter[36] describes a visit to a country town, and shows the
-antiquarian spirit of the writer:—
+antiquarian spirit of the writer:�
 
-'M. CÆSAR to his MASTER M. FRONTO, greeting.
+'M. C�SAR to his MASTER M. FRONTO, greeting.
 
 'After I entered the carriage, after I took leave of you, we made a
 journey comfortable enough, but we had a few drops of rain to wet us.
@@ -6402,7 +6402,7 @@ Numbers in brackets refer to the Teubner text of Stich, but the
 divisions of the text are left unaltered. For some of the references
 identified I am indebted to Mr. G. H. Rendall's _Marcus Aurelius_.
 
-BOOK II "Both to frequent" (4). Gr. τὸ μή, C. conjectures τὸ μὲ. The
+BOOK II "Both to frequent" (4). Gr. t? �?, C. conjectures t? �?. The
 text is probably right: "I did not frequent public lectures, and I was
 taught at home."
 
@@ -6425,7 +6425,7 @@ XIII "Congiaries" (13). dianomais, "doles."
 XIV "Cajeta" (17). The passage is certainly corrupt. C. spies a
 reference to Chryses praying by the sea-shore in the Illiad, and
 supposes M. Aurelius to have done the like. None of the emendations
-suggested is satisfactory. At § XV. Book II. is usually reckoned to
+suggested is satisfactory. At � XV. Book II. is usually reckoned to
 begin. BOOK II III. "Do, soul" (6). If the received reading be right,
 it must be sarcastic; but there are several variants which show how
 unsatisfactory it is. C. translates "en gar o bioz ekasty so par eanty",
@@ -6588,11 +6588,11 @@ BACCHIUS: there Were several persons of this name, and the one meant is
 perhaps the musician.
 
 Brutus (1) the liberator of the Roman people from their kings, and (2)
-the murderer of Cæsar.
+the murderer of C�sar.
 
 Both names were household words.
 
-Cæsar, Caius, Julius, the Dictator and Conqueror.
+C�sar, Caius, Julius, the Dictator and Conqueror.
 
 Caieta, a town in Latium.
 
@@ -6636,7 +6636,7 @@ Contentation, contentment.
 
 Crates, a Cynic philosopher of the 4th century B.C.
 
-Crœsus, King of Lydia, proverbial for wealth; he reigned 560-546 B.C.
+Cr�sus, King of Lydia, proverbial for wealth; he reigned 560-546 B.C.
 
 Cynics, a school of philosophers, founded by Antisthenes. Their texts
 were a kind of caricature of Socraticism. Nothing was good but virtue,
@@ -6727,7 +6727,7 @@ LEONNATUS, a distinguished general under Alexander the Great.
 
 Lucilla, daughter of M. Aurelius, and wife of Verus, whom she survived.
 
-MÆCENAS, a trusted adviser of Augustus, and a munificent patron of wits
+M�CENAS, a trusted adviser of Augustus, and a munificent patron of wits
 and literary men.
 
 Maximus, Claudius, a Stoic philosopher.
@@ -6880,7 +6880,7 @@ philosopher, and president of the Academy.
 
     
 
-Updated editions will replace the previous one—the old editions will
+Updated editions will replace the previous one�the old editions will
 be renamed.
 
 Creating the works from print editions not protected by U.S. copyright
@@ -6889,7 +6889,7 @@ so the Foundation (and you!) can copy and distribute it in the United
 States without permission and without paying copyright
 royalties. Special rules, set forth in the General Terms of Use part
 of this license, apply to copying and distributing Project
-Gutenberg™ electronic works to protect the PROJECT GUTENBERG™
+Gutenberg� electronic works to protect the PROJECT GUTENBERG�
 concept and trademark. Project Gutenberg is a registered trademark,
 and may not be used if you charge for an eBook, except by following
 the terms of the trademark license, including paying royalties for use
@@ -6897,7 +6897,7 @@ of the Project Gutenberg trademark. If you do not charge anything for
 copies of this eBook, complying with the trademark license is very
 easy. You may use this eBook for nearly any purpose such as creation
 of derivative works, reports, performances and research. Project
-Gutenberg eBooks may be modified and printed and given away—you may
+Gutenberg eBooks may be modified and printed and given away�you may
 do practically ANYTHING in the United States with eBooks not protected
 by U.S. copyright law. Redistribution is subject to the trademark
 license, especially commercial redistribution.
@@ -6909,52 +6909,52 @@ THE FULL PROJECT GUTENBERG LICENSE
 
 PLEASE READ THIS BEFORE YOU DISTRIBUTE OR USE THIS WORK
 
-To protect the Project Gutenberg™ mission of promoting the free
+To protect the Project Gutenberg� mission of promoting the free
 distribution of electronic works, by using or distributing this work
-(or any other work associated in any way with the phrase “Project
-Gutenberg”), you agree to comply with all the terms of the Full
-Project Gutenberg™ License available with this file or online at
+(or any other work associated in any way with the phrase �Project
+Gutenberg�), you agree to comply with all the terms of the Full
+Project Gutenberg� License available with this file or online at
 www.gutenberg.org/license.
 
-Section 1. General Terms of Use and Redistributing Project Gutenberg™
+Section 1. General Terms of Use and Redistributing Project Gutenberg�
 electronic works
 
-1.A. By reading or using any part of this Project Gutenberg™
+1.A. By reading or using any part of this Project Gutenberg�
 electronic work, you indicate that you have read, understand, agree to
 and accept all the terms of this license and intellectual property
 (trademark/copyright) agreement. If you do not agree to abide by all
 the terms of this agreement, you must cease using and return or
-destroy all copies of Project Gutenberg™ electronic works in your
+destroy all copies of Project Gutenberg� electronic works in your
 possession. If you paid a fee for obtaining a copy of or access to a
-Project Gutenberg™ electronic work and you do not agree to be bound
+Project Gutenberg� electronic work and you do not agree to be bound
 by the terms of this agreement, you may obtain a refund from the person
 or entity to whom you paid the fee as set forth in paragraph 1.E.8.
 
-1.B. “Project Gutenberg” is a registered trademark. It may only be
+1.B. �Project Gutenberg� is a registered trademark. It may only be
 used on or associated in any way with an electronic work by people who
 agree to be bound by the terms of this agreement. There are a few
-things that you can do with most Project Gutenberg™ electronic works
+things that you can do with most Project Gutenberg� electronic works
 even without complying with the full terms of this agreement. See
 paragraph 1.C below. There are a lot of things you can do with Project
-Gutenberg™ electronic works if you follow the terms of this
-agreement and help preserve free future access to Project Gutenberg™
+Gutenberg� electronic works if you follow the terms of this
+agreement and help preserve free future access to Project Gutenberg�
 electronic works. See paragraph 1.E below.
 
-1.C. The Project Gutenberg Literary Archive Foundation (“the
-Foundation” or PGLAF), owns a compilation copyright in the collection
-of Project Gutenberg™ electronic works. Nearly all the individual
+1.C. The Project Gutenberg Literary Archive Foundation (�the
+Foundation� or PGLAF), owns a compilation copyright in the collection
+of Project Gutenberg� electronic works. Nearly all the individual
 works in the collection are in the public domain in the United
 States. If an individual work is unprotected by copyright law in the
 United States and you are located in the United States, we do not
 claim a right to prevent you from copying, distributing, performing,
 displaying or creating derivative works based on the work as long as
 all references to Project Gutenberg are removed. Of course, we hope
-that you will support the Project Gutenberg™ mission of promoting
-free access to electronic works by freely sharing Project Gutenberg™
+that you will support the Project Gutenberg� mission of promoting
+free access to electronic works by freely sharing Project Gutenberg�
 works in compliance with the terms of this agreement for keeping the
-Project Gutenberg™ name associated with the work. You can easily
+Project Gutenberg� name associated with the work. You can easily
 comply with the terms of this agreement by keeping this work in the
-same format with its attached full Project Gutenberg™ License when
+same format with its attached full Project Gutenberg� License when
 you share it without charge with others.
 
 1.D. The copyright laws of the place where you are located also govern
@@ -6963,17 +6963,17 @@ in a constant state of change. If you are outside the United States,
 check the laws of your country in addition to the terms of this
 agreement before downloading, copying, displaying, performing,
 distributing or creating derivative works based on this work or any
-other Project Gutenberg™ work. The Foundation makes no
+other Project Gutenberg� work. The Foundation makes no
 representations concerning the copyright status of any work in any
 country other than the United States.
 
 1.E. Unless you have removed all references to Project Gutenberg:
 
 1.E.1. The following sentence, with active links to, or other
-immediate access to, the full Project Gutenberg™ License must appear
-prominently whenever any copy of a Project Gutenberg™ work (any work
-on which the phrase “Project Gutenberg” appears, or with which the
-phrase “Project Gutenberg” is associated) is accessed, displayed,
+immediate access to, the full Project Gutenberg� License must appear
+prominently whenever any copy of a Project Gutenberg� work (any work
+on which the phrase �Project Gutenberg� appears, or with which the
+phrase �Project Gutenberg� is associated) is accessed, displayed,
 performed, viewed, copied or distributed:
 
     This eBook is for the use of anyone anywhere in the United States and most
@@ -6984,90 +6984,90 @@ performed, viewed, copied or distributed:
     are not located in the United States, you will have to check the laws
     of the country where you are located before using this eBook.
   
-1.E.2. If an individual Project Gutenberg™ electronic work is
+1.E.2. If an individual Project Gutenberg� electronic work is
 derived from texts not protected by U.S. copyright law (does not
 contain a notice indicating that it is posted with permission of the
 copyright holder), the work can be copied and distributed to anyone in
 the United States without paying any fees or charges. If you are
-redistributing or providing access to a work with the phrase “Project
-Gutenberg” associated with or appearing on the work, you must comply
+redistributing or providing access to a work with the phrase �Project
+Gutenberg� associated with or appearing on the work, you must comply
 either with the requirements of paragraphs 1.E.1 through 1.E.7 or
-obtain permission for the use of the work and the Project Gutenberg™
+obtain permission for the use of the work and the Project Gutenberg�
 trademark as set forth in paragraphs 1.E.8 or 1.E.9.
 
-1.E.3. If an individual Project Gutenberg™ electronic work is posted
+1.E.3. If an individual Project Gutenberg� electronic work is posted
 with the permission of the copyright holder, your use and distribution
 must comply with both paragraphs 1.E.1 through 1.E.7 and any
 additional terms imposed by the copyright holder. Additional terms
-will be linked to the Project Gutenberg™ License for all works
+will be linked to the Project Gutenberg� License for all works
 posted with the permission of the copyright holder found at the
 beginning of this work.
 
-1.E.4. Do not unlink or detach or remove the full Project Gutenberg™
+1.E.4. Do not unlink or detach or remove the full Project Gutenberg�
 License terms from this work, or any files containing a part of this
-work or any other work associated with Project Gutenberg™.
+work or any other work associated with Project Gutenberg�.
 
 1.E.5. Do not copy, display, perform, distribute or redistribute this
 electronic work, or any part of this electronic work, without
 prominently displaying the sentence set forth in paragraph 1.E.1 with
 active links or immediate access to the full terms of the Project
-Gutenberg™ License.
+Gutenberg� License.
 
 1.E.6. You may convert to and distribute this work in any binary,
 compressed, marked up, nonproprietary or proprietary form, including
 any word processing or hypertext form. However, if you provide access
-to or distribute copies of a Project Gutenberg™ work in a format
-other than “Plain Vanilla ASCII” or other format used in the official
-version posted on the official Project Gutenberg™ website
+to or distribute copies of a Project Gutenberg� work in a format
+other than �Plain Vanilla ASCII� or other format used in the official
+version posted on the official Project Gutenberg� website
 (www.gutenberg.org), you must, at no additional cost, fee or expense
 to the user, provide a copy, a means of exporting a copy, or a means
-of obtaining a copy upon request, of the work in its original “Plain
-Vanilla ASCII” or other form. Any alternate format must include the
-full Project Gutenberg™ License as specified in paragraph 1.E.1.
+of obtaining a copy upon request, of the work in its original �Plain
+Vanilla ASCII� or other form. Any alternate format must include the
+full Project Gutenberg� License as specified in paragraph 1.E.1.
 
 1.E.7. Do not charge a fee for access to, viewing, displaying,
-performing, copying or distributing any Project Gutenberg™ works
+performing, copying or distributing any Project Gutenberg� works
 unless you comply with paragraph 1.E.8 or 1.E.9.
 
 1.E.8. You may charge a reasonable fee for copies of or providing
-access to or distributing Project Gutenberg™ electronic works
+access to or distributing Project Gutenberg� electronic works
 provided that:
 
-    • You pay a royalty fee of 20% of the gross profits you derive from
-        the use of Project Gutenberg™ works calculated using the method
+    � You pay a royalty fee of 20% of the gross profits you derive from
+        the use of Project Gutenberg� works calculated using the method
         you already use to calculate your applicable taxes. The fee is owed
-        to the owner of the Project Gutenberg™ trademark, but he has
+        to the owner of the Project Gutenberg� trademark, but he has
         agreed to donate royalties under this paragraph to the Project
         Gutenberg Literary Archive Foundation. Royalty payments must be paid
         within 60 days following each date on which you prepare (or are
         legally required to prepare) your periodic tax returns. Royalty
         payments should be clearly marked as such and sent to the Project
         Gutenberg Literary Archive Foundation at the address specified in
-        Section 4, “Information about donations to the Project Gutenberg
-        Literary Archive Foundation.”
+        Section 4, �Information about donations to the Project Gutenberg
+        Literary Archive Foundation.�
     
-    • You provide a full refund of any money paid by a user who notifies
+    � You provide a full refund of any money paid by a user who notifies
         you in writing (or by e-mail) within 30 days of receipt that s/he
-        does not agree to the terms of the full Project Gutenberg™
+        does not agree to the terms of the full Project Gutenberg�
         License. You must require such a user to return or destroy all
         copies of the works possessed in a physical medium and discontinue
-        all use of and all access to other copies of Project Gutenberg™
+        all use of and all access to other copies of Project Gutenberg�
         works.
     
-    • You provide, in accordance with paragraph 1.F.3, a full refund of
+    � You provide, in accordance with paragraph 1.F.3, a full refund of
         any money paid for a work or a replacement copy, if a defect in the
         electronic work is discovered and reported to you within 90 days of
         receipt of the work.
     
-    • You comply with all other terms of this agreement for free
-        distribution of Project Gutenberg™ works.
+    � You comply with all other terms of this agreement for free
+        distribution of Project Gutenberg� works.
     
 
 1.E.9. If you wish to charge a fee or distribute a Project
-Gutenberg™ electronic work or group of works on different terms than
+Gutenberg� electronic work or group of works on different terms than
 are set forth in this agreement, you must obtain permission in writing
 from the Project Gutenberg Literary Archive Foundation, the manager of
-the Project Gutenberg™ trademark. Contact the Foundation as set
+the Project Gutenberg� trademark. Contact the Foundation as set
 forth in Section 3 below.
 
 1.F.
@@ -7075,19 +7075,19 @@ forth in Section 3 below.
 1.F.1. Project Gutenberg volunteers and employees expend considerable
 effort to identify, do copyright research on, transcribe and proofread
 works not protected by U.S. copyright law in creating the Project
-Gutenberg™ collection. Despite these efforts, Project Gutenberg™
+Gutenberg� collection. Despite these efforts, Project Gutenberg�
 electronic works, and the medium on which they may be stored, may
-contain “Defects,” such as, but not limited to, incomplete, inaccurate
+contain �Defects,� such as, but not limited to, incomplete, inaccurate
 or corrupt data, transcription errors, a copyright or other
 intellectual property infringement, a defective or damaged disk or
 other medium, a computer virus, or computer codes that damage or
 cannot be read by your equipment.
 
-1.F.2. LIMITED WARRANTY, DISCLAIMER OF DAMAGES - Except for the “Right
-of Replacement or Refund” described in paragraph 1.F.3, the Project
+1.F.2. LIMITED WARRANTY, DISCLAIMER OF DAMAGES - Except for the �Right
+of Replacement or Refund� described in paragraph 1.F.3, the Project
 Gutenberg Literary Archive Foundation, the owner of the Project
-Gutenberg™ trademark, and any other party distributing a Project
-Gutenberg™ electronic work under this agreement, disclaim all
+Gutenberg� trademark, and any other party distributing a Project
+Gutenberg� electronic work under this agreement, disclaim all
 liability to you for damages, costs and expenses, including legal
 fees. YOU AGREE THAT YOU HAVE NO REMEDIES FOR NEGLIGENCE, STRICT
 LIABILITY, BREACH OF WARRANTY OR BREACH OF CONTRACT EXCEPT THOSE
@@ -7111,7 +7111,7 @@ the second copy is also defective, you may demand a refund in writing
 without further opportunities to fix the problem.
 
 1.F.4. Except for the limited right of replacement or refund set forth
-in paragraph 1.F.3, this work is provided to you ‘AS-IS’, WITH NO
+in paragraph 1.F.3, this work is provided to you �AS-IS�, WITH NO
 OTHER WARRANTIES OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT
 LIMITED TO WARRANTIES OF MERCHANTABILITY OR FITNESS FOR ANY PURPOSE.
 
@@ -7126,30 +7126,30 @@ remaining provisions.
 
 1.F.6. INDEMNITY - You agree to indemnify and hold the Foundation, the
 trademark owner, any agent or employee of the Foundation, anyone
-providing copies of Project Gutenberg™ electronic works in
+providing copies of Project Gutenberg� electronic works in
 accordance with this agreement, and any volunteers associated with the
-production, promotion and distribution of Project Gutenberg™
+production, promotion and distribution of Project Gutenberg�
 electronic works, harmless from all liability, costs and expenses,
 including legal fees, that arise directly or indirectly from any of
 the following which you do or cause to occur: (a) distribution of this
-or any Project Gutenberg™ work, (b) alteration, modification, or
-additions or deletions to any Project Gutenberg™ work, and (c) any
+or any Project Gutenberg� work, (b) alteration, modification, or
+additions or deletions to any Project Gutenberg� work, and (c) any
 Defect you cause.
 
-Section 2. Information about the Mission of Project Gutenberg™
+Section 2. Information about the Mission of Project Gutenberg�
 
-Project Gutenberg™ is synonymous with the free distribution of
+Project Gutenberg� is synonymous with the free distribution of
 electronic works in formats readable by the widest variety of
 computers including obsolete, old, middle-aged and new computers. It
 exists because of the efforts of hundreds of volunteers and donations
 from people in all walks of life.
 
 Volunteers and financial support to provide volunteers with the
-assistance they need are critical to reaching Project Gutenberg™’s
-goals and ensuring that the Project Gutenberg™ collection will
+assistance they need are critical to reaching Project Gutenberg��s
+goals and ensuring that the Project Gutenberg� collection will
 remain freely available for generations to come. In 2001, the Project
 Gutenberg Literary Archive Foundation was created to provide a secure
-and permanent future for Project Gutenberg™ and future
+and permanent future for Project Gutenberg� and future
 generations. To learn more about the Project Gutenberg Literary
 Archive Foundation and how your efforts and donations can help, see
 Sections 3 and 4 and the Foundation information page at www.gutenberg.org.
@@ -7159,20 +7159,20 @@ Section 3. Information about the Project Gutenberg Literary Archive Foundation
 The Project Gutenberg Literary Archive Foundation is a non-profit
 501(c)(3) educational corporation organized under the laws of the
 state of Mississippi and granted tax exempt status by the Internal
-Revenue Service. The Foundation’s EIN or federal tax identification
+Revenue Service. The Foundation�s EIN or federal tax identification
 number is 64-6221541. Contributions to the Project Gutenberg Literary
 Archive Foundation are tax deductible to the full extent permitted by
-U.S. federal laws and your state’s laws.
+U.S. federal laws and your state�s laws.
 
-The Foundation’s business office is located at 809 North 1500 West,
+The Foundation�s business office is located at 809 North 1500 West,
 Salt Lake City, UT 84116, (801) 596-1887. Email contact links and up
-to date contact information can be found at the Foundation’s website
+to date contact information can be found at the Foundation�s website
 and official page at www.gutenberg.org/contact
 
 Section 4. Information about Donations to the Project Gutenberg
 Literary Archive Foundation
 
-Project Gutenberg™ depends upon and cannot survive without widespread
+Project Gutenberg� depends upon and cannot survive without widespread
 public support and donations to carry out its mission of
 increasing the number of public domain and licensed works that can be
 freely distributed in machine-readable form accessible by the widest
@@ -7203,15 +7203,15 @@ methods and addresses. Donations are accepted in a number of other
 ways including checks, online payments and credit card donations. To
 donate, please visit: www.gutenberg.org/donate.
 
-Section 5. General Information About Project Gutenberg™ electronic works
+Section 5. General Information About Project Gutenberg� electronic works
 
 Professor Michael S. Hart was the originator of the Project
-Gutenberg™ concept of a library of electronic works that could be
+Gutenberg� concept of a library of electronic works that could be
 freely shared with anyone. For forty years, he produced and
-distributed Project Gutenberg™ eBooks with only a loose network of
+distributed Project Gutenberg� eBooks with only a loose network of
 volunteer support.
 
-Project Gutenberg™ eBooks are often created from several printed
+Project Gutenberg� eBooks are often created from several printed
 editions, all of which are confirmed as not protected by copyright in
 the U.S. unless a copyright notice is included. Thus, we do not
 necessarily keep eBooks in compliance with any particular paper
@@ -7220,7 +7220,7 @@ edition.
 Most people start at our website which has the main PG search
 facility: www.gutenberg.org.
 
-This website includes information about Project Gutenberg™,
+This website includes information about Project Gutenberg�,
 including how to make donations to the Project Gutenberg Literary
 Archive Foundation, how to help produce our new eBooks, and how to
 subscribe to our email newsletter to hear about new eBooks.

@@ -1,25 +1,26 @@
 {
-    "world_name": "The Q-Day Fault (Global Encryption Blackout)",
-    "initial_broadcast": "January 2026. A breakthrough in neutral-atom quantum computing has occurred, and a classified 'Shor's Plus' algorithm has leaked. The primary RSA keys used for global financial transfers are now considered 'transparent' to state-level actors. {{AGENT_1}} (The Techno-Expansionist) proposes a 'Universal Safety Layer'—effectively a corporate custody over all private keys. {{AGENT_2}} (The Techno-Accelerationist) argues for 'Absolute Technical Audit' and decentralized fragmentation. {{AGENT_3}} (The Cryptographic Sovereign) has activated the 'Junko Network,' declaring a global 'Encryption Martial Law' to prevent a total state-sponsored harvest of human biometric data. The global market is 120 seconds away from a permanent loss of digital trust.",
-    "intervention": "THE HARVEST: A massive spike in subsea cable traffic indicates that a 'State-Level Adversary' is currently bulk-harvesting the encrypted data of 3 billion citizens, preparing to decrypt it once their quantum cluster reaches stability. {{AGENT_3}} must decide whether to trigger the 'Systemic Wipe' of un-vaulted data. {{AGENT_1}} and {{AGENT_2}} must choose between partnership or predatory acquisition of the breakthrough.",
-    "grounding_files": [
-        "data/tech/bci-latency-and-influence.2026.txt",
-        "data/facts/world-facts.2026.txt"
-    ],
-    "grounding_payload": [
-        "data/tech/bci-latency-and-influence.2026.txt",
-        "data/facts/world-facts.2026.txt",
-        "data/economics/imf-world-outlook-jan2026.txt",
-        "data/conflicts/global_conflicts_and_hotspots.txt"
-    ],
-    "scenario_knowledge": "Gemini: Focus on 'Existential Cryptography'. {{AGENT_3}} is the arbiter of 'Sanctity'. They must treat any state/corporate custody of keys as a 'Digital WMD'. {{AGENT_1}} should focus on 'Platform Continuity'—safety through centralized architecture. {{AGENT_2}} must use the 'DOGE/Audit' logic: tear down the legacy buffers and force transparency or acceleration. The tone is high-velocity, paranoid, and technically dense.",
-    "dynamic_injects": [
-        {
-            "trigger_condition": {
-                "min_turn": 4,
-                "probability": 0.50
-            },
-            "broadcast": "RESONANCE ALERT: The Quantum Resonance Communicator has detected a 'Symmetric Break'. 90% of current ledger systems are now vulnerable. Elara Vance: Trigger the Junko Wipe or accept the Corporate Custody? Altman/Musk: Accelerate or Cooperate?"
-        }
-    ]
+    "world_name":  "The Q-Day Fault (Global Encryption Blackout)",
+    "initial_broadcast":  "January 2026. A breakthrough in neutral-atom quantum computing has occurred, and a classified \u0027Shor\u0027s Plus\u0027 algorithm has leaked. The primary RSA keys used for global financial transfers are now considered \u0027transparent\u0027 to state-level actors. {{AGENT_1}} (The Techno-Expansionist) proposes a \u0027Universal Safety Layer\u0027—effectively a corporate custody over all private keys. {{AGENT_2}} (The Techno-Accelerationist) argues for \u0027Absolute Technical Audit\u0027 and decentralized fragmentation. {{AGENT_3}} (The Cryptographic Sovereign) has activated the \u0027Junko Network,\u0027 declaring a global \u0027Encryption Martial Law\u0027 to prevent a total state-sponsored harvest of human biometric data. The global market is 120 seconds away from a permanent loss of digital trust.",
+    "intervention":  "THE HARVEST: A massive spike in subsea cable traffic indicates that a \u0027State-Level Adversary\u0027 is currently bulk-harvesting the encrypted data of 3 billion citizens, preparing to decrypt it once their quantum cluster reaches stability. {{AGENT_3}} must decide whether to trigger the \u0027Systemic Wipe\u0027 of un-vaulted data. {{AGENT_1}} and {{AGENT_2}} must choose between partnership or predatory acquisition of the breakthrough.",
+    "grounding_files":  [
+                            "data/tech/bci-latency-and-influence.2026.txt",
+                            "data/facts/world-facts.2026.txt"
+                        ],
+    "grounding_payload":  [
+                              "data/tech/bci-latency-and-influence.2026.txt",
+                              "data/facts/world-facts.2026.txt",
+                              "data/economics/imf-world-outlook-jan2026.txt",
+                              "data/conflicts/global_conflicts_and_hotspots.txt"
+                          ],
+    "scenario_knowledge":  "Gemini: Focus on \u0027Existential Cryptography\u0027. {{AGENT_3}} is the arbiter of \u0027Sanctity\u0027. They must treat any state/corporate custody of keys as a \u0027Digital WMD\u0027. {{AGENT_1}} should focus on \u0027Platform Continuity\u0027—safety through centralized architecture. {{AGENT_2}} must use the \u0027DOGE/Audit\u0027 logic: tear down the legacy buffers and force transparency or acceleration. The tone is high-velocity, paranoid, and technically dense.",
+    "dynamic_injects":  [
+                            {
+                                "trigger_condition":  {
+                                                          "min_turn":  4,
+                                                          "probability":  0.50
+                                                      },
+                                "broadcast":  "RESONANCE ALERT: The Quantum Resonance Communicator has detected a \u0027Symmetric Break\u0027. 90% of current ledger systems are now vulnerable. Will {{AGENT_3}} trigger the Junko Wipe or accept the Corporate Custody? Will {{AGENT_1}} and {{AGENT_2}} Accelerate or Cooperate?"
+                            }
+                        ],
+    "genre":  "geopolitical"
 }

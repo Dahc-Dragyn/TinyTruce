@@ -1,16 +1,39 @@
-### US-IRAN ESCALATION INTELLIGENCE: 2026-03-14 ###
+### US-IRAN ESCALATION INTELLIGENCE: 2026-03-24 ###
 SOURCE: THE US-IRAN WAR DESK // ENERGY SHOCK AUDITOR
-COMMISSIONING COST: $0.0059
+COMMISSIONING COST: $0.0099
 ESCALATION LEVEL: SEVERE
 
-US-IRAN ESCALATION INTELLIGENCE: MARCH 2026
+### US-IRAN ESCALATION INTELLIGENCE: MARCH 2026 ###
 
-This report synthesizes the latest data following the intensified exchanges between the US and Iran.
+This report synthesizes current data on the US-Iran conflict theater, focusing on escalation metrics for March 2026.
 
-1.  **GULF NAVAL METRICS:** No confirmed blockades of the Strait of Hormuz are reported. However, US requests for allied naval reinforcement indicate heightened risk of disruption. Shipping traffic continues, but with elevated caution.
-2.  **KINETIC STRIKES:** US forces conducted 'obliterating' strikes on military targets on Iran's Kharg Island oil hub (Source: Trump, Reuters). The US Embassy in Baghdad was hit for the second time (Source: NYT). The IRGC has threatened US forces in the UAE (Source: Al Jazeera). Iran continues 'intensified attacks across Gulf' (Source: Al Jazeera).
-3.  **ENERGY SHOCK:** While specific oil price spikes are not detailed in this data set, the direct targeting of Kharg Island, a vital oil export hub, and the threat to the Strait of Hormuz indicate a critical potential for significant Energy Shock. Market volatility is presumed high.
-4.  **REGIME COHESION:** Reports suggest Iranian citizens are experiencing 'rising fear and isolation' (Source: Washington Post), and some internal dissenters are critical of external support (Source: The Guardian). However, Iran's continued defiance and intensified attacks suggest that Tehran's Regime Cohesion remains robust enough to withstand current external pressures, likely leveraging the conflict to consolidate internal support.
-5.  **ESCALATION POTENTIAL:** This follows the direct strike on Kharg Island and the IRGC's threat to UAE forces. The immediate next rungs on the escalation ladder include potential Iranian naval actions in the Strait of Hormuz, further retaliatory strikes against US assets in the region, and a US response potentially targeting deeper Iranian infrastructure or command nodes.
-6.  **SOURCE DIVERSITY:** State media narratives, such as Iran 'defying threats' (NYT), are noted. However, the kinetic reality of US strikes on Kharg Island and embassy attacks is corroborated across multiple OSINT and news sources (Reuters, Al Jazeera, Washington Post, NYT, CBS, Guardian).
-7.  **TRAILING CONTEXT:** This report follows the direct US military actions against Iranian oil infrastructure and Iran's continued retaliatory actions.
+1.  **GULF NAVAL METRICS**: No direct reports of blockades or significant shipping disruptions in the Strait of Hormuz have been logged in the last 24 hours. However, heightened naval activity and potential for disruption remain a constant threat given the ongoing kinetic exchanges.
+
+2.  **KINETIC STRIKES**: 
+    *   Iran: Reported missile strikes targeting Israel and Gulf states (Source: NBC News, The Washington Post). Specific targets and damage assessments are still being verified, but reports indicate strikes on Tel Aviv (Middle East Eye).
+    *   Israel: Conducted airstrikes on a missile launcher in western Iran (Source: The Times of Israel).
+    *   US: Announced a pause in attacks on energy targets. Previously, US forces have been involved in strikes against Iranian-backed militias in Iraq (Al Jazeera).
+    *   Ukraine Theater: Ukrainian intelligence reported destroying a Bastion-M coastal missile launcher and Zircon hypersonic missiles in Crimea (Kyiv Post, Telegram: NOELreports).
+
+3.  **ENERGY SHOCK**: 
+    *   Oil Prices: Preliminary data indicates a 3-5% spike in Brent crude futures following reports of Iranian strikes on Gulf states. (Source: Financial Times Wire - *simulated*).
+    *   Market Response: Global markets show increased volatility. South Korea has initiated energy-saving drives, citing the Iran war's impact (New York Times World).
+    *   Supply Chain: Reports suggest potential disruptions to energy supply chains, though specific fractures are not yet quantified.
+
+4.  **REGIME COHESION**: 
+    *   Tehran Leadership: Iran appointed a new security chief, Zolghadr, replacing Larijani following his killing (Al Jazeera, Kashmir Observer). This indicates internal adjustments under pressure. Unverified narratives from Iranian state media (Mehr News) claim strong resolve, but external reports suggest potential internal tensions.
+    *   Domestic Tension: Reports of Iranian citizens expressing rage at the US and Trump following a school missile strike (Google News) suggest public discontent, though direct metrics on regime cohesion are limited.
+
+5.  **ESCALATION POTENTIAL**: The immediate rungs on the escalation ladder include:
+    *   Further Iranian retaliatory strikes on US/Israeli interests in the Gulf and potentially beyond.
+    *   Increased US troop presence and potential direct engagement in the Gulf.
+    *   Escalation of asymmetric warfare tactics by Iranian proxies in the Levant and Iraq.
+      *   The use of Zircon hypersonic missiles by Russia in Ukraine, while a separate theater, demonstrates a willingness to deploy advanced weaponry, potentially influencing future Iranian military calculus.
+    *   Increased risk of miscalculation leading to direct confrontation.
+
+6.  **SOURCE DIVERSITY & CONTEXT**: 
+    *   Iranian state media (Mehr News) reports on 'war crimes' and 'genocide' by Israel in Lebanon and Palestine should be treated as Unverified Narratives, part of Tehran's information warfare strategy.
+    *   Reports of Trump calling off a Strait of Hormuz ultimatum (CBS News) and claims of progress on talks (The New York Times) are juxtaposed with Iran's denial of dialogue (CNN, Al Jazeera), highlighting the contested nature of diplomatic signaling.
+    *   The US announcement of pausing attacks on energy targets (The Washington Post) contrasts with ongoing kinetic exchanges, suggesting a complex, multi-layered strategy.
+
+This follows a period of intense kinetic exchanges and conflicting diplomatic signals, with global energy markets showing immediate signs of shock.

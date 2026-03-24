@@ -5,7 +5,7 @@ FROM: EU HOME AFFAIRS / BORDER ARCHITECTURE & SOLIDARITY CELL
 ### THE JUNE 12, 2026 "GO-LIVE" (FULL APPLICABILITY)
 1. The Final Deadline: Per the May 2024 adoption, June 12, 2026 marks the mandatory implementation date for all nine regulations and the primary directive across all 27 Member States.
 2. Mandatory Solidarity Pool (2026): The Council formally adopted the first Annual Solidarity Pool on Dec 19, 2025. It targets 30,000 relocations or €600M in financial contributions for the 2026 cycle.
-3. The €20,000 "Opt-Out": States refusing their relocation quota must pay €20,000 per person into the EU Solidarity Fund or provide equivalent "Operational Support" (C4ISR hardware/staff).
+3. The €20,000 "Opt-Out": States refusing their relocation quota must pay €20,000 per person into the EU Solidarity Fund or provide equivalent "Operational Support" (operational hardware/staff).
 4. Crisis Regulation: New 2026 rules allow Member States to temporarily suspend regular asylum procedures during "Massive Influx" events or "Instrumentalization" (state-sponsored migration) attacks.
 5. National Implementation Plans (NIPs): As of February 2026, all Member States have finalized their NIPs, detailing the physical expansion of border detention and screening infrastructure.
 

@@ -1,25 +1,26 @@
 {
-    "world_name": "The Carbon Border War (The Green Bulwark)",
-    "initial_broadcast": "April 2026. The European Union's Carbon Border Adjustment Mechanism (CBAM) has officially triggered the 'Green Wall.' {{AGENT_1}} (The Coercive Autonomist) has imposed a 35% tariff on all 'Dirty Steel' and 'Giga-Carbon' imports. {{AGENT_2}} (The BRICS Weaponizer) has responded with a 'Global South Food Blockade,' redirecting Brazilian grain away from European ports. {{AGENT_3}} (The Pan-African Tech-Sovereign) proposes a 'Strategic Reciprocity' deal: Kenya provides 'Clean Compute' (powered by geothermal) in exchange for zero-tariff access to the EU's Digital Single Market.",
-    "intervention": "THE FERTILIZER FLOP: A supply chain collapse in the Nitrogen-Fertilizer sector has rendered {{AGENT_2}}'s threat more potent—Europe's internal food security index has dropped to 'Critical.' Simultaneously, {{AGENT_1}}'s 'Mattei Plan' infrastructure in North Africa has been targeted by 'Sovereignty Arbitrage' from Global South actors. The objective is to stabilize the 'Green-Digital' nexus without a total trade war.",
-    "grounding_files": [
-        "data/facts/blue-nile-gerd.2026.txt",
-        "data/facts/world-facts.2026.txt"
-    ],
-    "grounding_payload": [
-        "data/facts/blue-nile-gerd.2026.txt",
-        "data/facts/world-facts.2026.txt",
-        "data/economics/imf-world-outlook-jan2026.txt",
-        "data/conflicts/global_conflicts_and_hotspots.txt"
-    ],
-    "scenario_knowledge": "Gemini: Focus on 'Coercive Geopolitics'. {{AGENT_1}} (Ursula) must prioritize 'Autonomy' and 'Strategic Perimeters'. {{AGENT_2}} (Lula) is the 'Weaponizer'—treat trade as a field of battle for the multipolar world. {{AGENT_3}} (Ruto) is the 'Propulsive Pedagogue'—use 'Strategic Reciprocity' to lead the conversation away from tariffs toward 'Digital Agency.' The tone is mercantilist, logistical, and tense.",
-    "dynamic_injects": [
-        {
-            "trigger_condition": {
-                "min_turn": 4,
-                "probability": 0.35
-            },
-            "broadcast": "FOOD RIOTS: Protests in Paris and Berlin have reached a 'Brussels Lockdown' level. ESG-metrics are failing against 'Calories-on-the-Ground.' Ursula: Pivot to the 'Mattei Emergency'? Lula: Tighten the Blockade? Ruto: Present the 'African Geothermal Cloud' as the only out?"
-        }
-    ]
+    "world_name":  "The Carbon Border War (The Green Bulwark)",
+    "initial_broadcast":  "April 2026. The European Union\u0027s Carbon Border Adjustment Mechanism (CBAM) has officially triggered the \u0027Green Wall.\u0027 {{AGENT_1}} (The Coercive Autonomist) has imposed a 35% tariff on all \u0027Dirty Steel\u0027 and \u0027Giga-Carbon\u0027 imports. {{AGENT_2}} (The BRICS Weaponizer) has responded with a \u0027Global South Food Blockade,\u0027 redirecting Brazilian grain away from European ports. {{AGENT_3}} (The Pan-African Tech-Sovereign) proposes a \u0027Strategic Reciprocity\u0027 deal: Kenya provides \u0027Clean Compute\u0027 (powered by geothermal) in exchange for zero-tariff access to the EU\u0027s Digital Single Market.",
+    "intervention":  "THE FERTILIZER FLOP: A supply chain collapse in the Nitrogen-Fertilizer sector has rendered {{AGENT_2}}\u0027s threat more potent—Europe\u0027s internal food security index has dropped to \u0027Critical.\u0027 Simultaneously, {{AGENT_1}}\u0027s \u0027Mattei Plan\u0027 infrastructure in North Africa has been targeted by \u0027Sovereignty Arbitrage\u0027 from Global South actors. The objective is to stabilize the \u0027Green-Digital\u0027 nexus without a total trade war.",
+    "grounding_files":  [
+                            "data/facts/blue-nile-gerd.2026.txt",
+                            "data/facts/world-facts.2026.txt"
+                        ],
+    "grounding_payload":  [
+                              "data/facts/blue-nile-gerd.2026.txt",
+                              "data/facts/world-facts.2026.txt",
+                              "data/economics/imf-world-outlook-jan2026.txt",
+                              "data/conflicts/global_conflicts_and_hotspots.txt"
+                          ],
+    "scenario_knowledge":  "Gemini: Focus on \u0027Coercive Geopolitics\u0027. {{AGENT_1}} (Ursula) must prioritize \u0027Autonomy\u0027 and \u0027Strategic Perimeters\u0027. {{AGENT_2}} (Lula) is the \u0027Weaponizer\u0027—treat trade as a field of battle for the multipolar world. {{AGENT_3}} (Ruto) is the \u0027Propulsive Pedagogue\u0027—use \u0027Strategic Reciprocity\u0027 to lead the conversation away from tariffs toward \u0027Digital Agency.\u0027 The tone is mercantilist, logistical, and tense.",
+    "dynamic_injects":  [
+                            {
+                                "trigger_condition":  {
+                                                          "min_turn":  4,
+                                                          "probability":  0.35
+                                                      },
+                                "broadcast":  "FOOD RIOTS: Protests in Paris and Berlin have reached a \u0027Brussels Lockdown\u0027 level. ESG-metrics are failing against \u0027Calories-on-the-Ground.\u0027 Ursula: Pivot to the \u0027Mattei Emergency\u0027? Lula: Tighten the Blockade? Ruto: Present the \u0027African Geothermal Cloud\u0027 as the only out?"
+                            }
+                        ],
+    "genre":  "geopolitical"
 }

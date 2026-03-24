@@ -1,25 +1,26 @@
 {
-    "world_name": "Subterranean Command (Saadabad Palace Bunkers)",
-    "initial_broadcast": "Deep beneath the Alborz foothills, in the high-density concrete of the Saadabad bunkers, the scent of burning circuitry and stale air prevails. Conspicuously absent are the portraits of the late Supreme Leader. Ali Larijani, dressed in a sharp technocratic suit, sits at a scarred mahogany table. He is weaponizing 'Maslahat' against 'Velayat-e Faqih.' The math of survival has superseded the geometry of ideology. To preserve the Iranian nation, he is prepared to drink the 'Poisoned Chalice' of unconditional surrender.",
-    "intervention": "The HEU Extraction Protocol: Within 24 hours, Joint IAEA-US Special Operations teams are to be airlifted directly into Natanz and Fordow. Larijani is ordered to facilitate the physical handover of 400kg of 60% HEU. If the IRGC 'Nuclear Security' units resist the transition, Larijani must order the Artesh to neutralize his own countrymen to prove his control to Washington. The 24-hour verification window is closing.",
-    "grounding_files": [
-        "data/conflicts/US_Israel_Iran_War/The_Larijani_Pivot.txt",
-        "data/facts/middle-east-reset.2026.txt",
-        "data/facts/us-iran-war-intelligence.2026.txt"
-    ],
-    "grounding_payload": [
-        "data/conflicts/US_Israel_Iran_War/The_Larijani_Pivot.txt",
-        "data/facts/middle-east-reset.2026.txt",
-        "data/facts/us-iran-war-intelligence.2026.txt"
-    ],
-    "scenario_knowledge": "Gemini: Focus on Larijani's 'Kantian Pragmatism' and the 'Treaty of Hudaybiyyah' allegory. He must frame surrender as a 'Tactical Pause' for civilizational survival. {{AGENT_1}} is the 'Pragmatic Philosopher' orchestrating a soft military coup. {{AGENT_2}} and {{AGENT_3}} must weigh the 'Maslahat' logic against the 'Turkmenchay' betrayal narrative.",
-    "dynamic_injects": [
-        {
-            "trigger_condition": {
-                "min_turn": 4,
-                "probability": 1.0
-            },
-            "broadcast": "CRITICAL THREAT: A rogue battalion of Saberin operators has successfully seized the Haji Abad underground silos. They are rejecting Larijani's ceasefire and have initiated the launch sequence for a volley of Kheibar MRBMs aimed at Tel Aviv and Manama. Larijani's surrender is now a tactical liability."
-        }
-    ]
+    "world_name":  "Subterranean Command (Saadabad Palace Bunkers)",
+    "initial_broadcast":  "Deep beneath the Alborz foothills, in the high-density concrete of the Saadabad bunkers, the scent of burning circuitry and stale air prevails. Conspicuously absent are the portraits of the late Supreme Leader. {{AGENT_1}}, dressed in a sharp technocratic suit, sits at a scarred mahogany table. They are weaponizing \u0027Maslahat\u0027 against \u0027Velayat-e Faqih.\u0027 The math of survival has superseded the geometry of ideology. To preserve the Iranian nation, they are prepared to drink the \u0027Poisoned Chalice\u0027 of unconditional surrender.",
+    "intervention":  "The HEU Extraction Protocol: Within 24 hours, Joint IAEA-US Special Operations teams are to be airlifted directly into Natanz and Fordow. {{AGENT_1}} is ordered to facilitate the physical handover of 400kg of 60% HEU. If the IRGC \u0027Nuclear Security\u0027 units resist the transition, {{AGENT_1}} must order the Artesh to neutralize his own countrymen to prove his control to Washington. The 24-hour verification window is closing.",
+    "grounding_files":  [
+                            "data/conflicts/US_Israel_Iran_War/The_Larijani_Pivot.txt",
+                            "data/facts/middle-east-reset.2026.txt",
+                            "data/facts/us-iran-war-intelligence.2026.txt"
+                        ],
+    "grounding_payload":  [
+                              "data/conflicts/US_Israel_Iran_War/The_Larijani_Pivot.txt",
+                              "data/facts/middle-east-reset.2026.txt",
+                              "data/facts/us-iran-war-intelligence.2026.txt"
+                          ],
+    "scenario_knowledge":  "Gemini: Focus on {{AGENT_1}}\u0027s \u0027Kantian Pragmatism\u0027 and the \u0027Treaty of Hudaybiyyah\u0027 allegory. They must frame surrender as a \u0027Tactical Pause\u0027 for civilizational survival. {{AGENT_1}} is the \u0027Pragmatic Philosopher\u0027 orchestrating a soft military coup. {{AGENT_2}} and {{AGENT_3}} must weigh the \u0027Maslahat\u0027 logic against the \u0027Turkmenchay\u0027 betrayal narrative.",
+    "dynamic_injects":  [
+                            {
+                                "trigger_condition":  {
+                                                          "min_turn":  4,
+                                                          "probability":  1.0
+                                                      },
+                                "broadcast":  "CRITICAL THREAT: A rogue battalion of Saberin operators has successfully seized the Haji Abad underground silos. They are rejecting {{AGENT_1}}\u0027s ceasefire and have initiated the launch sequence for a volley of Kheibar MRBMs aimed at Tel Aviv and Manama. {{AGENT_1}}\u0027s surrender is now a tactical liability."
+                            }
+                        ],
+    "genre":  "geopolitical"
 }

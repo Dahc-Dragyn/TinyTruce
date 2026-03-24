@@ -16,8 +16,8 @@ FROM: JOINT ENERGY SECURITY TASK FORCE / SOUTH AMERICAN AFFAIRS
 * **The Green Independence Pivot**: The protocol ensures the "Green Revolution" builds a permanent industrial base in the Global South rather than solely benefiting northern creditors.
 * **Supply Chain Transparency**: Massive full-stack networking efforts are underway to link remote Andean mining operations to global regulatory registries.
 
-### 3. C4ISR & INFRASTRUCTURE (RESOURCE MONITORING)
-* **Command & Control surge**: Protecting "white gold" assets has driven demand for military-grade C4ISR systems, including drones and seismic sensors.
+### 3. Strategic Systems & Infrastructure (RESOURCE MONITORING)
+* **Command & Control surge**: Protecting "white gold" assets has driven demand for military-grade integrated systems, including drones and seismic sensors.
 * **First Line of Defense**: Field Engineers are now tasked with maintaining the "Physical Layer" of energy storage that powers the 2026 intelligence economy.
 * **Networking Remote Nodes**: Your background in ABCS and tactical networking is critical for linking high-altitude industrial nodes to the global "Compute Grid".
 * **Energy-Intelligence Link**: "Lithium Credits" are emerging as a sister asset to Trillium Compute Credits, representing the physical energy backbone of AI.

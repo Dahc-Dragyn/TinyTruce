@@ -86,6 +86,35 @@ The agents have reached a stalemate. This means:
 3. Neither side is showing signs of backing down or finding common ground.
 """
 
+def resolve_agent_path(agent_spec, base_dir="personas/agents"):
+    """
+    Robust Path Discovery: Resolves an agent filename or path.
+    1. Check if it's an absolute path.
+    2. Check if it's relative to CWD.
+    3. Check if it's in the base_dir.
+    """
+    p = Path(agent_spec)
+    if p.exists():
+        return str(p)
+    
+    # Try appending .json if missing
+    if not agent_spec.endswith(".json"):
+        p_json = Path(f"{agent_spec}.json")
+        if p_json.exists():
+            return str(p_json)
+            
+    # Try searching in base_dir
+    p_base = Path(base_dir) / agent_spec
+    if p_base.exists():
+        return str(p_base)
+        
+    if not agent_spec.endswith(".json"):
+        p_base_json = Path(base_dir) / f"{agent_spec}.json"
+        if p_base_json.exists():
+            return str(p_base_json)
+            
+    return agent_spec # Return original if not found (caller will handle error)
+
 def cleanup_old_sessions(ttl_hours=24):
     """
     Automated Housekeeping: Deletes session directories in DOCUMENTS/runs older than ttl_hours.
@@ -148,7 +177,7 @@ STRATEGIC_BRIEFING_SCHEMA = {
     "hints": {
         "executive_summary": "A journalistic overview of the geopolitical situation at the end of the simulation. What is the new 'state of the world'?",
         "stance_scorecard": "A summary for each participant detailing their perceived Stakes (0-10), Aggression (0-10), and Flexibility (0-10), with a brief strategic note on their position.",
-        "stability_outlook": "A single word (STABLE/GREEN, FRAGILE/YELLOW, CRITICAL/RED) indicating the likelihood of the current truce or status quo holding.",
+        "stability_outlook": "A single word status prefixed with a color circle (🟢 TOTAL ACCORD, 🟡 FRAGILE CEASEFIRE, 🔴 SYSTEMIC COLLAPSE).",
         "action_log": "A list of the most significant maneuvers performed by participants. Format: [{'maneuver': 'Summary of move', 'intent': 'Strategic underlying goal'}]",
         "redline_checks": "Identify if any participants crossed their established redlines or fundamental security boundaries. Format as a list: [{'participant': name, 'redline_crossed': bool, 'description': summary}].",
         "conflict_misalignment": "Analyze the gap between each participant's desired outcome ('Hallucinated Victory') and the actual structural constraints found in the grounding data ('Structural Reality'). Provide a 'Strategic Adjustment' that reconciles these two. Format: [{'participant': name, 'hallucinated_victory': description, 'structural_reality': description, 'strategic_adjustment': 'Based on [Resource/Fact], the participant must shift from [Goal] towards [New Pivot].'}]",
@@ -1111,11 +1140,14 @@ def run_tinytruce_simulation(scenario_key, turns, agent_names=None, fragment_nam
         with console.status("[bold cyan]Strategic Auditor is reconciling rhetorical gaps...[/]"):
             extraction = extractor.extract_results_from_world(world, verbose=False)
         
-        # --- Forced Stability Logic ---
-        gap_analysis = extraction.get('psychological_structural_gap', [])
-        if isinstance(gap_analysis, list) and len(gap_analysis) > 0:
-            logger.info(f"Significant structural gaps detected. Forcing Stability Index to RED.")
-            extraction['stability_index'] = "RED"
+        # --- Stability Logic: Sanity check for critical gaps ---
+        gap_analysis = extraction.get('conflict_misalignment', [])
+        if isinstance(gap_analysis, list) and len(gap_analysis) >= 2:
+            # If at least two major participants have massive hallucinations, signal CRITICAL
+            current_outlook = extraction.get('stability_outlook', '')
+            if "🟢" in current_outlook:
+                logger.info(f"Significant structural gaps detected. Downgrading 🟢 to 🟡.")
+                extraction['stability_outlook'] = "🟡 FRAGILE CEASEFIRE"
             
     except Exception as e:
         logger.warning(f"Strategic Extraction Failed: {e}")
@@ -1129,6 +1161,30 @@ def run_tinytruce_simulation(scenario_key, turns, agent_names=None, fragment_nam
 
     try:
         jurist_path = os.path.join("personas/agents", "the_forensic_jurist.agent.json")
+        # --- AGENT INITIALIZATION ---
+        processed_agents = []
+        raw_agent_list = []
+        if agent_specs:
+            for x in agent_specs:
+                raw_agent_list.extend([s.strip() for s in x.split(",") if s.strip()])
+                
+            for agent_spec in raw_agent_list:
+                resolved_path = resolve_agent_path(agent_spec)
+                if not os.path.exists(resolved_path):
+                    print(f"[FATAL ERROR]: Persona file not found: {resolved_path}")
+                    sys.exit(1)
+                
+                p = TinyPerson.load_specification(resolved_path)
+                p.eco_mode = eco_mode
+                processed_agents.append(p)
+        
+        # --- FRAGMENT ATTACHMENT ---
+        if fragments:
+            # Handle comma-separated fragments
+            raw_fragment_list = []
+            for x in fragments:
+                raw_fragment_list.extend([s.strip() for s in x.split(",") if s.strip()])
+        
         if os.path.exists(jurist_path):
             jurist = TinyPerson.load_specification(jurist_path)
             jurist.eco_mode = eco_mode
@@ -1190,6 +1246,7 @@ def run_tinytruce_simulation(scenario_key, turns, agent_names=None, fragment_nam
             1. Every verdict must anchor to a 'Forensic Reality' unique to that participant's specific strategic delusion (e.g., 'The geography of Vision 2030 is voided by the logistics of the Red Sea').
             2. Use Sovereign Parataxis: Blunt, disconnected clauses. Avoid diplomatic filler. 
             3. Use logic: "The door is shut. Munitions are zero. Move the border."
+            4. The Status Light: Every verdict must be 🟢 TOTAL ACCORD, 🟡 FRAGILE CEASEFIRE, or 🔴 SYSTEMIC COLLAPSE.
             
             ### WORLD HISTORY FOR REVIEW (TAIL END) ###
             {world_history}

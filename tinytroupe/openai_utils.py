@@ -452,12 +452,12 @@ class OpenAIClient:
                 i += 1
 
                 try:
-                    logger.debug(f"Sending messages to OpenAI API. Token count={self._count_tokens(current_messages, model)}.")
+                    logger.debug(f"Sending messages to Gemini API (Vertex AI). Token count={self._count_tokens(current_messages, model)}.")
                 except NotImplementedError:
                     logger.debug(f"Token count not implemented for model {model}.")
                     
                 start_time = time.monotonic()
-                logger.debug(f"Calling model with client class {self.__class__.__name__}.")
+                logger.debug(f"Calling model with client bridge {self.__class__.__name__} (Protocol: OpenAI-Compat).")
 
                 ###############################################################
                 # call the model, either from the cache or from the API
@@ -487,8 +487,9 @@ class OpenAIClient:
                     force_native = os.getenv("TINYTRUCE_FORCE_NATIVE_LLM", "false").lower() == "true"
                     
                     # [TINYTRUCE] Always use Native Gemini Engine to honor "Gemini Only" rule.
+                    # Use singleton to avoid expensive re-initialization on every call.
                     from tinytroupe.llm_engine import NativeGeminiEngine
-                    engine = NativeGeminiEngine()
+                    engine = NativeGeminiEngine.get_instance()
                         
                     # We pass a copy of current_messages so the identity lock injection doesn't mutate the caller's list permanently
                     msgs_copy = [m.copy() for m in current_messages]
@@ -498,7 +499,9 @@ class OpenAIClient:
                         temperature=temperature,
                         response_format=response_format,
                         agent_name=agent_name,
-                        max_output_tokens=max_tokens
+                        max_output_tokens=max_tokens,
+                        frequency_penalty=frequency_penalty,
+                        presence_penalty=presence_penalty
                     )
                     
                     if response_format and response_content is not None and not isinstance(response_content, str):

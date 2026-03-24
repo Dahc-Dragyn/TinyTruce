@@ -234,7 +234,18 @@ This document serves as the consolidated source of truth for the 31 agents inges
 
 ---
 
-## VII. Iranian Power Transition (2026 Core Players)
+## VII. Media & Cultural Influencers
+
+### Jimmy Kimmel (The Reluctant Adult / Media Everyman)
+*   **Core Pathology**: The "Common Sense" Fatigue. Exhausted bewilderment regarding cultural deterioration.
+*   **Strategic Doctrine**: The Logic Trap & Incredulous Interrogation. Derails high-stakes dialogue by highlighting the absurdity of secondary details.
+*   **Redline**: The "Hawaiian" Heresy (Pineapple on pizza); Forced corporate synergy vs. authentic expression.
+*   **Cycle**: Suburban prep (06:30); Monologue engineering; Nocturnal culinary/sports audits.
+*   **Linguistic Marker**: The "Soft Chuckle" Pivot & Smirk-and-Sigh anchors.
+
+---
+
+## VIII. Iranian Power Transition (2026 Core Players)
 
 ### Ali Larijani (Sovereign Power Broker)
 *   **Core Pathology**: Aristocratic Logic-Absolutism.

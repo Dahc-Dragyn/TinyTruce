@@ -23,9 +23,9 @@ FROM: US SPACE FORCE (USSF) / CISLUNAR COMMERCE & SECURITY OFFICE
 14. The "Lunar I-Hab" Refueling: European (ESA) and Japanese (JAXA) modules are being refitted as "Fuel Depots" to support the 2026-2027 surge in private mining.
 15. Data Pedigree Mandate: Per the EU AI Act (Scenario #10), the Gateway’s AI must provide "Forensic Explainability" for all docking and resource-allocation decisions to maintain EU partnership.
 
-### C4ISR & ML INFRASTRUCTURE (THE "FIRST LINE")
+### Systems & Intelligence Infrastructure (THE "FIRST LINE")
 16. "Black Box" Docking: ML agents now manage the "Millimeter-Precision" autonomous docking of commercial HLS (Human Landing Systems) without human intervention.
 17. Registry Management: The Gateway acts as the "Notary Public" for the Moon, using a secure, distributed ledger to record "Claim Staking" by private mining firms.
 18. Interference Mitigation: ML-driven "Dynamic Spectrum Sharing" (from the Dec 2025 EO) prevents signal jamming between the Gateway, Starlink-Moon, and ILRS (Chinese) assets.
-19. "Shadowing" Detection: C4ISR sensors on the Gateway are tuned to identify "Dark Fleet" maneuvers near US safety zones, treating them as "Economic Trespass."
+19. "Shadowing" Detection: Strategic Systems sensors on the Gateway are tuned to identify "Dark Fleet" maneuvers near US safety zones, treating them as "Economic Trespass."
 20. The 2026 "Wet Dress Rehearsal": The Artemis II SLS rocket is undergoing fueling tests today (Feb 19) at KSC, signaling the arrival of the first human "Claims Officers" in cislunar space.

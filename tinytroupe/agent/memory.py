@@ -87,7 +87,7 @@ class EpisodicMemory(TinyMemory):
     MEMORY_BLOCK_OMISSION_INFO = {'role': 'assistant', 'content': "Info: there were other messages here, but they were omitted for brevity.", 'simulation_timestamp': None}
 
     def __init__(
-        self, fixed_prefix_length: int = 100, lookback_length: int = 100
+        self, fixed_prefix_length: int = 20, lookback_length: int = 20
     ) -> None:
         """
         Initializes the memory.
@@ -117,7 +117,7 @@ class EpisodicMemory(TinyMemory):
         """
         Deletes a range of episodes from memory.
         """
-        if 0 <= start < end <= len(self.memory):
+        if 0 <= start < len(self.memory):
             del self.memory[start:end]
 
     def retrieve(self, first_n: int, last_n: int, include_omission_info:bool=True) -> list:
@@ -150,21 +150,20 @@ class EpisodicMemory(TinyMemory):
         """
         Retrieves the n most recent values from memory.
         """
+        # [TINYTRUCE] Robust check: if memory is shorter than the desired window, return all safely.
+        if len(self.memory) <= self.fixed_prefix_length + self.lookback_length:
+            return copy.copy(self.memory)
+
         omisssion_info = [EpisodicMemory.MEMORY_BLOCK_OMISSION_INFO] if include_omission_info else []
 
         # compute fixed prefix
         fixed_prefix = self.memory[: self.fixed_prefix_length] + omisssion_info
 
         # how many lookback values remain?
-        remaining_lookback = min(
-            len(self.memory) - len(fixed_prefix), self.lookback_length
-        )
+        remaining_lookback = self.lookback_length
 
         # compute the remaining lookback values and return the concatenation
-        if remaining_lookback <= 0:
-            return fixed_prefix
-        else:
-            return fixed_prefix + self.memory[-remaining_lookback:]
+        return fixed_prefix + self.memory[-remaining_lookback:]
 
     def retrieve_all(self) -> list:
         """
