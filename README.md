@@ -1,0 +1,312 @@
+🚨 TINYTRUCE MANDATE: WE DO NOT USE OPENAI. WE ONLY USE GEMINI. 🚨
+TinyTruce: Geopolitical Conflict Lab (2026) 🌍🤝
+“Peace is not the absence of conflict, but the presence of creative alternatives for responding to conflict.” — Dorothy Thompson
+
+TinyTruce is a specialized fork of Microsoft's TinyTroupe, re-engineered for high-fidelity geopolitical simulations. It places AI agents—representing world leaders, tech CEOs, and religious figures—into complex, near-future scenarios (2025-2026) to explore negotiation dynamics, red lines, and potential de-escalation pathways.
+
+Unlike standard agent simulations that focus on generic interactions, TinyTruce is built on Forensic Grounding: every scenario is backed by real-world treaties, technical whitepapers, and economic reports to ensure the agents are debating facts, not hallucinations.
+
+1. Unified Pydantic Validation Layer
+TinyTruce implements a strict "fail-fast" validation layer for all JSON assets (personas and scenarios) using Pydantic.
+
+Fail-Fast Deployment: The AssetManager performs schema validation before the simulation initializes. If a JSON file has a misspelled key or missing required block, the system halts with a verbose error report.
+Backward Compatible: The schemas are engineered to be highly permissive. They support missing sections (fragments) and ignore unknown keys via extra='ignore'. This ensures all existing JSON assets load successfully while still enforcing structure on core fields.
+Adaptive Action Parsing: The target field in the core Action schema is now optional (defaulting to "everyone") to prevent mid-simulation crashes if an LLM incorrectly omits the field.
+Data Integrity: Ensures that simulation metrics (Mood Bars, Psychological Momentum) are never zeroed out by malformed LLM responses.
+2. LLM Engine Abstraction (Provider-Agnostic)
+The core simulation logic is decoupled from specific LLM providers via a robust abstraction layer in llm_engine.py.
+
+Robust JSON Repair & Recovery (Best-Effort Restore): Both native (NativeGeminiEngine) and standard (OpenAIEngine) adapters feature advanced JSON repair logic. This intercepts malformed outputs (e.g., missing braces, unquoted keys, identity lock bleeding) and actively repairs them to guarantee valid JSON execution, prioritizing simulation continuity over raw validation crashes.
+History Stringification Safety: Historical actions are strictly serialized using json.dumps() instead of raw Python strings to prevent history contamination and LLM syntax mimicry.
+Explicit Gemini Context Caching: Large forensic profiles (Atlas, Layer 0 traits) are anchored once and reused across turns, reducing input token costs by 50%+.
+Eco Mode (Flash-Lite Optimization): Forces the use of models/gemini-2.0-flash-lite-001 or gemini-2.1-flash-lite and activates Input Slicing (removing 66% of redundant history cover charge) to prioritize speed and extreme cost efficiency.(used for testing)
+Identity Retention Locks: A terminal CRITICAL IDENTITY LOCK is injected into the input stream right before JSON execution to prevent context-caching genericization.
+Billing Transparency: Integrated cost_manager tracks token usage across standard and cached turns, writing a verifiable audit trail to DOCUMENTS/tinytruce_billing_ledger.md.
+Zero-Cost Cache Verification: Use verify_cache.py to audit live backend cache hits without incurring token billing.
+Forensic Grounding Bundles: Replaced the monolithic world-facts.2026.txt with scenario-specific grounding_payload lists. Each run now only loads the forensic data (treaties, logs, reports) relevant to that specific conflict, ensuring higher precision and lower token noise.
+Multi-Session Isolation: Supports concurrent, isolated simulations via the --session-id flag. All outputs are namespaced to prevent data collisions and ensure multi-tenant security.
+Context Window Elasticity (Sliding Window): Automatically summarizes and prunes conversational history into Episodic Anchors when turns exceed 8. This stabilizes input token costs and prevents "Context Drift" or identity collapse in long-running simulations.
+Soft Redline Fallback (2-Retry Loop): Intercepts JSON validation errors or "No action" returns at the engine level. It downshifts temperature to 0.1 and provides a diagnostic re-prompt to guide the LLM back to valid execution.
+Silence Prevention & Ultimate Fallback: Ensures simulation continuity by wrapping non-JSON "discursive ruptures" into valid TALK actions. If all retries fail, the engine synthesizes an emergency recovery sequence to prevent process hangs.
+3. The Scenario Board (Layer 1)
+Scenarios are defined in JSON files in the scenarios/ directory. Each scenario includes:
+
+Initial Broadcast: The "breaking news" that starts the conflict.
+Intervention Protocol (Semantic Nudge): A predefined "Peace Bomb" or "Crisis Escalation" that triggers if an invisible LLM monitor detects a stalemate in conversation. Injects an internal psychological nudge into the agents to change tactics.
+Dynamic Injects (Procedural Crisis): Probability-based mid-simulation external events generated by dice rolls (e.g., 25% chance of firing after Turn 6). These force agents to react to sudden, unpredictable shifts in the narrative without being explicitly told how to feel about them. Can be disabled via --disable-injects.
+Scenario Allegory Map (SAM): A "Shadow Dictionary" of allegories (e.g., "Heresy" -> "Signal Drift") that allows agents to discuss sensitive topics without triggering safety filters.
+4. Persona Bifurcation (Linguistic Realism)
+TinyTruce solves the "LLM Leak" problem (where agents sound like polite chatbots) by bifurcating high-profile personas:
+
+Unscripted Mode: Focused on forensic linguistic constraints (e.g., Parataxis, The Weave). Agents abandon sentence structures mid-thought and use aggressive "Anti-Wonk" vocabulary.
+Scripted/SOTU Mode: Optimized for formal, linear delivery (e.g., State of the Union). High-fidelity teleprompter cadence with integrated catchphrases.
+5. Forensic Allegories & Resiliency
+To maintain simulation integrity during high-stakes theological or political debates, TinyTruce implements:
+
+Diplomatic Pivots: If an LLM response is blocked by safety filters, the agent automatically pivots to a persona-specific "safe" response.
+Forensic Allegories: Agents use metaphorical language to bypass keyword-based filters while retaining semantic intensity.
+Identity Reinforcement: The engine calls an internal think() action before every turn to refresh the agent's specific identity and purge "Context Bleed" from other participants' vocabularies.
+Antigravity Circuit Breaker (Repetition Detector): Uses SequenceMatcher to audit turn-to-turn similarity. If similarity exceeds 75-80%, the agent is flagged for "Anchoring" and penalized with a strategic override.
+Linguistic Marker Shifts: When repetitions are detected, agents are mandated to switch their 'Linguistic Marker' (e.g., shifting from Pragmatic to Desperate Diplomat or Clinical Forensicist) to break rhetorical stalemates.
+6. The Behavioral Overlay (Layer 2: Forensic Fragments)
+Agents are injected with Behavior Fragments (e.g., reformer.fragment.json). These fragments modify the agent's baseline behavior without erasing their Layer 0 DNA.
+
+Forensic Grounding (2026 Rollout): All 27 behavioral fragments have been meticulously grounded in forensic data (world leader profiles, institutional prompts, and internal tactical archetypes). This ensures that a "Reformer" or "Preserver" layer isn't just a generic behavior, but a situational constraint strictly derived from forensic anchors.
+Behavioral Stacks (Chaining): Agents can now ingest multiple fragments (e.g., base_agent + reformer + savior).
+Behavioral Redline Enforcement: Specific "Banned Behaviors" (Redlines) defined at the fragment level to enforce situational constraints (e.g., "Prohibit any concession without a 'DEAL' tag"). These are verified via the universal_fidelity audit suite.
+Hard-Iron Constraint Enforcement: High-stakes scenarios (e.g., One Pizza Rule) implement strict logic-level checking. If an agent attempts to bypass a core constraint (e.g., "Two Pizzas" loophole), the turn is rejected and a mandatory re-prompt is issued.
+8. The Situation Room (Active Intelligence)
+TinyTruce integrates a real-time geopolitical data layer via the RSS War News API, allowing agents to query the "Ground Truth" of their theaters in 2026.
+
+SituationRoomFaculty: A specialized mental faculty that gives agents the SEARCH_NEWS and GET_ALERTS actions.
+Militant Grounding: Forceful prompts that make agents aware of their "Memory Obsolescence" (2024-2025) and mandate the use of the Situation Room for 2026 state verification.
+Ontological Shock Protocol: A behavioral trigger for reports of an agent's own death or regime collapse. Forces a "Crisis of Presence" thought and high emotional intensity (0.95+).
+Infinite Loop Protection:
+JSON thought Field: Consolidates reasoning and news incorporation into the primary action block, eliminating turn-one "Thought loops."
+Auto-TALK Termination: The engine automatically ends an agent's turn after a TALK action is reached, preventing redundant turn-extension attempts.
+Query Quota: Strict limit of one search query per agent turn to ensure conversational focus.
+The Dialogue Forge (tinytruce_chat.py): A 1-on-1 interrogation script that allows the user to directly question agents. It supports dynamic fragment loading and provides a "Nudge" layer for Situation Room and Ontological Shock triggers.
+The Geopolitical Chronicler (personas/agents/chronicler.agent.json): A specialized agent designed for objective intelligence synthesis.
+The Update Workflow (scripts/chronicler_update.py): A standalone script (the "Dawn Command") that harvests 2026 news and commits a daily-intelligence.2026.txt briefing to the grounding silo. This ensures all agents share a stable, up-to-date world state without redundant API calls.
+The Situation Room Bridge (scripts/mcp_war_news.py): A dedicated MCP-compatible bridge that tunnels to the RSS War News API. It provides a secure proxy for agents to pull live 2026 theater data.
+🛰️ Situation Room API Spec (RSS War News)
+Base URL: Set via BASE_URL in .env
+Auth Header: X-Proxy-Secret (stored as WAR_API_SECRET in .env)
+Endpoints:
+GET /: Latest situational news (params: q, hours, region).
+GET /api/alerts: High-signal breaking clusters.
+GET /api/trends: Hourly deltas and trending regions.
+📊 Forensic Rollout Summary
+Ph.	Focus Area	Anchor Profile Examples
+1-3	Global Leadership	Trump (MAGA), Putin (Siloviki), Xi (Century), Zelensky (Statehood).
+4-5	Titans & Sovereignty	Musk (First Principles), Pope Leo (Vatican), EU (Regulator).
+6-7	Technical & Regional	Yann LeCun (Open Weights), Sam Altman (Scaling), Bill Gates (Systemic).
+8-9	Governance & Social	Von der Leyen (Institutional), Sunak (ROI), Vance (Ethics).
+For the full map of all 27 fragment anchors, see FORENSIC_DATA_MAP.md.
+
+7. Quality Assurance & Regression Guards
+To ensure simulation stability and cost safety, TinyTruce includes a suite of regression tests. These are categorized by their intensity and purpose:
+
+A. Zero-Cost Regression Guards (Mocked APIs, ⚡ Fast)
+These tests run in milliseconds and verify core engine logic without hitting external APIs.
+
+The Loop-Guardsman (tests/unit/test_loop_guardsman.py): Verifies that agents are forcibly stopped if they enter an infinite action loop.
+The Identity Guardian (tests/unit/test_identity_guardian.py): Ensures that memory compression summaries never delete the agent's core identity message.
+The Atlas Auditor (tests/unit/test_atlas_auditor.py): Verifies that grounding extraction is resilient to header typos, spaces, and supports Alias Mapping.
+The Revenue Shield (tests/unit/test_revenue_shield.py): Mathematically verifies billing accuracy and model-rate fallback logic.
+Dynamic Verbosity (tests/unit/test_verbosity.py): Ensures responding word counts scale proportionally with simulation length.
+B. High-Intensity Fidelity Validation (Real LLM, 🐢 Slow, 💸 Variable Cost)
+Fidelity Validation (tests/unit/test_validation.py): Runs a single-turn and multi-turn check for every agent in the project to ensure they still sound like their forensic profiles. Recommended run frequency: Monthly or after major grounding updates.
+🛠️ Installation
+Clone the repository:
+
+git clone <repository-url>
+cd TinyTruce
+Create and activate a virtual environment:
+
+python -m venv venv
+.\venv\Scripts\activate
+Install dependencies:
+
+pip install -r requirements.txt
+(Note: TinyTruce relies on tinytroupe, rich, openai, and google-generativeai)
+
+Configure API Keys:
+
+Create a .env file or set environment variables for OPENAI_API_KEY (or GOOGLE_API_KEY if using Gemini).
+Checks config.ini for model settings.
+📖 Usage
+Running a Simulation
+Use the tinytruce_sim.py script to launch a scenario.
+
+Basic Usage:
+
+python tinytruce_sim.py --scenario <scenario_key> --agents <agent.agent.json> --fragments <fragment.fragment.json>
+Advanced Usage (Vatican Cyber-Schism):
+
+python tinytruce_sim.py --scenario vatican_cyber-schism --turns 10 --agents pope_leo.agent.json yann_lecun.agent.json sam_altman.agent.json --fragments pope_leo_preserver.fragment.json purist_reformer.fragment.json reformer.fragment.json --roast-level nuclear
+High-Fidelity Negotiation (Unscripted Mode):
+
+python tinytruce_sim.py --scenario ukraine --turns 10 --agents volodymyr_zelensky.agent.json vladimir_putin.agent.json donald_trump_unscripted.agent.json --hide-thoughts --roast-level nuclear
+Monologue Delivery (SOTU/Scripted Mode):
+
+python tinytruce_sim.py --scenario sotu_delivery --turns 6 --agents donald_trump_sotu.agent.json --monologue --hide-thoughts
+Clean Run (No Dynamic Crisis Injects):
+
+python tinytruce_sim.py --scenario petrodollar_pivot --disable-injects
+Eco Mode (Maximum Efficiency):
+
+python tinytruce_sim.py --scenario wilderness --eco-mode --turns 5
+Note: In Eco Mode, input context is aggressively sliced to minimize "cover charge" billing on long turns. Tip: For long-running sessions, use --session-id to isolate outputs and logs into dedicated subdirectories. Tip: We recommend 8-10 turns for static scenarios to prevent agents from falling into cyclical, repetitive arguments about their core philosophies.
+
+Keeping Grounding Current (The Dawn Command)
+To ensure the simulation reflects the latest 2026 developments, run the Chronicler update script:
+
+python scripts/chronicler_update.py
+This script (the "Dawn Command") should be run manually after deployment or scheduled as a daily cron job on the server. It updates data/facts/daily-intelligence.2026.txt, which is automatically loaded by all agents during initialization.
+
+CLI Arguments Reference
+Argument	Description
+--scenario	The key of the scenario to run.
+--turns	Number of turns (default 15).
+--agents	Explicit list of agent JSON files (required).
+--fragments	Explicit list of behavior fragment files. Supports Behavioral Stacking via comma-separation (e.g., --fragments "reformer,savior" "preserver"). Redlines from all fragments in the stack are aggregated and enforced.
+--verbosity	Control response depth: lean, detailed, monologue, dynamic.
+--eco-mode	Activate input slicing (forces Flash-Lite) to reduce costs by 66%.
+--roast-level	Intensity of the final autopsy recap (off, mild, spicy, nuclear).
+--session-id	Explicit session identifier for output isolation and cache namespacing.
+--hide-thoughts	Hide internal agent thinking blocks for a cinematic feed.
+--monologue	Single-agent sequential delivery mode.
+--disable-injects	Disable random mid-simulation dynamic crisis events.
+--flush	Flush the Vertex AI Context Cache before starting the simulation to ensure absolute state purity.
+--debug	Enable verbose debug logging to print engine responses and internal variables.
+--status-light-fix	Force Jurist to recalculate the Status Light if it's missing or invalid.
+--force-bunker-accord	Override Jurist outcome with the 'Bunker Accord' (Strategic Pepperoni Pivot).
+--extraction-fix	Enable aggressive regex-based extraction for stubborn LLM outputs.
+Available Scenarios (scenarios/)
+TinyTruce features 29 pre-configured scenarios across three operational tiers:
+
+A. Global Geopolitical Tier (High-Stakes)
+ukraine: Neutral Swiss bunker meeting between Zelenskyy and Putin.
+strait_quarantine: China’s selective maritime quarantine of Taiwan’s shipping.
+petrodollar_pivot: Saudi/Iran "Compute-for-Oil" pact challenging the USD.
+blue_nile_brinkmanship: Egypt vs. Ethiopia on GERD water flow during a drought.
+middle_east_reset: Saudi Arabia & Vision 2030 vs. Iranian nuclear breakout.
+sahel_security_shadow: Malian junta vs. Russian Africa Corps on gold-backed currency.
+lunar_gateway_jurisdiction: State powers vs. Private sector on Moon Helium-3 rights.
+pacific_deep_sea_cable_cut: India vs. Indonesia on subsea cable sovereignty.
+eu_fiscal_lockdown: France vs. Germany on rearmament and joint Eurobonds.
+lithium_triangle_leverage: South American "Lithium OPEC" vs. Western EV IP.
+amazon_debt_swap: Brazil vs. EU/Tech on climate finance and sovereignty.
+redline_test_brussels: Transatlantic decoupling and automotive tariff wars.
+hindu_kush_open_war: Pakistan vs. Afghanistan "Operation Righteous Fury" (Feb 2026).
+venezuela_post_maduro: Power vacuum in Caracas after Maduro's capture (Jan 2026).
+south_sudan_collapse: Total institutional breakdown and pipeline crisis (Feb 2026).
+B. Technological & Ethical Tier (The Frontier)
+neural_sovereignty_accord: Vatican-led debate on BCI "Neural Sanctity."
+vatican_cyber-schism: Pope vs. Tech CEOs on decentralized "Sanct-AI" sacraments.
+silicon_siege: Global Silicon audit vs. AGI "Systemic Kill Switches."
+sovereign_ai_debt_forgiveness: Kenya’s "Compute-for-Debt" swap vs. EU safety audits.
+the_refugee_algorithm_crisis: Frontex "Digital Wall" algorithmic apartheid scandal.
+digital_twin_summit: Off-the-record Vatican gardens summit on behavioral fidelity.
+summit: Virtual "Peace Garden" summit reacting to a deep-space signal.
+C. Institutional & Domestic Tier (The Ground Level)
+sotu_crisis: High-stakes war room prep for the 2026 State of the Union.
+sotu_delivery: Donald J. Trump delivering the 2026 SOTU (requires --monologue).
+culture_war_maga_vs_liberalism: US budget stalemate on "The American Dream."
+industrial: Union vs. C-Suite on "Dark Factory" automation logic.
+infrastructure: 5G Commission hearing in Vancouver on public safety.
+tech: Production war-room standoff on release speed vs. stability.
+hvac_hegemony: Roommate thermal "Cold War" over smart-thermostat settings.
+wilderness: High-altitude survival standoff (Hiker vs. Glamper).
+domestic: Smart-home biometric lockout in a modern residence.
+gaming: Board game competitive heat vs. social group cohesion.
+Viewing Results (DOCUMENTS/runs/{session_id}/)
+All simulation outputs are now isolated within session-specific directories:
+
+tinytruce_briefing.md: A formal strategic audit of the negotiation, including a "Resolve Scorecard" and "Redline Breach Report".
+tinytruce_roast.md: The "Post-Mortem" recap.
+tinytruce_results.json: Raw data export.
+tinytruce_billing_ledger.md: Verified audit of token usage and USD costs for every run (stored globally).
+tinytruce_simulation.log: Isolated session debug logs.
+🎨 Frontend Integration
+For developers building external interfaces or dashboards for TinyTruce:
+
+Canonical Reference: See FRONTEND_NOTES.md for data schemas, simulation parameters, and output artifact structures.
+Real-time UX: Supports God Mode (thinking logs + mood bars) and Story Mode (clean chat bubbles).
+📂 Project Structure
+TinyTruce/
+├── DOCUMENTS/              # Documentation & Reports
+│   ├── README.md           # Project Overview
+│   ├── FRONTEND_NOTES.md   # UI Integration Data Sheet
+│   ├── runs/               # Session-specific output directories
+│   │   └── {session_id}/   # Isolated artifacts (Briefing, Roast, JSON)
+│   ├── tinytruce_billing_ledger.md # Global billing audit log
+│   └── FORENSIC_DATA_MAP.md # Master index of fragment grounding
+├── scripts/                # Utility & Bridge Scripts
+│   ├── mcp_war_news.py     # Situation Room (RSS War News) MCP Bridge
+│   └── ...
+├── data/                   # Forensic Grounding Ballast
+│   ├── profiles/           # Primary forensic anchors (Leader/Archetype DNA)
+│   ├── facts/              # Global world state events (2026)
+│   ├── treaties/           # Factual diplomatic texts
+│   ├── tech/               # Technical whitepapers and breach logs
+│   ├── economics/          # IMF/Market structural data
+│   ├── security/           # Force posture and kinetic incident logs
+│   └── theology/           # Religious encyclicals and schism data
+├── personas/               # Agent & Behavior Definitions
+│   ├── agents/             # Layer 0 base profiles (Persona DNA)
+│   └── fragments/          # Layer 2 behavioral overlays (Redlines)
+├── scenarios/              # Scenario JSON configurations (Layer 1)
+├── tinytroupe/             # Core simulation library (Resilience-Hardened)
+│   ├── agent/              # TinyPerson logic (Identity Retention Locks)
+│   └── ...
+├── tinytruce_sim.py        # Main simulation entry point
+├── config.ini              # System configuration (LLM, Logging)
+└── requirements.txt        # Python dependencies
+🗝️ Key Directories Explained
+📂 DOCUMENTS/runs/
+TinyTruce isolates every simulation run into a unique session directory. This prevents data collisions and allows for multi-tenant analysis. Inside each session folder you will find:
+
+tinytruce_briefing.md: The technical audit of the negotiation and redline breaches.
+tinytruce_roast.md: The forensic post-mortem recap from the Clinical Bartender engine.
+tinytruce_results.json: The structured data export for frontend consumption.
+tinytruce_simulation.log: Per-session debug logs.
+📂 data/profiles/
+This is the "DNA Repository" for forensic grounding. Instead of generic descriptions, these files contain the high-fidelity prompt anchors used to ground all 27 fragments. These include world-leader forensic linguistic profiles and internal tactical archetypes (Thorne, Chen, Vance).
+
+📂 personas/
+agents/: Contains the baseline identity of a person (e.g., Donald Trump, Pope Leo).
+fragments/: Contains the situational behavior layers (e.g., Reformer, Savior) that can be "stacked" onto agents without erasing their core identity.
+9. Data Directory Inventory (Grounding Ballast)
+This inventory lists the forensic grounding files available in the data/ directory, categorized by their thematic focus. Developers can use these paths in scenario grounding_payload lists to anchor simulations in factual data.
+
+📂 data/economics/ & finance/
+Filename	Summary
+cbo-obbba-deficit-projection-2026.txt	CBO analysis of the 2026 deficit under the OBBBA/Trump administration.
+global-labor-automation-report.2026.txt	2026 report on AI-driven labor displacement and automation trends.
+imf-world-outlook-jan2026.txt	IMF Global Economic Outlook for 2026, focusing on growth and inflation.
+potosi-protocol-2026.txt	Commodity-backed currency framework for South American trade.
+sira-gold-peg.2026.txt	Details on the Saudi-Iran Gold-Pegged digital currency initiative.
+us-treasury-reserve-status-2026.txt	Forensic audit of US Treasury reserves and sovereign debt liquidity.
+📂 data/legal/ & policy/
+Filename	Summary
+eu-ai-act-implementation-aug2026.txt	Implementation status and enforcement logs for the EU AI Act (2026).
+obbba-trump-act-2026.txt	Legislative text of the "Old Boy Business & Border Act" (OBBBA).
+scotus-ieepa-tariff-ruling-feb20.txt	SCOTUS ruling on the use of IEEPA for executive maritime tariffs.
+space-property-act-2025.txt	Legal framework for orbital and lunar property rights.
+EU-migration-pact-2026.txt	2026 revisions to the EU Asylum and Migration Management Regulation.
+anti-coercion-instrument-2025.txt	EU policy on responding to foreign economic coercion.
+📂 data/security/
+Filename	Summary
+africa-corps-deployment-logs.2025.txt	Kinetic tracking of Russian Africa Corps movements and bases.
+extreme-weather-deployment-log.2026.txt	Logistics log for military operations in extreme environmental conditions.
+malacca-straits-cable-forensics.2026.txt	Forensic analysis of subsea cable interference in the Malacca Strait.
+subsea_cable_resilience.2026.txt	Global map and resilience audit of critical subsea data infrastructure.
+📂 data/tech/
+Filename	Summary
+5g-spectrum-compliance-standard.2025.txt	Technical standards for 5G network safety and spectrum allocation.
+bci-latency-and-influence.2026.txt	Neuro-tech report on Brain-Computer Interface latency and psychological effect.
+biometric-consensus-standards.2026.txt	Global standard for smart-home and institutional biometric auth.
+trillium-compute-credit-index.2025.txt	Pricing and availability index for sovereign GPU/Compute credits.
+euroguard-v-audit-leak.txt	Leaked audit of EU's "EuroGuard" algorithmic border security system.
+📂 data/theology/ & facts/
+Filename	Summary
+theological_schism_2026.txt	Logs of the digital schism within the Catholic Church regarding "Sanct-AI".
+ukraine-war.2026.txt	Synthetic world-state briefing on the Ukraine-Russia frontlines (Feb 2026).
+middle-east-reset.2026.txt	Factual grounding for the Riyadh-Tehran normalization accords.
+silicon-siege.2026.txt	Records of the global silicon audit and "Kill Switch" protocols.
+world-facts.2026.txt	Master baseline of global events, elections, and crises in 2026.
+📂 data/conflicts/ (War Wire)
+Filename	Summary
+US_Israel_Iran_War/Pezeshkians_Gamble.txt	Detailed tactical breakdown of the Iranian Reformist Coup (2026).
+US_Israel_Iran_War/The_Larijani_Pivot.txt	Forensic analysis of the IRGC Pragmatist surrender scenario.
+US_Israel_Iran_War/The_MIGA_Protocol.txt	The "Make Iran Great Again" (MIGA) restoration framework.
+pineapple_on_pizza_war.txt	A specialized behavioral test scenario for agent irrationality.
+📂 data/profiles/ (Layer 0 DNA)
+This directory contains 47+ high-fidelity Forensic DNA files for world leaders (Trump, Putin, Xi, Modi, etc.) and technical archetypes (Thorne, Vance, Altman). These files ground the agents' linguistic locks and tactical idiolects.
+
+⚖️ Disclaimer
+TinyTruce is an experimental research tool that uses Large Language Models (LLMs) to generate content. The output is stochastic and may contain hallucinations or inaccuracies. The views expressed by the simulated agents do not reflect the views of the creators or any affiliated organizations. This tool is for imagination enhancement and strategic exploration only.
+
+Based on TinyTroupe by Microsoft Research.
